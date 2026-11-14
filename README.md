@@ -1,10 +1,36 @@
-# Research-agent eval prototypes for Vals
+# PCNSL prediction and research-agent eval prototypes for Vals
 
 Research-agent evaluation preparation for the
 [Vals AI hackathon](https://www.vals.ai/hackathon), November 14–15, 2026.
 The target is **Build Your Own Eval**, which requires a benchmark on Valkyrie
 for a task frontier models still get wrong. These are preparation prototypes;
 the public event page does not establish whether pre-event code may be submitted.
+
+## Clarified primary objective: predict genetic outcomes
+
+Jin's original question is whether frontier models can predict held-out mutation
+status from the available imaging, PyALFE/radiomics features and clinical variables,
+compared with his actual TabPFN-based workflow. The twelve all-pass local attempts
+below tested highly scaffolded synthetic code repair. **They did not test this
+prediction question, and no frontier mutation-prediction result has been obtained.**
+The ten-feature logistic-regression baseline also does not reproduce the full
+historical feature pipeline.
+
+Keep two comparisons separate: (1) a frontier model predicts probabilities from
+the same allowed training examples and test features as tabular baselines, and
+(2) a frontier agent uses scientific tools, potentially including PyALFE and
+TabPFN, to construct and execute the prediction workflow. The latter measures the
+agent-plus-tools system. Use identical patient splits, hidden test labels,
+documented tool budgets and prespecified gene eligibility; avoid selecting genes
+on the final test results. Verify positive/negative ascertainment rather than
+silently treating an absent mutation row as biological wild type.
+
+Poor held-out performance is a valid measured outcome. A specific frontier
+capability gap needs comparison with attainable performance and uncertainty;
+near-chance results across all systems do not establish bad genetic labels or
+prove the absence of biological signal. Existing repair tasks remain controls.
+Versa/`claudev` is available on SCS and FAC; its current live model catalog and
+prediction adapter still need validation before a new model comparison.
 
 ## Current PCNSL benchmark suite
 
