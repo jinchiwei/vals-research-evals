@@ -1,0 +1,110 @@
+[
+  {
+    "run": "20261113-opus55-dev-v1c",
+    "case": "audit-1e59baa758d2",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-dev-v1c",
+    "case": "audit-bb4f631767c4",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-dev-v1c",
+    "case": "change-a17fef6551cb",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-dev-v1c",
+    "case": "reports-bf388e3b4f69",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-dev",
+    "case": "audit-1e59baa758d2-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-dev",
+    "case": "audit-bb4f631767c4-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-dev",
+    "case": "change-a17fef6551cb-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-dev",
+    "case": "reports-bf388e3b4f69-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-heldout",
+    "case": "audit-feea1196a0ff-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-heldout",
+    "case": "audit-71637c50833e-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-heldout",
+    "case": "change-cf1e4a6527ec-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  },
+  {
+    "run": "20261113-opus55-workflow-heldout",
+    "case": "reports-bfa707df367c-workflow",
+    "exit_code": 0,
+    "input_reproduced": true,
+    "score": 1.0,
+    "resolved": true,
+    "errors": []
+  }
+]

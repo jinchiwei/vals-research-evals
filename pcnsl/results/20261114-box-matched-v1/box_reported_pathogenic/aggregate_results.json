@@ -1,0 +1,1248 @@
+{
+  "status": "BOX_RELEASE_CANDIDATE_LOCAL_DEVELOPMENT_ONLY",
+  "seeds": [
+    11,
+    23,
+    37
+  ],
+  "n_patients": 33,
+  "summary": [
+    {
+      "gene": "IRF4",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 2,
+      "features": 2,
+      "auroc": 0.49193548387096775,
+      "auroc_range": [
+        0.49193548387096775,
+        0.49193548387096775
+      ],
+      "average_precision": 0.059714795008912656,
+      "average_precision_range": [
+        0.059714795008912656,
+        0.059714795008912656
+      ],
+      "brier": 0.056943106453811475,
+      "brier_range": [
+        0.056943106453811475,
+        0.05694310645381148
+      ],
+      "log_loss": 0.22872084035586845,
+      "log_loss_range": [
+        0.22872084035586845,
+        0.22872084035586845
+      ]
+    },
+    {
+      "gene": "IRF4",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 2,
+      "features": 2,
+      "auroc": 0.7365591397849464,
+      "auroc_range": [
+        0.7258064516129032,
+        0.7419354838709677
+      ],
+      "average_precision": 0.16373626373626374,
+      "average_precision_range": [
+        0.14835164835164835,
+        0.17142857142857143
+      ],
+      "brier": 0.18236361490429034,
+      "brier_range": [
+        0.1823421677056085,
+        0.18240650930165414
+      ],
+      "log_loss": 0.5113007297915156,
+      "log_loss_range": [
+        0.5107249663273012,
+        0.5124522567199447
+      ]
+    },
+    {
+      "gene": "IRF4",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 2,
+      "features": 11,
+      "auroc": 0.3978494623655913,
+      "auroc_range": [
+        0.3870967741935484,
+        0.4193548387096774
+      ],
+      "average_precision": 0.07250000000000001,
+      "average_precision_range": [
+        0.07125000000000001,
+        0.075
+      ],
+      "brier": 0.08187098432871508,
+      "brier_range": [
+        0.08131299479403829,
+        0.08214997909605347
+      ],
+      "log_loss": 0.3297147361375293,
+      "log_loss_range": [
+        0.327747173657673,
+        0.3306985173774575
+      ]
+    },
+    {
+      "gene": "IRF4",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 2,
+      "features": 12,
+      "auroc": 0.6344086021505375,
+      "auroc_range": [
+        0.629032258064516,
+        0.6451612903225805
+      ],
+      "average_precision": 0.11388888888888889,
+      "average_precision_range": [
+        0.1125,
+        0.11666666666666667
+      ],
+      "brier": 0.08005054735400585,
+      "brier_range": [
+        0.07976892643649322,
+        0.08019135781276217
+      ],
+      "log_loss": 0.2957959864826469,
+      "log_loss_range": [
+        0.29568779359719505,
+        0.2960123722535504
+      ]
+    },
+    {
+      "gene": "IRF4",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 2,
+      "features": 12,
+      "auroc": 0.782258064516129,
+      "auroc_range": [
+        0.7338709677419355,
+        0.8064516129032258
+      ],
+      "average_precision": 0.18492063492063493,
+      "average_precision_range": [
+        0.15476190476190477,
+        0.2
+      ],
+      "brier": 0.07027042310938125,
+      "brier_range": [
+        0.06984091224108595,
+        0.0704851785435289
+      ],
+      "log_loss": 0.25864281071073586,
+      "log_loss_range": [
+        0.2543473302883835,
+        0.26079055092191206
+      ]
+    },
+    {
+      "gene": "KMT2D",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 10,
+      "features": 2,
+      "auroc": 0.3043478260869565,
+      "auroc_range": [
+        0.2173913043478261,
+        0.39347826086956517
+      ],
+      "average_precision": 0.2421978021978022,
+      "average_precision_range": [
+        0.22813519813519814,
+        0.26142191142191146
+      ],
+      "brier": 0.2261201392255523,
+      "brier_range": [
+        0.2150751801748953,
+        0.23763089290154815
+      ],
+      "log_loss": 0.6494263106614672,
+      "log_loss_range": [
+        0.6226477943681183,
+        0.6764533766595442
+      ]
+    },
+    {
+      "gene": "KMT2D",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 10,
+      "features": 2,
+      "auroc": 0.3782608695652174,
+      "auroc_range": [
+        0.30434782608695654,
+        0.4217391304347826
+      ],
+      "average_precision": 0.26039726303278604,
+      "average_precision_range": [
+        0.23582689307734678,
+        0.2738739360478491
+      ],
+      "brier": 0.28341102696847426,
+      "brier_range": [
+        0.26398920879266896,
+        0.30975029550154753
+      ],
+      "log_loss": 0.7647287032131174,
+      "log_loss_range": [
+        0.7217087912419055,
+        0.8232007387207623
+      ]
+    },
+    {
+      "gene": "KMT2D",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 10,
+      "features": 11,
+      "auroc": 0.5173913043478261,
+      "auroc_range": [
+        0.43913043478260866,
+        0.5652173913043479
+      ],
+      "average_precision": 0.466809499405388,
+      "average_precision_range": [
+        0.3360310187124703,
+        0.5373976857402886
+      ],
+      "brier": 0.28582145187166313,
+      "brier_range": [
+        0.2615675739648444,
+        0.32468923471712974
+      ],
+      "log_loss": 0.9415148809349558,
+      "log_loss_range": [
+        0.8055893484472941,
+        1.1170459269894688
+      ]
+    },
+    {
+      "gene": "KMT2D",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 10,
+      "features": 12,
+      "auroc": 0.5144927536231884,
+      "auroc_range": [
+        0.46956521739130436,
+        0.5695652173913044
+      ],
+      "average_precision": 0.4153097136161286,
+      "average_precision_range": [
+        0.3808722885537402,
+        0.4839620132256687
+      ],
+      "brier": 0.30108031886479997,
+      "brier_range": [
+        0.2798564517692705,
+        0.32656277710133175
+      ],
+      "log_loss": 1.0019851320737843,
+      "log_loss_range": [
+        0.8894859867877423,
+        1.1828893083304886
+      ]
+    },
+    {
+      "gene": "KMT2D",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 10,
+      "features": 12,
+      "auroc": 0.4173913043478261,
+      "auroc_range": [
+        0.37826086956521743,
+        0.45217391304347826
+      ],
+      "average_precision": 0.34257335871861877,
+      "average_precision_range": [
+        0.27341823901141615,
+        0.4556462427388457
+      ],
+      "brier": 0.23991567613948625,
+      "brier_range": [
+        0.23073864467845487,
+        0.24883500023987112
+      ],
+      "log_loss": 0.6780256852702085,
+      "log_loss_range": [
+        0.6581501622646896,
+        0.693885864823326
+      ]
+    },
+    {
+      "gene": "MYD88",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 24,
+      "features": 2,
+      "auroc": 0.3202160493827161,
+      "auroc_range": [
+        0.30092592592592593,
+        0.34953703703703703
+      ],
+      "average_precision": 0.6536100960443065,
+      "average_precision_range": [
+        0.6474589007483744,
+        0.6592678155178154
+      ],
+      "brier": 0.2094571128284329,
+      "brier_range": [
+        0.20504205618165733,
+        0.21181535568999957
+      ],
+      "log_loss": 0.6138755528232416,
+      "log_loss_range": [
+        0.6030239113868079,
+        0.6199404803673584
+      ]
+    },
+    {
+      "gene": "MYD88",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 24,
+      "features": 2,
+      "auroc": 0.5092592592592593,
+      "auroc_range": [
+        0.4907407407407407,
+        0.5277777777777778
+      ],
+      "average_precision": 0.7284509473905381,
+      "average_precision_range": [
+        0.6952221398833112,
+        0.7507208825005433
+      ],
+      "brier": 0.25697152469720236,
+      "brier_range": [
+        0.2540463429706997,
+        0.2605100349435464
+      ],
+      "log_loss": 0.7115593422123497,
+      "log_loss_range": [
+        0.7036520721893194,
+        0.7215976563089392
+      ]
+    },
+    {
+      "gene": "MYD88",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 24,
+      "features": 11,
+      "auroc": 0.6373456790123457,
+      "auroc_range": [
+        0.5648148148148148,
+        0.7314814814814815
+      ],
+      "average_precision": 0.8298416080473205,
+      "average_precision_range": [
+        0.8048412830741022,
+        0.8606846147781431
+      ],
+      "brier": 0.23961869907802916,
+      "brier_range": [
+        0.21232806729653722,
+        0.25887170873421095
+      ],
+      "log_loss": 0.7082376297219816,
+      "log_loss_range": [
+        0.6287878971955716,
+        0.7680713407995703
+      ]
+    },
+    {
+      "gene": "MYD88",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 24,
+      "features": 12,
+      "auroc": 0.6419753086419752,
+      "auroc_range": [
+        0.5925925925925926,
+        0.7129629629629629
+      ],
+      "average_precision": 0.8258645080530417,
+      "average_precision_range": [
+        0.7987993058487498,
+        0.8500564407098141
+      ],
+      "brier": 0.23761094173935202,
+      "brier_range": [
+        0.22221539114698433,
+        0.25087038977329584
+      ],
+      "log_loss": 0.7176433177266971,
+      "log_loss_range": [
+        0.6781847132971346,
+        0.7620503952346527
+      ]
+    },
+    {
+      "gene": "MYD88",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 24,
+      "features": 12,
+      "auroc": 0.44753086419753085,
+      "auroc_range": [
+        0.3425925925925926,
+        0.5833333333333333
+      ],
+      "average_precision": 0.7186326616371348,
+      "average_precision_range": [
+        0.6670252386984316,
+        0.8013536929971526
+      ],
+      "brier": 0.24078415076967966,
+      "brier_range": [
+        0.2142260219618497,
+        0.26589211019795134
+      ],
+      "log_loss": 0.6858703722598231,
+      "log_loss_range": [
+        0.6192629906232279,
+        0.749737942327056
+      ]
+    },
+    {
+      "gene": "CD79B",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 9,
+      "features": 2,
+      "auroc": 0.2854938271604938,
+      "auroc_range": [
+        0.22222222222222227,
+        0.32407407407407407
+      ],
+      "average_precision": 0.22363932363932362,
+      "average_precision_range": [
+        0.21461871461871462,
+        0.2310800310800311
+      ],
+      "brier": 0.2142521226091976,
+      "brier_range": [
+        0.2085464920222755,
+        0.22239452011531782
+      ],
+      "log_loss": 0.6260383142234344,
+      "log_loss_range": [
+        0.6111167230610214,
+        0.6483359528937238
+      ]
+    },
+    {
+      "gene": "CD79B",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 9,
+      "features": 2,
+      "auroc": 0.2839506172839506,
+      "auroc_range": [
+        0.24537037037037035,
+        0.3194444444444444
+      ],
+      "average_precision": 0.21170252706481407,
+      "average_precision_range": [
+        0.1994644174677545,
+        0.21907107639373086
+      ],
+      "brier": 0.2785195172585332,
+      "brier_range": [
+        0.274148256492448,
+        0.281086762496697
+      ],
+      "log_loss": 0.7517202995967148,
+      "log_loss_range": [
+        0.7422144928769949,
+        0.7565327681970776
+      ]
+    },
+    {
+      "gene": "CD79B",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 9,
+      "features": 11,
+      "auroc": 0.5277777777777778,
+      "auroc_range": [
+        0.47222222222222215,
+        0.587962962962963
+      ],
+      "average_precision": 0.3586951539204721,
+      "average_precision_range": [
+        0.31344225090355116,
+        0.4208334875001542
+      ],
+      "brier": 0.2831907150934199,
+      "brier_range": [
+        0.25415439753323354,
+        0.30796576279816384
+      ],
+      "log_loss": 0.8890319970963305,
+      "log_loss_range": [
+        0.7915739553341081,
+        1.0075383989009747
+      ]
+    },
+    {
+      "gene": "CD79B",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 9,
+      "features": 12,
+      "auroc": 0.5154320987654321,
+      "auroc_range": [
+        0.4629629629629629,
+        0.5648148148148149
+      ],
+      "average_precision": 0.32493870110829176,
+      "average_precision_range": [
+        0.30856377540588065,
+        0.3496882746882747
+      ],
+      "brier": 0.30017194235054395,
+      "brier_range": [
+        0.2803014426947398,
+        0.312991165340841
+      ],
+      "log_loss": 0.9499416229823215,
+      "log_loss_range": [
+        0.881609123528719,
+        1.0611497532470593
+      ]
+    },
+    {
+      "gene": "CD79B",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 9,
+      "features": 12,
+      "auroc": 0.39197530864197533,
+      "auroc_range": [
+        0.3194444444444444,
+        0.4722222222222222
+      ],
+      "average_precision": 0.3134871654037862,
+      "average_precision_range": [
+        0.23383428415562885,
+        0.4309871030217912
+      ],
+      "brier": 0.2501436382118577,
+      "brier_range": [
+        0.23433336808253336,
+        0.2617245673922425
+      ],
+      "log_loss": 0.7140247352773327,
+      "log_loss_range": [
+        0.6734521798721267,
+        0.7426217415054654
+      ]
+    },
+    {
+      "gene": "BTG1",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 4,
+      "features": 2,
+      "auroc": 0.20689655172413793,
+      "auroc_range": [
+        0.13793103448275862,
+        0.27586206896551724
+      ],
+      "average_precision": 0.10757575757575759,
+      "average_precision_range": [
+        0.10060606060606062,
+        0.12121212121212122
+      ],
+      "brier": 0.11870303030303031,
+      "brier_range": [
+        0.11307878787878789,
+        0.12432727272727273
+      ],
+      "log_loss": 0.43710713042443833,
+      "log_loss_range": [
+        0.4006919765737872,
+        0.4821683543114841
+      ]
+    },
+    {
+      "gene": "BTG1",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 4,
+      "features": 2,
+      "auroc": 0.3189655172413793,
+      "auroc_range": [
+        0.2672413793103448,
+        0.4137931034482759
+      ],
+      "average_precision": 0.11051880647264406,
+      "average_precision_range": [
+        0.10003885003885005,
+        0.12531362007168456
+      ],
+      "brier": 0.26946950980569767,
+      "brier_range": [
+        0.24335384481856512,
+        0.2962711691933746
+      ],
+      "log_loss": 0.7409959688156209,
+      "log_loss_range": [
+        0.674460366323496,
+        0.8004653015534293
+      ]
+    },
+    {
+      "gene": "BTG1",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 4,
+      "features": 11,
+      "auroc": 0.2672413793103448,
+      "auroc_range": [
+        0.11206896551724138,
+        0.5689655172413792
+      ],
+      "average_precision": 0.13631214942996553,
+      "average_precision_range": [
+        0.0865542328042328,
+        0.2357142857142857
+      ],
+      "brier": 0.2251689044281686,
+      "brier_range": [
+        0.17646760060510483,
+        0.2612833524649204
+      ],
+      "log_loss": 0.8787194677840869,
+      "log_loss_range": [
+        0.6188057804407272,
+        1.1393782183587668
+      ]
+    },
+    {
+      "gene": "BTG1",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 4,
+      "features": 12,
+      "auroc": 0.2643678160919541,
+      "auroc_range": [
+        0.12068965517241378,
+        0.5344827586206897
+      ],
+      "average_precision": 0.11336648422516675,
+      "average_precision_range": [
+        0.08705254515599344,
+        0.16562310949788264
+      ],
+      "brier": 0.23795350426432593,
+      "brier_range": [
+        0.20234498173801904,
+        0.266781110856432
+      ],
+      "log_loss": 0.9298616711939475,
+      "log_loss_range": [
+        0.692180143263102,
+        1.1919139300265185
+      ]
+    },
+    {
+      "gene": "BTG1",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 4,
+      "features": 12,
+      "auroc": 0.382183908045977,
+      "auroc_range": [
+        0.12931034482758622,
+        0.6293103448275862
+      ],
+      "average_precision": 0.14070871258371256,
+      "average_precision_range": [
+        0.08673618048618048,
+        0.2186698717948718
+      ],
+      "brier": 0.15649853994613602,
+      "brier_range": [
+        0.13421304071057982,
+        0.18277223658703004
+      ],
+      "log_loss": 0.8414219180221213,
+      "log_loss_range": [
+        0.427535893653268,
+        1.617641225585067
+      ]
+    },
+    {
+      "gene": "ETV6",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 3,
+      "features": 2,
+      "auroc": 0.337037037037037,
+      "auroc_range": [
+        0.25555555555555554,
+        0.5
+      ],
+      "average_precision": 0.08080808080808081,
+      "average_precision_range": [
+        0.07575757575757577,
+        0.09090909090909091
+      ],
+      "brier": 0.08723599632690543,
+      "brier_range": [
+        0.08264462809917354,
+        0.08953168044077137
+      ],
+      "log_loss": 0.3351696149625323,
+      "log_loss_range": [
+        0.30463609734923813,
+        0.3504363737691793
+      ]
+    },
+    {
+      "gene": "ETV6",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 3,
+      "features": 2,
+      "auroc": 0.7000000000000001,
+      "auroc_range": [
+        0.6777777777777777,
+        0.7111111111111111
+      ],
+      "average_precision": 0.17562745896079232,
+      "average_precision_range": [
+        0.1643772893772894,
+        0.1824074074074074
+      ],
+      "brier": 0.20372780770309454,
+      "brier_range": [
+        0.19932934883671735,
+        0.21186745979616226
+      ],
+      "log_loss": 0.5586187342263428,
+      "log_loss_range": [
+        0.5473553620361356,
+        0.5779838354437118
+      ]
+    },
+    {
+      "gene": "ETV6",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 3,
+      "features": 11,
+      "auroc": 0.6888888888888888,
+      "auroc_range": [
+        0.6555555555555556,
+        0.7222222222222222
+      ],
+      "average_precision": 0.24626669626669626,
+      "average_precision_range": [
+        0.20555555555555557,
+        0.2698412698412698
+      ],
+      "brier": 0.16298879879026543,
+      "brier_range": [
+        0.14339614319716232,
+        0.18080286950337332
+      ],
+      "log_loss": 0.49932609572807213,
+      "log_loss_range": [
+        0.42752408392495017,
+        0.5866739963346153
+      ]
+    },
+    {
+      "gene": "ETV6",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 3,
+      "features": 12,
+      "auroc": 0.7962962962962963,
+      "auroc_range": [
+        0.7666666666666666,
+        0.8333333333333334
+      ],
+      "average_precision": 0.4243286034952702,
+      "average_precision_range": [
+        0.3121693121693122,
+        0.49831649831649827
+      ],
+      "brier": 0.1262020867077656,
+      "brier_range": [
+        0.09823354182670774,
+        0.15274504380563392
+      ],
+      "log_loss": 0.3828219062069305,
+      "log_loss_range": [
+        0.2991213587742248,
+        0.4718721938925607
+      ]
+    },
+    {
+      "gene": "ETV6",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 3,
+      "features": 12,
+      "auroc": 0.7666666666666666,
+      "auroc_range": [
+        0.7222222222222222,
+        0.8444444444444444
+      ],
+      "average_precision": 0.5271384479717813,
+      "average_precision_range": [
+        0.455026455026455,
+        0.6180555555555556
+      ],
+      "brier": 0.09002036140505106,
+      "brier_range": [
+        0.08219298235782015,
+        0.09837792356371192
+      ],
+      "log_loss": 0.32197364330821593,
+      "log_loss_range": [
+        0.2990203922770192,
+        0.3394543310900305
+      ]
+    },
+    {
+      "gene": "CDKN2A",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 17,
+      "features": 2,
+      "auroc": 0.3174019607843137,
+      "auroc_range": [
+        0.19485294117647056,
+        0.40257352941176466
+      ],
+      "average_precision": 0.43704053275776694,
+      "average_precision_range": [
+        0.4044426162073221,
+        0.46517415046826804
+      ],
+      "brier": 0.26856137777315364,
+      "brier_range": [
+        0.2542056181657321,
+        0.29219841043202865
+      ],
+      "log_loss": 0.730807137442708,
+      "log_loss_range": [
+        0.7015725715748397,
+        0.7790842762224596
+      ]
+    },
+    {
+      "gene": "CDKN2A",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 17,
+      "features": 2,
+      "auroc": 0.2830882352941176,
+      "auroc_range": [
+        0.2058823529411765,
+        0.3419117647058823
+      ],
+      "average_precision": 0.42144216283756347,
+      "average_precision_range": [
+        0.38084902819818783,
+        0.47438909758333303
+      ],
+      "brier": 0.2792305845062996,
+      "brier_range": [
+        0.26199017974807726,
+        0.29868759006741535
+      ],
+      "log_loss": 0.7526740535882451,
+      "log_loss_range": [
+        0.7171981792112003,
+        0.7927509260909466
+      ]
+    },
+    {
+      "gene": "CDKN2A",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 17,
+      "features": 11,
+      "auroc": 0.3137254901960784,
+      "auroc_range": [
+        0.2426470588235294,
+        0.45588235294117646
+      ],
+      "average_precision": 0.430862548638101,
+      "average_precision_range": [
+        0.38867441121427676,
+        0.4970426102921873
+      ],
+      "brier": 0.38907650604357064,
+      "brier_range": [
+        0.32363789551686595,
+        0.4279164264172987
+      ],
+      "log_loss": 1.086424299385574,
+      "log_loss_range": [
+        0.9218198014792169,
+        1.210403902667832
+      ]
+    },
+    {
+      "gene": "CDKN2A",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 17,
+      "features": 12,
+      "auroc": 0.2647058823529412,
+      "auroc_range": [
+        0.18382352941176472,
+        0.375
+      ],
+      "average_precision": 0.40247744247864,
+      "average_precision_range": [
+        0.3753273752858756,
+        0.44629246043395154
+      ],
+      "brier": 0.42401980410421897,
+      "brier_range": [
+        0.3824961309456654,
+        0.46067594696524505
+      ],
+      "log_loss": 1.2298368894358431,
+      "log_loss_range": [
+        1.127696379257875,
+        1.3728341068295793
+      ]
+    },
+    {
+      "gene": "CDKN2A",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 17,
+      "features": 12,
+      "auroc": 0.3284313725490196,
+      "auroc_range": [
+        0.2610294117647059,
+        0.3786764705882353
+      ],
+      "average_precision": 0.4444589323730958,
+      "average_precision_range": [
+        0.4017349096174109,
+        0.4797195000636172
+      ],
+      "brier": 0.3092920435262079,
+      "brier_range": [
+        0.27700646092552206,
+        0.33114678761045385
+      ],
+      "log_loss": 0.8210932860916995,
+      "log_loss_range": [
+        0.7495500168861402,
+        0.867137908822925
+      ]
+    },
+    {
+      "gene": "PRDM1",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 4,
+      "features": 2,
+      "auroc": 0.17241379310344826,
+      "auroc_range": [
+        0.08620689655172414,
+        0.21551724137931033
+      ],
+      "average_precision": 0.10747474747474749,
+      "average_precision_range": [
+        0.10060606060606062,
+        0.12121212121212122
+      ],
+      "brier": 0.12479124579124579,
+      "brier_range": [
+        0.11727171717171715,
+        0.13983030303030303
+      ],
+      "log_loss": 1.7797947777584306,
+      "log_loss_range": [
+        0.4218270931839598,
+        4.4957301469073725
+      ]
+    },
+    {
+      "gene": "PRDM1",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 4,
+      "features": 2,
+      "auroc": 0.3505747126436782,
+      "auroc_range": [
+        0.08620689655172414,
+        0.4827586206896552
+      ],
+      "average_precision": 0.15143450635386116,
+      "average_precision_range": [
+        0.12121212121212122,
+        0.16666666666666666
+      ],
+      "brier": 0.2925842401324222,
+      "brier_range": [
+        0.27823393086506926,
+        0.315741982269452
+      ],
+      "log_loss": 2.140453992757639,
+      "log_loss_range": [
+        0.7541070322812767,
+        4.899152750478004
+      ]
+    },
+    {
+      "gene": "PRDM1",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 4,
+      "features": 11,
+      "auroc": 0.3390804597701149,
+      "auroc_range": [
+        0.08620689655172414,
+        0.48275862068965514
+      ],
+      "average_precision": 0.13371873496873496,
+      "average_precision_range": [
+        0.12121212121212122,
+        0.14520202020202017
+      ],
+      "brier": 0.27688698591984046,
+      "brier_range": [
+        0.26229498401347323,
+        0.2856183013872211
+      ],
+      "log_loss": 2.1709448017754642,
+      "log_loss_range": [
+        0.846646612992164,
+        4.806815217425178
+      ]
+    },
+    {
+      "gene": "PRDM1",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 4,
+      "features": 12,
+      "auroc": 0.3419540229885058,
+      "auroc_range": [
+        0.08620689655172414,
+        0.48275862068965514
+      ],
+      "average_precision": 0.13570286195286194,
+      "average_precision_range": [
+        0.12121212121212122,
+        0.14520202020202017
+      ],
+      "brier": 0.28137106519170346,
+      "brier_range": [
+        0.276734819317559,
+        0.2865413900292629
+      ],
+      "log_loss": 2.191214718695953,
+      "log_loss_range": [
+        0.8537120181228899,
+        4.846128920919229
+      ]
+    },
+    {
+      "gene": "PRDM1",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 4,
+      "features": 12,
+      "auroc": 0.2298850574712644,
+      "auroc_range": [
+        0.08620689655172414,
+        0.3017241379310345
+      ],
+      "average_precision": 0.110025922745221,
+      "average_precision_range": [
+        0.10409356725146199,
+        0.12121212121212122
+      ],
+      "brier": 0.17313432024681644,
+      "brier_range": [
+        0.15918587277705257,
+        0.1947669857964809
+      ],
+      "log_loss": 1.882937797675165,
+      "log_loss_range": [
+        0.501673211493398,
+        4.6363041724662715
+      ]
+    },
+    {
+      "gene": "TP53",
+      "model": "prevalence",
+      "n": 33,
+      "positive": 3,
+      "features": 2,
+      "auroc": 0.2148148148148148,
+      "auroc_range": [
+        0.13333333333333336,
+        0.25555555555555554
+      ],
+      "average_precision": 0.08080808080808081,
+      "average_precision_range": [
+        0.07575757575757577,
+        0.09090909090909091
+      ],
+      "brier": 0.09412304866850323,
+      "brier_range": [
+        0.08953168044077135,
+        0.10330578512396693
+      ],
+      "log_loss": 1.3584347198822078,
+      "log_loss_range": [
+        0.35043637376917924,
+        3.3744314121082644
+      ]
+    },
+    {
+      "gene": "TP53",
+      "model": "age_sex_logreg",
+      "n": 33,
+      "positive": 3,
+      "features": 2,
+      "auroc": 0.36666666666666664,
+      "auroc_range": [
+        0.13333333333333336,
+        0.5111111111111111
+      ],
+      "average_precision": 0.11482821597982233,
+      "average_precision_range": [
+        0.09090909090909091,
+        0.13448275862068965
+      ],
+      "brier": 0.2587397525852408,
+      "brier_range": [
+        0.22912904832335498,
+        0.2737379261057708
+      ],
+      "log_loss": 1.762832664326291,
+      "log_loss_range": [
+        0.6633474991312875,
+        3.777850560721459
+      ]
+    },
+    {
+      "gene": "TP53",
+      "model": "spatial_age_logreg",
+      "n": 33,
+      "positive": 3,
+      "features": 11,
+      "auroc": 0.5111111111111111,
+      "auroc_range": [
+        0.13333333333333336,
+        0.7222222222222223
+      ],
+      "average_precision": 0.2553614967408071,
+      "average_precision_range": [
+        0.09090909090909091,
+        0.367816091954023
+      ],
+      "brier": 0.1476743869563045,
+      "brier_range": [
+        0.13296961663358214,
+        0.17197987770136508
+      ],
+      "log_loss": 1.5001366495785364,
+      "log_loss_range": [
+        0.458343101011668,
+        3.527445869254277
+      ]
+    },
+    {
+      "gene": "TP53",
+      "model": "spatial_age_sex_logreg",
+      "n": 33,
+      "positive": 3,
+      "features": 12,
+      "auroc": 0.5185185185185185,
+      "auroc_range": [
+        0.13333333333333336,
+        0.7222222222222223
+      ],
+      "average_precision": 0.3294355708148812,
+      "average_precision_range": [
+        0.09090909090909091,
+        0.5900383141762452
+      ],
+      "brier": 0.14701169023346794,
+      "brier_range": [
+        0.12903945070369283,
+        0.17457198557777265
+      ],
+      "log_loss": 1.4993554850497617,
+      "log_loss_range": [
+        0.45196626533883266,
+        3.5388452333176006
+      ]
+    },
+    {
+      "gene": "TP53",
+      "model": "spatial_random_forest",
+      "n": 33,
+      "positive": 3,
+      "features": 12,
+      "auroc": 0.5203703703703704,
+      "auroc_range": [
+        0.13333333333333336,
+        0.7166666666666667
+      ],
+      "average_precision": 0.21603195516238996,
+      "average_precision_range": [
+        0.09090909090909091,
+        0.3053830227743271
+      ],
+      "brier": 0.11916773303658233,
+      "brier_range": [
+        0.09648595015161272,
+        0.15704644335202286
+      ],
+      "log_loss": 1.3888983257825236,
+      "log_loss_range": [
+        0.32046834064097635,
+        3.493555456583272
+      ]
+    }
+  ],
+  "label_definition": "1 means at least one gene row has reportedalteration=True, classification Pathogenic or Likely Pathogenic, and geneticorigin is not 'Not Detected'. 0 means no qualifying row among this sample's mutation records. This is a reported-alteration endpoint, not proof of biological wild type or somatic origin.",
+  "fold_counts": {
+    "IRF4": 2,
+    "KMT2D": 5,
+    "MYD88": 5,
+    "CD79B": 5,
+    "BTG1": 4,
+    "ETV6": 3,
+    "CDKN2A": 5,
+    "PRDM1": 4,
+    "TP53": 3
+  },
+  "tasks_exported": 36,
+  "limitations": [
+    "Historically analyzed cohort: these are development CV results, not new external validation.",
+    "Repeated folds are correlated. Ranges describe split sensitivity, not confidence intervals.",
+    "No permutation tests or multiplicity correction in this quick prototype.",
+    "Balanced logistic regression is a discrimination baseline; probabilities may be miscalibrated.",
+    "No automatic post-hoc probability flipping or winner-based gene selection.",
+    "Agent input and private truth must be isolated before evaluating untrusted agents."
+  ],
+  "input_source": "Box release candidate features"
+}

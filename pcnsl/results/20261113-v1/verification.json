@@ -1,0 +1,18 @@
+{
+  "tasks_verified": 60,
+  "genes": 12,
+  "all_reference_scores_reproduced": true,
+  "each_patient_tested_once_per_gene": true,
+  "owner_only_prototype_directory": true,
+  "code_sha256": {
+    "benchmark.py": "d1c8975dbc6315fac5c6f8014939bbfc7c41c6637325bd7f7ec366e464d7399f",
+    "scs_adapter.py": "cfa4e7209a9404ebc98a3661c6a133885250d82f1ac108eaddc4dab478679653",
+    "test_benchmark.py": "8731910ed4d9b6b2fe96a451b3744da8e2400247ae28b332209837e10637b4c5",
+    "README.md": "40c0066aa7514e9cc9594727999868fbc1149e2608d07a37fc786a0414d6fc85"
+  },
+  "test_results": {
+    "new_tests_on_scs": 9,
+    "existing_tests_on_teal": 12,
+    "all_passed": true
+  }
+}

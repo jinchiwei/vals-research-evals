@@ -1,0 +1,13 @@
+{
+ "v1_valid": 12,
+ "v1_total": 12,
+ "v2_valid": 12,
+ "v2_total": 12,
+ "cli": "2026.11.12.2",
+ "sdk": "0.34.0",
+ "hosted_run": [
+  false,
+  false
+ ],
+ "roundtrips": "12/12 per variant: scripts/verify_isolated.py on dist/development-v1b and dist/workflow-v2, re-run 2026-11-13 by deck agent"
+}

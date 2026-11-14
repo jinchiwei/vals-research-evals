@@ -1,0 +1,56 @@
+{
+  "case": "audit-71637c50833e-workflow",
+  "family": "audit",
+  "status": "completed",
+  "returncode": 0,
+  "elapsed_seconds": 37.72,
+  "actual_models": [
+    "claude-opus-5-5"
+  ],
+  "tools_used": [
+    "Bash",
+    "Bash",
+    "Bash",
+    "Write",
+    "Bash"
+  ],
+  "usage": {
+    "input_tokens": 12,
+    "cache_creation_input_tokens": 7064,
+    "cache_read_input_tokens": 52380,
+    "output_tokens": 4015,
+    "output_tokens_details": {
+      "thinking_tokens": 225
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 7064,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 788,
+        "cache_read_input_tokens": 12544,
+        "cache_creation_input_tokens": 472,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 472
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost_usd": 0.147336,
+  "agent_error": false,
+  "score": 1.0,
+  "resolved": true,
+  "errors": []
+}

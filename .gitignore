@@ -1,0 +1,32 @@
+__pycache__/
+*.pyc
+.venv/
+.venv-valkyrie/
+dist/
+results/*/workspace/
+
+# Credentials and local machine configuration.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+
+# Raw agent transcripts and disposable synthetic run workspaces.
+results/**/workspace/
+results/**/*.jsonl
+results/**/stderr.txt
+results/**/agent-stderr.txt
+results/**/agent-finalize-stderr.txt
+
+# Private PCNSL inputs and patient-level outputs stay on SCS/FAC.
+pcnsl/release_candidate/
+pcnsl/runs/
+**/*_PHI*
+**/private_predictions/
+**/tasks_local_only/
+**/crosswalk*.csv
+
+# Archives can bundle unreviewed files. Rebuild task/source archives locally.
+*.zip

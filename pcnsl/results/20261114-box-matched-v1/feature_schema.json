@@ -1,0 +1,63 @@
+{
+  "features": [
+    "age_at_diagnosis",
+    "sex_male",
+    "FLAIR_percentage_volume_in_Frontal",
+    "FLAIR_percentage_volume_in_Parietal",
+    "FLAIR_percentage_volume_in_Occipital",
+    "FLAIR_percentage_volume_in_Temporal",
+    "FLAIR_percentage_volume_in_AnteriorTemporal",
+    "FLAIR_percentage_volume_in_MiddleTemporal",
+    "FLAIR_percentage_volume_in_PosteriorTemporal",
+    "FLAIR_percentage_volume_in_Parietal_Occipital",
+    "FLAIR_percentage_volume_in_CorpusCallosum",
+    "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum"
+  ],
+  "views": {
+    "demographics": [
+      "age_at_diagnosis",
+      "sex_male"
+    ],
+    "spatial": [
+      "age_at_diagnosis",
+      "FLAIR_percentage_volume_in_Frontal",
+      "FLAIR_percentage_volume_in_Parietal",
+      "FLAIR_percentage_volume_in_Occipital",
+      "FLAIR_percentage_volume_in_Temporal",
+      "FLAIR_percentage_volume_in_AnteriorTemporal",
+      "FLAIR_percentage_volume_in_MiddleTemporal",
+      "FLAIR_percentage_volume_in_PosteriorTemporal",
+      "FLAIR_percentage_volume_in_Parietal_Occipital",
+      "FLAIR_percentage_volume_in_CorpusCallosum",
+      "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum"
+    ],
+    "spatial_demographics": [
+      "age_at_diagnosis",
+      "sex_male",
+      "FLAIR_percentage_volume_in_Frontal",
+      "FLAIR_percentage_volume_in_Parietal",
+      "FLAIR_percentage_volume_in_Occipital",
+      "FLAIR_percentage_volume_in_Temporal",
+      "FLAIR_percentage_volume_in_AnteriorTemporal",
+      "FLAIR_percentage_volume_in_MiddleTemporal",
+      "FLAIR_percentage_volume_in_PosteriorTemporal",
+      "FLAIR_percentage_volume_in_Parietal_Occipital",
+      "FLAIR_percentage_volume_in_CorpusCallosum",
+      "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum"
+    ],
+    "all": [
+      "age_at_diagnosis",
+      "sex_male",
+      "FLAIR_percentage_volume_in_Frontal",
+      "FLAIR_percentage_volume_in_Parietal",
+      "FLAIR_percentage_volume_in_Occipital",
+      "FLAIR_percentage_volume_in_Temporal",
+      "FLAIR_percentage_volume_in_AnteriorTemporal",
+      "FLAIR_percentage_volume_in_MiddleTemporal",
+      "FLAIR_percentage_volume_in_PosteriorTemporal",
+      "FLAIR_percentage_volume_in_Parietal_Occipital",
+      "FLAIR_percentage_volume_in_CorpusCallosum",
+      "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum"
+    ]
+  }
+}

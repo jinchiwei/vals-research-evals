@@ -1,0 +1,102 @@
+{
+  "cohort": "strict40",
+  "n_patients": 40,
+  "n_scans": 40,
+  "original_cohort": {
+    "scans": 76,
+    "patients": 67
+  },
+  "label_definition": "Existing cohort audit pair_<GENE> paired-tumor-sample binary labels",
+  "label_limit": "VUS and pathogenicity policy inherited from existing audit; not reconciled to public mutations CSV",
+  "status": "INTERNAL_ONLY_NOT_PUBLIC_RELEASE_VERIFIED",
+  "public_export_allowed": false,
+  "public_patient_membership_verified": false,
+  "public_label_values_verified": false,
+  "public_feature_value_equivalence_verified": false,
+  "public_compatible_task_feature_count": 12,
+  "full_numeric_feature_count": 233,
+  "full_features_note": "All numeric candidates after canonical exclusions; constants/sparse features retained to avoid global filtering. Not identical to historic 227-feature filtered cache.",
+  "compatibility": [
+    {
+      "feature": "FLAIR_percentage_volume_in_Frontal",
+      "public_metric": "percentage_volume_in_Frontal",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_Parietal",
+      "public_metric": "percentage_volume_in_Parietal",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_Occipital",
+      "public_metric": "percentage_volume_in_Occipital",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_Temporal",
+      "public_metric": "percentage_volume_in_Temporal",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_AnteriorTemporal",
+      "public_metric": "percentage_volume_in_AnteriorTemporal",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_MiddleTemporal",
+      "public_metric": "percentage_volume_in_MiddleTemporal",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_PosteriorTemporal",
+      "public_metric": "percentage_volume_in_PosteriorTemporal",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_Parietal_Occipital",
+      "public_metric": "percentage_volume_in_Parietal_Occipital",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_CorpusCallosum",
+      "public_metric": "percentage_volume_in_CorpusCallosum",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum",
+      "public_metric": "percentage_volume_in_CorpusCallosum_Rostrum",
+      "public_file": "FLAIR SummaryLesions CSV",
+      "status": "schema-compatible; values/version unverified"
+    },
+    {
+      "feature": "age_at_diagnosis",
+      "public_source": "BirthDate and DiagnosisDate",
+      "status": "derivable per public_overlap report; dates must not enter agent inputs"
+    },
+    {
+      "feature": "sex_male",
+      "public_source": "Sex",
+      "status": "schema-compatible; unknown sex retained as missing"
+    }
+  ],
+  "public_access": "https://imagingdatasets.ucsf.edu/dataset/4 (controlled access)",
+  "public_overlap_evidence": "Existing report confirms at least five overlaps, not full cohort identity; public release must not be treated as independent validation.",
+  "source_sha256": {
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/multiple_testing/common.py": "32e12aed0cfcdbf211cf4ea57af5c00ee5cb95dec52a7727e4f93f1fe5b74439",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20260325_allfeatures_loo/generate_figures.py": "8d308db7beab49f0ff4c3087f94c182e87c530c7deb85225a82eed6e973a2cbe",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/public_overlap/public_meta/github_UCSF-PCNSL/history_51a8a71b/data_dictionary_imaging.csv": "4d3e19d26d84d6f713cf502747e8f6dfdf838f0bb045ff1e0adfd3bc99869321",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/multiple_testing/cohort_used.csv": "fa6a2fa40e77c0d8f07faa9401f30269c071e0ebad4d70976f208b0e15dd10e5",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/cohort/cohort_audit_PHI.csv": "ca124010d1cdbc74592193add91c31c5dc48f0bf4d71b52b3464bdb13e37847f",
+    "/working/rauschecker1/jkw/projects/cnsl/data/genet/20251015_pyalfe-rad-demo.csv": "ec4d9ec7f4a7e2634e49e0e307491cf8ad2d64c8f1b187048a8a2ce164117f90",
+    "/working/rauschecker1/jkw/projects/cnsl/data/genet/demographics_for_persons_with_tumor_samples.xlsx": "070d9abee6ec6b4592068d79ec6a8624889017e95427e6f06b3b67bb54ac7f21"
+  }
+}

@@ -1,0 +1,76 @@
+{
+ "rows": [
+  {
+   "label": "scripted \u00b7 naive",
+   "group": "control",
+   "audit": 0.5,
+   "change": 0.5,
+   "reports": 0.0,
+   "resolved": 3,
+   "n": 12
+  },
+  {
+   "label": "scripted \u00b7 adjusted",
+   "group": "control",
+   "audit": 1.0,
+   "change": 0.75,
+   "reports": 1.0,
+   "resolved": 9,
+   "n": 12
+  },
+  {
+   "label": "scripted \u00b7 careful",
+   "group": "control",
+   "audit": 1.0,
+   "change": 1.0,
+   "reports": 1.0,
+   "resolved": 12,
+   "n": 12
+  },
+  {
+   "label": "Opus 5.5 \u00b7 v1 dev \u00b7 seed 11",
+   "group": "model",
+   "audit": 1.0,
+   "change": 1.0,
+   "reports": 1.0,
+   "resolved": 4,
+   "n": 4,
+   "models": [
+    "claude-opus-5-5"
+   ]
+  },
+  {
+   "label": "Opus 5.5 \u00b7 v2 dev \u00b7 seed 11",
+   "group": "model",
+   "audit": 1.0,
+   "change": 1.0,
+   "reports": 1.0,
+   "resolved": 4,
+   "n": 4,
+   "models": [
+    "claude-opus-5-5"
+   ]
+  },
+  {
+   "label": "Opus 5.5 \u00b7 v2 held-out \u00b7 seed 101",
+   "group": "model",
+   "audit": 1.0,
+   "change": 1.0,
+   "reports": 1.0,
+   "resolved": 4,
+   "n": 4,
+   "models": [
+    "claude-opus-5-5"
+   ]
+  }
+ ],
+ "sources": {
+  "v1 dev \u00b7 seed 11": "summary.json",
+  "v2 dev \u00b7 seed 11": "summary.json",
+  "v2 held-out \u00b7 seed 101": "summary.json"
+ },
+ "excluded": [
+  "20261113-opus55-dev-v1 (bwrap read-only fs; 0 model calls)",
+  "20261113-opus55-dev-v1b (API unreachable EAI_AGAIN; model '<synthetic>', 0 tokens)"
+ ]
+}

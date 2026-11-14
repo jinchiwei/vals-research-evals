@@ -1,0 +1,80 @@
+{
+  "status": "complete",
+  "model": "claude-opus-5-5",
+  "skill": "build-pptx (~/.claude/skills/build-pptx/build.py, --qa)",
+  "build_command": "python3 src/make_layout.py && PATH=/tmp/lo-qa/bin:$PATH PYTHONPATH=/tmp/vals-deck-pydeps python3.12 ~/.claude/skills/build-pptx/build.py --input COMPARISON.md --output COMPARISON.pptx --qa",
+  "corrections": [
+    "Slides 4/6, notes, markdown: '2 infra attempts' -> 2 failed infrastructure runs (dev-v1: 1 attempt, dev-v1b: 4 attempts) = 5 task attempts, 0 model tokens; verified from results/20261113-opus55-dev-v1{,b}/summary.json",
+    "Slide 6 caveat + notes + markdown: replaced 'analysis.py ... not re-executed' with: hosted grader artifact-only; all 12 saved analysis.py separately replayed in fresh network-isolated workspaces, 12/12 reproduced correct results; verified from results/replay-validation.json (12 entries, exit 0, input_reproduced, score 1.0, no errors)"
+  ],
+  "outputs": {
+    "COMPARISON.pptx": {
+      "sha256": "392a4b3c73a61b7d3ba6e70fd8c1bf836f49955e63ae90f8e9dd50f579a195db",
+      "bytes": 1413995
+    },
+    "COMPARISON_notes.pdf": {
+      "sha256": "89c4ce79dbb33ce391d054e32b8efe37e78edaeddf2641949b9a16e723fbfcf1",
+      "bytes": 1263028
+    },
+    "COMPARISON_qa/COMPARISON.pdf": {
+      "sha256": "a86f8fdd2b985d0e16f568f6dd4b9b1832cdf020aecc34742d27c28f9dadf4a7",
+      "bytes": 1162519
+    },
+    "COMPARISON.md": {
+      "sha256": "9946deb98883418e7b3bd329709066debe913c0a959f6a1a121b47320a569689",
+      "bytes": 2326
+    },
+    "COMPARISON.md.layout.json": {
+      "sha256": "42cac0d3cf64d061ce9804baa7f0e34ce4ad10288f3a10c2ddb0e55f28bc044c",
+      "bytes": 21192
+    },
+    "src/make_layout.py": {
+      "sha256": "6980091da680b8ba8dbd8696f66ced894c19a770b516a093e487ed181749a650",
+      "bytes": 24032
+    },
+    "COMPARISON_qa/slide-1.png": {
+      "sha256": "983b8c20acf1e2bc0c152da2f73c9572eb88fd7e52d4a3c1439c1112f1be5f7b",
+      "bytes": 50362
+    },
+    "COMPARISON_qa/slide-2.png": {
+      "sha256": "3589f4c610af08817f90e5a7369e4ab0baad8ec27f9c9e480e2113f6e6a5ae78",
+      "bytes": 398449
+    },
+    "COMPARISON_qa/slide-3.png": {
+      "sha256": "b658f2681e0e7576ab9e73d75b81567e00e3a05a09e31ee68d9911cd40487f21",
+      "bytes": 202867
+    },
+    "COMPARISON_qa/slide-4.png": {
+      "sha256": "0007e0cf9cbc13093b12b908e1142dde8334582e1904dafb91ff3ef4bd37e1d3",
+      "bytes": 159267
+    },
+    "COMPARISON_qa/slide-5.png": {
+      "sha256": "cef98ff6c6e78339fbc8e789fdaf85b4bda17691dac3ced002c0b782b5cae4a5",
+      "bytes": 246303
+    },
+    "COMPARISON_qa/slide-6.png": {
+      "sha256": "9db3650d55d45ff8c5becfee37ceaa4b28036afc77c1f99240959c1a008e7bff",
+      "bytes": 125846
+    },
+    "COMPARISON_qa/slide-7.png": {
+      "sha256": "a6a74e8c357437f9adae4c57e30583384c30b68a9ef205e24905fd59cbce6589",
+      "bytes": 189403
+    },
+    "COMPARISON_qa/slide-8.png": {
+      "sha256": "b00c50f22965bedb93c2025371f29162b5f69790c8079b950a5c990917bfe4dd",
+      "bytes": 57007
+    }
+  },
+  "qa": {
+    "rendered_pngs": 8,
+    "pipeline": "LibreOffice (/tmp/lo-qa/bin) -> PDF -> pdftoppm",
+    "visually_inspected_this_run": [
+      "slide-4.png",
+      "slide-6.png"
+    ],
+    "inspection_result": "corrected text fits, no overlaps or clipping",
+    "other_slides": "content unchanged; previously inspected by root, no overlaps",
+    "stale_phrase_scan": "pptx text+notes: 0 occurrences of 'infra attempts', 'not re-executed', 'not by re-executing'"
+  },
+  "scope": "results/deck only; no benchmark code modified; nothing installed"
+}

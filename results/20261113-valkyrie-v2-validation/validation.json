@@ -1,0 +1,67 @@
+{
+  "cli": "2026.11.12.2",
+  "sdk": "0.34.0",
+  "hosted_run": false,
+  "tasks": [
+    {
+      "task": "audit-1e59baa758d2-workflow",
+      "problems": [],
+      "archive_sha256": "b1b533eb03d94b834d5e21dff3565f14aedb9b366c054ded9216f3fa32dd047f"
+    },
+    {
+      "task": "audit-30804c259a96-workflow",
+      "problems": [],
+      "archive_sha256": "e46d7f3f2a880456e90944aa1d82c61232de3f4a969664cd6d2d2cb63677fcb1"
+    },
+    {
+      "task": "audit-607b98f2c30c-workflow",
+      "problems": [],
+      "archive_sha256": "c7d899915622600de0e2e9ca03562d94be5661fecb0e125eb4cb271aad9bc107"
+    },
+    {
+      "task": "audit-9cd095d2d537-workflow",
+      "problems": [],
+      "archive_sha256": "1b73ed5cdea7cb1a3f43018dc2b3f395e2ec53380f0c3b82456316c51ecf08be"
+    },
+    {
+      "task": "audit-a65a7db7d9fa-workflow",
+      "problems": [],
+      "archive_sha256": "b8c916664e8b3a74628bd523e209151d56582036a9779d7b0dd5d9dfa427e0af"
+    },
+    {
+      "task": "audit-bb4f631767c4-workflow",
+      "problems": [],
+      "archive_sha256": "f32ea81b708b570e5394209fb85ed0a215d1506bc3b82aaac6a4b8fb353f56cd"
+    },
+    {
+      "task": "change-3136659ad815-workflow",
+      "problems": [],
+      "archive_sha256": "02ddab06aa9f1be0283f5f894ef063afa9dba0e09e387c2f124d289b8a7a940b"
+    },
+    {
+      "task": "change-a17fef6551cb-workflow",
+      "problems": [],
+      "archive_sha256": "87ee7d955a15a013371fa6bb28ae9cdad5b8b46235e1ebc6cf6d189e14b8f729"
+    },
+    {
+      "task": "change-eb26d989a10b-workflow",
+      "problems": [],
+      "archive_sha256": "3aee671d2d6e5977de5af7568e1ecdb018d231be119083e405d32caaf510cc58"
+    },
+    {
+      "task": "reports-0a1b687945ab-workflow",
+      "problems": [],
+      "archive_sha256": "bbb9ed6718ea8106fa2c646e197663d0623c38ccb06fe04f2954d533f222e8a9"
+    },
+    {
+      "task": "reports-76f2eb8f6645-workflow",
+      "problems": [],
+      "archive_sha256": "5e6338b5b0a6f992a722451e662cece45bc85e2d298d0cc06b40b0aa99d44611"
+    },
+    {
+      "task": "reports-bf388e3b4f69-workflow",
+      "problems": [],
+      "archive_sha256": "1b6a23d5c89d47d7390ddee10c70977cfef8e01789a014cfe3c4ba92952a3030"
+    }
+  ]
+}

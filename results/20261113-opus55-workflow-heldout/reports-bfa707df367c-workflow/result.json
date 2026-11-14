@@ -1,0 +1,55 @@
+{
+  "case": "reports-bfa707df367c-workflow",
+  "family": "reports",
+  "status": "completed",
+  "returncode": 0,
+  "elapsed_seconds": 28.45,
+  "actual_models": [
+    "claude-opus-5-5"
+  ],
+  "tools_used": [
+    "Bash",
+    "Bash",
+    "Write",
+    "Bash"
+  ],
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 5915,
+    "cache_read_input_tokens": 39762,
+    "output_tokens": 2840,
+    "output_tokens_details": {
+      "thinking_tokens": 315
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5915,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 752,
+        "cache_read_input_tokens": 11142,
+        "cache_creation_input_tokens": 648,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 648
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost_usd": 0.1121124,
+  "agent_error": false,
+  "score": 1.0,
+  "resolved": true,
+  "errors": []
+}

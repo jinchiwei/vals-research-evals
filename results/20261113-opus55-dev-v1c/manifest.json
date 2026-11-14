@@ -1,0 +1,16 @@
+{
+  "evidence": "live-local-tool-agent; NOT hosted Valkyrie",
+  "seed": 11,
+  "requested_model": "claude-opus-5-5",
+  "effort": "high",
+  "timeout_per_task": 240,
+  "dollar_cap_per_task": 3.0,
+  "case_ids": [
+    "audit-1e59baa758d2",
+    "audit-bb4f631767c4",
+    "change-a17fef6551cb",
+    "reports-bf388e3b4f69"
+  ],
+  "prompt_variant": "base",
+  "source_sha256": "ffe925fe0ac24d5f39ce33351f3a604739a3d5c1fe95749dc6d6d0bae6691ad6"
+}

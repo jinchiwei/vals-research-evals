@@ -1,0 +1,51 @@
+{
+  "fixed_unit_scale_checks": {
+    "0.01": 57,
+    "1": 57,
+    "100": 57
+  },
+  "spatial_value_count": 330,
+  "loader_transform": "Existing load_data merges raw feature CSV with demographics; no feature scaling is applied there.",
+  "per_feature": {
+    "FLAIR_percentage_volume_in_Frontal": {
+      "pearson_correlation": 0.9999055319818265,
+      "median_absolute_difference": 0.13561910405021393
+    },
+    "FLAIR_percentage_volume_in_Parietal": {
+      "pearson_correlation": 0.9999501372680206,
+      "median_absolute_difference": 0.07454850559866699
+    },
+    "FLAIR_percentage_volume_in_Occipital": {
+      "pearson_correlation": 0.9997958533720233,
+      "median_absolute_difference": 0.044764219284232354
+    },
+    "FLAIR_percentage_volume_in_Temporal": {
+      "pearson_correlation": 0.9997171614906855,
+      "median_absolute_difference": 0.042805400695330675
+    },
+    "FLAIR_percentage_volume_in_AnteriorTemporal": {
+      "pearson_correlation": 0.99994439543156,
+      "median_absolute_difference": 0.022113861164732573
+    },
+    "FLAIR_percentage_volume_in_MiddleTemporal": {
+      "pearson_correlation": 0.9998558937588435,
+      "median_absolute_difference": 0.018263408216830812
+    },
+    "FLAIR_percentage_volume_in_PosteriorTemporal": {
+      "pearson_correlation": 0.9934742290999232,
+      "median_absolute_difference": 0.0009304550432583936
+    },
+    "FLAIR_percentage_volume_in_Parietal_Occipital": {
+      "pearson_correlation": 0.9999434220656862,
+      "median_absolute_difference": 0.12590297613652268
+    },
+    "FLAIR_percentage_volume_in_CorpusCallosum": {
+      "pearson_correlation": 0.9992640487515859,
+      "median_absolute_difference": 0.04912862270293683
+    },
+    "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum": {
+      "pearson_correlation": 0.9991694625308473,
+      "median_absolute_difference": 0.009227711790567472
+    }
+  }
+}

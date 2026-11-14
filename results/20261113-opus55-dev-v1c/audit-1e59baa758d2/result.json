@@ -1,0 +1,55 @@
+{
+  "case": "audit-1e59baa758d2",
+  "family": "audit",
+  "status": "completed",
+  "returncode": 0,
+  "elapsed_seconds": 28.51,
+  "actual_models": [
+    "claude-opus-5-5"
+  ],
+  "tools_used": [
+    "Bash",
+    "Bash",
+    "Write",
+    "Bash"
+  ],
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 5839,
+    "cache_read_input_tokens": 33032,
+    "output_tokens": 2653,
+    "output_tokens_details": {
+      "thinking_tokens": 25
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 5839,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 655,
+        "cache_read_input_tokens": 9008,
+        "cache_creation_input_tokens": 417,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 417
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost_usd": 0.1064184,
+  "agent_error": false,
+  "score": 1.0,
+  "resolved": true,
+  "errors": []
+}

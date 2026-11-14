@@ -1,0 +1,205 @@
+{
+  "status": "BOX_RELEASE_CANDIDATE_LOCAL_DEVELOPMENT_ONLY",
+  "source": "scs2box:pcnsl_radiomics/dataset_manuscript/",
+  "published_archive_identity_verified": false,
+  "public_export_allowed": false,
+  "n_patients": 33,
+  "exact_scan_and_sample_matches": 33,
+  "patient_overlap_before_sample_date_filter": 35,
+  "excluded_for_sample_date_mismatch": 2,
+  "legacy_label_comparisons": 396,
+  "legacy_label_disagreements": 0,
+  "feature_agreement": {
+    "rows": 33,
+    "features": 12,
+    "absolute_tolerance": 1e-06,
+    "relative_tolerance": 1e-05,
+    "matching_values": 123,
+    "both_missing_values": 0,
+    "mismatched_values": 273,
+    "rows_with_difference": 31,
+    "per_feature": {
+      "age_at_diagnosis": {
+        "mismatched_values": 0,
+        "max_absolute_difference": 0.0
+      },
+      "sex_male": {
+        "mismatched_values": 0,
+        "max_absolute_difference": 0.0
+      },
+      "FLAIR_percentage_volume_in_Frontal": {
+        "mismatched_values": 31,
+        "max_absolute_difference": 1.961131737749552
+      },
+      "FLAIR_percentage_volume_in_Parietal": {
+        "mismatched_values": 31,
+        "max_absolute_difference": 0.8245897304535887
+      },
+      "FLAIR_percentage_volume_in_Occipital": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.6102877157622828
+      },
+      "FLAIR_percentage_volume_in_Temporal": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 2.7153533099878224
+      },
+      "FLAIR_percentage_volume_in_AnteriorTemporal": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.4428800054505473
+      },
+      "FLAIR_percentage_volume_in_MiddleTemporal": {
+        "mismatched_values": 26,
+        "max_absolute_difference": 1.0456911312816146
+      },
+      "FLAIR_percentage_volume_in_PosteriorTemporal": {
+        "mismatched_values": 19,
+        "max_absolute_difference": 1.5539965196190737
+      },
+      "FLAIR_percentage_volume_in_Parietal_Occipital": {
+        "mismatched_values": 31,
+        "max_absolute_difference": 0.8245897304535887
+      },
+      "FLAIR_percentage_volume_in_CorpusCallosum": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.7924600121184557
+      },
+      "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.12674985362557534
+      }
+    }
+  },
+  "spatial_feature_agreement": {
+    "rows": 33,
+    "features": 10,
+    "absolute_tolerance": 1e-06,
+    "relative_tolerance": 1e-05,
+    "matching_values": 57,
+    "both_missing_values": 0,
+    "mismatched_values": 273,
+    "rows_with_difference": 31,
+    "per_feature": {
+      "FLAIR_percentage_volume_in_Frontal": {
+        "mismatched_values": 31,
+        "max_absolute_difference": 1.961131737749552
+      },
+      "FLAIR_percentage_volume_in_Parietal": {
+        "mismatched_values": 31,
+        "max_absolute_difference": 0.8245897304535887
+      },
+      "FLAIR_percentage_volume_in_Occipital": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.6102877157622828
+      },
+      "FLAIR_percentage_volume_in_Temporal": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 2.7153533099878224
+      },
+      "FLAIR_percentage_volume_in_AnteriorTemporal": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.4428800054505473
+      },
+      "FLAIR_percentage_volume_in_MiddleTemporal": {
+        "mismatched_values": 26,
+        "max_absolute_difference": 1.0456911312816146
+      },
+      "FLAIR_percentage_volume_in_PosteriorTemporal": {
+        "mismatched_values": 19,
+        "max_absolute_difference": 1.5539965196190737
+      },
+      "FLAIR_percentage_volume_in_Parietal_Occipital": {
+        "mismatched_values": 31,
+        "max_absolute_difference": 0.8245897304535887
+      },
+      "FLAIR_percentage_volume_in_CorpusCallosum": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.7924600121184557
+      },
+      "FLAIR_percentage_volume_in_CorpusCallosum_Rostrum": {
+        "mismatched_values": 27,
+        "max_absolute_difference": 0.12674985362557534
+      }
+    }
+  },
+  "label_definitions": {
+    "legacy_any_listed": "1 means the gene appears in any mutation-table row for the paired tumor sample. This includes variants of uncertain significance and unclassified or unreported alterations; it does NOT mean a pathogenic mutation is present. 0 means no gene row is listed for a sample with mutation records.",
+    "reported_pathogenic": "1 means at least one gene row has reportedalteration=True, classification Pathogenic or Likely Pathogenic, and geneticorigin is not 'Not Detected'. 0 means no qualifying row among this sample's mutation records. This is a reported-alteration endpoint, not proof of biological wild type or somatic origin."
+  },
+  "positive_counts": {
+    "legacy_any_listed": {
+      "IRF4": 4,
+      "KMT2D": 13,
+      "PRKDC": 12,
+      "MYD88": 25,
+      "CD79B": 11,
+      "ZFHX3": 8,
+      "LRP1B": 11,
+      "BTG1": 9,
+      "ETV6": 8,
+      "CDKN2A": 18,
+      "PRDM1": 7,
+      "TP53": 6
+    },
+    "reported_pathogenic": {
+      "IRF4": 2,
+      "KMT2D": 10,
+      "PRKDC": 0,
+      "MYD88": 24,
+      "CD79B": 9,
+      "ZFHX3": 0,
+      "LRP1B": 1,
+      "BTG1": 4,
+      "ETV6": 3,
+      "CDKN2A": 17,
+      "PRDM1": 4,
+      "TP53": 3
+    }
+  },
+  "reported_pathogenic_exclusions": {
+    "PRKDC": {
+      "positive": 0,
+      "reason": "Fewer than two independent patients in one class"
+    },
+    "ZFHX3": {
+      "positive": 0,
+      "reason": "Fewer than two independent patients in one class"
+    },
+    "LRP1B": {
+      "positive": 1,
+      "reason": "Fewer than two independent patients in one class"
+    }
+  },
+  "metadata_hashes_verified": 5,
+  "feature_hashes_verified": 33,
+  "same_folds_for_box_and_internal_legacy": true,
+  "source_sha256": {
+    "demographics.csv": "8339f41e249ebb0c95af24e3f0ea9d9b3e62edc10c918ccb173cdb16b51f223d",
+    "biopsy_and_diagnosis_dates.csv": "ca6a996cccfba5de338cae2a144260231985161cccda8a4a6cf8e6f1695933f2",
+    "ucsf500_mutations.csv": "f63ed0a9d60a620c32378b920d0344cd575549e304f062c6e3677bcc28b03c15",
+    "data_dictionary_clinical.csv": "8c152735e036818646e273ee7110facad951f508a4ccee766014d2fd3550faaa",
+    "data_dictionary_imaging.csv": "4d3e19d26d84d6f713cf502747e8f6dfdf838f0bb045ff1e0adfd3bc99869321"
+  },
+  "feature_manifest_sha256": "7f6878572a6dc36f4a500254831a2c963a36b94794d1f21fb067952555489e3f",
+  "crosswalk_sha256": "f700cab45b9753e62b6bad7f5b2b9678a11e86ce32843947be662a0de9007d8f",
+  "internal_source_sha256": {
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/multiple_testing/common.py": "32e12aed0cfcdbf211cf4ea57af5c00ee5cb95dec52a7727e4f93f1fe5b74439",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20260325_allfeatures_loo/generate_figures.py": "8d308db7beab49f0ff4c3087f94c182e87c530c7deb85225a82eed6e973a2cbe",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/public_overlap/public_meta/github_UCSF-PCNSL/history_51a8a71b/data_dictionary_imaging.csv": "4d3e19d26d84d6f713cf502747e8f6dfdf838f0bb045ff1e0adfd3bc99869321",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/multiple_testing/cohort_used.csv": "fa6a2fa40e77c0d8f07faa9401f30269c071e0ebad4d70976f208b0e15dd10e5",
+    "/working/rauschecker1/jkw/projects/cnsl/dev/genet/exp/20261025_amr_review/cohort/cohort_audit_PHI.csv": "ca124010d1cdbc74592193add91c31c5dc48f0bf4d71b52b3464bdb13e37847f",
+    "/working/rauschecker1/jkw/projects/cnsl/data/genet/20251015_pyalfe-rad-demo.csv": "ec4d9ec7f4a7e2634e49e0e307491cf8ad2d64c8f1b187048a8a2ce164117f90",
+    "/working/rauschecker1/jkw/projects/cnsl/data/genet/demographics_for_persons_with_tumor_samples.xlsx": "070d9abee6ec6b4592068d79ec6a8624889017e95427e6f06b3b67bb54ac7f21"
+  },
+  "code_sha256": {
+    "benchmark.py": "6b43c72e9a7a6d82a463b438f5049de371a48053d12e601599fd93a8f1441019",
+    "scs_adapter.py": "cfa4e7209a9404ebc98a3661c6a133885250d82f1ac108eaddc4dab478679653",
+    "release_match.py": "2bfe70b42d5ccac2e5f7c6205d59e1e46ae08ccf1de05b28ee6e257e83ce170a",
+    "run_release.py": "b4de856391f742c19936b3385e473ad42f32a1a8406afa8971686e06bc116d11"
+  },
+  "limitations": [
+    "These patients were historically studied; this is not independent validation.",
+    "A Box release-preparation folder is not verified identical to the official published archive.",
+    "An unlisted qualifying variant is a table-derived negative, not proof of biological wild type.",
+    "Sparse targets and correlated folds make estimates unstable; no multiplicity correction or frontier trial performed."
+  ]
+}

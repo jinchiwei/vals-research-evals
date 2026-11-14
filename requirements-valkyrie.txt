@@ -1,0 +1,3 @@
+# Python 3.12 only for this CLI release. Core benchmark code is stdlib-only.
+valkyrie-cli==2026.11.12.2
+valkyrie-sdk==0.34.0

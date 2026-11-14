@@ -1,0 +1,81 @@
+{
+  "verified": true,
+  "code_and_source_hashes_match": true,
+  "run_artifacts_owner_only": true,
+  "runs": {
+    "box_legacy": {
+      "patient_count": 33,
+      "targets": 12,
+      "model_target_summaries": 60,
+      "prediction_files_replayed": 180,
+      "tasks_verified": 59,
+      "fold_counts": {
+        "IRF4": 4,
+        "KMT2D": 5,
+        "PRKDC": 5,
+        "MYD88": 5,
+        "CD79B": 5,
+        "ZFHX3": 5,
+        "LRP1B": 5,
+        "BTG1": 5,
+        "ETV6": 5,
+        "CDKN2A": 5,
+        "PRDM1": 5,
+        "TP53": 5
+      },
+      "test_labels_absent_from_agent_inputs": true,
+      "patients_never_cross_folds": true,
+      "each_patient_tested_once_per_target": true,
+      "grader_replay_matches": true
+    },
+    "internal_matched_legacy": {
+      "patient_count": 33,
+      "targets": 12,
+      "model_target_summaries": 60,
+      "prediction_files_replayed": 180,
+      "tasks_verified": 59,
+      "fold_counts": {
+        "IRF4": 4,
+        "KMT2D": 5,
+        "PRKDC": 5,
+        "MYD88": 5,
+        "CD79B": 5,
+        "ZFHX3": 5,
+        "LRP1B": 5,
+        "BTG1": 5,
+        "ETV6": 5,
+        "CDKN2A": 5,
+        "PRDM1": 5,
+        "TP53": 5
+      },
+      "test_labels_absent_from_agent_inputs": true,
+      "patients_never_cross_folds": true,
+      "each_patient_tested_once_per_target": true,
+      "grader_replay_matches": true
+    },
+    "box_reported_pathogenic": {
+      "patient_count": 33,
+      "targets": 9,
+      "model_target_summaries": 45,
+      "prediction_files_replayed": 135,
+      "tasks_verified": 36,
+      "fold_counts": {
+        "IRF4": 2,
+        "KMT2D": 5,
+        "MYD88": 5,
+        "CD79B": 5,
+        "BTG1": 4,
+        "ETV6": 3,
+        "CDKN2A": 5,
+        "PRDM1": 4,
+        "TP53": 3
+      },
+      "test_labels_absent_from_agent_inputs": true,
+      "patients_never_cross_folds": true,
+      "each_patient_tested_once_per_target": true,
+      "grader_replay_matches": true
+    }
+  },
+  "published_archive_identity_verified": false,
+  "live_frontier_trial_performed": false
+}

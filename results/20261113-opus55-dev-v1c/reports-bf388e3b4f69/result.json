@@ -1,0 +1,54 @@
+{
+  "case": "reports-bf388e3b4f69",
+  "family": "reports",
+  "status": "completed",
+  "returncode": 0,
+  "elapsed_seconds": 28.45,
+  "actual_models": [
+    "claude-opus-5-5"
+  ],
+  "tools_used": [
+    "Bash",
+    "Write",
+    "Bash"
+  ],
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 6514,
+    "cache_read_input_tokens": 29275,
+    "output_tokens": 2794,
+    "output_tokens_details": {
+      "thinking_tokens": 296
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6514,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 718,
+        "cache_read_input_tokens": 10379,
+        "cache_creation_input_tokens": 783,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 783
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "cost_usd": 0.113879,
+  "agent_error": false,
+  "score": 1.0,
+  "resolved": true,
+  "errors": []
+}

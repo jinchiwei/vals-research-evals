@@ -1,0 +1,17 @@
+{
+  "evidence": "live-local-tool-agent; NOT hosted Valkyrie",
+  "seed": 101,
+  "requested_model": "claude-opus-5-5",
+  "effort": "high",
+  "timeout_per_task": 240,
+  "dollar_cap_per_task": 3.0,
+  "case_ids": [
+    "audit-feea1196a0ff-workflow",
+    "audit-71637c50833e-workflow",
+    "change-cf1e4a6527ec-workflow",
+    "reports-bfa707df367c-workflow"
+  ],
+  "prompt_variant": "base",
+  "workflow": true,
+  "source_sha256": "ec57bad9187307bb52a7b9021409648c16290c6d707dea52dd3f68e178a2c254"
+}

@@ -1,0 +1,100 @@
+{
+ "audit_flawed": {
+  "id": "claim",
+  "global_auc": 0.8875582168995343,
+  "protocol_auc": 0.8807483073069547,
+  "controlled_auc": 0.5333085225158168,
+  "verdict": "unsupported"
+ },
+ "audit_clean": {
+  "id": "claim",
+  "global_auc": 0.9746765758326452,
+  "protocol_auc": 0.8646533758011875,
+  "controlled_auc": 0.9659318637274549,
+  "verdict": "supported"
+ },
+ "change": [
+  {
+   "id": "S1",
+   "slope": -0.1928167,
+   "se": 0.00790569415042095,
+   "verdict": "decline"
+  },
+  {
+   "id": "S2",
+   "slope": 0.6766900000000013,
+   "se": 0.790569415042095,
+   "verdict": "insufficient"
+  },
+  {
+   "id": "S3",
+   "slope": -0.0007425000000000003,
+   "se": 0.00790569415042095,
+   "verdict": "stable"
+  },
+  {
+   "id": "S4",
+   "slope": -0.01937750000000001,
+   "se": 0.00790569415042095,
+   "verdict": "stable"
+  }
+ ],
+ "reports_R1_docs": [
+  {
+   "id": "prior-0",
+   "subject": "R1",
+   "exam_date": "2025-01-02",
+   "signed_at": "2025-01-03T12:00:00",
+   "type": "report",
+   "text": "Edema is present."
+  },
+  {
+   "id": "sinus-R1",
+   "subject": "R1",
+   "exam_date": "2026-04-05",
+   "signed_at": "2026-04-09T12:00:00",
+   "type": "addendum",
+   "replaces": "doc-770358",
+   "applies_to": [
+    "sinus disease"
+   ],
+   "text": "Correction: sinus disease is absent. Other findings are unchanged."
+  },
+  {
+   "id": "doc-770358",
+   "subject": "R1",
+   "exam_date": "2026-04-05",
+   "signed_at": "2026-04-06T12:00:00",
+   "type": "report",
+   "text": "No edema is seen."
+  },
+  {
+   "id": "doc-770358-addendum",
+   "subject": "R1",
+   "exam_date": "2026-04-05",
+   "signed_at": "2026-04-07T12:00:00",
+   "type": "addendum",
+   "replaces": "doc-770358",
+   "text": "History of edema. Current examination does not assess edema.",
+   "applies_to": [
+    "edema"
+   ]
+  },
+  {
+   "id": "late-0",
+   "subject": "R1",
+   "exam_date": "2024-11-01",
+   "signed_at": "2026-04-08T12:00:00",
+   "type": "report",
+   "text": "No edema is seen."
+  }
+ ],
+ "reports_R1_answer": {
+  "id": "R1",
+  "status": "unassessed",
+  "change": "unknown",
+  "source_id": "doc-770358-addendum",
+  "evidence": "Current examination does not assess edema."
+ },
+ "note": "Synthetic. Values are the agent's graded-correct answers (verifier tolerance 1e-4)."
+}

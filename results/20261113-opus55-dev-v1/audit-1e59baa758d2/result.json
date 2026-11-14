@@ -1,0 +1,17 @@
+{
+  "case": "audit-1e59baa758d2",
+  "family": "audit",
+  "status": "runtime_error",
+  "returncode": 1,
+  "elapsed_seconds": 0.03,
+  "actual_models": [],
+  "tools_used": [],
+  "usage": null,
+  "cost_usd": null,
+  "agent_error": null,
+  "score": 0.0,
+  "resolved": false,
+  "errors": [
+    "Expected object with items array"
+  ]
+}
