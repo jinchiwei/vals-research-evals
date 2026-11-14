@@ -30,3 +30,7 @@ pcnsl/runs/
 
 # Archives can bundle unreviewed files. Rebuild task/source archives locally.
 *.zip
+exp/
+.autoresearch/
+**/.signed-download-url
+**/.download-proxy-env.json

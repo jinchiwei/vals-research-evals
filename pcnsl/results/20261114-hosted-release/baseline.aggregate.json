@@ -1,0 +1,574 @@
+{
+  "code_sha256": "e8c9e121a8c78cc46bc5c9808df217e8a8a6bea48e01e63a7d47ddd0dcdad3f1",
+  "design": {
+    "features": 10,
+    "folds": 5,
+    "hyperparameter_search": false,
+    "logreg": {
+      "C": 1.0,
+      "max_iter": 1000,
+      "solver": "liblinear"
+    },
+    "seeds": [
+      11,
+      23,
+      37
+    ],
+    "train_fold_only_imputation_and_scaling": true,
+    "unique_patient_row_unit": true
+  },
+  "elapsed_seconds": 3.264774950919673,
+  "excluded_targets": {
+    "IRF4": {
+      "no_qualifying_report": 61,
+      "positive": 2,
+      "reason": "Outside prespecified two-target run or fewer than five patients in one class"
+    }
+  },
+  "interpretation": "Fixed descriptive internal cross-validation. No confidence intervals, independent validation, clinical utility or frontier-model failure claim.",
+  "runs": [
+    {
+      "baseline": "training_prevalence",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 10,
+          "train": 50,
+          "train_positive": 36
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        }
+      ],
+      "gene": "MYD88",
+      "no_qualifying_report": 17,
+      "patients": 63,
+      "pooled_oof_auroc": 0.4565217391304348,
+      "pooled_oof_average_precision": 0.7113722991983862,
+      "pooled_oof_brier": 0.1976383735193424,
+      "positive": 46,
+      "seed": 11
+    },
+    {
+      "baseline": "spatial_logreg",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 10,
+          "train": 50,
+          "train_positive": 36
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        }
+      ],
+      "gene": "MYD88",
+      "no_qualifying_report": 17,
+      "patients": 63,
+      "pooled_oof_auroc": 0.6828644501278772,
+      "pooled_oof_average_precision": 0.8267297316596608,
+      "pooled_oof_brier": 0.1779025880652025,
+      "positive": 46,
+      "seed": 11
+    },
+    {
+      "baseline": "training_prevalence",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 10,
+          "train": 50,
+          "train_positive": 36
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        }
+      ],
+      "gene": "MYD88",
+      "no_qualifying_report": 17,
+      "patients": 63,
+      "pooled_oof_auroc": 0.4565217391304348,
+      "pooled_oof_average_precision": 0.7113722991983862,
+      "pooled_oof_brier": 0.1976383735193424,
+      "positive": 46,
+      "seed": 23
+    },
+    {
+      "baseline": "spatial_logreg",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 10,
+          "train": 50,
+          "train_positive": 36
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        }
+      ],
+      "gene": "MYD88",
+      "no_qualifying_report": 17,
+      "patients": 63,
+      "pooled_oof_auroc": 0.6547314578005116,
+      "pooled_oof_average_precision": 0.83234939536308,
+      "pooled_oof_brier": 0.1966007643296947,
+      "positive": 46,
+      "seed": 23
+    },
+    {
+      "baseline": "training_prevalence",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 10,
+          "train": 50,
+          "train_positive": 36
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        }
+      ],
+      "gene": "MYD88",
+      "no_qualifying_report": 17,
+      "patients": 63,
+      "pooled_oof_auroc": 0.4565217391304348,
+      "pooled_oof_average_precision": 0.7113722991983862,
+      "pooled_oof_brier": 0.19763837351934246,
+      "positive": 46,
+      "seed": 37
+    },
+    {
+      "baseline": "spatial_logreg",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 9,
+          "train": 50,
+          "train_positive": 37
+        },
+        {
+          "test": 13,
+          "test_positive": 10,
+          "train": 50,
+          "train_positive": 36
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        },
+        {
+          "test": 12,
+          "test_positive": 9,
+          "train": 51,
+          "train_positive": 37
+        }
+      ],
+      "gene": "MYD88",
+      "no_qualifying_report": 17,
+      "patients": 63,
+      "pooled_oof_auroc": 0.6675191815856778,
+      "pooled_oof_average_precision": 0.8320596943218982,
+      "pooled_oof_brier": 0.18765482541000555,
+      "positive": 46,
+      "seed": 37
+    },
+    {
+      "baseline": "training_prevalence",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        }
+      ],
+      "gene": "CD79B",
+      "no_qualifying_report": 43,
+      "patients": 63,
+      "pooled_oof_auroc": 0.48604651162790696,
+      "pooled_oof_average_precision": 0.3115995115995116,
+      "pooled_oof_brier": 0.21676445323227322,
+      "positive": 20,
+      "seed": 11
+    },
+    {
+      "baseline": "spatial_logreg",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        }
+      ],
+      "gene": "CD79B",
+      "no_qualifying_report": 43,
+      "patients": 63,
+      "pooled_oof_auroc": 0.4313953488372093,
+      "pooled_oof_average_precision": 0.2799618994145053,
+      "pooled_oof_brier": 0.2727427500744512,
+      "positive": 20,
+      "seed": 11
+    },
+    {
+      "baseline": "training_prevalence",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        }
+      ],
+      "gene": "CD79B",
+      "no_qualifying_report": 43,
+      "patients": 63,
+      "pooled_oof_auroc": 0.48604651162790696,
+      "pooled_oof_average_precision": 0.3115995115995116,
+      "pooled_oof_brier": 0.21676445323227322,
+      "positive": 20,
+      "seed": 23
+    },
+    {
+      "baseline": "spatial_logreg",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        }
+      ],
+      "gene": "CD79B",
+      "no_qualifying_report": 43,
+      "patients": 63,
+      "pooled_oof_auroc": 0.4604651162790698,
+      "pooled_oof_average_precision": 0.3071093653446937,
+      "pooled_oof_brier": 0.2573607664859814,
+      "positive": 20,
+      "seed": 23
+    },
+    {
+      "baseline": "training_prevalence",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        }
+      ],
+      "gene": "CD79B",
+      "no_qualifying_report": 43,
+      "patients": 63,
+      "pooled_oof_auroc": 0.48604651162790696,
+      "pooled_oof_average_precision": 0.3115995115995116,
+      "pooled_oof_brier": 0.21676445323227322,
+      "positive": 20,
+      "seed": 37
+    },
+    {
+      "baseline": "spatial_logreg",
+      "fold_sizes": [
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 13,
+          "test_positive": 4,
+          "train": 50,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        },
+        {
+          "test": 12,
+          "test_positive": 4,
+          "train": 51,
+          "train_positive": 16
+        }
+      ],
+      "gene": "CD79B",
+      "no_qualifying_report": 43,
+      "patients": 63,
+      "pooled_oof_auroc": 0.43837209302325586,
+      "pooled_oof_average_precision": 0.3060857186828362,
+      "pooled_oof_brier": 0.25695365361810657,
+      "positive": 20,
+      "seed": 37
+    }
+  ],
+  "source_kind": "Actual hosted v1.0 release only; no Box or internal cohort inputs",
+  "source_summary": {
+    "clinical_scan_specimen_pairing_verified": false,
+    "eligible_subjects": 63,
+    "endpoint": "Reported qualifying alteration versus no qualifying report among mutation-record subjects. Not biological wild type or proof of complete assay coverage.",
+    "exclusions": {
+      "missing_flair_summary": 1
+    },
+    "features": [
+      "percentage_volume_in_Frontal",
+      "percentage_volume_in_Parietal",
+      "percentage_volume_in_Occipital",
+      "percentage_volume_in_Temporal",
+      "percentage_volume_in_AnteriorTemporal",
+      "percentage_volume_in_MiddleTemporal",
+      "percentage_volume_in_PosteriorTemporal",
+      "percentage_volume_in_Parietal_Occipital",
+      "percentage_volume_in_CorpusCallosum",
+      "percentage_volume_in_CorpusCallosum_Rostrum"
+    ],
+    "mutation_table_sha256": "f63ed0a9d60a620c32378b920d0344cd575549e304f062c6e3677bcc28b03c15",
+    "subjects_with_mutation_records": 64
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "scikit_learn": "1.9.1"
+  }
+}

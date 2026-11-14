@@ -6,6 +6,70 @@ The target is **Build Your Own Eval**, which requires a benchmark on Valkyrie
 for a task frontier models still get wrong. These are preparation prototypes;
 the public event page does not establish whether pre-event code may be submitted.
 
+## Current PCNSL benchmark suite
+
+The [benchmark design](docs/research/benchmark-design.md) maps **30 proposed
+failure mechanisms** to evidence, graders and valid controls. Four executable
+synthetic task families test endpoint reconstruction, statistical claims,
+image geometry/ADC, and an integrated manuscript audit. These measure faithful
+execution and repair under documented scientific rules; they do not establish
+unprompted discovery of methodological flaws.
+
+- [PCNSL literature review](docs/research/pcnsl-literature.md) and
+  [research-agent evaluation review](docs/research/evaluation-literature.md)
+- [Search methods and coverage](docs/research/literature-search-method.md)
+- [Hosted data scope and provenance](docs/research/data-scope.md)
+- [Latest pilot evidence](results/20261114-repair-pilots/)
+- [Claude-authored PCNSL deck](results/pcnsl-frontier-deck/PCNSL_FRONTIER.pptx)
+- [Valkyrie execution checklist](docs/research/valkyrie-integration.md)
+
+**Current result: all 12 new local model attempts passed**, including integrated
+clean controls and held-out seed 101. Ten attempts have frozen source/case
+records; two endpoint attempts remain exploratory. All ten frozen submissions
+also passed stricter replay (40 fixtures, zero new model calls). This is a
+working capability/control suite, **not yet a demonstrated frontier-failure
+benchmark**. The final exporter produces 16 SDK-validated tasks.
+
+The actual UCSF hosted v1.0 archive is downloaded, SHA-256 checked and ZIP-CRC
+verified on FAC DS6. It contains 150 patients and 64 patients with mutation
+records; 63 have FLAIR summary features. Five inspected clinical files and 33
+inspected feature files match the Box candidate byte-for-byte. This establishes
+identity of those files, not equivalence of whole releases or clinical eligibility.
+Patient-level records remain on FAC/SCS; Git contains code, source references and
+aggregate results. See the [hosted inventory](pcnsl/results/20261114-hosted-release/aggregate_inventory.json).
+The [fixed public-data baseline](pcnsl/results/20261114-hosted-release/REPORT.md)
+used all 63 eligible patients: mean pooled out-of-fold AUROC across three seeds
+was 0.6684 for MYD88 and 0.4434 for CD79B. These are descriptive internal results
+for reported qualifying alterations, with unadjudicated scan/specimen timing;
+they establish neither clinical utility nor a frontier-agent failure.
+
+Generate the new executable tasks without uploading:
+
+```bash
+python3 -m repair_evals.export --out dist/repair-tasks \
+  --families endpoint claims geometry integrated --seeds 11 101 --variants flawed valid
+.venv-valkyrie/bin/python scripts/validate_exports.py dist/repair-tasks results/package-check
+.venv-valkyrie/bin/python scripts/valkyrie_preflight.py --tasks dist/repair-tasks
+```
+
+Local model pilots require Linux bubblewrap namespaces and existing CLI logins:
+
+```bash
+python3 scripts/run_repair_pilot.py --out exp/my-integrated-pilot \
+  --families integrated --seed 11 --backends claude codex --timeout 600 --budget 5
+```
+
+The runner saves private case/source snapshots, detects source drift, and reruns
+submitted programs on four hidden inputs. Raw traces and workspaces are ignored
+by Git. CLI usage estimates are not billing statements. Follow the bounded
+[research plan](docs/superpowers/plans/2026-11-14-frontier-suite.md); do not tune on
+held-out outcomes or count fixtures as independent model trials.
+
+**Hosted Valkyrie has not run.** Organizer access is pending; packaging and local
+custom pilots must not be presented as completed platform execution. The
+exported verifier assumes a trusted runtime; its root/container path still needs
+provider smoke testing. Local bubblewrap tests do not establish adversarial security.
+
 ## Real-data PCNSL prototype
 
 [PCNSL tabular prototype](pcnsl/README.md) reuses the existing SCS cohort and
@@ -14,7 +78,9 @@ Patient-level data remain on SCS. The latest run uses 33 patients with exact sca
 and paired-sample matches to the Box release candidate: three experiments, 154
 verified task bundles, and separate legacy/reported-pathogenic endpoints.
 See the [matched-cohort findings](pcnsl/results/20261114-box-matched-v2/REPORT.md).
-Final published-archive identity and live frontier-agent evaluation remain pending.
+The inspected source files now match the hosted archive; original internal
+cohort-selection and endpoint caveats remain. Live frontier-agent evaluation of
+patient-level records has not been performed.
 
 ## Current result for the original synthetic tasks
 

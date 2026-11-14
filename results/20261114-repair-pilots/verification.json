@@ -1,0 +1,39 @@
+{
+  "verified_utc": "2026-11-14T20:57:39.798727+00:00",
+  "local_suite": {
+    "command": "python3 -m unittest discover -s tests -v",
+    "tests_run": 60,
+    "passed": 59,
+    "skipped": 1,
+    "exit_code": 0,
+    "skip": "Numerical sklearn test executed on FAC instead"
+  },
+  "fac_suite": {
+    "job_id": 3067508,
+    "tests_passed": 10,
+    "exit_code": 0,
+    "evidence": "pcnsl/results/20261114-hosted-release/baseline-validation.json"
+  },
+  "strict_replay": {
+    "programs_passed": 10,
+    "fixtures_passed": 40,
+    "model_calls": 0,
+    "evidence": "results/20261114-repair-pilots/strict-replay.json"
+  },
+  "task_packaging": {
+    "task_count": 16,
+    "sdk": "0.34.0",
+    "cli": "2026.11.12.2",
+    "hosted_execution": false,
+    "evidence": "results/20261114-repair-suite-v2-packaging/validation.json"
+  },
+  "remaining_checks": [
+    "Root/container verifier path in actual provider",
+    "Actual Valkyrie oracle and frontier runs after organizer access"
+  ],
+  "source_sha256": {
+    "scripts/run_repair_pilot.py": "f1cbe68a8c8c86a30ba355531c613e4b121a560cfc7d083c059179bb53c0baa2",
+    "repair_evals/export.py": "93295fe988e2de888bca941c95488f0ea6274018c8846fb029c7d2dc862da8d2",
+    "pcnsl/hosted_baseline.py": "e8c9e121a8c78cc46bc5c9808df217e8a8a6bea48e01e63a7d47ddd0dcdad3f1"
+  }
+}

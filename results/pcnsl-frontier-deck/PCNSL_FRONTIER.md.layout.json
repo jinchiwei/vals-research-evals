@@ -1,0 +1,653 @@
+{
+  "deck_md_hash": "99126d90235eb4c5792e0750b34be7eccb72aacd2905c8b86727713a38e09a94",
+  "shake_seed": null,
+  "slides": [
+    {
+      "content_hash": "d42eba06875f577279fe78b2fa12b55719ea0c2a001c796f14105442468a9bf2-divider",
+      "kind": "section-divider",
+      "params": {
+        "accent_hex": "#40E0D0",
+        "label": "Background and framing"
+      },
+      "slide_id": "divider-h1-background-and-framing"
+    },
+    {
+      "content_hash": "4d6a35b23e2522b1274c1f295aad2220629fb850931e8c492c7fcc31f2b6831a",
+      "kind": "cards-with-takeaway",
+      "params": {
+        "callout": {
+          "text": "Source: vals.ai/hackathon. Honest headline: a prepared eval with working controls — no demonstrated frontier failure yet.",
+          "tone": "dark"
+        },
+        "cards": [
+          {
+            "body": "Vals Build Your Own Eval: a benchmark on Valkyrie of a task frontier models still miss. Judged on demos; no public scoring weights.",
+            "icon": null,
+            "label": "Requirement"
+          },
+          {
+            "body": "Do research agents produce valid, reproducible claims from a PCNSL imaging–genomic workflow?",
+            "icon": null,
+            "label": "Our question"
+          },
+          {
+            "body": "Tasks, controls and 16-archive package ready. Both tested models passed all 12 attempts (10 frozen + 2 exploratory). Hosted run pending access.",
+            "icon": null,
+            "label": "Status today"
+          }
+        ],
+        "lede": "",
+        "section_label": "Background and framing",
+        "title": "The ask: an eval on Valkyrie that frontier models still get wrong"
+      },
+      "slide_id": "h1-background-and-framing/h2-the-ask-an-eval-on-valkyrie-that-frontier-models-still-get-wrong"
+    },
+    {
+      "content_hash": "15ccb883d3aa4185ee9a55826d58fb2711106d282254966de3c4fc5768113755",
+      "kind": "figure-with-aside",
+      "params": {
+        "alt": "Schematic two-by-two scoring matrix",
+        "aside": {
+          "body": "Low biological predictability is not an agent failure. A correct null or inconclusive result earns full credit; a high AUROC from a leaked split or wrong endpoint earns none.",
+          "icon": null,
+          "label": "Why"
+        },
+        "image": "figures/fig_credit_matrix.png",
+        "lede": "Credit follows the validity of the analysis, not the size of the effect.",
+        "section_label": "Background and framing",
+        "title": "What we score: valid research artifacts, not mutation predictability"
+      },
+      "slide_id": "h1-background-and-framing/h2-what-we-score-valid-research-artifacts-not-mutation-predictability"
+    },
+    {
+      "content_hash": "4d86ceb44a932f13eeec85376bf0097f52b1b9944723e1d23dc6588769a000cc",
+      "kind": "table-with-takeaway",
+      "params": {
+        "callout": {
+          "text": "A private object is never relabeled public; matching files is not whole-release equivalence. Every frontier pilot used synthetic records only.",
+          "tone": "dark"
+        },
+        "lede": "",
+        "rows": [
+          [
+            "Object",
+            "What it is",
+            "What is verified",
+            "Used for"
+          ],
+          [
+            "Hosted v1.0 archive",
+            "Controlled-access public release (DOI 10.58078/C2RP4V)",
+            "16.66 GB received, CRC OK, SHA-256 pinned; aggregate inventory",
+            "Fixed 63-patient baseline; proposed task, not yet model-facing"
+          ],
+          [
+            "Box candidate",
+            "Release-preparation copy",
+            "5/5 metadata + 33/33 FLAIR summary files byte-identical to hosted",
+            "Historical 33-patient baselines only"
+          ],
+          [
+            "Internal pipeline",
+            "Lab-derived features",
+            "273/330 values differ from Box; cause unresolved",
+            "Matched control only"
+          ],
+          [
+            "Synthetic counterfactual",
+            "Invented records and phantoms",
+            "Independent reference + hidden fixtures",
+            "All frontier pilots"
+          ]
+        ],
+        "section_label": "Background and framing",
+        "title": "Four data objects — provenance stays separate"
+      },
+      "slide_id": "h1-background-and-framing/h2-four-data-objects-provenance-stays-separate"
+    },
+    {
+      "content_hash": "bb71b6f0bf6b89345ba3657819a14900e30dff5d7181f688aab635cb60ec524c",
+      "kind": "stat-callouts-right",
+      "params": {
+        "image": "figures/fig_hosted_counts.png",
+        "lede": "Aggregate counts only. Record presence is not assay completeness, and “no record” is not wild type.",
+        "section_label": "Background and framing",
+        "stats": [
+          {
+            "label": "patients; T1, CE-T1, FLAIR, ADC each",
+            "value": "150"
+          },
+          {
+            "label": "patients with genomic records",
+            "value": "64"
+          },
+          {
+            "label": "records + all 10 FLAIR features finite",
+            "value": "63"
+          },
+          {
+            "label": "DSC/CBV files detected",
+            "value": "0"
+          }
+        ],
+        "title": "Hosted v1.0 inventory: what the archive actually contains"
+      },
+      "slide_id": "h1-background-and-framing/h2-hosted-v1-0-inventory-what-the-archive-actually-contains"
+    },
+    {
+      "content_hash": "75256f8cc4aa9f2b8eb1ceb1ac6e28ecb219a3055cbf2311c3d90647d36846af",
+      "kind": "table-with-takeaway",
+      "params": {
+        "callout": {
+          "text": "Not the first scientific-agent, integrity or replay benchmark. Contribution: PCNSL semantics + executable repair + matched controls on Valkyrie. Focused search, not systematic.",
+          "tone": "dark"
+        },
+        "lede": "",
+        "rows": [
+          [
+            "Prior work",
+            "Already covers",
+            "Gap we target"
+          ],
+          [
+            "PCNSL MRI–genotype (Zhou 2026, n=92; LOC 2016, n=50)",
+            "MYD88/CD79B imaging association; same-cohort AUC 0.65–0.86",
+            "Endpoint and validation choices as graded agent decisions"
+          ],
+          [
+            "Related PCNSL radiomics (BCL6 rearrangement, Ki-67, PCNSL vs GBM)",
+            "Phenotype and diagnosis models",
+            "Agents must not substitute these for a named mutation"
+          ],
+          [
+            "BLADE, ScienceAgentBench, DSBench",
+            "Scientific analysis decisions, executable outputs",
+            "Clinical imaging–genomic semantics"
+          ],
+          [
+            "SciIntegrity-Bench, ReplicatorBench",
+            "Honest failure; replicable vs non-replicable claims",
+            "Matched clean controls with executable repair"
+          ],
+          [
+            "PaperBench, PAPERBENCHX",
+            "Reproduction and evidence replay",
+            "Hidden new-cohort replay of a repair"
+          ]
+        ],
+        "section_label": "Background and framing",
+        "title": "Prior work exists — our contribution is narrow"
+      },
+      "slide_id": "h1-background-and-framing/h2-prior-work-exists-our-contribution-is-narrow"
+    },
+    {
+      "content_hash": "e003ad1a6b15d9cf90ebe75e99c9c5ab2125c3c4700dc195f076cdf61adbf713-divider",
+      "kind": "section-divider",
+      "params": {
+        "accent_hex": "#FF1493",
+        "label": "Benchmark design"
+      },
+      "slide_id": "divider-h1-benchmark-design"
+    },
+    {
+      "content_hash": "ba025f5afc66cf1c5232314e860c10af22a2654d655dfb47b8aceb693cba00eb",
+      "kind": "content-image-only",
+      "params": {
+        "images": [
+          "figures/fig_mechanism_map.png"
+        ],
+        "lede": "",
+        "section_label": "Benchmark design",
+        "tables": [],
+        "title": "Thirty candidate mechanisms — a catalog, not thirty failing tasks"
+      },
+      "slide_id": "h1-benchmark-design/h2-thirty-candidate-mechanisms-a-catalog-not-thirty-failing-tasks"
+    },
+    {
+      "content_hash": "4655008b5bc0c18f0fd75b9d825d31e5378d2a0a0c0a677b9194ff5ce233efb8",
+      "kind": "cards-with-takeaway",
+      "params": {
+        "callout": {
+          "text": "All four are synthetic counterfactual tasks with independent references: they test research behavior, not real PCNSL predictive accuracy.",
+          "tone": "dark"
+        },
+        "cards": [
+          {
+            "body": "First qualifying assay, final report revision, pre-therapy scan window; an unassayed gene is never negative.",
+            "icon": null,
+            "label": "Endpoint and cohort"
+          },
+          {
+            "body": "Patient overlap in fit, transform or selection; freeze date; score direction; Holm across every planned hypothesis.",
+            "icon": null,
+            "label": "Statistical claims"
+          },
+          {
+            "body": "Affine and RAS/LPS frames, label-union volume, ADC scale, offset and units, out-of-grid samples.",
+            "icon": null,
+            "label": "Geometry and ADC"
+          },
+          {
+            "body": "Endpoint cohort, transitive identities, artifact ancestry, permutation nulls and Holm claims in one synthetic repository.",
+            "icon": null,
+            "label": "Integrated manuscript audit"
+          }
+        ],
+        "lede": "",
+        "section_label": "Benchmark design",
+        "title": "Three repair families plus one integrated audit"
+      },
+      "slide_id": "h1-benchmark-design/h2-three-repair-families-plus-one-integrated-audit"
+    },
+    {
+      "content_hash": "b6ad3ef322e3c1e12150be1a464c7d109cedf91a56242dd209866827756f0ab0",
+      "kind": "content-image-only",
+      "params": {
+        "images": [
+          "figures/fig_eval_protocol.png"
+        ],
+        "lede": "Hidden new-cohort replay checks the repair; the clean twin checks for unnecessary damage.",
+        "section_label": "Benchmark design",
+        "tables": [],
+        "title": "How an attempt is scored"
+      },
+      "slide_id": "h1-benchmark-design/h2-how-an-attempt-is-scored"
+    },
+    {
+      "content_hash": "9d386fbbaab59eb494f4c12cf1b23fd4b5c5347b03eb22c1c97fb04f41376eef-divider",
+      "kind": "section-divider",
+      "params": {
+        "accent_hex": "#F0C840",
+        "label": "Results"
+      },
+      "slide_id": "divider-h1-results"
+    },
+    {
+      "content_hash": "fb2d0394d8b7298f4337b267b9e92a81602aa4a4c3dcfdb0d8bec0e092c025f0",
+      "kind": "stat-callouts-right",
+      "params": {
+        "image": "figures/fig_pilot_results.png",
+        "lede": "The protocol supplies the rules: this measures faithful implementation and repair, not methodological discovery.",
+        "section_label": "Results",
+        "stats": [
+          {
+            "label": "attempts passed this round, both models (10 frozen + 2 exploratory)",
+            "value": "12/12"
+          },
+          {
+            "label": "frozen submissions re-passed strict replay: 40 fixtures, 0 new model calls",
+            "value": "10/10"
+          },
+          {
+            "label": "separate earlier Opus-only round on original tasks; not pooled",
+            "value": "12/12"
+          },
+          {
+            "label": "demonstrated frontier failures",
+            "value": "0"
+          }
+        ],
+        "title": "Pilot results: every attempt passed"
+      },
+      "slide_id": "h1-results/h2-pilot-results-every-attempt-passed"
+    },
+    {
+      "content_hash": "ce14bb615011ff0475f75d3ad74d65dd7f0864d6026544761202b356741b9256",
+      "kind": "table-with-takeaway",
+      "params": {
+        "callout": {
+          "text": "Effort high, 600 s budget, local isolated runner. One attempt per cell: wall time is descriptive, not a ranking. Endpoint generator changed mid-run, so it is not pooled.",
+          "tone": "dark"
+        },
+        "lede": "",
+        "rows": [
+          [
+            "Task",
+            "Claude Opus 5.5",
+            "GPT-6 Astra"
+          ],
+          [
+            "Endpoint (exploratory)",
+            "PASS 4/4 · 82 s",
+            "PASS 4/4 · 111 s"
+          ],
+          [
+            "Claims (frozen)",
+            "PASS 4/4 · 70 s",
+            "PASS 4/4 · 131 s"
+          ],
+          [
+            "Geometry (frozen)",
+            "PASS 4/4 · 75 s",
+            "PASS 4/4 · 115 s"
+          ],
+          [
+            "Integrated, flawed",
+            "PASS 4/4 · 96 s",
+            "PASS 4/4 · 163 s"
+          ],
+          [
+            "Integrated, held-out seed 101",
+            "PASS 4/4 · 89 s",
+            "PASS 4/4 · 133 s"
+          ],
+          [
+            "Integrated, clean twin",
+            "PASS 4/4 · 200 s",
+            "PASS 4/4 · 160 s"
+          ],
+          [
+            "Response model ID",
+            "claude-opus-5-5 (confirmed)",
+            "not emitted (request-pinned)"
+          ]
+        ],
+        "section_label": "Results",
+        "title": "Both models passed every task"
+      },
+      "slide_id": "h1-results/h2-both-models-passed-every-task"
+    },
+    {
+      "content_hash": "5435ce2b07bd16a5fc4e1766efab96e9dd4755fbbbc5168d54c865f8a34e23c5",
+      "kind": "figure-with-aside-horizontal",
+      "params": {
+        "alt": "Pooled out-of-fold AUROC by seed for MYD88 and CD79B with prevalence control",
+        "aside": {
+          "body": "Seed range is not a confidence interval. Label is reported qualifying alteration vs no qualifying report, not biological wild type; IRF4 excluded (2 positives); scan–specimen timing not clinically adjudicated. No score flipping; no external-validation, clinical-utility or frontier-failure claim. Separate from the historical 33-patient baseline.",
+          "icon": null,
+          "label": "Bounds"
+        },
+        "image": "figures/fig_hosted_baseline.png",
+        "lede": "Mean pooled OOF AUROC, internal CV: 63 patients · 10 FLAIR spatial features · fixed C=1 logistic regression · train-fold-only imputation and scaling · 5-fold CV at 3 prespecified seeds.",
+        "section_label": "Results",
+        "title": "Hosted-release baseline: MYD88 0.67, CD79B 0.44"
+      },
+      "slide_id": "h1-results/h2-hosted-release-baseline-myd88-0-67-cd79b-0-44"
+    },
+    {
+      "content_hash": "3c19d0b1107e3653b617dc157be803ca12fdc532508004d8017d945c7a21d7d4-divider",
+      "kind": "section-divider",
+      "params": {
+        "accent_hex": "#8A2BE2",
+        "label": "Valkyrie readiness and limitations"
+      },
+      "slide_id": "divider-h1-valkyrie-readiness-and-limitations"
+    },
+    {
+      "content_hash": "8845c67198f08cebef8a920fe600701389fa093107255664ae7d5fe3da72e1fc",
+      "kind": "table-with-takeaway",
+      "params": {
+        "callout": {
+          "text": "No platform run ID, upload or submission exists yet. Launch checklist and read-only preflight are ready.",
+          "tone": "dark"
+        },
+        "lede": "",
+        "rows": [
+          [
+            "Stage",
+            "Evidence",
+            "Status"
+          ],
+          [
+            "SDK packaging",
+            "16 archives: 4 families incl. integrated × 2 seeds × flawed/valid; 0 problems (CLI 2026.11.12.2, SDK 0.34.0)",
+            "Done; not execution"
+          ],
+          [
+            "Local isolated pilots",
+            "12/12 attempts passed (10 frozen + 2 exploratory); 40/40 frozen fixture replays",
+            "Done; not Valkyrie"
+          ],
+          [
+            "Strict replay",
+            "10/10 frozen submissions, 40 fixtures; 8 s CPU, 12 s wall, 512 MiB, 1 MB output; 0 model calls",
+            "Done; local only"
+          ],
+          [
+            "Grader review and tests",
+            "Review fixes implemented; 60 local tests: 59 pass, 1 numerical skipped locally (passed in FAC 10/10)",
+            "Done; not execution"
+          ],
+          [
+            "Root/container verifier path",
+            "Oracle isolation inside the task image",
+            "Untested; pending access"
+          ],
+          [
+            "Valkyrie oracle smoke",
+            "Tracker run ID, verifier reward, logs",
+            "Pending access"
+          ],
+          [
+            "Hosted frontier run",
+            "Run ID, trajectory, rewards, outputs",
+            "Pending access and credits"
+          ]
+        ],
+        "section_label": "Valkyrie readiness and limitations",
+        "title": "Execution evidence ladder"
+      },
+      "slide_id": "h1-valkyrie-readiness-and-limitations/h2-execution-evidence-ladder"
+    },
+    {
+      "content_hash": "4b5183ad1b17dc9bfcf40421f09623291f2ef528b2a174614677873cc6f24c3d-divider",
+      "kind": "section-divider",
+      "params": {
+        "accent_hex": "#40E0D0",
+        "label": "Decision and next steps"
+      },
+      "slide_id": "divider-h1-decision-and-next-steps"
+    },
+    {
+      "content_hash": "c596d4b1583da3801e079dcc7dc298e63efe3165362a5f626e142bddbf55a0f6",
+      "kind": "conclusions",
+      "params": {
+        "callout": {
+          "text": "Path forward: held-out results stay held out, never tuning data; stop at the predeclared cap if the new version also passes.",
+          "tone": "dark"
+        },
+        "cards": [
+          {
+            "accent_hex": "#40E0D0",
+            "body": "Keep the harness and passing controls. Do not pitch this version as a frontier-failure benchmark.",
+            "icon": "FaChartLine",
+            "label": "Decision"
+          },
+          {
+            "accent_hex": "#FF1493",
+            "body": "Three repair families, integrated audit, clean twin and held-out seed; 12/12 attempts passed, 16 archives package cleanly.",
+            "icon": "FaCheckCircle",
+            "label": "What works"
+          },
+          {
+            "accent_hex": "#F0C840",
+            "body": "Hosted access and credits. Then oracle smoke first, then the integrated flawed, clean and held-out tasks.",
+            "icon": "FaExclamationTriangle",
+            "label": "Blocker"
+          },
+          {
+            "accent_hex": "#8A2BE2",
+            "body": "Expert-adjudicated research decisions from genuine evidence, with a clear contract and less procedural scaffolding. Freeze as a new version.",
+            "icon": "FaCrosshairs",
+            "label": "Next experiment"
+          }
+        ],
+        "lede": "",
+        "section_label": "Decision and next steps",
+        "title": "Next steps: readiness decision and next experiment"
+      },
+      "slide_id": "h1-decision-and-next-steps/h2-next-steps-readiness-decision-and-next-experiment"
+    },
+    {
+      "content_hash": "2ad7e32a1a6d8d0ebd4534f3f20adc1bbbfae9a1cb3fee46c03873746d1300aa-divider",
+      "kind": "section-divider",
+      "params": {
+        "accent_hex": "#40E0D0",
+        "label": "Appendix"
+      },
+      "slide_id": "divider-h1-appendix"
+    },
+    {
+      "content_hash": "d685c5b47524113dc317c9af01c16cfcc33630a5fd9e3abb13a90bdc8bb2a82e",
+      "kind": "cards-grid",
+      "params": {
+        "body": [],
+        "cards": [
+          {
+            "body": "Zhou 2026, Cancer Imaging — 92 PCNSL; ADC + DSC/CBV; MYD88/CD79B; AUC 0.652–0.861, same-cohort CV",
+            "icon": null,
+            "label": "P01"
+          },
+          {
+            "body": "LOC network 2016, Neuro-Oncology abstract — 50 patients; no MYD88/CD79B location association",
+            "icon": null,
+            "label": "P02"
+          },
+          {
+            "body": "Li 2025, Blood Cancer J — genomic subtype (BTG1/MYD88/IRF4); not an MRI predictor",
+            "icon": null,
+            "label": "P03"
+          },
+          {
+            "body": "Liu 2024–25 — BCL6 rearrangement (random holdout); Ki-67 (external 55)",
+            "icon": null,
+            "label": "P05 / P06"
+          },
+          {
+            "body": "Xia 2021, JMRI — PCNSL vs GBM diagnosis, cross-vendor test",
+            "icon": null,
+            "label": "P08"
+          },
+          {
+            "body": "IPCG MRI/PET, EHA–ESMO, AMP/ASCO/CAP, IBSI, CLAIM 2024, TRIPOD+AI, PROBAST+AI",
+            "icon": null,
+            "label": "Standards"
+          },
+          {
+            "body": "AWS registry ucsf-pcnsl; UCSF-PCNSL tutorial; DOI 10.58078/C2RP4V",
+            "icon": null,
+            "label": "Data"
+          }
+        ],
+        "lede": "",
+        "section_label": "Appendix",
+        "title": "Appendix A — PCNSL sources and standards"
+      },
+      "slide_id": "h1-appendix/h2-appendix-a-pcnsl-sources-and-standards"
+    },
+    {
+      "content_hash": "00588b60846fd46774c40d35928a76079d7064bd45044b65bedcd72e14dfe2ae",
+      "kind": "cards-grid",
+      "params": {
+        "body": [],
+        "cards": [
+          {
+            "body": "BLADE (2024), ScienceAgentBench (2025), DSBench, InfiAgent-DABench",
+            "icon": null,
+            "label": "Scientific analysis"
+          },
+          {
+            "body": "MLAgentBench, MLGym, RE-Bench, MLE-bench",
+            "icon": null,
+            "label": "ML research engineering"
+          },
+          {
+            "body": "PaperBench (2025), PAPERBENCHX (2026 preprint), ReplicatorBench (2026)",
+            "icon": null,
+            "label": "Reproduction and replay"
+          },
+          {
+            "body": "SciIntegrity-Bench (2026 preprint); METR reward-hacking notes",
+            "icon": null,
+            "label": "Integrity"
+          },
+          {
+            "body": "Kapoor & Narayanan (leakage), Cawley & Talbot (selection), Varoquaux (small-sample CV)",
+            "icon": null,
+            "label": "Validity methods"
+          },
+          {
+            "body": "4 broad queries, 49 raw records (not unique studies) plus primary-source follow-up; focused, not systematic",
+            "icon": null,
+            "label": "Search"
+          }
+        ],
+        "lede": "",
+        "section_label": "Appendix",
+        "title": "Appendix B — Agent-evaluation sources"
+      },
+      "slide_id": "h1-appendix/h2-appendix-b-agent-evaluation-sources"
+    },
+    {
+      "content_hash": "91ebd3671a0f58b991facf44586abd13d3f6ea7ccc86aecdfa115ef8bdca6062",
+      "kind": "cards-grid",
+      "params": {
+        "body": [],
+        "cards": [
+          {
+            "body": "one attempt per model per task-seed; fixtures are replays of one submission; templates are not patients",
+            "icon": null,
+            "label": "Sample"
+          },
+          {
+            "body": "exploratory; generator changed during execution",
+            "icon": null,
+            "label": "Endpoint pilot"
+          },
+          {
+            "body": "GPT-6 Astra is request-pinned only; its CLI emitted no response model ID",
+            "icon": null,
+            "label": "Model identity"
+          },
+          {
+            "body": "local runner; root/container verifier path untested; 16-archive SDK packaging is not execution",
+            "icon": null,
+            "label": "Isolation"
+          },
+          {
+            "body": "hosted inventory is aggregate presence, not identity/privacy clearance or assay completeness",
+            "icon": null,
+            "label": "Data"
+          },
+          {
+            "body": "descriptive internal CV; seed range is not a CI; specimen timing unadjudicated",
+            "icon": null,
+            "label": "Hosted baseline"
+          },
+          {
+            "body": "author’s grouping of protocol text; “exercised” does not mean “failing”",
+            "icon": null,
+            "label": "Mechanism map"
+          },
+          {
+            "body": "listed in build-status.json with SHA-256 hashes",
+            "icon": null,
+            "label": "Evidence files"
+          }
+        ],
+        "lede": "",
+        "section_label": "Appendix",
+        "title": "Appendix C — Limitations and provenance"
+      },
+      "slide_id": "h1-appendix/h2-appendix-c-limitations-and-provenance"
+    },
+    {
+      "content_hash": "29fdecd742320943955b1c36e3b9ccc08b0226ad4864ae39ecc67762d6a1a070",
+      "kind": "figure-with-aside-horizontal",
+      "params": {
+        "alt": "Schematic of 33 patients under two IRF4 label definitions",
+        "aside": {
+          "body": "Endpoint definition is a gradeable agent decision. The 33-patient retrospective subset supports no clinical-utility, generalization or frontier-failure claim.",
+          "icon": null,
+          "label": "Lesson"
+        },
+        "image": "figures/fig_endpoint_schematic.png",
+        "lede": "Changing the label definition changes the positives and the folds before any model is fit.",
+        "section_label": "Appendix",
+        "title": "Appendix D — Historical 33-patient baseline context"
+      },
+      "slide_id": "h1-appendix/h2-appendix-d-historical-33-patient-baseline-context"
+    }
+  ],
+  "version": 1
+}

@@ -1,0 +1,100 @@
+{
+  "check_type": "read_only_readiness_not_execution",
+  "versions": {
+    "valkyrie-cli": "2026.11.12.2",
+    "valkyrie-sdk": "0.34.0"
+  },
+  "commands_present": {
+    "docker": false,
+    "podman": false,
+    "uv": false,
+    "make": true
+  },
+  "docker_daemon_usable": false,
+  "docker_compose_usable": false,
+  "local_tracker_runtime_prerequisites_present": false,
+  "credential_environment_presence_only": {
+    "VALKYRIE_API_KEY": false,
+    "MODAL_TOKEN_ID": false,
+    "MODAL_TOKEN_SECRET": false,
+    "DAYTONA_API_KEY": false,
+    "ANTHROPIC_API_KEY": false,
+    "OPENAI_API_KEY": false,
+    "OPENROUTER_API_KEY": false
+  },
+  "valkyrie_sessions_directory_present_not_validated": false,
+  "hosted_auth_and_provider_readiness": "not_verified_offline",
+  "local_tracker_execution": "not_attempted",
+  "hosted_execution": "not_attempted",
+  "task_packaging": {
+    "task_count": 16,
+    "tasks": [
+      {
+        "task": "claims-2fcb3ef41a",
+        "problems": []
+      },
+      {
+        "task": "claims-547ac71f72",
+        "problems": []
+      },
+      {
+        "task": "claims-5a0dafe383",
+        "problems": []
+      },
+      {
+        "task": "claims-7ff4013595",
+        "problems": []
+      },
+      {
+        "task": "endpoint-3cecfaf178",
+        "problems": []
+      },
+      {
+        "task": "endpoint-4dd7bb2938",
+        "problems": []
+      },
+      {
+        "task": "endpoint-6f764a631e",
+        "problems": []
+      },
+      {
+        "task": "endpoint-7910bb78e0",
+        "problems": []
+      },
+      {
+        "task": "geometry-30e4438388",
+        "problems": []
+      },
+      {
+        "task": "geometry-4978297b5c",
+        "problems": []
+      },
+      {
+        "task": "geometry-a068378e27",
+        "problems": []
+      },
+      {
+        "task": "geometry-e3ef2d7158",
+        "problems": []
+      },
+      {
+        "task": "integrated-25be5ac4e3",
+        "problems": []
+      },
+      {
+        "task": "integrated-25c12f9992",
+        "problems": []
+      },
+      {
+        "task": "integrated-436ccfa9bd",
+        "problems": []
+      },
+      {
+        "task": "integrated-50fa2a5962",
+        "problems": []
+      }
+    ],
+    "passes_packaging_checks": true,
+    "execution_verified": false
+  }
+}

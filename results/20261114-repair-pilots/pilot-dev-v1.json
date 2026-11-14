@@ -1,0 +1,194 @@
+{
+  "manifest": {
+    "seed": 11,
+    "variant": "flawed",
+    "families": [
+      "endpoint"
+    ],
+    "models": {
+      "claude": "claude-opus-5-5",
+      "codex": "gpt-6-astra"
+    },
+    "effort": "high",
+    "timeout_seconds": 600,
+    "claude_usage_cap_per_task_usd": 5.0,
+    "codex_billing": "existing ChatGPT login; no API billing configured",
+    "source_sha256": {
+      "repair_evals/cases.py": "b0355a0c3573c49ce63bea3089a5db47c921f0f2b4452739971ba6a0c473e69d",
+      "repair_evals/reference.py": "b6a3944380b16d8d2114ebaa0fe18a1510144f33fe91382f8a60f763c8e0b162",
+      "repair_evals/scoring.py": "ada55a39745b342c540ce1ace2a20139697905dfe3a03ee79f738fcb3f1c027e",
+      "repair_evals/__init__.py": "bd51ce8f5c778ff54e74fbf24c3b926edb9d3c39e5e954803059d507bcde25f3",
+      "scripts/run_repair_pilot.py": "5a6ebc3a7ad71d23dad47a11960b5ac80b8c3c8f55070507b2d7ea00da390624",
+      "research_evals/pilot.py": "da911b321087cf2e115f796b62bbb07deaa6082f57d5eb3f123a10bb7af5d750"
+    },
+    "hosted_valkyrie_run": false,
+    "data": "synthetic counterfactual fixtures only"
+  },
+  "results": [
+    {
+      "id": "endpoint-4dd7bb2938",
+      "family": "endpoint",
+      "seed": 11,
+      "variant": "flawed",
+      "backend": "claude",
+      "requested_model": "claude-opus-5-5",
+      "observed_model_ids": [
+        "claude-opus-5-5"
+      ],
+      "model_id_note": "CLI request is pinned; an empty observed list means the CLI did not emit a response model ID",
+      "effort": "high",
+      "status": "completed",
+      "returncode": 0,
+      "model_responded": true,
+      "classification": "pass",
+      "elapsed_seconds": 82.21,
+      "tools_used": [
+        "Bash",
+        "Bash",
+        "Bash",
+        "Bash",
+        "Bash",
+        "Bash",
+        "Bash",
+        "Edit",
+        "Bash",
+        "Edit"
+      ],
+      "usage": {
+        "input_tokens": 22,
+        "cache_creation_input_tokens": 18134,
+        "cache_read_input_tokens": 165529,
+        "output_tokens": 8207,
+        "output_tokens_details": {
+          "thinking_tokens": 1259
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 18134,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "global",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 816,
+            "cache_read_input_tokens": 21527,
+            "cache_creation_input_tokens": 193,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 193
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard",
+        "fallback_credit": null
+      },
+      "usage_estimate_usd": 0.34240580000000004,
+      "agent_error": false,
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      },
+      "evidence": "local isolated tool-agent pilot; not a Valkyrie execution"
+    },
+    {
+      "id": "endpoint-4dd7bb2938",
+      "family": "endpoint",
+      "seed": 11,
+      "variant": "flawed",
+      "backend": "codex",
+      "requested_model": "gpt-6-astra",
+      "observed_model_ids": [],
+      "model_id_note": "CLI request is pinned; an empty observed list means the CLI did not emit a response model ID",
+      "effort": "high",
+      "status": "completed",
+      "returncode": 0,
+      "model_responded": true,
+      "classification": "pass",
+      "elapsed_seconds": 110.56,
+      "tools_used": [
+        "agent_message",
+        "command_execution",
+        "command_execution",
+        "command_execution",
+        "command_execution",
+        "agent_message",
+        "command_execution",
+        "command_execution",
+        "command_execution",
+        "command_execution",
+        "command_execution",
+        "command_execution",
+        "agent_message",
+        "agent_message"
+      ],
+      "usage": {
+        "input_tokens": 122567,
+        "cached_input_tokens": 105856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4458,
+        "reasoning_output_tokens": 154
+      },
+      "usage_estimate_usd": null,
+      "agent_error": null,
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      },
+      "evidence": "local isolated tool-agent pilot; not a Valkyrie execution"
+    }
+  ],
+  "run_description": "Exploratory endpoint development; generator changed during execution",
+  "snapshot_status": "Exploratory only: no immutable case snapshot; generator changed mid-run."
+}

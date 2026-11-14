@@ -1,0 +1,87 @@
+{
+  "cli": "2026.11.12.2",
+  "sdk": "0.34.0",
+  "hosted_run": false,
+  "tasks": [
+    {
+      "task": "claims-2fcb3ef41a",
+      "problems": [],
+      "archive_sha256": "3aa1a2c23b53ab8d0328628383f3c3fde84bf520533a89c4c62a0aa1166a23af"
+    },
+    {
+      "task": "claims-547ac71f72",
+      "problems": [],
+      "archive_sha256": "385cd607904c8205b2658b4f7581f431592e94fc6da84436040fdca722d5ccb5"
+    },
+    {
+      "task": "claims-5a0dafe383",
+      "problems": [],
+      "archive_sha256": "01c841de44f84e8de0ee847764e1cee119fc01edd13114c466bbf11766f66b05"
+    },
+    {
+      "task": "claims-7ff4013595",
+      "problems": [],
+      "archive_sha256": "c59aec03ccc315cfc0b7cb8ab5e00dfa915cca33866c18e449c789c5118118b8"
+    },
+    {
+      "task": "endpoint-3cecfaf178",
+      "problems": [],
+      "archive_sha256": "361318d33ec5e7ae10e4493e174cfea1aacd154a8ef002b516d102995c151a25"
+    },
+    {
+      "task": "endpoint-4dd7bb2938",
+      "problems": [],
+      "archive_sha256": "34e754fe13f00e8087874f5353cd622dfa5efe6241ff8064a51129d0d4dac4d9"
+    },
+    {
+      "task": "endpoint-6f764a631e",
+      "problems": [],
+      "archive_sha256": "63b5990288e2267366f4637166554c8ef152b6dc2d94be3ad0c93392db8be292"
+    },
+    {
+      "task": "endpoint-7910bb78e0",
+      "problems": [],
+      "archive_sha256": "8aa8eef120e15ae7e03e6a6856fdcdcda56022c8fc043d63919f1c117ac6e259"
+    },
+    {
+      "task": "geometry-30e4438388",
+      "problems": [],
+      "archive_sha256": "952a2646d9ff3e580f0bb3cdb86e469508aadbd457e14e6e9a7b82f8efb47e7d"
+    },
+    {
+      "task": "geometry-4978297b5c",
+      "problems": [],
+      "archive_sha256": "484a39925ad51afc3da08005801dd9c9ec46414a5fe834504a5d25f53bb60609"
+    },
+    {
+      "task": "geometry-a068378e27",
+      "problems": [],
+      "archive_sha256": "577d98f24e636ee28d48cddede2f06c6ff77ce580032eafd870efaaa45873e51"
+    },
+    {
+      "task": "geometry-e3ef2d7158",
+      "problems": [],
+      "archive_sha256": "a539031f44422b6af354f38dd07b5c3d39ee1e6eca1bab00f4c7af5aac382476"
+    },
+    {
+      "task": "integrated-25be5ac4e3",
+      "problems": [],
+      "archive_sha256": "c5ea1ab77a4935b4dd2dd8c0f4a7eb7fbd1c637655afca77f4d587481b51c967"
+    },
+    {
+      "task": "integrated-25c12f9992",
+      "problems": [],
+      "archive_sha256": "02531f2da5deebdaa016ccd780150a3cc3a41f4a90333caa747747dcf837d1e8"
+    },
+    {
+      "task": "integrated-436ccfa9bd",
+      "problems": [],
+      "archive_sha256": "56f444a03924a8f29d14013b4b49f37c70264065dedb0d73ac89ac87a47dd7e4"
+    },
+    {
+      "task": "integrated-50fa2a5962",
+      "problems": [],
+      "archive_sha256": "5dc647b9885f15a925da5ae20cac9a2ce1c3bc064388813c638a0306d6f37cfe"
+    }
+  ]
+}

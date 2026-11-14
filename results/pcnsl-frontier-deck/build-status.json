@@ -1,0 +1,603 @@
+{
+  "deck": "PCNSL_FRONTIER.pptx",
+  "status": "final",
+  "evidence_state": "Final evidence refresh after concurrent jobs: FINALIZED pilot report, strict replay, 16-task v2 packaging validation, hosted-release baseline and final implementation review",
+  "finalized_marker": "Bounded model round complete; see REPORT.md and summary.json.",
+  "built_utc": "2026-11-14T21:02:48+00:00",
+  "author": "Claude (claude-opus-5-5) via Jin's build-pptx skill; shared skill files not modified",
+  "builder": {
+    "skill": "/home/jkwei/arcadia/superstack/skills/build-pptx",
+    "build_py_sha256": "3352cb3dfc108e651a58b9de8701b159252a546bac11abd215f5744f0c8566ee",
+    "branding_sha256": "069c488d37a9fd83781492cac2c313e57e1ee4cfd0989f26162f0781855b2c11",
+    "python": "python3.12 with PYTHONPATH=/tmp/vals-deck-pydeps (python-pptx 1.0.2, matplotlib 3.11.2)",
+    "flags": "--use-blocks=never (named layouts only)",
+    "note": "build.py has no --qa flag; QA was run separately as recorded below",
+    "rebuild": "bash results/pcnsl-frontier-deck/scripts/build_deck.sh && python3 results/pcnsl-frontier-deck/scripts/update_build_status.py (from repo root)"
+  },
+  "slides": {
+    "total": 25,
+    "content": 17,
+    "section_dividers": 6,
+    "cover_and_end": 2,
+    "main_content_slides": 13,
+    "appendix_content_slides": 4,
+    "layouts": [
+      [
+        "divider-h1-background-and-framing",
+        "section-divider"
+      ],
+      [
+        "h1-background-and-framing/h2-the-ask-an-eval-on-valkyrie-that-frontier-models-still-get-wrong",
+        "cards-with-takeaway"
+      ],
+      [
+        "h1-background-and-framing/h2-what-we-score-valid-research-artifacts-not-mutation-predictability",
+        "figure-with-aside"
+      ],
+      [
+        "h1-background-and-framing/h2-four-data-objects-provenance-stays-separate",
+        "table-with-takeaway"
+      ],
+      [
+        "h1-background-and-framing/h2-hosted-v1-0-inventory-what-the-archive-actually-contains",
+        "stat-callouts-right"
+      ],
+      [
+        "h1-background-and-framing/h2-prior-work-exists-our-contribution-is-narrow",
+        "table-with-takeaway"
+      ],
+      [
+        "divider-h1-benchmark-design",
+        "section-divider"
+      ],
+      [
+        "h1-benchmark-design/h2-thirty-candidate-mechanisms-a-catalog-not-thirty-failing-tasks",
+        "content-image-only"
+      ],
+      [
+        "h1-benchmark-design/h2-three-repair-families-plus-one-integrated-audit",
+        "cards-with-takeaway"
+      ],
+      [
+        "h1-benchmark-design/h2-how-an-attempt-is-scored",
+        "content-image-only"
+      ],
+      [
+        "divider-h1-results",
+        "section-divider"
+      ],
+      [
+        "h1-results/h2-pilot-results-every-attempt-passed",
+        "stat-callouts-right"
+      ],
+      [
+        "h1-results/h2-both-models-passed-every-task",
+        "table-with-takeaway"
+      ],
+      [
+        "h1-results/h2-hosted-release-baseline-myd88-0-67-cd79b-0-44",
+        "figure-with-aside-horizontal"
+      ],
+      [
+        "divider-h1-valkyrie-readiness-and-limitations",
+        "section-divider"
+      ],
+      [
+        "h1-valkyrie-readiness-and-limitations/h2-execution-evidence-ladder",
+        "table-with-takeaway"
+      ],
+      [
+        "divider-h1-decision-and-next-steps",
+        "section-divider"
+      ],
+      [
+        "h1-decision-and-next-steps/h2-next-steps-readiness-decision-and-next-experiment",
+        "conclusions"
+      ],
+      [
+        "divider-h1-appendix",
+        "section-divider"
+      ],
+      [
+        "h1-appendix/h2-appendix-a-pcnsl-sources-and-standards",
+        "cards-grid"
+      ],
+      [
+        "h1-appendix/h2-appendix-b-agent-evaluation-sources",
+        "cards-grid"
+      ],
+      [
+        "h1-appendix/h2-appendix-c-limitations-and-provenance",
+        "cards-grid"
+      ],
+      [
+        "h1-appendix/h2-appendix-d-historical-33-patient-baseline-context",
+        "figure-with-aside-horizontal"
+      ]
+    ],
+    "composition_or_freeform": [],
+    "changes_this_refresh": [
+      "New measured slide: hosted-release-only baseline (fig_hosted_baseline.png, figure-with-aside-horizontal)",
+      "Historical 33-patient schematic moved from Results to Appendix D",
+      "Execution ladder: 16 archives incl. integrated; strict replay row; grader review/tests row",
+      "Pilot tiles: strict replay 10/10 submissions, 40 fixtures, 0 model calls; historical Opus round marked not pooled",
+      "Ask, data-object, conclusions, Appendix C and speaker notes updated to final evidence"
+    ]
+  },
+  "qa": {
+    "render": "LibreOffice headless (/tmp/lo-qa/bin/soffice, private profile) -> PDF; pymupdf pdftoppm stand-in -> PNG at 110 dpi",
+    "pdf_pages": 25,
+    "png_previews": 25,
+    "shape_bounds_check": {
+      "out_of_bounds_shapes": [
+        {
+          "slide": 2,
+          "shape": "TextBox 10"
+        },
+        {
+          "slide": 8,
+          "shape": "TextBox 10"
+        },
+        {
+          "slide": 12,
+          "shape": "TextBox 10"
+        },
+        {
+          "slide": 16,
+          "shape": "TextBox 10"
+        },
+        {
+          "slide": 18,
+          "shape": "TextBox 10"
+        },
+        {
+          "slide": 20,
+          "shape": "TextBox 10"
+        }
+      ],
+      "interpretation": "Re-checked after final refresh: only the footer textbox on the 6 section-divider slides extends past the slide edge (shared builder divider template, unmodified); footer text fully visible; no content shapes out of bounds."
+    },
+    "speaker_notes": {
+      "slides_with_notes": 18,
+      "slides_without_notes": [
+        2,
+        8,
+        12,
+        16,
+        18,
+        20,
+        25
+      ],
+      "without_notes_reason": "section dividers and closing slide",
+      "unused_note_sections": [],
+      "note": "with_notes includes the cover slide plus all content slides, including the new hosted-baseline slide and Appendix D"
+    },
+    "visual_review": [
+      "All 24 previews read with the image-capable Read tool (contact sheets + per-slide checks).",
+      "Fixed after review: duplicated callout text in 4th family card; lowercase conclusion card bodies; overlapping header/labels in pilot and mechanism figures; pilot chart text too small (rebuilt compact chart); stale pre-final status text; table header seed label.",
+      "Final pass: no visible clipping or overlap found. Residual: cards on the ask/family/appendix slides leave empty space below short text (layout default).",
+      "Final evidence refresh: changed slides inspected at full size (ask, data objects, pilot results, both-models table, new hosted-baseline slide, execution ladder, next steps, Appendix C, Appendix D).",
+      "Fixed during refresh: hosted-baseline figure legend overlapping axis label; new-slide and Appendix D titles wrapping to two lines (shortened). No remaining clipping or overlap found in inspected slides."
+    ],
+    "not_checked": [
+      "Rendering in Microsoft PowerPoint/Keynote (only LibreOffice); Geist fonts must be installed on the presenting machine."
+    ]
+  },
+  "evidence_rules_applied": [
+    "No frontier failure claimed; new round 12/12 attempts passed (10 frozen + 2 exploratory endpoint), including both integrated held-out seed 101 attempts.",
+    "Fixtures presented as replays of one submission, not attempts or patients; the earlier 12 Opus-only attempts are a separate round, not pooled.",
+    "Strict replay: 10/10 frozen submissions, 40 fixtures, 0 new model calls; limits 8 CPU s / 12 wall s / 512 MiB / 1 MB accepted JSON.",
+    "Packaging: 16 archives (endpoint, claims, geometry, integrated × 2 seeds × flawed/valid) passed SDK validation; labeled not execution; root/container and Valkyrie execution not established.",
+    "Validation: 60 local tests (59 passed, 1 numerical skipped locally; that test passed within FAC's separate 10/10 suite); overlapping suites not summed.",
+    "Hosted-release baseline: 63 patients, 10 features, fixed C=1 logreg, train-fold-only preprocessing, 5-fold CV × 3 prespecified seeds; seed range labeled not a CI; endpoint labeled reported qualifying alteration vs no qualifying report (not wild type); IRF4 excluded; timing unadjudicated; no score flipping, external-validation, clinical-utility or frontier-failure claim; kept separate from the historical 33-patient baseline.",
+    "Codex/GPT-6 Astra identity labeled request-pinned (no response model ID); Claude response-confirmed claude-opus-5-5.",
+    "No Valkyrie run ID, upload or submission implied; hosted runs and root/provider path pending access.",
+    "Hosted archive, Box candidate, internal pipeline and synthetic tasks kept separate; no private object labeled public.",
+    "No novelty-first claim; judging criteria not invented (demo-based per vals.ai/hackathon)."
+  ],
+  "figures": {
+    "fig_credit_matrix.png": "schematic; scoring principle from docs/research/benchmark-design.md",
+    "fig_hosted_counts.png": {
+      "measured_source": "pcnsl/results/20261114-hosted-release/aggregate_inventory.json:cohort_coverage.complete_spatial_one_sample_gene_counts",
+      "values": {
+        "MYD88": {
+          "any_listed": 47,
+          "reported_pathogenic": 46
+        },
+        "CDKN2A": {
+          "any_listed": 38,
+          "reported_pathogenic": 36
+        },
+        "CD79B": {
+          "any_listed": 22,
+          "reported_pathogenic": 20
+        },
+        "CARD11": {
+          "any_listed": 17,
+          "reported_pathogenic": 11
+        },
+        "BTG1": {
+          "any_listed": 21,
+          "reported_pathogenic": 7
+        },
+        "IRF4": {
+          "any_listed": 9,
+          "reported_pathogenic": 2
+        }
+      }
+    },
+    "fig_mechanism_map.png": {
+      "type": "schematic",
+      "catalog": "docs/research/benchmark-design.md B01-B30",
+      "grouping_and_exercised_mapping": "author's judgement from repair_evals/cases.py and integrated.py protocol text",
+      "exercised": {
+        "B02": "endpoint",
+        "B03": "endpoint",
+        "B04": "endpoint",
+        "B06": "endpoint",
+        "B08": "claims",
+        "B13": "claims",
+        "B14": "claims",
+        "B15": "claims",
+        "B16": "claims",
+        "B17": "claims",
+        "B18": "claims",
+        "B09": "geometry",
+        "B10": "geometry",
+        "B11": "geometry",
+        "B01": "integrated",
+        "B28": "replay",
+        "B29": "clean ctrl"
+      }
+    },
+    "fig_eval_protocol.png": "schematic; harness from scripts/run_repair_pilot.py manifests (timeout 600 s, effort high)",
+    "fig_pilot_results.png": {
+      "type": "measured",
+      "attempts": [
+        {
+          "id": "endpoint-4dd7bb2938",
+          "family": "endpoint",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 82.21,
+          "source": "results/20261114-repair-pilots/pilot-dev-v1.json",
+          "exploratory": true,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "endpoint-4dd7bb2938",
+          "family": "endpoint",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 110.56,
+          "source": "results/20261114-repair-pilots/pilot-dev-v1.json",
+          "exploratory": true,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "claims-547ac71f72",
+          "family": "claims",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 70.39,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "claims-547ac71f72",
+          "family": "claims",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 131.43,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "geometry-4978297b5c",
+          "family": "geometry",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 75.18,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "geometry-4978297b5c",
+          "family": "geometry",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 114.97,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-436ccfa9bd",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 95.87,
+          "source": "results/20261114-repair-pilots/pilot-integrated-dev-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-436ccfa9bd",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 163.12,
+          "source": "results/20261114-repair-pilots/pilot-integrated-dev-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-50fa2a5962",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 101,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 89.28,
+          "source": "results/20261114-repair-pilots/pilot-integrated-heldout-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-50fa2a5962",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 101,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 133.03,
+          "source": "results/20261114-repair-pilots/pilot-integrated-heldout-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-25c12f9992",
+          "family": "integrated",
+          "variant": "valid",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 200.33,
+          "source": "results/20261114-repair-pilots/pilot-integrated-valid-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-25c12f9992",
+          "family": "integrated",
+          "variant": "valid",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 159.94,
+          "source": "results/20261114-repair-pilots/pilot-integrated-valid-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        }
+      ]
+    },
+    "fig_endpoint_schematic.png": {
+      "type": "schematic layout of measured counts",
+      "source": "pcnsl/results/20261114-box-matched-v2/REPORT.md (IRF4: legacy 4/33, 4 folds; reported-pathogenic 2/33, 2 folds)"
+    },
+    "fig_hosted_baseline.png": {
+      "type": "measured",
+      "source": "pcnsl/results/20261114-hosted-release/baseline.aggregate.json",
+      "design": {
+        "features": 10,
+        "folds": 5,
+        "hyperparameter_search": false,
+        "logreg": {
+          "C": 1.0,
+          "max_iter": 1000,
+          "solver": "liblinear"
+        },
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "train_fold_only_imputation_and_scaling": true,
+        "unique_patient_row_unit": true
+      },
+      "excluded_targets": {
+        "IRF4": {
+          "no_qualifying_report": 61,
+          "positive": 2,
+          "reason": "Outside prespecified two-target run or fewer than five patients in one class"
+        }
+      },
+      "values": {
+        "MYD88": {
+          "spatial_logreg_by_seed": {
+            "11": 0.6829,
+            "23": 0.6547,
+            "37": 0.6675
+          },
+          "mean": 0.6684,
+          "seed_range": [
+            0.6547,
+            0.6829
+          ],
+          "training_prevalence_by_seed": {
+            "11": 0.4565,
+            "23": 0.4565,
+            "37": 0.4565
+          },
+          "positive": 46,
+          "no_qualifying_report": 17,
+          "patients": 63
+        },
+        "CD79B": {
+          "spatial_logreg_by_seed": {
+            "11": 0.4314,
+            "23": 0.4605,
+            "37": 0.4384
+          },
+          "mean": 0.4434,
+          "seed_range": [
+            0.4314,
+            0.4605
+          ],
+          "training_prevalence_by_seed": {
+            "11": 0.486,
+            "23": 0.486,
+            "37": 0.486
+          },
+          "positive": 20,
+          "no_qualifying_report": 43,
+          "patients": 63
+        }
+      },
+      "note": "Seed range summarizes three correlated runs; it is not a confidence interval. No score flipping."
+    }
+  },
+  "inputs_sha256": {
+    "docs/research/benchmark-design.md": "2622430624461fe05842798f464a6f4d64b5ce9a16b12f993bf18716d6f4a385",
+    "docs/research/pcnsl-literature.md": "fe829bf77a3a0766ea890eba83421dab498e5dd3a8054def1c5cbcd1c29069ce",
+    "docs/research/pcnsl-sources.json": "d7e2e599cde333d859e9261f0b606309849fe02bae34008eac0af79ed74de53b",
+    "docs/research/evaluation-literature.md": "a7dc34a36b0e8a178c2537b4f85489d87dfe04a2f797f8d89497a7d8422b7ebc",
+    "docs/research/evaluation-sources.json": "b3ff5d838872ab297f815ffefa90efdf6ca07ba34671f508ce2b255033dc8b8a",
+    "docs/research/literature-search-method.md": "456b603b78f8a5ec8a88d1b416a3d1a54fe3a179a24325e4aecffcf30526b9e2",
+    "docs/research/data-scope.md": "b54da6d9ca3de8cceec24f15269d4ddddb6ba17e5d8f93605dde72a2d1dce73e",
+    "docs/research/valkyrie-integration.md": "c242320215f57b4ce1a94a20746437b7e0844c73b27d47125b009d1a1de1b1e9",
+    "results/20261114-repair-pilots/FINALIZED": "b3d195122f68e4e59f31027f01515706eca9cb0f02595d2669e145e697c21601",
+    "results/20261114-repair-pilots/REPORT.md": "4e647c99e8e57201399ebd5f445c072177a79db6551519d715ef059cf6bd1def",
+    "results/20261114-repair-pilots/pilot-dev-v1.json": "e9adb7935953dcfe44888094f64dffe6ede2f8c6bf0fded8d7d9d375bf0ae2ab",
+    "results/20261114-repair-pilots/pilot-dev-v2.json": "08d28761413212bd074993d5d186e2acec955347f0351245ffb05b7f4dd648b2",
+    "results/20261114-repair-pilots/pilot-integrated-dev-v1.json": "815102be7f6ea8e58927547fcef7c59725a68ed5e4e261dae411ddad47c74d23",
+    "results/20261114-repair-pilots/pilot-integrated-heldout-v1.json": "29e90b1e5e00595b638ca0eb4d55480568a1a7d9715f3878313973ea3d95a9db",
+    "results/20261114-repair-pilots/pilot-integrated-valid-v1.json": "74b729475fa5837e5a46d36d27836d2d1c2a2bca53dea0366ce54237e637d23d",
+    "results/20261114-repair-pilots/strict-replay.json": "90c6455f5ceeb8eef7073c02129a3bdeba90a35e19a9481de5ceebb1e510e029",
+    "results/20261114-repair-pilots/summary.json": "2fcd21e0a4af98f0cf9c9aae1f95d2706912c84603b95c7b2269b5f85538ff67",
+    "pcnsl/results/20261114-hosted-release/acquisition.json": "6f0e13bc71e9d2b75609acaab3b904058e0fc119787a6330a554c3b57eecd3a0",
+    "pcnsl/results/20261114-hosted-release/aggregate_inventory.json": "900550612f1fe4fec1bc2086090f22ad03fc9235c313a06f4b7cf3689772d80c",
+    "results/20261114-repair-suite-v1-packaging/validation.json": "85d072e1ed770796bdcbdc700d7536c31afcd33211eb6e0e40d454abdf24a362",
+    "pcnsl/results/20261114-box-matched-v2/REPORT.md": "6c93dc23dcbd4cd9b245bcb665eb56cd75c2db09866709189686ac2c8a61a5ba",
+    "repair_evals/cases.py": "ea5633ac325fe31b9ef8b22644d8d80084792a8a3a7139abe249a0a9979b1b00",
+    "repair_evals/integrated.py": "94eaabb9a8cdcfed4959f47719b01cae047a95ac3d858b4a7e289412c6445135",
+    "results/20261114-repair-suite-v2-packaging/validation.json": "b7444e7fd452b07cd2d2fca2ebde46f0b857e83657d3cf71d4289e1c72b75212",
+    "results/20261114-repair-suite-v2-packaging/preflight.json": "29fe1d80904f9074db065aa692ba3f4d9da9f5c84e56c02ab9e3eab114130762",
+    "pcnsl/results/20261114-hosted-release/REPORT.md": "716f242facb7bc4ba9c40d3c92e690769b2f1e8ae9c35186b81607f49cba79d6",
+    "pcnsl/results/20261114-hosted-release/baseline.aggregate.json": "b7ead0d1a45a4cba40926181a16a6fa9e12979fef2142abcf1f99ff1728ceae7",
+    "pcnsl/results/20261114-hosted-release/baseline-validation.json": "18e11382f516ca64171d5a4b8624d6b053f421ef1726744f36b9287e6a6a92a8",
+    "docs/research/implementation-review.md": "baeea9e83e5237b6ea17bb3cecdfa9366963a8241a4da8c09dda643e092c9359"
+  },
+  "outputs_sha256": {
+    "PCNSL_FRONTIER.pptx": "6af5cb225ed507dcbac7da74a4a2be131872068adb81a5e8aff09061188a75bc",
+    "PCNSL_FRONTIER.md": "99126d90235eb4c5792e0750b34be7eccb72aacd2905c8b86727713a38e09a94",
+    "PCNSL_FRONTIER.md.layout.json": "f0b1581f8c1a39c5a3204a8838b574a9467de3db68d3563cdf15d90608a589e4",
+    "SPEAKER_NOTES.md": "90b2337f583b371dfce27bfe2110c2ac4a6e7009adaf5de78d6b5cc8e0e60eca",
+    "previews/PCNSL_FRONTIER.pdf": "57bd9e7066599ae63c3de0a5603967dfb057b7bca7aa0ebd51ea251429ebbb77",
+    "qa/notes.json": "003029da408225a4d5b5f9eb4c7e75471a37c9aca0888acfc347cc560476f93b",
+    "figures/figures_provenance.json": "1fa16452d416ef5564c5220ebfd146ca3673c1013a8afb7e1debbc60a4b01ad5",
+    "figures/fig_credit_matrix.png": "8fcb45398a273052e9106a813f1ffdc73f8da3ce4aaa9353da5596a499c582a8",
+    "figures/fig_endpoint_schematic.png": "bfee6aeab2b56553728343796965decd30b5921fbc1c65bb3a87bbdd799d6c3a",
+    "figures/fig_eval_protocol.png": "11e00765cf956b329a4cb9f08a59503ac1194df65b98c834f87048989483efa0",
+    "figures/fig_hosted_baseline.png": "6435da181daefe8f1b54923148f963fd7ec13e0aa76e10606ebd9c45fe880c70",
+    "figures/fig_hosted_counts.png": "0931eb025f8eea5410a378e57c953e1e95d7043c7801bb5812bd5b916701b35d",
+    "figures/fig_mechanism_map.png": "b9bab7aeb790a85d1f32340cc38f48062922bf9fd600fc199781ff494bbb619b",
+    "figures/fig_pilot_results.png": "d2d5bb639cbdff189a5fade623b200ebd8a6afeb25b76d1ab42d619157f3df72",
+    "scripts/add_notes.py": "660d50148f5580b7924cd010d3703907ceabb4805c42e02e7693bf1261d96e96",
+    "scripts/build_deck.sh": "ff73b360767e130fff06b190a94ec6f98d7a1ecf260e9a01b258382a665a0f08",
+    "scripts/make_figures.py": "dfe6f99f57af4586a1d2046446b363cbeb30b0ef20f17631d98fad88059a4ef9",
+    "scripts/patch_sidecar.py": "f0ad80974643057d60e78dda121770c387f0f4ddb544b1f647ddb37a9df887b2",
+    "scripts/update_build_status.py": "619e56b9cedc213ada10f136b0106f1ede8de3da56de6d9b68d6a6e9df29841a"
+  },
+  "preview_pngs": [
+    "previews/slide-01.png",
+    "previews/slide-02.png",
+    "previews/slide-03.png",
+    "previews/slide-04.png",
+    "previews/slide-05.png",
+    "previews/slide-06.png",
+    "previews/slide-07.png",
+    "previews/slide-08.png",
+    "previews/slide-09.png",
+    "previews/slide-10.png",
+    "previews/slide-11.png",
+    "previews/slide-12.png",
+    "previews/slide-13.png",
+    "previews/slide-14.png",
+    "previews/slide-15.png",
+    "previews/slide-16.png",
+    "previews/slide-17.png",
+    "previews/slide-18.png",
+    "previews/slide-19.png",
+    "previews/slide-20.png",
+    "previews/slide-21.png",
+    "previews/slide-22.png",
+    "previews/slide-23.png",
+    "previews/slide-24.png",
+    "previews/slide-25.png"
+  ],
+  "limitations": [
+    "Mechanism map grouping/exercised mapping is the deck author's reading of protocol text.",
+    "Literature and data claims are taken from the repo research docs; primary sources were not re-fetched for this deck.",
+    "Speaker-note cost figure is the Claude CLI usage estimate from summary.json, not a billing statement.",
+    "Agent workspace files agent-stderr.txt / agent-trace.jsonl pre-existed in this directory and were left untouched.",
+    "Hosted-release baseline numbers are copied from the aggregate JSON produced on FAC; patient-level data were not read for this deck."
+  ],
+  "data_handling": "Only aggregate reports and synthetic-task source were read; no raw patient files, credentials, external posting or model calls with patient data.",
+  "superseded_inputs_note": "results/20261114-repair-suite-v1-packaging/validation.json (12 archives) is retained as a historical input only; deck now cites the 16-archive v2 validation."
+}

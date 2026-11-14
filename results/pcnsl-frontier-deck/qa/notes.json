@@ -1,0 +1,108 @@
+{
+ "slides": 25,
+ "with_notes": [
+  {
+   "slide": 1,
+   "notes_key": "Do research agents make valid PCNSL claims?"
+  },
+  {
+   "slide": 3,
+   "notes_key": "The ask"
+  },
+  {
+   "slide": 4,
+   "notes_key": "What we score"
+  },
+  {
+   "slide": 5,
+   "notes_key": "Four data objects"
+  },
+  {
+   "slide": 6,
+   "notes_key": "Hosted v1.0 inventory"
+  },
+  {
+   "slide": 7,
+   "notes_key": "Prior work exists"
+  },
+  {
+   "slide": 9,
+   "notes_key": "Thirty candidate mechanisms"
+  },
+  {
+   "slide": 10,
+   "notes_key": "Three repair families"
+  },
+  {
+   "slide": 11,
+   "notes_key": "How an attempt is scored"
+  },
+  {
+   "slide": 13,
+   "notes_key": "Pilot results"
+  },
+  {
+   "slide": 14,
+   "notes_key": "Both models passed every task"
+  },
+  {
+   "slide": 15,
+   "notes_key": "Hosted-release baseline"
+  },
+  {
+   "slide": 17,
+   "notes_key": "Execution evidence ladder"
+  },
+  {
+   "slide": 19,
+   "notes_key": "Next steps"
+  },
+  {
+   "slide": 21,
+   "notes_key": "Appendix A"
+  },
+  {
+   "slide": 22,
+   "notes_key": "Appendix B"
+  },
+  {
+   "slide": 23,
+   "notes_key": "Appendix C"
+  },
+  {
+   "slide": 24,
+   "notes_key": "Appendix D"
+  }
+ ],
+ "without_notes": [
+  {
+   "slide": 2,
+   "first_text": "Overview"
+  },
+  {
+   "slide": 8,
+   "first_text": "Methodology"
+  },
+  {
+   "slide": 12,
+   "first_text": "Results"
+  },
+  {
+   "slide": 16,
+   "first_text": "Validation"
+  },
+  {
+   "slide": 18,
+   "first_text": "Overview"
+  },
+  {
+   "slide": 20,
+   "first_text": "Overview"
+  },
+  {
+   "slide": 25,
+   "first_text": "Thanks"
+  }
+ ],
+ "unused_sections": []
+}

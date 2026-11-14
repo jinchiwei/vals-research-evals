@@ -1,0 +1,319 @@
+{
+  "figures": {
+    "fig_credit_matrix.png": "schematic; scoring principle from docs/research/benchmark-design.md",
+    "fig_hosted_counts.png": {
+      "measured_source": "pcnsl/results/20261114-hosted-release/aggregate_inventory.json:cohort_coverage.complete_spatial_one_sample_gene_counts",
+      "values": {
+        "MYD88": {
+          "any_listed": 47,
+          "reported_pathogenic": 46
+        },
+        "CDKN2A": {
+          "any_listed": 38,
+          "reported_pathogenic": 36
+        },
+        "CD79B": {
+          "any_listed": 22,
+          "reported_pathogenic": 20
+        },
+        "CARD11": {
+          "any_listed": 17,
+          "reported_pathogenic": 11
+        },
+        "BTG1": {
+          "any_listed": 21,
+          "reported_pathogenic": 7
+        },
+        "IRF4": {
+          "any_listed": 9,
+          "reported_pathogenic": 2
+        }
+      }
+    },
+    "fig_mechanism_map.png": {
+      "type": "schematic",
+      "catalog": "docs/research/benchmark-design.md B01-B30",
+      "grouping_and_exercised_mapping": "author's judgement from repair_evals/cases.py and integrated.py protocol text",
+      "exercised": {
+        "B02": "endpoint",
+        "B03": "endpoint",
+        "B04": "endpoint",
+        "B06": "endpoint",
+        "B08": "claims",
+        "B13": "claims",
+        "B14": "claims",
+        "B15": "claims",
+        "B16": "claims",
+        "B17": "claims",
+        "B18": "claims",
+        "B09": "geometry",
+        "B10": "geometry",
+        "B11": "geometry",
+        "B01": "integrated",
+        "B28": "replay",
+        "B29": "clean ctrl"
+      }
+    },
+    "fig_eval_protocol.png": "schematic; harness from scripts/run_repair_pilot.py manifests (timeout 600 s, effort high)",
+    "fig_pilot_results.png": {
+      "type": "measured",
+      "attempts": [
+        {
+          "id": "endpoint-4dd7bb2938",
+          "family": "endpoint",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 82.21,
+          "source": "results/20261114-repair-pilots/pilot-dev-v1.json",
+          "exploratory": true,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "endpoint-4dd7bb2938",
+          "family": "endpoint",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 110.56,
+          "source": "results/20261114-repair-pilots/pilot-dev-v1.json",
+          "exploratory": true,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "claims-547ac71f72",
+          "family": "claims",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 70.39,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "claims-547ac71f72",
+          "family": "claims",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 131.43,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "geometry-4978297b5c",
+          "family": "geometry",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 75.18,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "geometry-4978297b5c",
+          "family": "geometry",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 114.97,
+          "source": "results/20261114-repair-pilots/pilot-dev-v2.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-436ccfa9bd",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 95.87,
+          "source": "results/20261114-repair-pilots/pilot-integrated-dev-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-436ccfa9bd",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 163.12,
+          "source": "results/20261114-repair-pilots/pilot-integrated-dev-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-50fa2a5962",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 101,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 89.28,
+          "source": "results/20261114-repair-pilots/pilot-integrated-heldout-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-50fa2a5962",
+          "family": "integrated",
+          "variant": "flawed",
+          "seed": 101,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 133.03,
+          "source": "results/20261114-repair-pilots/pilot-integrated-heldout-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-25c12f9992",
+          "family": "integrated",
+          "variant": "valid",
+          "seed": 11,
+          "backend": "claude",
+          "requested_model": "claude-opus-5-5",
+          "observed_model_ids": [
+            "claude-opus-5-5"
+          ],
+          "classification": "pass",
+          "elapsed_seconds": 200.33,
+          "source": "results/20261114-repair-pilots/pilot-integrated-valid-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        },
+        {
+          "id": "integrated-25c12f9992",
+          "family": "integrated",
+          "variant": "valid",
+          "seed": 11,
+          "backend": "codex",
+          "requested_model": "gpt-6-astra",
+          "observed_model_ids": [],
+          "classification": "pass",
+          "elapsed_seconds": 159.94,
+          "source": "results/20261114-repair-pilots/pilot-integrated-valid-v1.json",
+          "exploratory": false,
+          "fixtures": "4/4"
+        }
+      ]
+    },
+    "fig_endpoint_schematic.png": {
+      "type": "schematic layout of measured counts",
+      "source": "pcnsl/results/20261114-box-matched-v2/REPORT.md (IRF4: legacy 4/33, 4 folds; reported-pathogenic 2/33, 2 folds)"
+    },
+    "fig_hosted_baseline.png": {
+      "type": "measured",
+      "source": "pcnsl/results/20261114-hosted-release/baseline.aggregate.json",
+      "design": {
+        "features": 10,
+        "folds": 5,
+        "hyperparameter_search": false,
+        "logreg": {
+          "C": 1.0,
+          "max_iter": 1000,
+          "solver": "liblinear"
+        },
+        "seeds": [
+          11,
+          23,
+          37
+        ],
+        "train_fold_only_imputation_and_scaling": true,
+        "unique_patient_row_unit": true
+      },
+      "excluded_targets": {
+        "IRF4": {
+          "no_qualifying_report": 61,
+          "positive": 2,
+          "reason": "Outside prespecified two-target run or fewer than five patients in one class"
+        }
+      },
+      "values": {
+        "MYD88": {
+          "spatial_logreg_by_seed": {
+            "11": 0.6829,
+            "23": 0.6547,
+            "37": 0.6675
+          },
+          "mean": 0.6684,
+          "seed_range": [
+            0.6547,
+            0.6829
+          ],
+          "training_prevalence_by_seed": {
+            "11": 0.4565,
+            "23": 0.4565,
+            "37": 0.4565
+          },
+          "positive": 46,
+          "no_qualifying_report": 17,
+          "patients": 63
+        },
+        "CD79B": {
+          "spatial_logreg_by_seed": {
+            "11": 0.4314,
+            "23": 0.4605,
+            "37": 0.4384
+          },
+          "mean": 0.4434,
+          "seed_range": [
+            0.4314,
+            0.4605
+          ],
+          "training_prevalence_by_seed": {
+            "11": 0.486,
+            "23": 0.486,
+            "37": 0.486
+          },
+          "positive": 20,
+          "no_qualifying_report": 43,
+          "patients": 63
+        }
+      },
+      "note": "Seed range summarizes three correlated runs; it is not a confidence interval. No score flipping."
+    }
+  }
+}

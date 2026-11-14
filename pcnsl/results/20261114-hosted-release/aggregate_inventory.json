@@ -1,0 +1,727 @@
+{
+  "audit_scope": "Read-only aggregate inventory; not an identity/privacy clearance",
+  "box_comparison": {
+    "features": {
+      "ambiguous": 0,
+      "different": 0,
+      "examined": 33,
+      "identical": 33,
+      "missing": 0
+    },
+    "interpretation": "Only inspected files are compared byte-for-byte. No inference about the rest of either release or model-use eligibility.",
+    "metadata": {
+      "ambiguous": 0,
+      "different": 0,
+      "examined": 5,
+      "identical": 5,
+      "missing": 0
+    },
+    "whole_release_equivalence_established": false
+  },
+  "clinical": {
+    "biopsy_and_diagnosis_dates.csv": {
+      "columns": [
+        "BiopsyDate",
+        "BiopsyDateMinusImageDate",
+        "DiagnosisDate",
+        "DiagnosisDateMinusImageDate",
+        "ImageDate",
+        "accessions",
+        "patientdurablekey"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "BiopsyDate": 64,
+        "BiopsyDateMinusImageDate": 64,
+        "DiagnosisDate": 150,
+        "DiagnosisDateMinusImageDate": 150,
+        "ImageDate": 150,
+        "accessions": 150,
+        "patientdurablekey": 150
+      },
+      "rows": 150,
+      "sha256": "ca6a996cccfba5de338cae2a144260231985161cccda8a4a6cf8e6f1695933f2",
+      "subject_field": "patientdurablekey",
+      "subjects": 150
+    },
+    "data_dictionary_clinical.csv": {
+      "columns": [
+        "column name",
+        "description",
+        "example values",
+        "spreadsheet"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "column name": 107,
+        "description": 107,
+        "example values": 106,
+        "spreadsheet": 107
+      },
+      "rows": 107,
+      "sha256": "8c152735e036818646e273ee7110facad951f508a4ccee766014d2fd3550faaa",
+      "subject_field": null,
+      "subjects": null
+    },
+    "data_dictionary_imaging.csv": {
+      "columns": [
+        "description",
+        "directory",
+        "example values",
+        "file type",
+        "filename pattern"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "description": 78,
+        "directory": 78,
+        "example values": 78,
+        "file type": 78,
+        "filename pattern": 17
+      },
+      "rows": 78,
+      "sha256": "4d3e19d26d84d6f713cf502747e8f6dfdf838f0bb045ff1e0adfd3bc99869321",
+      "subject_field": null,
+      "subjects": null
+    },
+    "demographics.csv": {
+      "columns": [
+        "BirthDate",
+        "Deathdate",
+        "Ethnicity",
+        "FirstRace",
+        "PreferredLanguage",
+        "SecondRace",
+        "Sex",
+        "SexualOrientation",
+        "patientdurablekey"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "BirthDate": 150,
+        "Deathdate": 40,
+        "Ethnicity": 150,
+        "FirstRace": 150,
+        "PreferredLanguage": 150,
+        "SecondRace": 5,
+        "Sex": 150,
+        "SexualOrientation": 150,
+        "patientdurablekey": 150
+      },
+      "rows": 150,
+      "sha256": "8339f41e249ebb0c95af24e3f0ea9d9b3e62edc10c918ccb173cdb16b51f223d",
+      "subject_field": "patientdurablekey",
+      "subjects": 150
+    },
+    "diagnosis_history.csv": {
+      "columns": [
+        "DiagnosisEventKey",
+        "DiagnosisKey",
+        "DiagnosisName",
+        "EndDateKey",
+        "EndDateKeyValue",
+        "StartDateKey",
+        "StartDateKeyValue",
+        "patientdurablekey"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "DiagnosisEventKey": 174174,
+        "DiagnosisKey": 174174,
+        "DiagnosisName": 174174,
+        "EndDateKey": 174174,
+        "EndDateKeyValue": 113724,
+        "StartDateKey": 174174,
+        "StartDateKeyValue": 173416,
+        "patientdurablekey": 174174
+      },
+      "rows": 174174,
+      "sha256": "4e8f88deb1f41c66d0bd6e3f6c30e2ea2cedf1d5d32898afd8bd6785f03fb1e3",
+      "subject_field": "patientdurablekey",
+      "subjects": 150
+    },
+    "medication_list_administered.csv": {
+      "columns": [
+        "AdministeringEmployeeKey",
+        "AdministrationDateKeyValue",
+        "AdministrationInstant",
+        "MedicationForm",
+        "MedicationGenericName",
+        "MedicationKey",
+        "MedicationName",
+        "MedicationPharmaceuticalClass",
+        "MedicationPharmaceuticalSubclass",
+        "MedicationRoute",
+        "MedicationStrength",
+        "MedicationTherapeuticClass",
+        "ScheduledAdministrationDateKeyValue",
+        "ScheduledAdministrationInstant",
+        "patientdurablekey"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "AdministeringEmployeeKey": 228110,
+        "AdministrationDateKeyValue": 228110,
+        "AdministrationInstant": 228110,
+        "MedicationForm": 228110,
+        "MedicationGenericName": 196836,
+        "MedicationKey": 228110,
+        "MedicationName": 228110,
+        "MedicationPharmaceuticalClass": 228110,
+        "MedicationPharmaceuticalSubclass": 228110,
+        "MedicationRoute": 228110,
+        "MedicationStrength": 192699,
+        "MedicationTherapeuticClass": 228110,
+        "ScheduledAdministrationDateKeyValue": 228110,
+        "ScheduledAdministrationInstant": 228110,
+        "patientdurablekey": 228110
+      },
+      "rows": 228110,
+      "sha256": "5d4efa3b1744bdd3d64f396d732f16e4c4b7802263379a58c29dc92c67fdc32c",
+      "subject_field": "patientdurablekey",
+      "subjects": 144
+    },
+    "medication_list_ordered.csv": {
+      "columns": [
+        "FinalVerificationDateKeyValue",
+        "MedicationForm",
+        "MedicationGenericName",
+        "MedicationName",
+        "MedicationPharmaceuticalClass",
+        "MedicationPharmaceuticalSubclass",
+        "MedicationRoute",
+        "MedicationStrength",
+        "MedicationTherapeuticClass",
+        "OrderedDateKeyValue",
+        "ReleaseDateKeyValue",
+        "StartDateKeyValue",
+        "StartTimeOfDayKey",
+        "StartTimeOfDayKeyValue",
+        "patientdurablekey"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "FinalVerificationDateKeyValue": 78743,
+        "MedicationForm": 119989,
+        "MedicationGenericName": 110186,
+        "MedicationName": 120047,
+        "MedicationPharmaceuticalClass": 120047,
+        "MedicationPharmaceuticalSubclass": 120047,
+        "MedicationRoute": 120000,
+        "MedicationStrength": 108122,
+        "MedicationTherapeuticClass": 120047,
+        "OrderedDateKeyValue": 104857,
+        "ReleaseDateKeyValue": 104857,
+        "StartDateKeyValue": 116277,
+        "StartTimeOfDayKey": 120047,
+        "StartTimeOfDayKeyValue": 116277,
+        "patientdurablekey": 120047
+      },
+      "rows": 120047,
+      "sha256": "bd08dbfb8054fc7c55abfb93a3f24baab187e11ce94cba7d912252b747bddb25",
+      "subject_field": "patientdurablekey",
+      "subjects": 149
+    },
+    "ucsf500_mutations.csv": {
+      "columns": [
+        "accessions",
+        "alteration",
+        "alternateallele",
+        "callsomatic",
+        "checkboxes",
+        "chromosome",
+        "cosmiccount",
+        "cosmicid",
+        "dbsnp",
+        "dbsnpsignificance",
+        "disease",
+        "evsaf",
+        "exacaf",
+        "exactotalalleles",
+        "exacvariantalleles",
+        "gene",
+        "geneticorigin",
+        "hgvsc",
+        "hgvsp",
+        "k1000genomesaf",
+        "microsatellitestatus",
+        "microsatellitetestedsites",
+        "microsatelliteunstablesites",
+        "msireported",
+        "normalfixation",
+        "np",
+        "oncotreecode",
+        "oncotreedx",
+        "orderdate",
+        "pathologistestimatedtumorfraction",
+        "patientdurablekey",
+        "pipelineid",
+        "qual",
+        "referenceallele",
+        "referencesequence",
+        "reportedalteration",
+        "start",
+        "testtype",
+        "tmbscore",
+        "tmbstatus",
+        "totalreads",
+        "tumoranatomic",
+        "tumorcollecteddate",
+        "tumorsampletype",
+        "tumorspecimenreceiveddate",
+        "ucsf500normn",
+        "ucsf500normt",
+        "ucsfpipeline",
+        "variantaf",
+        "variantcategory",
+        "variantclassification",
+        "variantreads",
+        "varianttype"
+      ],
+      "files": 1,
+      "nonempty_by_column": {
+        "accessions": 2469,
+        "alteration": 2469,
+        "alternateallele": 2239,
+        "callsomatic": 2399,
+        "checkboxes": 27,
+        "chromosome": 2414,
+        "cosmiccount": 846,
+        "cosmicid": 846,
+        "dbsnp": 1569,
+        "dbsnpsignificance": 555,
+        "disease": 2469,
+        "evsaf": 520,
+        "exacaf": 1228,
+        "exactotalalleles": 1228,
+        "exacvariantalleles": 1228,
+        "gene": 2459,
+        "geneticorigin": 2469,
+        "hgvsc": 2414,
+        "hgvsp": 2004,
+        "k1000genomesaf": 816,
+        "microsatellitestatus": 2469,
+        "microsatellitetestedsites": 2469,
+        "microsatelliteunstablesites": 2469,
+        "msireported": 2469,
+        "normalfixation": 0,
+        "np": 2414,
+        "oncotreecode": 2469,
+        "oncotreedx": 2469,
+        "orderdate": 2469,
+        "pathologistestimatedtumorfraction": 2469,
+        "patientdurablekey": 2469,
+        "pipelineid": 2469,
+        "qual": 2219,
+        "referenceallele": 2325,
+        "referencesequence": 2465,
+        "reportedalteration": 2469,
+        "start": 2414,
+        "testtype": 2469,
+        "tmbscore": 2412,
+        "tmbstatus": 2412,
+        "totalreads": 2404,
+        "tumoranatomic": 2469,
+        "tumorcollecteddate": 2469,
+        "tumorsampletype": 2469,
+        "tumorspecimenreceiveddate": 2469,
+        "ucsf500normn": 820,
+        "ucsf500normt": 843,
+        "ucsfpipeline": 2469,
+        "variantaf": 2399,
+        "variantcategory": 2414,
+        "variantclassification": 2469,
+        "variantreads": 2398,
+        "varianttype": 2469
+      },
+      "rows": 2469,
+      "sha256": "f63ed0a9d60a620c32378b920d0344cd575549e304f062c6e3677bcc28b03c15",
+      "subject_field": "patientdurablekey",
+      "subjects": 64
+    }
+  },
+  "cohort_coverage": {
+    "clinical_pairing_verified": false,
+    "complete_spatial_one_sample_gene_counts": {
+      "BCL6": {
+        "any_listed": 7,
+        "reported_pathogenic": 2
+      },
+      "BTG1": {
+        "any_listed": 21,
+        "reported_pathogenic": 7
+      },
+      "BTG2": {
+        "any_listed": 0,
+        "reported_pathogenic": 0
+      },
+      "CARD11": {
+        "any_listed": 17,
+        "reported_pathogenic": 11
+      },
+      "CD79B": {
+        "any_listed": 22,
+        "reported_pathogenic": 20
+      },
+      "CDKN2A": {
+        "any_listed": 38,
+        "reported_pathogenic": 36
+      },
+      "EP300": {
+        "any_listed": 8,
+        "reported_pathogenic": 2
+      },
+      "IRF4": {
+        "any_listed": 9,
+        "reported_pathogenic": 2
+      },
+      "LRP1B": {
+        "any_listed": 20,
+        "reported_pathogenic": 1
+      },
+      "MYD88": {
+        "any_listed": 47,
+        "reported_pathogenic": 46
+      },
+      "PIM1": {
+        "any_listed": 0,
+        "reported_pathogenic": 0
+      },
+      "PRKDC": {
+        "any_listed": 21,
+        "reported_pathogenic": 0
+      },
+      "TP53": {
+        "any_listed": 14,
+        "reported_pathogenic": 5
+      },
+      "ZFHX3": {
+        "any_listed": 24,
+        "reported_pathogenic": 0
+      }
+    },
+    "flair_summary_one_sample_gene_counts": {
+      "BCL6": {
+        "any_listed": 7,
+        "reported_pathogenic": 2
+      },
+      "BTG1": {
+        "any_listed": 21,
+        "reported_pathogenic": 7
+      },
+      "BTG2": {
+        "any_listed": 0,
+        "reported_pathogenic": 0
+      },
+      "CARD11": {
+        "any_listed": 17,
+        "reported_pathogenic": 11
+      },
+      "CD79B": {
+        "any_listed": 22,
+        "reported_pathogenic": 20
+      },
+      "CDKN2A": {
+        "any_listed": 38,
+        "reported_pathogenic": 36
+      },
+      "EP300": {
+        "any_listed": 8,
+        "reported_pathogenic": 2
+      },
+      "IRF4": {
+        "any_listed": 9,
+        "reported_pathogenic": 2
+      },
+      "LRP1B": {
+        "any_listed": 20,
+        "reported_pathogenic": 1
+      },
+      "MYD88": {
+        "any_listed": 47,
+        "reported_pathogenic": 46
+      },
+      "PIM1": {
+        "any_listed": 0,
+        "reported_pathogenic": 0
+      },
+      "PRKDC": {
+        "any_listed": 21,
+        "reported_pathogenic": 0
+      },
+      "TP53": {
+        "any_listed": 14,
+        "reported_pathogenic": 5
+      },
+      "ZFHX3": {
+        "any_listed": 24,
+        "reported_pathogenic": 0
+      }
+    },
+    "genomic_and_imaging_subjects": 64,
+    "genomic_with_complete_ten_spatial_features_and_one_sample_date": 63,
+    "genomic_with_flair_summary_and_one_sample_date": 63,
+    "genomic_with_flair_summary_subjects": 63,
+    "genomic_without_imaging_subjects": 0,
+    "interpretation": "File/record overlap only. One observed sample-date string is not proof of a unique specimen or correct scan pairing."
+  },
+  "files": {
+    "bytes": 17612455015,
+    "count": 3592,
+    "extensions": {
+      ".csv": 892,
+      ".json": 1200,
+      ".nii.gz": 1500
+    },
+    "symlinks_skipped": 0
+  },
+  "genomics": {
+    "assay_negative_denominator_verified": false,
+    "classification_counts": {
+      "Benign": 1,
+      "Likely Benign": 3,
+      "Likely Pathogenic": 102,
+      "Pathogenic": 302,
+      "Uncertain Significance": 925,
+      "[other]": 1136
+    },
+    "gene_subject_counts": {
+      "BCL6": {
+        "any_listed": 7,
+        "reported_pathogenic": 2
+      },
+      "BTG1": {
+        "any_listed": 21,
+        "reported_pathogenic": 7
+      },
+      "BTG2": {
+        "any_listed": 0,
+        "reported_pathogenic": 0
+      },
+      "CARD11": {
+        "any_listed": 18,
+        "reported_pathogenic": 12
+      },
+      "CD79B": {
+        "any_listed": 23,
+        "reported_pathogenic": 20
+      },
+      "CDKN2A": {
+        "any_listed": 39,
+        "reported_pathogenic": 37
+      },
+      "EP300": {
+        "any_listed": 8,
+        "reported_pathogenic": 2
+      },
+      "IRF4": {
+        "any_listed": 9,
+        "reported_pathogenic": 2
+      },
+      "LRP1B": {
+        "any_listed": 21,
+        "reported_pathogenic": 1
+      },
+      "MYD88": {
+        "any_listed": 47,
+        "reported_pathogenic": 46
+      },
+      "PIM1": {
+        "any_listed": 0,
+        "reported_pathogenic": 0
+      },
+      "PRKDC": {
+        "any_listed": 21,
+        "reported_pathogenic": 0
+      },
+      "TP53": {
+        "any_listed": 14,
+        "reported_pathogenic": 5
+      },
+      "ZFHX3": {
+        "any_listed": 24,
+        "reported_pathogenic": 0
+      }
+    },
+    "label_rule": "reportedalteration True; Pathogenic or Likely Pathogenic; geneticorigin not Not Detected. Aggregated across records, not selected samples.",
+    "origin_counts": {
+      "Not Detected": 95,
+      "Somatic": 55,
+      "[other]": 2319
+    },
+    "reported_flag_counts": {
+      "false": 2105,
+      "true": 364
+    },
+    "rows": 2469,
+    "subject_field_found": true,
+    "subjects_with_multiple_distinct_sample_date_strings": 0,
+    "subjects_with_observed_sample_date": 64,
+    "subjects_with_records": 64
+  },
+  "imaging": {
+    "feature_coverage": {
+      "lesions_IndividualLesions": {
+        "files": 300,
+        "sessions": 150,
+        "subjects": 150
+      },
+      "lesions_SummaryLesions": {
+        "files": 291,
+        "sessions": 149,
+        "subjects": 149
+      },
+      "lesions_radiomics": {
+        "files": 293,
+        "sessions": 150,
+        "subjects": 150
+      }
+    },
+    "mask_coverage": {
+      "lesions_seg_comp": {
+        "files": 300,
+        "sessions": 150,
+        "subjects": 150
+      }
+    },
+    "registration_space_files": {
+      "FLAIR": 600,
+      "T1Post": 600
+    },
+    "sequence_coverage": {
+      "ADC": {
+        "files": 300,
+        "sessions": 150,
+        "subjects": 150
+      },
+      "CE-T1": {
+        "files": 300,
+        "sessions": 150,
+        "subjects": 150
+      },
+      "FLAIR": {
+        "files": 300,
+        "sessions": 150,
+        "subjects": 150
+      },
+      "T1": {
+        "files": 300,
+        "sessions": 150,
+        "subjects": 150
+      }
+    },
+    "sessions": 150,
+    "subjects": 150
+  },
+  "json_metadata": {
+    "files_inspected": 1200,
+    "parse_failures": 0,
+    "sensitive_fields": {
+      "AccessionNumber": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "AcquisitionDate": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "AcquisitionTime": {
+        "files_nonempty": 1200,
+        "files_present": 1200
+      },
+      "ContentDate": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "DeidentificationMethod": {
+        "files_nonempty": 1200,
+        "files_present": 1200
+      },
+      "DeviceSerialNumber": {
+        "files_nonempty": 608,
+        "files_present": 836
+      },
+      "PatientBirthDate": {
+        "files_nonempty": 0,
+        "files_present": 600
+      },
+      "PatientID": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "PatientName": {
+        "files_nonempty": 0,
+        "files_present": 600
+      },
+      "ProtocolName": {
+        "files_nonempty": 1199,
+        "files_present": 1199
+      },
+      "ReferringPhysicianName": {
+        "files_nonempty": 0,
+        "files_present": 600
+      },
+      "SOPInstanceUID": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "SeriesDate": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "SeriesDescription": {
+        "files_nonempty": 1196,
+        "files_present": 1198
+      },
+      "SeriesInstanceUID": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "StationName": {
+        "files_nonempty": 638,
+        "files_present": 919
+      },
+      "StudyDate": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "StudyDescription": {
+        "files_nonempty": 1200,
+        "files_present": 1200
+      },
+      "StudyInstanceUID": {
+        "files_nonempty": 600,
+        "files_present": 600
+      },
+      "StudyTime": {
+        "files_nonempty": 600,
+        "files_present": 600
+      }
+    }
+  },
+  "limitations": [
+    "Counts describe file and record presence, not image usability or clinical validity.",
+    "Mutation-table membership does not establish assay completeness or biological wild-type status.",
+    "Sensitive fields are counted without inspecting whether their values are original, shifted, or pseudonymized.",
+    "Only a fixed allowlist of sensitive JSON fields is assessed; absence here is not proof of de-identification."
+  ],
+  "release_documents": [],
+  "schema_version": 1,
+  "spatial_feature_quality": {
+    "files_with_all_ten_finite_metrics": 149,
+    "finite_metric_file_counts": {
+      "percentage_volume_in_AnteriorTemporal": 149,
+      "percentage_volume_in_CorpusCallosum": 149,
+      "percentage_volume_in_CorpusCallosum_Rostrum": 149,
+      "percentage_volume_in_Frontal": 149,
+      "percentage_volume_in_MiddleTemporal": 149,
+      "percentage_volume_in_Occipital": 149,
+      "percentage_volume_in_Parietal": 149,
+      "percentage_volume_in_Parietal_Occipital": 149,
+      "percentage_volume_in_PosteriorTemporal": 149,
+      "percentage_volume_in_Temporal": 149
+    },
+    "flair_summary_files_inspected": 149,
+    "parse_or_schema_failures": 0
+  }
+}

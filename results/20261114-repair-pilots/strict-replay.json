@@ -1,0 +1,357 @@
+{
+  "model_calls": 0,
+  "hosted_valkyrie_run": false,
+  "attempts": 10,
+  "passed": 10,
+  "fixture_replays": 40,
+  "limits": {
+    "wall_seconds": 12,
+    "cpu_seconds": 8,
+    "memory_mib": 512,
+    "accepted_json_bytes": 1000000,
+    "file_write_bytes": 2000000
+  },
+  "runner_sha256": "f1cbe68a8c8c86a30ba355531c613e4b121a560cfc7d083c059179bb53c0baa2",
+  "rows": [
+    {
+      "run": "pilot-dev-v2",
+      "id": "claims-547ac71f72",
+      "backend": "claude",
+      "case_sha256": "d3e5de59f80dccfe8762d55b51868de70a154637f9a88da688fb5ca5539ac956",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-dev-v2",
+      "id": "claims-547ac71f72",
+      "backend": "codex",
+      "case_sha256": "d3e5de59f80dccfe8762d55b51868de70a154637f9a88da688fb5ca5539ac956",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-dev-v2",
+      "id": "geometry-4978297b5c",
+      "backend": "claude",
+      "case_sha256": "d1c979377c17ccb8055cc4ff84e5e89cbf599d092a1616e267a7987a491a9c4c",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-dev-v2",
+      "id": "geometry-4978297b5c",
+      "backend": "codex",
+      "case_sha256": "d1c979377c17ccb8055cc4ff84e5e89cbf599d092a1616e267a7987a491a9c4c",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-integrated-dev-v1",
+      "id": "integrated-436ccfa9bd",
+      "backend": "claude",
+      "case_sha256": "bddfc1727cafac75d576addb5a984d7000b470c0eec53a90e3e205231c52682b",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-integrated-dev-v1",
+      "id": "integrated-436ccfa9bd",
+      "backend": "codex",
+      "case_sha256": "bddfc1727cafac75d576addb5a984d7000b470c0eec53a90e3e205231c52682b",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-integrated-valid-v1",
+      "id": "integrated-25c12f9992",
+      "backend": "claude",
+      "case_sha256": "49a066251d4efb598ed4f3374a171036cd1d2d897cb509414f9fcbb159d7c47a",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-integrated-valid-v1",
+      "id": "integrated-25c12f9992",
+      "backend": "codex",
+      "case_sha256": "49a066251d4efb598ed4f3374a171036cd1d2d897cb509414f9fcbb159d7c47a",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-integrated-heldout-v1",
+      "id": "integrated-50fa2a5962",
+      "backend": "claude",
+      "case_sha256": "04782e52c5ac25af1eb5d1b46b2df13808e8555be9a5a509445e581d6e7d7837",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    },
+    {
+      "run": "pilot-integrated-heldout-v1",
+      "id": "integrated-50fa2a5962",
+      "backend": "codex",
+      "case_sha256": "04782e52c5ac25af1eb5d1b46b2df13808e8555be9a5a509445e581d6e7d7837",
+      "original_classification": "pass",
+      "replay": {
+        "passed": true,
+        "passed_fixtures": 4,
+        "total_fixtures": 4,
+        "checks": [
+          {
+            "fixture": 0,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 1,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 2,
+            "passed": true,
+            "error": null
+          },
+          {
+            "fixture": 3,
+            "passed": true,
+            "error": null
+          }
+        ]
+      }
+    }
+  ]
+}

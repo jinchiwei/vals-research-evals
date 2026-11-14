@@ -1,0 +1,22 @@
+{
+  "archive_files": 5543,
+  "attempt": 1,
+  "doi": "10.58078/C2RP4V",
+  "downloaded_bytes": 16659458958,
+  "error_errno": null,
+  "error_reason_type": null,
+  "error_type": null,
+  "etag": "\"5e84049622f14e9cac73b26cc17c60f4-970\"",
+  "expected_bytes": 16659458958,
+  "explicit_proxy_environment_loaded": true,
+  "files_extracted": 3592,
+  "http_status": null,
+  "last_modified": "Mon, 13 Apr 2026 23:14:25 GMT",
+  "phase": "complete",
+  "sha256": "4a45cbad0eee0cd7a3e6827c866f4041aeafb641a85ba6bed6304e3ce311138f",
+  "source": "https://s3-us-west-1.amazonaws.com/ucsf-dmi/pcnsl-dataset_v1.0.zip",
+  "started_utc": "2026-11-14T20:14:33Z",
+  "uncompressed_bytes": 17612455015,
+  "updated_utc": "2026-11-14T20:40:38Z",
+  "zip_crc_verified": true
+}

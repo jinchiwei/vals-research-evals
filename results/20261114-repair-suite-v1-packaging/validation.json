@@ -1,0 +1,67 @@
+{
+  "cli": "2026.11.12.2",
+  "sdk": "0.34.0",
+  "hosted_run": false,
+  "tasks": [
+    {
+      "task": "claims-2fcb3ef41a",
+      "problems": [],
+      "archive_sha256": "cc2260bb88f5e29139dab46587adac6a605181f6e76d09d937817948b4adeee9"
+    },
+    {
+      "task": "claims-547ac71f72",
+      "problems": [],
+      "archive_sha256": "7c7dcef8f96c86689b13cb3730bc148f22b451c648cd311fc8aa438a3bd1a972"
+    },
+    {
+      "task": "claims-5a0dafe383",
+      "problems": [],
+      "archive_sha256": "131102fc2e31f1d52872d9a6426c977588aaec7cf4148c53d756800de6a6d419"
+    },
+    {
+      "task": "claims-7ff4013595",
+      "problems": [],
+      "archive_sha256": "3642031d42810955cd6c0973b7b6485d016e5df6e9e86a3b05c0e328a1b29ea0"
+    },
+    {
+      "task": "endpoint-3cecfaf178",
+      "problems": [],
+      "archive_sha256": "f6b1d34b1bed7998b964bb6068783995c08f3d5e432252c21a30c1bbce491376"
+    },
+    {
+      "task": "endpoint-4dd7bb2938",
+      "problems": [],
+      "archive_sha256": "7b07607660dc9387a61e624b0df2c87315fd16b9cf6ebcfd74763c8cd652a2b8"
+    },
+    {
+      "task": "endpoint-6f764a631e",
+      "problems": [],
+      "archive_sha256": "008181107c3bb14cd5adfa988e2c07e357711c1956e4859ac4af2cf6e22472a0"
+    },
+    {
+      "task": "endpoint-7910bb78e0",
+      "problems": [],
+      "archive_sha256": "2a4510a5bd90a9292ae5c77fae78eb99dbeedce90a864c3ce5479ff72fd65cd0"
+    },
+    {
+      "task": "geometry-30e4438388",
+      "problems": [],
+      "archive_sha256": "35fe6b6d02d7cb3f763d3fbddffa0a61e833eb5a0b3e5230d35f233759c6fe1f"
+    },
+    {
+      "task": "geometry-4978297b5c",
+      "problems": [],
+      "archive_sha256": "3b733f552437069bffd56dbfc192ead5806e86bd4c4a25ff11e64339a985d79e"
+    },
+    {
+      "task": "geometry-a068378e27",
+      "problems": [],
+      "archive_sha256": "c1380cae8fbe57f8403bb17cb49ccf1687dffd1ec2c9bce9015ead8ca47c7541"
+    },
+    {
+      "task": "geometry-e3ef2d7158",
+      "problems": [],
+      "archive_sha256": "e98de1004da00753ee228057c71e4103e06768d1bfd8bb4e1f870ca57a948432"
+    }
+  ]
+}

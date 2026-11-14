@@ -1,0 +1,14 @@
+{
+  "review_type": "focused scoping review, not an exhaustive systematic review",
+  "date": "2026-11-14",
+  "queries": [
+    "primary central nervous system lymphoma MRI radiogenomics",
+    "scientific research agent benchmark data analysis",
+    "machine learning leakage radiomics patient validation",
+    "scientific integrity agents benchmark statistical errors"
+  ],
+  "sources": ["pubmed", "arxiv", "semanticscholar"],
+  "max_results_per_query": 8,
+  "focus": "Identify experimentally defensible PCNSL research-agent failure modes and distinguish them from weak biological signal, ambiguous labels, data contamination and benchmark implementation errors. Compare with existing scientific/data-analysis/integrity benchmarks before making novelty claims.",
+  "supplementary_searches": "Worker-led primary-paper and official-repository searches are recorded in pcnsl-sources.json and evaluation-sources.json."
+}

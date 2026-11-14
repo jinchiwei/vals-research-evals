@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-14",
+  "review_type": "Focused primary-source evidence review; not systematic or exhaustive",
+  "patient_data_accessed": false,
+  "signed_urls_included": false,
+  "queries_concept_groups": [
+    "PCNSL MRI radiogenomics MYD88 CD79B IRF4",
+    "PCNSL radiomics BCL6 Ki-67 survival methylation external validation",
+    "PCNSL imaging consensus steroids biopsy timing",
+    "somatic variant interpretation AMP ASCO CAP",
+    "IBSI limited sample cross-validation CLAIM TRIPOD AI"
+  ],
+  "limitations": [
+    "Some studies reviewed as abstracts or indexed primary-source passages only.",
+    "A lack of located IRF4 MRI studies or matched external public cohorts is not evidence of nonexistence.",
+    "Public archive contents and release-version correspondence await companion acquisition audit.",
+    "Failure modes are proposed test designs, not measured frontier-model failures."
+  ],
+  "sources": [
+    {
+      "id": "D01",
+      "title": "UCSF Primary Central Nervous System Lymphoma MRI Dataset — AWS Registry",
+      "url": "https://registry.opendata.aws/ucsf-pcnsl/",
+      "type": "official_registry",
+      "access": "full_page",
+      "cohort_n": 150,
+      "modalities": [
+        "T1",
+        "CE-T1",
+        "FLAIR",
+        "ADC"
+      ],
+      "license": "CC BY 4.0",
+      "notes": "Controlled download; release contents require independent manifest verification."
+    },
+    {
+      "id": "D02",
+      "title": "UCSF-PCNSL official tutorial repository",
+      "url": "https://github.com/rauschecker-sugrue-labs/UCSF-PCNSL",
+      "type": "official_repository",
+      "access": "main_readme",
+      "cohort_n": 150,
+      "genomic_n": 64,
+      "notes": "Processed derivatives; two image spaces; component masks and feature tables. Main branch is mutable and example S3 location differs from registry."
+    },
+    {
+      "id": "D03",
+      "title": "UCSF Imaging Datasets — dataset 4",
+      "url": "https://imagingdatasets.ucsf.edu/dataset/4",
+      "doi": "10.58078/C2RP4V",
+      "type": "official_landing_page",
+      "access": "javascript_not_rendered_in_this_workstream",
+      "cohort_n": 150,
+      "genomic_n": 64,
+      "notes": "Counts and DOI supplied by companion acquisition audit; not independently reverified here. Hosted archive and release-preparation branch must not be assumed identical."
+    },
+    {
+      "id": "P01",
+      "title": "Quantitative diffusion and perfusion MRI for non-invasive MYD88/CD79B genotype characterization and prognostic stratification in primary CNS lymphoma",
+      "authors_short": "Zhou X et al.",
+      "date": "2026-10-17",
+      "doi": "10.1186/s40644-026-01145-2",
+      "url": "https://link.springer.com/article/10.1186/s40644-026-01145-2",
+      "type": "original_research",
+      "access": "abstract_and_supplement_descriptions",
+      "cohort_n": 92,
+      "positive_n": {
+        "MYD88": 60,
+        "CD79B": 52,
+        "co_mutation": 40
+      },
+      "modalities": [
+        "ADC",
+        "DSC perfusion"
+      ],
+      "endpoint": [
+        "MYD88",
+        "CD79B",
+        "co-mutation",
+        "OS",
+        "PFS"
+      ],
+      "validation": "Stratified fivefold same-cohort testing",
+      "notes": "Accepted early article; direct genotype comparator, not externally established clinical utility."
+    },
+    {
+      "id": "P02",
+      "title": "P17.04 Radiomics analysis of primary central nervous system lymphoma (PCNSL) - A LOC network study",
+      "authors_short": "LOC network investigators",
+      "date": "2016-09-21",
+      "doi": "10.1093/neuonc/now188.278",
+      "url": "https://academic.oup.com/neuro-oncology/article-abstract/18/suppl_4/iv78/2222977",
+      "type": "conference_abstract",
+      "access": "abstract",
+      "cohort_n": 50,
+      "positive_n": {
+        "MYD88": 18,
+        "CD79B": 15,
+        "TERT": 6
+      },
+      "modalities": [
+        "contrast-enhanced MRI",
+        "Sanger sequencing"
+      ],
+      "endpoint": "Spatial association with genotype",
+      "validation": "Voxelwise permutation and FDR",
+      "notes": "Reported absence of MYD88/CD79B location association does not exclude other imaging signal."
+    },
+    {
+      "id": "P03",
+      "title": "Genomic landscape and molecular subtypes of primary central nervous system lymphoma",
+      "authors_short": "Li S et al.",
+      "date": "2025-11-26",
+      "doi": "10.1038/s41408-025-01421-7",
+      "url": "https://www.nature.com/articles/s41408-025-01421-7",
+      "type": "original_research",
+      "access": "abstract_and_indexed_primary_text",
+      "cohort_n": 176,
+      "cohort_partitions": {
+        "discovery": 58,
+        "validation": 82,
+        "external_Chinese": 36
+      },
+      "modalities": [
+        "genomics"
+      ],
+      "endpoint": "Molecular subtype and prognosis",
+      "notes": "BMI subtype includes BTG1/MYD88/IRF4 combinations; not MRI-to-IRF4 validation."
+    },
+    {
+      "id": "P04",
+      "title": "The genomic and transcriptional landscape of primary central nervous system lymphoma",
+      "year": 2022,
+      "doi": "10.1038/s41467-022-30050-y",
+      "url": "https://www.nature.com/articles/s41467-022-30050-y",
+      "type": "original_research",
+      "access": "abstract_and_indexed_primary_text",
+      "cohort_n": 51,
+      "cohort_scope": "CNS lymphomas; not all pure PCNSL",
+      "comparator_n": {
+        "follicular_lymphoma": 39,
+        "systemic_DLBCL": 36
+      },
+      "modalities": [
+        "genomics",
+        "transcriptomics"
+      ],
+      "endpoint": "Molecular landscape",
+      "notes": "Separate PCNSL, secondary CNS involvement and EBV-related disease; distinguish mutation classes."
+    },
+    {
+      "id": "P05",
+      "title": "MRI-based radiomics virtual biopsy for BCL6 in primary central nervous system lymphoma",
+      "authors_short": "Liu J et al.",
+      "date_online": "2024-11-08",
+      "year_print": 2025,
+      "doi": "10.1016/j.crad.2024.106746",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/39615185/",
+      "type": "original_research",
+      "access": "abstract",
+      "cohort_n": 102,
+      "positive_n": 31,
+      "modalities": [
+        "CE-T1",
+        "FLAIR"
+      ],
+      "endpoint": "BCL6 rearrangement",
+      "validation": "Random 7:3 split",
+      "reported_auc": {
+        "training": 0.935,
+        "validation": 0.923
+      },
+      "notes": "Not BCL6 IHC or any sequence variant; external testing not established."
+    },
+    {
+      "id": "P06",
+      "title": "MRI-based radiomics signatures for preoperative prediction of Ki-67 index in primary central nervous system lymphoma",
+      "authors_short": "Liu J et al.",
+      "date_online": "2024-07-05",
+      "year": 2024,
+      "doi": "10.1016/j.ejrad.2024.111603",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/38976966/",
+      "type": "original_research",
+      "access": "abstract",
+      "cohort_n": 341,
+      "cohort_partitions": {
+        "training": 286,
+        "external_two_centers": 55
+      },
+      "modalities": [
+        "CE-T1",
+        "FLAIR"
+      ],
+      "endpoint": "Ki-67 proliferation index",
+      "reported_auc_nomogram": {
+        "training": 0.877,
+        "external": 0.866
+      },
+      "notes": "Phenotypic endpoint; classification threshold and full nesting need full-text verification."
+    },
+    {
+      "id": "P07",
+      "title": "Radiomic features define risk and are linked to DNA methylation attributes in primary CNS lymphoma",
+      "authors_short": "Nenning KH et al.",
+      "date": "2023-10-18",
+      "doi": "10.1093/noajnl/vdad136",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10676053/",
+      "type": "original_research",
+      "access": "abstract_and_indexed_full_text_passages",
+      "cohort_partitions": {
+        "Austria_nine_sites": 133,
+        "external_South_Korea": 44,
+        "Austria_after_MRI_QC": 83
+      },
+      "modalities": [
+        "CE-T1",
+        "DNA methylation"
+      ],
+      "endpoint": "Radiomic survival risk and molecular associations",
+      "notes": "Prediction direction and adjusted versus unadjusted external associations matter; not named mutation inference."
+    },
+    {
+      "id": "P08",
+      "title": "Multiparametric-MRI-Based Radiomics Model for Differentiating Primary Central Nervous System Lymphoma From Glioblastoma: Development and Cross-Vendor Validation",
+      "authors_short": "Xia W et al.",
+      "date_online": "2020-08-31",
+      "year_print": 2021,
+      "doi": "10.1002/jmri.27344",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/32864825/",
+      "type": "original_research",
+      "access": "abstract_and_primary_metadata",
+      "cohort_n": 240,
+      "diagnosis_n": {
+        "PCNSL": 111,
+        "GBM": 129
+      },
+      "cohort_partitions": {
+        "vendor1_training": 149,
+        "vendor2_testing": 91
+      },
+      "modalities": [
+        "CE-T1",
+        "FLAIR",
+        "ADC"
+      ],
+      "endpoint": "PCNSL versus GBM",
+      "reported_auc_cross_vendor": 0.943,
+      "notes": "Diagnosis and genotype endpoints cannot be interchanged."
+    },
+    {
+      "id": "P09",
+      "title": "Consensus recommendations for MRI and PET imaging of primary central nervous system lymphoma: guideline statement from the International Primary CNS Lymphoma Collaborative Group (IPCG)",
+      "authors_short": "Barajas RF Jr et al.",
+      "year": 2021,
+      "doi": "10.1093/neuonc/noab020",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/33560416/",
+      "full_text_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8248856/",
+      "type": "primary_consensus",
+      "access": "full_text",
+      "notes": "Acquisition and response comparability; modality-specific protocols and systemic staging context."
+    },
+    {
+      "id": "P10",
+      "title": "Primary central nervous system lymphomas: EHA–ESMO Clinical Practice Guideline for diagnosis, treatment and follow-up",
+      "year": 2024,
+      "doi": "10.1002/hem3.89",
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/hem3.89",
+      "type": "primary_guideline",
+      "access": "indexed_full_text",
+      "notes": "Biopsy, corticosteroid and pretreatment timing motivate research cohort rules; not a substitute for case adjudication."
+    },
+    {
+      "id": "P11",
+      "title": "Standards and Guidelines for the Interpretation and Reporting of Sequence Variants in Cancer: A Joint Consensus Recommendation of the Association for Molecular Pathology, American Society of Clinical Oncology, and College of American Pathologists",
+      "authors_short": "Li MM et al.",
+      "year": 2017,
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5707196/",
+      "type": "primary_consensus",
+      "access": "indexed_full_text",
+      "notes": "Somatic clinical-significance tiers must not silently become germline pathogenicity labels or assay-negative status."
+    },
+    {
+      "id": "P12",
+      "title": "The Image Biomarker Standardization Initiative: Standardized Quantitative Radiomics for High-Throughput Image-based Phenotyping",
+      "authors_short": "Zwanenburg A et al.",
+      "year": 2020,
+      "doi": "10.1148/radiol.2020191145",
+      "url": "https://doi.org/10.1148/radiol.2020191145",
+      "type": "methods_research",
+      "access": "abstract_and_author_institution_copy",
+      "notes": "Computational feature definitions and reference values; processing agreement does not prove clinical validity."
+    },
+    {
+      "id": "P13",
+      "title": "Machine learning algorithm validation with a limited sample size",
+      "authors_short": "Vabalas A et al.",
+      "date": "2019-11-07",
+      "doi": "10.1371/journal.pone.0224365",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0224365",
+      "type": "methods_research",
+      "access": "primary_article_extract",
+      "notes": "Small-sample validation and selection procedures require scrutiny."
+    },
+    {
+      "id": "P14",
+      "title": "Cross-validation failure: Small sample sizes lead to large error bars",
+      "authors_short": "Varoquaux G",
+      "date_online": "2017-06-24",
+      "year_print": 2018,
+      "doi": "10.1016/j.neuroimage.2017.06.061",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28655633/",
+      "type": "methods_research",
+      "access": "abstract",
+      "notes": "Across-fold standard errors underestimate uncertainty; repeated splitting does not add patients."
+    },
+    {
+      "id": "P15",
+      "title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): 2024 Update",
+      "authors_short": "Tejani AS et al.",
+      "date": "2024-05-29",
+      "doi": "10.1148/ryai.240300",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11304031/",
+      "type": "reporting_consensus",
+      "access": "full_text_extract",
+      "notes": "Reporting guidance; supports internal/external testing terminology and reproducibility, not a clinical validity score."
+    },
+    {
+      "id": "P16",
+      "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+      "authors_short": "Collins GS et al.",
+      "date": "2024-04-16",
+      "doi": "10.1136/bmj-2023-078378",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11019967/",
+      "type": "reporting_consensus",
+      "access": "indexed_full_text",
+      "notes": "Transparent prediction-model reporting; not a prescribed model-development algorithm."
+    }
+  ]
+}

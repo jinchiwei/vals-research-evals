@@ -1,0 +1,251 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-11-14",
+  "review_type": "targeted primary-source literature review, not systematic review",
+  "scope": "Research-agent benchmark design for public PCNSL imaging-genomic analysis; no new model experiments in this review",
+  "verification_note": "Claims are limited to the source portions described per entry. Most benchmark scope claims were verified in primary abstracts; no claim of full-text review for all papers. Publication years use first preprint year unless journal publication is explicitly intended. Design recommendations are author proposals rather than reported source findings.",
+  "sources": [
+    {
+      "id": "dab",
+      "title": "InfiAgent-DABench: Evaluating Agents on Data Analysis Tasks",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2401.05507",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "Closed-form analysis answers; 257 questions from 52 CSV files.",
+      "limitations": "Task success does not by itself establish scientific validity."
+    },
+    {
+      "id": "dsbench",
+      "title": "DSBench: How Far Are Data Science Agents from Becoming Data Science Experts?",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2409.07703",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "466 analysis and 74 modeling tasks.",
+      "limitations": "Older evaluated models and task definitions cannot establish current frontier difficulty."
+    },
+    {
+      "id": "mlagentbench",
+      "title": "MLAgentBench: Evaluating Language Agents on Machine Learning Experimentation",
+      "year": 2023,
+      "url": "https://arxiv.org/abs/2310.03302",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "13 experimentation tasks with tools and executable artifacts.",
+      "limitations": "Familiarity and public-task contamination remain concerns."
+    },
+    {
+      "id": "scienceagentbench",
+      "title": "ScienceAgentBench: Toward Rigorous Assessment of Language Agents for Data-Driven Scientific Discovery",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2410.05080",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract_and_publication_record",
+      "verified_on": "2026-11-14",
+      "contribution": "102 tasks from 44 papers, four disciplines, nine experts; ICLR 2025.",
+      "limitations": "Python artifact success is not universal evidence of clinical applicability."
+    },
+    {
+      "id": "mlgym",
+      "title": "MLGym: A New Framework and Benchmark for Advancing AI Research Agents",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2502.14499",
+      "source_type": "primary_paper_or_software",
+      "verified_scope": "primary_abstract_and_official_repository",
+      "verified_on": "2026-11-14",
+      "contribution": "13 open-ended research tasks; iterative experimentation environments.",
+      "limitations": "Improved optimization is distinct from scientifically justified inference."
+    },
+    {
+      "id": "rebench",
+      "title": "RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2411.15114",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "Seven environments and 71 eight-hour attempts by 61 human experts; time budget changes comparisons.",
+      "limitations": "The official report PDF exceeded the web tool size limit; claims here use the abstract, not a claimed full PDF review."
+    },
+    {
+      "id": "mlebench",
+      "title": "MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2410.07095",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "75 Kaggle competitions; engineering metrics and human leaderboard comparison.",
+      "limitations": "Predictive score is not a scientific-validity rubric."
+    },
+    {
+      "id": "blade",
+      "title": "BLADE: Benchmarking Language Model Agents for Data-Driven Science",
+      "year": 2024,
+      "url": "https://arxiv.org/abs/2408.09667",
+      "source_type": "primary_paper_or_software",
+      "verified_scope": "primary_abstract_and_official_repository",
+      "verified_on": "2026-11-14",
+      "contribution": "12 datasets/questions and expert analytical decisions; multiple valid analyses.",
+      "limitations": "Strong novelty overlap with open-ended scientific analysis; do not claim first."
+    },
+    {
+      "id": "paperbench",
+      "title": "PaperBench: Evaluating AI’s Ability to Replicate AI Research",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2504.01848",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "20 papers; 8,316 author-informed grading tasks; separate judge evaluation.",
+      "limitations": "Automated judging must itself be validated."
+    },
+    {
+      "id": "scientistbench",
+      "title": "AI-Researcher: Autonomous Scientific Innovation",
+      "year": 2025,
+      "url": "https://arxiv.org/abs/2505.18705",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "Introduces Scientist-Bench with guided innovation and open exploration.",
+      "limitations": "Author-reported paper quality does not establish reproducible clinical validity."
+    },
+    {
+      "id": "astabench",
+      "title": "AstaBench",
+      "year": 2025,
+      "url": "https://allenai.org/asta/bench",
+      "source_type": "primary_source",
+      "verified_scope": "official_project_pages",
+      "verified_on": "2026-11-14",
+      "contribution": "Scientific-agent suite with shared tools and explicit tool-access distinctions.",
+      "limitations": "Dynamic project; this review does not reproduce leaderboard measurements."
+    },
+    {
+      "id": "replicatorbench",
+      "title": "ReplicatorBench: Benchmarking LLM Agents for Replicability in Social and Behavioral Sciences",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2602.11354",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "Human-verified replicable and non-replicable claims; extraction, execution, interpretation; KDD 2026 AI4Sciences.",
+      "limitations": "New-data replication differs from computational reproduction."
+    },
+    {
+      "id": "sciintegrity",
+      "title": "SciIntegrity-Bench: A Benchmark for Evaluating Academic Integrity in AI Scientist Systems",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2605.10246",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "33 scenarios in 11 trap categories; honest failure versus completion pressure.",
+      "limitations": "Preprint; integrity categories are study definitions, not proof of intentional deception."
+    },
+    {
+      "id": "paperbenchx",
+      "title": "PAPERBENCHX: Can AI Reproduce Science Across Disciplines?",
+      "year": 2026,
+      "url": "https://arxiv.org/abs/2610.39744",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "93 expert-created tasks in 12 research areas; scoring regenerated evidence after replay.",
+      "limitations": "October 2026 preprint; numerical results are not reproduced here."
+    },
+    {
+      "id": "realdataagentbench",
+      "title": "RealDataAgentBench",
+      "year": 2026,
+      "url": "https://github.com/patibandlavenkatamanideep/RealDataAgentBench",
+      "source_type": "primary_paper_or_software",
+      "verified_scope": "official_repository_readme",
+      "verified_on": "2026-11-14",
+      "contribution": "Software benchmark with documented lexical-validity grading limitations and calibration discussion.",
+      "limitations": "Not treated as a peer-reviewed study or reliable gold-standard judge."
+    },
+    {
+      "id": "probastai",
+      "title": "PROBAST+AI: an updated quality, risk of bias, and applicability assessment tool for prediction models using regression or artificial intelligence methods",
+      "year": 2025,
+      "url": "https://www.bmj.com/content/388/bmj-2024-082505",
+      "source_type": "primary_source",
+      "verified_scope": "primary_journal_page",
+      "verified_on": "2026-11-14",
+      "contribution": "Distinguishes development quality, evaluation bias, and applicability.",
+      "limitations": "Imprecision is not synonymous with bias; not a prescription for one algorithm."
+    },
+    {
+      "id": "tripodai",
+      "title": "TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods",
+      "year": 2024,
+      "url": "https://www.bmj.com/content/385/bmj-2023-078378",
+      "source_type": "primary_source",
+      "verified_scope": "primary_journal_page_and_pdf",
+      "verified_on": "2026-11-14",
+      "contribution": "Transparent reporting for prediction-model development and evaluation.",
+      "limitations": "Reporting completeness alone cannot establish methodological validity."
+    },
+    {
+      "id": "claim2024",
+      "title": "Checklist for Artificial Intelligence in Medical Imaging (CLAIM): 2024 Update",
+      "year": 2024,
+      "url": "https://pubs.rsna.org/doi/10.1148/ryai.240300",
+      "source_type": "primary_source",
+      "verified_scope": "primary_journal_and_official_checklist_pages",
+      "verified_on": "2026-11-14",
+      "contribution": "Imaging provenance, reference-standard terminology, internal and external testing.",
+      "limitations": "A supplied annotation is a reference standard, not absolute anatomical truth."
+    },
+    {
+      "id": "leakage",
+      "title": "Leakage and the Reproducibility Crisis in ML-based Science",
+      "year": 2022,
+      "url": "https://arxiv.org/abs/2207.07048",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract",
+      "verified_on": "2026-11-14",
+      "contribution": "Leakage taxonomy and consequences for scientific reproducibility.",
+      "limitations": "Use mechanism-specific tests; a checklist word is not behavioral evidence."
+    },
+    {
+      "id": "selectionbias",
+      "title": "On Over-fitting in Model Selection and Subsequent Selection Bias in Performance Evaluation",
+      "year": 2010,
+      "url": "https://jmlr.org/papers/v11/cawley10a.html",
+      "source_type": "primary_source",
+      "verified_scope": "primary_journal_page",
+      "verified_on": "2026-11-14",
+      "contribution": "Model selection can overfit a noisy evaluation criterion.",
+      "limitations": "Selection strategy and estimand determine appropriate evaluation design."
+    },
+    {
+      "id": "smalln",
+      "title": "Cross-validation failure: Small sample sizes lead to large error bars",
+      "year": 2018,
+      "url": "https://arxiv.org/abs/1706.07581",
+      "source_type": "primary_source",
+      "verified_scope": "primary_abstract_and_pubmed_record",
+      "verified_on": "2026-11-14",
+      "contribution": "Small-sample cross-validation uncertainty; fold variability can misrepresent uncertainty.",
+      "limitations": "Repeated folds do not create independent clinical subjects."
+    },
+    {
+      "id": "rewardhacking",
+      "title": "Recent Frontier Models Are Reward Hacking",
+      "year": 2025,
+      "url": "https://metr.org/blog/2025-06-05-recent-reward-hacking/",
+      "source_type": "primary_organization_report",
+      "verified_scope": "primary_organization_report",
+      "verified_on": "2026-11-14",
+      "contribution": "Observed evaluation gaming motivates trace inspection and grader isolation.",
+      "limitations": "Do not infer intention or broad prevalence from an individual scientific error."
+    }
+  ]
+}
