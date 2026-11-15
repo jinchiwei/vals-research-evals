@@ -1,0 +1,143 @@
+{
+  "voice": "af_heart",
+  "speed": 1.0,
+  "lang_code": "a",
+  "min_gap_s": 0.3,
+  "scene_tail_s": 0.25,
+  "note": "Segments per scene id: [anchor_seconds_into_scene, text]. A segment starts at its anchor or 0.3 s after the previous one ends, whichever is later, and must end 0.25 s before its scene ends. Spoken forms: 'E C G', 'I C U', 'run dot S H'. Scenes missing here are silent. In strict_scenes each segment must also end before the next segment's anchor (on-screen highlights follow the anchors).",
+  "scenes": {
+    "title": [
+      [
+        0.6,
+        "Clinical deliverables: coding agents against specialist systems. By Jinchi Wei."
+      ]
+    ],
+    "why": [
+      [
+        0.5,
+        "Medical AI is mostly tested with exam questions. On MedQA, top models score over ninety-five percent, and Vals AI archived it as saturated."
+      ],
+      [
+        9.8,
+        "A clinic needs a deliverable, not a letter. Exams have no units, no time limit, and no specialist comparator."
+      ],
+      [
+        19.3,
+        "Metrics mislead too: accuracy hides which errors happen, AUROC ignores calibration, and Dice misses broken vessels."
+      ],
+      [
+        28.3,
+        "Averages hide disasters: a three point three millimetre median, but misses over twenty-two centimetres."
+      ]
+    ],
+    "pipeline": [
+      [
+        0.5,
+        "Here is how one attempt runs. The agent gets a clinical README, development cases with their answers, and a thirty to sixty minute clock."
+      ],
+      [
+        9.8,
+        "Its network reaches only the model API. It builds an offline pipeline: run dot S H."
+      ],
+      [
+        15.6,
+        "Only that program moves into a separate verifier sandbox, where it runs on hidden cases, with no network and a timer per case."
+      ],
+      [
+        24.8,
+        "Outputs are scored in clinical units, case by case, against a specialist system's outputs on the same cases."
+      ],
+      [
+        32.0,
+        "The result is a seven-key reward."
+      ]
+    ],
+    "tasks": [
+      [
+        0.4,
+        "Seven task families: four scored, and three controls."
+      ],
+      [
+        4.7,
+        "Registration: correct brain shift, matching M R I to ultrasound within two millimetres in two minutes. 3D geometry across modalities."
+      ],
+      [
+        15.4,
+        "Spleen: a C T organ mask plus its volume in millilitres. Overlap alone can hide a wrong volume, so both are scored."
+      ],
+      [
+        25.4,
+        "Fetal head: a routine prenatal measurement within four point nine percent, the sonographers' own agreement, in ten seconds, a real bedside speed."
+      ],
+      [
+        35.4,
+        "Retinal vessels: the bar is a second human expert on each image, thin vessels included. Match a person, not a leaderboard."
+      ],
+      [
+        45.4,
+        "Controls show the test is possible. E C G: calibrated probabilities, heart attack sensitivity, and fairness across age and sex."
+      ],
+      [
+        55.4,
+        "I C U risk, from messy bedside data: beat the classic SAPS score, stay calibrated, and be useful at a twenty percent threshold."
+      ],
+      [
+        65.4,
+        "Treatment effect: the true answer is known, so we check that the ninety-five percent interval covers it. An honest test of uncertainty."
+      ]
+    ],
+    "results": [
+      [
+        0.5,
+        "On fetal head, the specialist measures all eighty-three hidden images within tolerance. The agents reach thirty-five to seventy-four, a gap in every attempt, for both models."
+      ],
+      [
+        13.3,
+        "Registration and spleen depend on the attempt. Opus registration scored zero point six seven, then zero point three three, then zero."
+      ],
+      [
+        21.4,
+        "Retinal vessels are close to parity. And the controls pass, so the harness is not simply too hard."
+      ]
+    ],
+    "models": [
+      [
+        0.5,
+        "In round four, the same tasks were run with six models."
+      ]
+    ],
+    "behaviour": [
+      [
+        0.5,
+        "Several agents said they had run out of time after eight to fifteen of their forty-five minutes. They had not checked the clock."
+      ],
+      [
+        10.4,
+        "No fetal head attempt used its whole session. Told to keep working while below the bar, they still stopped early."
+      ],
+      [
+        18.8,
+        "Told to check the clock, they read it correctly, and still stopped below the bar."
+      ]
+    ],
+    "trust": [
+      [
+        0.5,
+        "Hidden cases never reach the agent, and every reference solution was checked on the platform first."
+      ],
+      [
+        7.2,
+        "There is no web access, the plan was preregistered, and every attempt is reported."
+      ]
+    ],
+    "close": [
+      [
+        0.6,
+        "The code, the tasks, and every result are on GitHub."
+      ]
+    ]
+  },
+  "strict_scenes": [
+    "tasks"
+  ]
+}

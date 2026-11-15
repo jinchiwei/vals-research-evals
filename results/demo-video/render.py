@@ -9,6 +9,7 @@ Usage:
   python render.py                       # full video -> demo.mp4
   python render.py --stills 40,60        # PNG stills at those seconds (QA)
   python render.py --poster pipeline:37  # poster PNG at scene-local time
+  python render.py --with models         # include a disabled scene (round 4)
 """
 import argparse
 import os
@@ -23,10 +24,13 @@ FFMPEG = "/usr/bin/ffmpeg"
 W, H = 1920, 1080
 
 
+WITH = ""
+
+
 def open_page(pw):
     browser = pw.chromium.launch()
     page = browser.new_page(viewport={"width": W, "height": H}, device_scale_factor=1)
-    page.goto((HERE / "index.html").as_uri() + "?capture")
+    page.goto((HERE / "index.html").as_uri() + "?capture" + (f"&with={WITH}" if WITH else ""))
     page.wait_for_function("window.seek && document.fonts.status === 'loaded'")
     page.evaluate("document.fonts.ready")
     # The first screenshot of a fresh headless browser can take many seconds
@@ -41,7 +45,9 @@ def shot(page, t):
 
 
 def render_chunk(job):
-    idx, f0, f1, fps, tmp = job
+    idx, f0, f1, fps, tmp, with_ids = job
+    global WITH
+    WITH = with_ids
     from playwright.sync_api import sync_playwright
 
     out = Path(tmp) / f"seg{idx:03d}.mp4"
@@ -67,7 +73,10 @@ def main() -> None:
     ap.add_argument("--out", default=str(HERE / "demo.mp4"))
     ap.add_argument("--stills", help="comma-separated seconds; writes qa/still_<t>.png")
     ap.add_argument("--poster", help="scene:local_seconds, e.g. pipeline:37")
+    ap.add_argument("--with", dest="with_ids", default="", help="include disabled scenes, e.g. models")
     args = ap.parse_args()
+    global WITH
+    WITH = args.with_ids
 
     from playwright.sync_api import sync_playwright
 
@@ -93,7 +102,7 @@ def main() -> None:
     n = int(round(duration * args.fps))
     step = -(-n // args.workers)
     with tempfile.TemporaryDirectory(dir=HERE) as tmp:
-        jobs = [(i, i * step, min(n, (i + 1) * step), args.fps, tmp) for i in range(args.workers) if i * step < n]
+        jobs = [(i, i * step, min(n, (i + 1) * step), args.fps, tmp, args.with_ids) for i in range(args.workers) if i * step < n]
         with ProcessPoolExecutor(len(jobs)) as ex:
             segs = list(ex.map(render_chunk, jobs))
         lst = Path(tmp) / "list.txt"

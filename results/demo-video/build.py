@@ -20,6 +20,7 @@ FACES = [
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--fonts", default=str(Path.home() / ".local/share/fonts/superstack-geist"))
+    ap.add_argument("--badge", default=str(HERE.parent / "brand" / "vals-logo-badge.png"))
     args = ap.parse_args()
     css = []
     for family, weight, fname in FACES:
@@ -31,6 +32,9 @@ def main() -> None:
     src = (HERE / "index.src.html").read_text(encoding="utf-8")
     assert "/*@@FONTS@@*/" in src
     out = src.replace("/*@@FONTS@@*/", "\n".join(css))
+    # Vals logo badge (logo on an off-white panel; the bare green logo is too low-contrast on navy).
+    badge = base64.b64encode(Path(args.badge).read_bytes()).decode()
+    out = out.replace("@@VALS_BADGE@@", f"data:image/png;base64,{badge}")
     (HERE / "index.html").write_text(out, encoding="utf-8")
     print(f"wrote {HERE / 'index.html'} ({len(out) / 1e6:.2f} MB)")
 

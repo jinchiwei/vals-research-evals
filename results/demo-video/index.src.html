@@ -26,8 +26,9 @@
     {"id": "title",     "dur": 8},
     {"id": "why",       "dur": 36},
     {"id": "pipeline",  "dur": 38},
-    {"id": "tasks",     "dur": 18},
+    {"id": "tasks",     "dur": 75},
     {"id": "results",   "dur": 30},
+    {"id": "models",    "dur": 24, "enabled": false, "note": "Round 4. Enable once data.models4.cells is filled from hosted-models4; preview with ?with=models"},
     {"id": "behaviour", "dur": 26},
     {"id": "trust",     "dur": 14},
     {"id": "close",     "dur": 8}
@@ -51,9 +52,14 @@
       [29.8, "6 · Out comes a seven-key reward. It counts only if every case ran, was valid and on time."]
     ],
     "tasks": [
-      [0.4,  "Four scored families: a specialist sets the bar on the same hidden cases."],
-      [6.4,  "Three controls: agents should pass these, so the harness is not simply too hard."],
-      [12.2, "Two more families were built, then excluded: no comparator met their gate."]
+      [0.4,  "Seven families: four scored, three controls. Two more were excluded."],
+      [5.2,  "Registration: correct brain shift. Under 2 mm, 120 s per case."],
+      [15.2, "Spleen: organ mask and volume, both scored."],
+      [25.2, "Fetal head: within 4.9 %, in 10 s per image."],
+      [35.2, "Retinal vessels: as good as a second human expert."],
+      [45.2, "Control · ECG: calibrated, sensitive, fair across age and sex."],
+      [55.2, "Control · ICU risk: beat SAPS-I, calibrated, useful at a 20 % threshold."],
+      [65.2, "Control · treatment effect: does the 95 % interval cover the truth?"]
     ],
     "results": [
       [0.4,  "Fetal head: the specialist measures 83 of 83 hidden images within tolerance."],
@@ -70,6 +76,10 @@
       [10.4, "Fetal head, every attempt: no session used the full 45 minutes."],
       [14.4, "Told to keep working while below the bar, they still stopped early."],
       [18.6, "Told to check the clock, they read it correctly, and still stopped below the bar."]
+    ],
+    "models": [
+      [0.4,  "Round 4: the same task suite, run with six models."],
+      [8.0,  "Each cell is one model on one task, scored against the same specialist."]
     ],
     "trust": [
       [0.4,  "Hidden cases never reach the agent, and every reference solution was checked first."],
@@ -101,7 +111,8 @@
       {"name": "ICU risk", "what": "calibrated mortality risk", "bar": "score, calibration, net benefit, subgroups", "time": "300 s per cohort", "spec": "specialist meets all 4 parts"},
       {"name": "Treatment effect", "what": "effect with a 95 % interval", "bar": "coverage, RMSE, bias, interval length", "time": "960 s for 48 datasets", "spec": "specialist meets all 4 parts"}
     ],
-    "excluded": ["Report labelling (PTB-XL text)", "Pharyngitis triage"]
+    "excluded": ["Report labelling (PTB-XL text)", "Pharyngitis triage"],
+    "beats": {"intro_s": 5, "at": [5, 15, 25, 35, 45, 55, 65], "note": "one beat per card, scored then controls; captions.tasks and narration.json use the same times"}
   },
   "results": {
     "source": "README.md Results; docs/research/suite/hosted-agents3.md Pooled view; seg_vessel.md",
@@ -134,6 +145,23 @@
       "K2": {"opus": [82, 63, 60], "sonnet": [76, 32, 67]}
     },
     "k2_minutes_left": "8–31"
+  },
+  "models4": {
+    "source": "docs/research/suite/hosted-models4.md and .json (pending; fill from there only)",
+    "status": "pending",
+    "subtitle": "Reward per task and model, mean of attempts · gap shown in k of n attempts",
+    "models": [
+      {"name": "Opus 5.5",    "harness": "Claude Code"},
+      {"name": "Sonnet 5.5",  "harness": "Claude Code"},
+      {"name": "Fable 5.2",   "harness": null},
+      {"name": "gpt-6-astra", "harness": "Codex"},
+      {"name": "gpt-6.1-sol", "harness": "Codex"},
+      {"name": "gpt-6-luna",  "harness": "Codex"}
+    ],
+    "tasks": ["Fetal head", "Registration", "Spleen", "Vessels", "ECG", "ICU risk"],
+    "specialist": {},
+    "cells": {},
+    "cell_format": "cells['<model name>|<task>'] = {\"value\": 0..1 for colour, \"label\": \"0.651\", \"gap\": \"3 of 3\" or null}; specialist['<task>'] = \"1.000 (83/83)\""
   },
   "trust": [
     ["Hidden cases stay hidden", "They exist only in the verifier sandbox. The agent never sees one."],
@@ -192,6 +220,7 @@ svg text{font-family:'Geist',sans-serif}
   <div class="a mono b turq" id="t-name" style="left:200px;top:680px;font-size:52px"></div>
   <div class="a mono b pink" id="t-org" style="left:200px;top:756px;font-size:34px"></div>
   <div class="a" id="t-rule" style="left:200px;top:822px;width:600px;height:3px;background:#E2E8F0"></div>
+  <img class="a" id="t-logo" alt="Vals" src="@@VALS_BADGE@@" style="right:72px;bottom:72px;height:104px">
 </section>
 
 <!-- ============================ 2 WHY ============================ -->
@@ -374,6 +403,15 @@ svg text{font-family:'Geist',sans-serif}
   <div class="a" id="b-b" style="left:0;top:0"></div>
 </section>
 
+<!-- ===================== R4 MODELS (disabled until data) ===================== -->
+<section class="scene" id="s-models">
+  <div class="accent"></div>
+  <div class="eyebrow">Round 4 · More models</div>
+  <div class="h1">Six models on the same tasks</div>
+  <div class="hr"></div>
+  <div id="m-grid"></div>
+</section>
+
 <!-- ============================ 7 TRUST ============================ -->
 <section class="scene" id="s-trust">
   <div class="accent"></div>
@@ -391,6 +429,7 @@ svg text{font-family:'Geist',sans-serif}
   <div class="a mono b" id="c-repo" style="left:200px;top:360px;font-size:64px"></div>
   <div class="a mono b turq" id="c-name" style="left:200px;top:560px;font-size:56px"></div>
   <div class="a mono b pink" id="c-org" style="left:200px;top:640px;font-size:34px"></div>
+  <img class="a" id="c-logo" alt="Vals" src="@@VALS_BADGE@@" style="right:72px;bottom:72px;height:104px">
 </section>
 
 <div id="cap"></div>
@@ -415,7 +454,9 @@ const C = {turq:'#40E0D0', pink:'#FF1493', amber:'#F0C840', muted:'#9FB3C8', rul
 /* ---------------- scene timing ---------------- */
 let acc = 0;
 const SC = {};
-for (const s of D.scenes) { SC[s.id] = {start: acc, end: acc + s.dur, dur: s.dur, node: $('#s-' + s.id)}; acc += s.dur; }
+const WITH = ((location.search.match(/[?&]with=([^&]+)/) || [])[1] || '').split(',');
+const ACTIVE = D.scenes.filter(s => s.enabled !== false || WITH.includes(s.id));
+for (const s of ACTIVE) { SC[s.id] = {start: acc, end: acc + s.dur, dur: s.dur, node: $('#s-' + s.id)}; acc += s.dur; }
 const DURATION = acc;
 
 /* ---------------- tween engine ---------------- */
@@ -502,6 +543,7 @@ IN('#t-sub', 2.4);
 IN('#t-name', 3.0);
 IN('#t-org', 3.3);
 T('#t-rule', {w: [0, 600]}, 3.6, 0.8);
+IN('#t-logo', 3.6, 0.6, 16);
 
 /* ================= SCENE 2: WHY ================= */
 OFF = SC.why.start;
@@ -723,9 +765,25 @@ const exc = el('div', 'a', `left:${96 + 3*(KW + KG)}px;top:546px;width:${KW}px;h
 el('div', 'lbl', 'color:var(--muted);font-size:18px', 'built, then excluded', exc);
 D.tasks.excluded.forEach(n => el('div', 'mono b', 'font-size:24px;margin-top:14px;color:#CBD5E1;line-height:1.3', n, exc));
 el('div', 'muted', 'font-size:21px;margin-top:16px;line-height:1.3', 'No comparator met the gate, so no gap can be shown.', exc);
-scored.forEach((c, i) => IN(c, 0.6 + i*0.35));
-ctrls.forEach((c, i) => IN(c, 6.6 + i*0.35));
-IN(exc, 12.4);
+scored.forEach((c, i) => IN(c, 0.4 + i*0.25));
+ctrls.forEach((c, i) => IN(c, 1.6 + i*0.25));
+IN(exc, 2.6);
+// one beat per family: highlight its card, dim the rest, move a ring onto it
+{
+  const cards = scored.concat(ctrls), all = cards.concat([exc]);
+  const pos = c => [parseFloat(c.style.left), parseFloat(c.style.top)];
+  const ring = el('div', 'a', `left:${pos(cards[0])[0] - 8}px;top:${pos(cards[0])[1] - 8}px;width:${KW + 16}px;height:${KH + 16}px;border:4px solid #fff;border-radius:12px;pointer-events:none`, '', '#k-cards');
+  const op = all.map(() => 1);
+  D.tasks.beats.at.forEach((t, i) => {
+    all.forEach((c, j) => {
+      const target = j === i ? 1 : 0.3;
+      if (target !== op[j]) { T(c, {o: [op[j], target]}, t, 0.45, 'inOut'); op[j] = target; }
+    });
+    const [x0, y0] = pos(cards[0]), [x, y] = pos(cards[i]);
+    if (i === 0) T(ring, {o: [0, 1]}, t, 0.4);
+    else { const [px, py] = pos(cards[i - 1]); T(ring, {x: [px - x0, x - x0], y: [py - y0, y - y0]}, t, 0.6, 'inOut'); }
+  });
+}
 
 /* ================= SCENE 5: RESULTS ================= */
 OFF = SC.results.start;
@@ -865,6 +923,41 @@ OFF = SC.behaviour.start;
   T(root, {o: [0, 1]}, 10.0, 0.3); T(leg, {o: [0, 1]}, 10.4, 0.4); IN(note, 20.4);
 }
 
+/* ================= ROUND 4: MODELS (data-driven) ================= */
+if (SC.models) {
+  OFF = SC.models.start;
+  const M = D.models4, root = $('#m-grid');
+  el('div', 'sub', '', M.subtitle, root);
+  const LX = 96, GX = 470, GW = 1824 - GX, CW = GW / M.tasks.length, TOP = 262, RH = 84;
+  M.tasks.forEach((t, j) => {
+    const h = el('div', 'a mono b', `left:${GX + j*CW}px;top:${TOP}px;width:${CW - 12}px;text-align:center;font-size:22px`, t, root);
+    IN(h, 0.5 + j*0.08, 0.4, 10);
+  });
+  const rows = [{name: 'Specialist', harness: 'same hidden cases', spec: true}].concat(M.models);
+  rows.forEach((m, i) => {
+    const y = TOP + 44 + i*RH + (i > 0 ? 14 : 0);
+    const lab = el('div', 'a', `left:${LX}px;top:${y + 8}px;width:${GX - LX - 24}px`,
+      `<div class="mono b" style="font-size:26px;color:${m.spec ? C.amber : '#fff'}">${m.name}</div>` +
+      `<div class="muted" style="font-size:18px">${m.harness || ''}</div>`, root);
+    IN(lab, 1.2 + i*0.35, 0.4, 10);
+    M.tasks.forEach((t, j) => {
+      let bg = C.card2, txt = '–', sub = '', col = 'var(--muted)';
+      if (m.spec) { if (M.specialist[t]) { txt = M.specialist[t]; col = C.amber; } }
+      else {
+        const c = M.cells[m.name + '|' + t];
+        if (c) {
+          const v = Math.max(0, Math.min(1, +c.value || 0));
+          bg = `rgba(64,224,208,${(0.12 + 0.6*v).toFixed(3)})`; txt = c.label; col = '#fff';
+          if (c.gap) sub = `<div class="mono" style="font-size:17px;color:${C.pink}">gap ${c.gap}</div>`;
+        }
+      }
+      const cell = el('div', 'a', `left:${GX + j*CW}px;top:${y}px;width:${CW - 12}px;height:${RH - 10}px;border-radius:6px;background:${bg};display:flex;flex-direction:column;align-items:center;justify-content:center`,
+        `<div class="mono b" style="font-size:${m.spec ? 20 : 26}px;color:${col}">${txt}</div>${sub}`, root);
+      T(cell, {o: [0, 1], s: [0.85, 1]}, 1.4 + i*0.35 + j*0.06, 0.35);
+    });
+  });
+}
+
 /* ================= SCENE 7: TRUST ================= */
 OFF = SC.trust.start;
 D.trust.forEach(([h, d], i) => {
@@ -879,7 +972,7 @@ D.trust.forEach(([h, d], i) => {
 OFF = SC.close.start;
 $('#c-repo').textContent = D.meta.repo; $('#c-name').textContent = D.meta.name; $('#c-org').textContent = D.meta.org;
 T('#c-band1', {y: [-1080, 0]}, 0.0, 0.8, 'inOut'); T('#c-band2', {y: [1080, 0]}, 0.1, 0.8, 'inOut');
-IN('#c-eyebrow', 0.6); T('#c-repo', {reveal: [0, 100]}, 0.9, 1.2, 'inOut'); IN('#c-name', 2.0); IN('#c-org', 2.3);
+IN('#c-eyebrow', 0.6); T('#c-repo', {reveal: [0, 100]}, 0.9, 1.2, 'inOut'); IN('#c-name', 2.0); IN('#c-org', 2.3); IN('#c-logo', 2.6, 0.6, 16);
 
 /* ---------------- finalize ---------------- */
 for (const m of tracks.values()) for (const p in m) m[p].sort((a, b) => a.start - b.start);
@@ -891,8 +984,8 @@ function seek(t) {
     sc.node.style.display = on ? 'block' : 'none';
     if (on) {
       const lt = t - sc.start;
-      const fi = id === D.scenes[0].id ? 1 : Math.min(1, lt / 0.5);
-      const fo = id === D.scenes[D.scenes.length - 1].id ? 1 : Math.min(1, (sc.end - t) / 0.5);
+      const fi = id === ACTIVE[0].id ? 1 : Math.min(1, lt / 0.5);
+      const fo = id === ACTIVE[ACTIVE.length - 1].id ? 1 : Math.min(1, (sc.end - t) / 0.5);
       sc.node.style.opacity = Math.max(0, Math.min(fi, fo));
     }
   }
