@@ -26,7 +26,7 @@
     {"id": "title",     "dur": 8},
     {"id": "why",       "dur": 36},
     {"id": "pipeline",  "dur": 38},
-    {"id": "tasks",     "dur": 75},
+    {"id": "tasks",     "dur": 149},
     {"id": "results",   "dur": 30},
     {"id": "models",    "dur": 24, "enabled": false, "note": "Round 4. Enable once data.models4.cells is filled from hosted-models4; preview with ?with=models"},
     {"id": "behaviour", "dur": 26},
@@ -52,14 +52,21 @@
       [29.8, "6 · Out comes a seven-key reward. It counts only if every case ran, was valid and on time."]
     ],
     "tasks": [
-      [0.4,  "Seven families: four scored, three controls. Two more were excluded."],
-      [5.2,  "Registration: correct brain shift. Under 2 mm, 120 s per case."],
-      [15.2, "Spleen: organ mask and volume, both scored."],
-      [25.2, "Fetal head: within 4.9 %, in 10 s per image."],
-      [35.2, "Retinal vessels: as good as a second human expert."],
-      [45.2, "Control · ECG: calibrated, sensitive, fair across age and sex."],
-      [55.2, "Control · ICU risk: beat SAPS-I, calibrated, useful at a 20 % threshold."],
-      [65.2, "Control · treatment effect: does the 95 % interval cover the truth?"]
+      [0.4, "Seven families: four scored, three controls. Two more were excluded."],
+      [5.2, "Registration: in surgery the brain shifts, so the pre-op MRI map goes stale."],
+      [19.4, "Re-align MRI to live ultrasound: under 2 mm, 120 s per case."],
+      [29.2, "Spleen: an enlarged spleen signals liver disease, blood cancers or infection."],
+      [40.2, "Organ mask and volume within 10 %, both scored."],
+      [49.2, "Fetal head: dates the pregnancy and tracks the baby's growth."],
+      [60.2, "Within 4.9 %, in 10 s per image, about a sonographer's own pace."],
+      [69.2, "Retinal vessels: a direct view of small vessels; they change with diabetes and blood pressure."],
+      [80.2, "As good as a second human expert, thin vessels kept connected."],
+      [89.2, "Control · ECG: a missed heart attack changes treatment the most."],
+      [100.2, "Heart-attack sensitivity, calibration, fairness across age and sex."],
+      [109.2, "Control · ICU risk: who gets a senior review or a goals-of-care talk."],
+      [120.2, "Beat SAPS-I, stay calibrated, be useful at a 20 % threshold."],
+      [129.2, "Control · treatment effect: does a drug help, judged from observational data?"],
+      [140.2, "The true effect is known: does the 95 % interval cover it?"]
     ],
     "results": [
       [0.4,  "Fetal head: the specialist measures 83 of 83 hidden images within tolerance."],
@@ -112,7 +119,7 @@
       {"name": "Treatment effect", "what": "effect with a 95 % interval", "bar": "coverage, RMSE, bias, interval length", "time": "960 s for 48 datasets", "spec": "specialist meets all 4 parts"}
     ],
     "excluded": ["Report labelling (PTB-XL text)", "Pharyngitis triage"],
-    "beats": {"intro_s": 5, "at": [5, 15, 25, 35, 45, 55, 65], "note": "one beat per card, scored then controls; captions.tasks and narration.json use the same times"}
+    "beats": {"intro_s": 5, "at": [5, 29, 49, 69, 89, 109, 129], "note": "one beat per card, scored then controls; captions.tasks and narration.json use the same times"}
   },
   "results": {
     "source": "README.md Results; docs/research/suite/hosted-agents3.md Pooled view; seg_vessel.md",

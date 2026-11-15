@@ -59,31 +59,35 @@
       ],
       [
         4.7,
-        "Registration: correct brain shift, matching M R I to ultrasound within two millimetres in two minutes. 3D geometry across modalities."
+        "Registration. In brain tumour surgery, the surgeon navigates on the M R I taken before the operation. Once the skull is open, the brain shifts, here by about six millimetres on average, and that map goes stale."
       ],
       [
-        15.4,
-        "Spleen: a C T organ mask plus its volume in millilitres. Overlap alone can hide a wrong volume, so both are scored."
+        19.3,
+        "The agent must re-align the M R I to live ultrasound, within two millimetres, in two minutes per case."
       ],
       [
-        25.4,
-        "Fetal head: a routine prenatal measurement within four point nine percent, the sonographers' own agreement, in ten seconds, a real bedside speed."
+        29.4,
+        "Spleen. An enlarged spleen is a sign of liver disease, blood cancers or infection, and its size is tracked across scans. The agent outlines it on C T and reports the volume within ten percent. Both are scored, because overlap alone can hide a wrong volume."
       ],
       [
-        35.4,
-        "Retinal vessels: the bar is a second human expert on each image, thin vessels included. Match a person, not a leaderboard."
+        49.4,
+        "Fetal head. Head circumference is measured at routine prenatal scans to date the pregnancy and check the baby's growth. The bar is the sonographers' own agreement, four point nine percent, in ten seconds per image, about as fast as a sonographer measures by hand."
       ],
       [
-        45.4,
-        "Controls show the test is possible. E C G: calibrated probabilities, heart attack sensitivity, and fairness across age and sex."
+        69.4,
+        "Retinal vessels. The retina is the one place doctors can look directly at small blood vessels, and their changes track diabetes and high blood pressure. The bar is a second human expert on every image, and thin vessels must stay connected."
       ],
       [
-        55.4,
-        "I C U risk, from messy bedside data: beat the classic SAPS score, stay calibrated, and be useful at a twenty percent threshold."
+        89.4,
+        "The controls show the test is possible. E C G is among the most common heart tests, and a missed heart attack changes treatment the most. So we require high heart-attack sensitivity, calibrated probabilities, and fairness across age and sex."
       ],
       [
-        65.4,
-        "Treatment effect: the true answer is known, so we check that the ninety-five percent interval covers it. An honest test of uncertainty."
+        109.4,
+        "I C U risk. A calibrated risk of death from the first two days can prompt a senior review or a goals-of-care conversation. It must beat the classic SAPS score, stay calibrated, and help at a twenty percent threshold."
+      ],
+      [
+        129.4,
+        "Treatment effect. Whether a drug helps or harms is often judged from observational records, where sicker patients get different treatments. Here the true effect is known, so we check that the ninety-five percent interval really covers it."
       ]
     ],
     "results": [
