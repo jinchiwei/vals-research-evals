@@ -73,6 +73,12 @@ Best-known benchmarks for clinical AI, such as MedQA and MedAgentsBench, are mul
 
 ---
 
+## Six models — rewards and gap verdicts per attempt
+
+- Fetal head: gap in every graded attempt of every model; Codex models in a different harness, never pooled
+
+---
+
 ## Limits and how to run
 
 - Three attempts per task and model; 6 hidden cases for registration and spleen
@@ -159,6 +165,12 @@ Best-known benchmarks for clinical AI, such as MedQA and MedAgentsBench, are mul
 ## Cost and run identifiers
 
 - API cost by round; Modal cost not reported
+
+---
+
+## Round 4 coverage and cost — OpenAI rate limit and quota
+
+- Astra and Sol coverage incomplete; OpenAI quota exhausted at 05:46 EST
 
 ---
 

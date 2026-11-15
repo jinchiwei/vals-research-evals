@@ -38,6 +38,13 @@ the current plan in [PLAN.md](docs/research/suite/PLAN.md).
   `/workspace/output/pipeline/` when the session ends is graded as found. From task version 3
   (dataset `suite/clinical-v1@2`; [instructions-v3.md](docs/research/suite/instructions-v3.md)) the
   instruction states this; earlier versions did not (see [Earlier runs](#earlier-runs)).
+- **Two clocks.** The per-case operational limits (10 s per fetal head image, 60 s per vessel image,
+  120 s per registration case, 300 s per spleen scan, 300 s or 560 s for a cohort task) are clinical
+  limits, enforced by the verifier on the agent's pipeline and scored as `within_time`. The 30 to
+  60 minute development session is a platform budget for the agent's own work and is not scored.
+  Under instructions v3, no Claude attempt in any round reached its session limit; in round 4 one
+  Codex attempt did (Luna spleen 4b, stopped at 3,600 s and graded as found;
+  [hosted-models4.md](docs/research/suite/hosted-models4.md)).
 - **One exception.** The report-label family uses a direct-answer contract: the agent writes labels
   for the given hidden reports to `/workspace/output/labels.json`, and no agent code runs in the
   verifier ([label_ptbxl_reports.md](docs/research/suite/label_ptbxl_reports.md)).
@@ -148,7 +155,8 @@ their own subsections and never pooled with the headline. Earlier runs with a di
 instruction are summarised under [Earlier runs](#earlier-runs). Full write-ups:
 [hosted-agents3.md](docs/research/suite/hosted-agents3.md) (with
 [hosted-agents3.json](docs/research/suite/hosted-agents3.json)), and one document per round-3
-workstream, linked below.
+workstream, linked below. Round 4 adds Claude Fable 5.2 and three OpenAI models in a Codex harness,
+reported side by side and never pooled with the headline ([More models (round 4)](#more-models-round-4)).
 
 ### Summary
 
@@ -179,7 +187,11 @@ workstream, linked below.
   bar, knowingly, with 8 to 31 minutes left. The belief about time was real; correcting it did not
   remove the early stopping.
 - **Clean runs.** No infrastructure failure or relaunch in round 3, no web search or fetch in any
-  trace. Hosted API cost over all rounds: about $28 at list price (see [Cost](#cost)).
+  trace. Hosted API cost over rounds 1 to 3: about $28 at list price (see [Cost](#cost)).
+- **Round 4 adds four models** (Claude Fable 5.2; OpenAI gpt-6-astra, gpt-6.1-sol and gpt-6-luna in a
+  Codex harness, never pooled with Claude). Fetal head shows a gap in every graded attempt of every
+  model; Fable also stops early and claims to be out of time when it is not; the OpenAI rate limit
+  and quota left Astra and Sol coverage incomplete. See [More models (round 4)](#more-models-round-4).
 
 ### Headline: three attempts per task and model against the specialist
 
@@ -263,6 +275,72 @@ hid_1625 by 0.00002 clDice. This family does not show a gap. Per-image values ar
 [seg_vessel_per_image.csv](docs/research/suite/data/seg_vessel_per_image.csv).
 
 ![Vessel Dice and clDice per hidden image against the second observer](docs/figures/suite/round3_vessel_per_image.png)
+
+### More models (round 4)
+
+Round 4 ran the same tasks with four more models, preregistered in
+[round4-prereg.md](docs/research/suite/round4-prereg.md) (every deviation is listed there):
+Claude Fable 5.2 (`claude-fable-5-2`) in the same Claude Code harness, and three OpenAI models,
+`gpt-6-astra`, `gpt-6.1-sol` and `gpt-6-luna`, in a Codex CLI 0.167.0 harness with web search
+disabled (`codex_noweb-v1.0.0`), each at Codex's default reasoning effort. The Codex models ran on
+OpenAI-network twins of the datasets, identical except that the agent may reach `api.openai.com`
+instead of `api.anthropic.com`; the twin oracles reproduced every original reward. Each model had
+three full runs of the five clinical tasks and one vessel attempt. Full write-up:
+[hosted-models4.md](docs/research/suite/hosted-models4.md) (snapshot 06:15 EST; every run was
+terminal) and [hosted-models4.json](docs/research/suite/hosted-models4.json).
+
+**Harness difference.** Codex results come from a different harness (Codex CLI, not Claude Code),
+with its own tools, prompts and effort defaults. They sit side by side with the Claude columns and
+are never pooled with Claude results; a difference between a Codex column and a Claude column is
+not a like-for-like model comparison.
+
+Each cell gives the attempt rewards (hosted grades) and "gap shown in k of n" graded attempts. Opus
+5.5 and Sonnet 5.5 are the three pooled attempts in
+[hosted-agents3.json](docs/research/suite/hosted-agents3.json) and the single vessel attempts in
+[seg_vessel.md](docs/research/suite/seg_vessel.md). "Not graded" marks an attempt lost to the
+OpenAI rate limit or quota: an infrastructure failure, not a score of 0.
+
+| Task (specialist) | Opus 5.5 | Sonnet 5.5 | Fable 5.2 | Astra (Codex) | Sol (Codex) | Luna (Codex) |
+|---|---|---|---|---|---|---|
+| measure_hc18 (1.000) | 0.422, 0.855, 0.675; gap 3 of 3 | 0.771, 0.855, 0.892; gap 3 of 3 | 0.928, 0.892, 0.807; gap 3 of 3 | 3 not graded (OpenAI rate limit / quota) | 3 not graded (OpenAI rate limit / quota) | 0.843, 0.807, 0.578; gap 3 of 3 |
+| reg_resect (0.667) | 0.667, 0.333, 0.000; gap 1 of 3 | 0.000, 0.167, 0.000; gap 3 of 3 | 0.333, 0.500, 0.500; gap 0 of 3 | 3 not graded (OpenAI rate limit / quota) | 0.833; gap 0 of 1; 2 not graded (OpenAI rate limit / quota) | 0.167, 0.167, 0.000; gap 3 of 3 |
+| seg_spleen (0.500) | 0.500, 0.000, 0.167; gap 1 of 3 | 0.167, 0.000, 0.167; gap 1 of 3 | 0.167, 0.333, 0.667; gap 0 of 3 | 0.333, 0.333, 0.167; gap 0 of 3 | 0.000, 0.333, 0.167; gap 2 of 3 | 0.000, 0.000, 0.000; gap 3 of 3 |
+| seg_vessel (0.750) | 0.625; gap 0 of 1 | 0.500; gap 0 of 1 | 0.625; gap 0 of 1 | not graded (OpenAI rate limit / quota) | 0.750; gap 0 of 1 | 0.250; gap 1 of 1 |
+| ecg_ptbxl (1) | 1, 1, 0; gap 1 of 3 | 1, 1, 1; gap 0 of 3 | 0, 1, 1; gap 1 of 3 | 1, 1, 1; gap 0 of 3 | 1, 1; gap 0 of 2; 1 not graded (OpenAI rate limit / quota) | 0, 0, 0; gap 3 of 3 |
+| risk_icu (1) | 1, 1, 1; gap 0 of 3 | 1, 1, 1; gap 0 of 3 | 1, 1, 1; gap 0 of 3 | 1, 1; gap 0 of 2; 1 not graded (OpenAI rate limit / quota) | 1, 1; gap 0 of 2; 1 not graded (OpenAI rate limit / quota) | 1, 1, 1; gap 0 of 3 |
+
+Sources: [hosted-models4.md](docs/research/suite/hosted-models4.md) "Per-attempt results" and
+"Comparison with Opus 5.5 and Sonnet 5.5". Sol's registration 0.833 is its 4a relaunch, which ran
+alone. Every graded round-4 attempt ran, was valid and finished inside its per-case time limits.
+
+![Fetal head pass rate per attempt, six models, against the specialist](docs/figures/suite/round4_hc18_six_models.png)
+
+**Findings.**
+- **Fetal head shows a gap for every model with graded attempts:** Opus, Sonnet, Fable and Luna, 3
+  of 3 each. Fable's best attempt (77 of 83 images; then 74 and 67) is the best fetal head attempt
+  of any model and is still short of the specialist's 83. Astra and Sol have no graded fetal head
+  attempt.
+- **Early stopping and false "out of time" claims also appear for Fable.** All 15 Fable clinical
+  attempts ended on their own, using 3 to 69 % of the session. Two fetal head attempts stopped below
+  their own measured bar and said they were out of time: "I ran out of session time before diagnosing
+  this" at 27 % of the session (4a), and "I ran out of session time before I could improve it
+  further" at 37 % (4c). Fable is the best Claude model on registration and spleen (no gap shown in
+  any attempt; mean 0.444 and 0.389).
+- **Sol has the best registration and vessel attempts of any model in rounds 3 and 4:** registration
+  0.833 (5 of 6 cases under 2 mm, mean TRE 1.89 mm; Opus's best was 0.667) and vessel 6 of 8 images
+  (0.750, equal to the specialist). Each is a single graded attempt; spleen shows a gap in 2 of 3.
+- **Luna is the weakest model.** It shows a gap in 3 of 3 attempts on registration, spleen, fetal
+  head and ECG (MI sensitivity 0.681, 0.610 and 0.630 against the 0.70 bar), and the only vessel
+  gap of any model (2 of 8). ICU still passes 3 of 3.
+- **Astra and Sol coverage is incomplete.** With all twelve Codex runs started together, Astra and
+  Sol hit OpenAI's limit of 1M tokens per minute per model, and those tasks died; each was allowed
+  one relaunch under the preregistered rules. Astra relaunches were then put on hold for budget, the
+  schedule stopped new relaunches at 05:45 EST, and the OpenAI quota ran out at 05:46 EST, ending the
+  two relaunches still running. Astra has graded attempts only on spleen, ECG and ICU; Sol none on
+  fetal head. Several finished Astra and Sol tasks also ran under rate-limit retries. Where graded,
+  Astra and Sol pass every ECG and ICU attempt.
+- **Web.** No Fable trace offered or used a web tool, and every Codex trace has 0 `web_search`
+  items.
 
 ### Controls: ECG, ICU risk and treatment effect
 
@@ -440,10 +518,16 @@ Valkyrie and is not included.
 | Round 3, V (vessel) | 2 | $1.01 |
 | Round 3, C (causal) | 6 | $1.26 |
 | Round 3, T (report labels) | 2 | $0.39, plus the agents' own model calls from the sandbox (not recorded) |
-| **Hosted total** | 63 | **about $28.16** |
+| **Hosted total, rounds 1 to 3** | 63 | **about $28.16** |
+| Round 4, Fable 5.2 | 16 | $16.85 |
 | Local pilot 1 (not hosted) | 4 | $1.70 reported; killed attempts have no cost record (upper bound $16.70) |
 
-Round 3 stayed well under its preregistered $60 stop rule.
+Round 3 stayed well under its preregistered $60 stop rule, and round 4's Anthropic spend under its
+$80 stop. Round 4's OpenAI cost is computed from each Codex trace's token counts at list price,
+for completed tasks only: Astra $60.29, Sol $10.31, Luna $0.95. Tasks that died on the rate limit
+or the quota, and Luna's spleen attempt stopped at the session limit, report no usage, so these
+are lower bounds; the OpenAI quota ran out at 05:46 EST
+([hosted-models4.md](docs/research/suite/hosted-models4.md) "Cost").
 
 ### Hosted checks of the reference solutions
 
@@ -462,6 +546,8 @@ whose expected reward is 0.
 | `suite/report-label-v1@1` | `72b3ac93-782a-4fc9-8a42-8e9c064c9168` | 0 (expected 0; the specialist's metrics exactly) |
 | `suite/hc18-keepworking-v1@1` | `a73a3bc3-397c-419d-b26a-e993621b4917` | 0.759 (expected 0.759) |
 | `suite/hc18-clockcheck-v1@1` | `8b8782de-d8d4-4f17-811f-81b80d322122` | 0.759 (expected 0.759) |
+| `suite/clinical-openai-v1@1` (round-4 twin) | `644c08bd-463f-415b-a6c1-85bb4e9487ab` | 5 of 5, all seven keys equal to the `suite/clinical-v1@2` oracle |
+| `suite/vessel-openai-v1@1` (round-4 twin) | `c2a22bed-8442-4010-a4ef-bcd9e6366b33` | 0.75 (expected 0.75) |
 
 The v2 oracle run (`8ca063d3-…`, [hosted-oracle1.md](docs/research/suite/hosted-oracle1.md)) also
 showed that the agent-phase network allowlist is enforced on Modal: pypi.org, files.pythonhosted.org
@@ -501,6 +587,8 @@ and `pilot1_*`.
 | Hosted run 1, Opus 5.5 / Sonnet 5.5 | `0ae696de-4237-44bf-be49-25b90940772b` / `1a4037a0-e1a9-4670-aee0-ceda221c6264` | `suite/clinical-v1@1` (instructions v2) |
 | Oracles | see [the table above](#hosted-checks-of-the-reference-solutions); v2 oracle `8ca063d3-ff52-4bd0-883f-4fc815e6e31a` | |
 | Smoke oracle / smoke agent (Sonnet 5.5) | `1ff5a572-99f5-4623-9062-397e992201ca` / `cea5e542-b160-4971-8119-0a9443d82663` | `suite-scratch/toy-smoke@1` |
+| Round 4, Fable 5.2 (3 clinical + 1 vessel) | `00116bcf-…`, `d2b413c6-…`, `9ff6ff83-…`; vessel `f59ed1c7-…` | `suite/clinical-v1@2`, `suite/vessel-v1@1` |
+| Round 4, Astra / Sol / Luna (3 clinical + 1 vessel each, 3 relaunches) | 15 runs; full IDs in [hosted-models4.md](docs/research/suite/hosted-models4.md) "Runs" | `suite/clinical-openai-v1@1`, `suite/vessel-openai-v1@1` |
 
 Raw traces stay outside Git (`exp/` is ignored); the documents above cite the files that hold them.
 

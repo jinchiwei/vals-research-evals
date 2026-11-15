@@ -717,9 +717,12 @@
         "R2 Opus": "7db8faca-9295-4231-9dde-4580dfb8921a",
         "R3 Opus": "39d574d3-7ee3-444e-b300-fb3c8cd74ae9",
         "R2 Sonnet": "a3525e04-cb77-4e97-9dc6-ce71a86d3960",
-        "R3 Sonnet": "5378cf20-6ce9-4f13-b007-537c331d8ab5"
+        "R3 Sonnet": "5378cf20-6ce9-4f13-b007-537c331d8ab5",
+        "round 4 Fable 4a": "00116bcf-f7e3-4da9-8d29-7cabeca09f58",
+        "round 4 Fable 4b": "d2b413c6-9095-489e-8925-76129132af98",
+        "round 4 Fable 4c": "9ff6ff83-1d5f-4268-9d4e-353e48e7ac33"
       },
-      "source": "docs/research/suite/hosted-agents2.md, hosted-agents3.md"
+      "source": "docs/research/suite/hosted-agents2.md, hosted-agents3.md, hosted-models4.md (round 4 Fable, not pooled with the headline)"
     },
     {
       "dataset": "suite/vessel-v1@1",
@@ -738,9 +741,10 @@
       "runs": {
         "oracle": "7d02411d-dd46-437a-bcc6-9d72b33a5323",
         "Opus": "123e97b9-acda-4504-96cb-3c46e935a277",
-        "Sonnet": "8c5fa3ce-06cd-42a6-885b-42522e3ae7a2"
+        "Sonnet": "8c5fa3ce-06cd-42a6-885b-42522e3ae7a2",
+        "round 4 Fable": "f59ed1c7-bc77-48d1-8a79-e7ea56eed649"
       },
-      "result": "Opus 0.625 (5/8), Sonnet 0.500 (4/8); no gap shown for either",
+      "result": "Opus 0.625 (5/8), Sonnet 0.500 (4/8); no gap shown for either; round 4 Fable 0.625 (5/8), no gap shown",
       "source": "docs/research/suite/seg_vessel.md; per-image values docs/research/suite/data/seg_vessel_per_image.csv"
     },
     {
@@ -830,6 +834,76 @@
       },
       "source": "docs/research/suite/hosted-clockcheck1.md",
       "result": "every agent checked the clock; all 6 still stopped below the bar with 8-31 minutes left; Opus mean reward 0.799, Sonnet 0.542 (one 0 from a time-limit failure); gap shown in 6 of 6"
+    },
+    {
+      "dataset": "suite/clinical-openai-v1@1",
+      "tag": "v1",
+      "tasks": "reg_resect, seg_spleen, measure_hc18, ecg_ptbxl, risk_icu (OpenAI-network twin of suite/clinical-v1@2)",
+      "role": "round 4, Codex models only; reported per model, never pooled with Claude",
+      "change": "allowed_hosts = [\"api.openai.com\"] instead of api.anthropic.com; data, hidden cases, instruction, grader, limits and specialist outputs byte-identical",
+      "agent": "codex_noweb-v1.0.0 (registry codex-v1.0.0 with web search disabled; Codex CLI 0.167.0; agents/codex_noweb/)",
+      "models": [
+        "gpt-6-astra",
+        "gpt-6.1-sol",
+        "gpt-6-luna"
+      ],
+      "runs": {
+        "oracle": "644c08bd-463f-415b-a6c1-85bb4e9487ab",
+        "4a Astra": "22f34a74-c95c-44e7-9637-b0af38251086",
+        "4b Astra": "57cfd94d-c7a1-4caa-84c2-c1e59181b5d7",
+        "4c Astra": "bdc5d418-12c5-4887-95dd-2293908798a6",
+        "4a Sol": "53a8d2c5-5c34-4927-82cc-0e65a2bdd2f6",
+        "4b Sol": "04a63778-6710-4c57-886e-858caf9cf8ff",
+        "4c Sol": "e1f27d93-42d6-4fec-8b2b-9e9f3be23c99",
+        "4a Luna": "a98af7c8-3a19-4518-af16-bdba9f979b40",
+        "4b Luna": "cffb941f-1d37-4ba3-88d6-4d9787f6262d",
+        "4c Luna": "2c84b465-478f-45e4-bb4b-eabf97c7e358",
+        "Sol 4a reg_resect relaunch": "f6147eb4-e1f3-420f-8d8a-59272e80a81b",
+        "Sol 4a measure_hc18 relaunch": "39ab4e63-8358-4709-a3cf-68b1bae0fb03"
+      },
+      "result": "oracle reproduces every original reward; Astra and Sol coverage incomplete (OpenAI rate limit, then quota exhausted 05:46 EST); see source",
+      "source": "docs/research/suite/hosted-models4.md, hosted-models4.json, round4-prereg.md"
+    },
+    {
+      "dataset": "suite/vessel-openai-v1@1",
+      "tag": "v1",
+      "task_id": "seg-vessel-build-0001",
+      "family": "seg_vessel",
+      "role": "round 4, Codex models only; never pooled with Claude",
+      "change": "allowed_hosts = [\"api.openai.com\"]; every other file byte-identical to suite/vessel-v1@1",
+      "agent": "codex_noweb-v1.0.0",
+      "runs": {
+        "oracle": "c2a22bed-8442-4010-a4ef-bcd9e6366b33",
+        "Astra": "c299cbca-ca1b-42a7-9987-de1bcd14f140",
+        "Astra relaunch": "cf0f7587-1eb1-445f-bfc0-d74c839d10be",
+        "Sol": "484fea83-7193-4309-ada5-9c872ddafbd7",
+        "Luna": "75a56b4e-2418-4c76-960b-b4e5a1d547d2"
+      },
+      "result": "Sol 0.750 (6/8, no gap shown), Luna 0.250 (2/8, gap); Astra not graded (rate limit, relaunch ended by OpenAI quota)",
+      "source": "docs/research/suite/hosted-models4.md"
+    }
+  ],
+  "agents": [
+    {
+      "agent": "claude_code_noweb-v1.0.0",
+      "harness": "Claude Code with WebFetch and WebSearch disallowed",
+      "models": [
+        "claude-opus-5-5",
+        "claude-sonnet-5-5",
+        "claude-fable-5-2"
+      ],
+      "source": "agents/claude_code_noweb/"
+    },
+    {
+      "agent": "codex_noweb-v1.0.0",
+      "harness": "Codex CLI 0.167.0 with web_search disabled, default reasoning effort per model",
+      "models": [
+        "gpt-6-astra",
+        "gpt-6.1-sol",
+        "gpt-6-luna"
+      ],
+      "note": "different harness; results never pooled with Claude",
+      "source": "agents/codex_noweb/; round4-prereg.md change 3"
     }
   ]
 }

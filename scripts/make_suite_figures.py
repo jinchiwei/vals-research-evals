@@ -987,7 +987,60 @@ def make_round3(docs: Path, out: Path, mf: dict) -> list[Path]:
         written += fig_r3_causal(csum, out)
     if tsum:
         written += fig_r3_report_label(tsum, out)
+    m4 = load_json(docs / 'hosted-models4.json')
+    if r3 and m4:
+        written += fig_r4_hc18(r3, m4, out)
     return written
+
+
+# ---------------------------------------------------------------------------------------------
+# Round 4 (round4-prereg.md): six-model fetal head pass rate. Opus/Sonnet from hosted-agents3.json,
+# Fable and the three Codex models from hosted-models4.json; nothing typed in here.
+# ---------------------------------------------------------------------------------------------
+
+R4_ROWS = [('claude-opus-5-5', 'Opus 5.5', 'R'), ('claude-sonnet-5-5', 'Sonnet 5.5', 'R'),
+           ('claude-fable-5-2', 'Fable 5.2', 'M4'), ('gpt-6-astra', 'Astra (Codex)', 'M4'),
+           ('gpt-6.1-sol', 'Sol (Codex)', 'M4'), ('gpt-6-luna', 'Luna (Codex)', 'M4')]
+
+
+def fig_r4_hc18(r3, m4, out: Path) -> list[Path]:
+    fam = 'measure_hc18'
+    fig, ax = plt.subplots(figsize=(8.6, 3.6))
+    n_rows = len(R4_ROWS)
+    for i, (model, label, src) in enumerate(R4_ROWS):
+        y = n_rows - 1 - i
+        pool = r3['pooled_3_attempts'] if src == 'R' else m4['pooled']
+        p = next((q for q in pool if q['model'] == model and q['family'] == fam), None)
+        rewards = (p or {}).get('rewards') or []
+        col = MODEL_SLOTS[i % len(MODEL_SLOTS)] if i < 4 else ['#b8487a', '#7a6a12'][i - 4]
+        if rewards:
+            ax.scatter(rewards, [y] * len(rewards), s=46, color=col, zorder=4)
+            k, n = p['gap_shown_in'], p.get('n_graded', p.get('n_attempts', len(rewards)))
+            ax.text(1.02, y, f'gap {k} of {n}', va='center', fontsize=8, color=INK)
+        else:
+            ax.text(0.42, y, 'not graded (OpenAI rate limit / quota)', va='center', fontsize=8,
+                    color=INK_2, style='italic')
+    ax.axvline(1.0, color=SPECIALIST_COLOR, linewidth=2.0, zorder=3)
+    ax.axvline(HC18_FAMILY_BAR, color=INK_2, linewidth=1.0, linestyle='--', zorder=2)
+    ax.text(1.0, n_rows - 0.35, 'specialist 83/83', ha='right', va='bottom', fontsize=7.5, color=SPECIALIST_COLOR)
+    ax.text(HC18_FAMILY_BAR, n_rows - 0.35, '90 % bar', ha='right', va='bottom', fontsize=7.5, color=INK_2)
+    ax.axhline(n_rows - 3.5, color=GRID, linewidth=1.2)
+    ax.text(0.405, n_rows - 3.45, 'Codex CLI harness below this line: side by side, never pooled with Claude',
+            va='bottom', fontsize=7.2, color=INK_2)
+    ax.set_yticks(range(n_rows))
+    ax.set_yticklabels([r[1] for r in reversed(R4_ROWS)])
+    ax.set_xlim(0.4, 1.12)
+    ax.set_xticks([0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0])
+    ax.set_ylim(-0.6, n_rows - 0.1)
+    ax.set_xlabel('Fraction of 83 hidden images within 4.9 % (attempt reward)')
+    ax.xaxis.grid(True, color=GRID, linewidth=0.6)
+    ax.set_axisbelow(True)
+    fig.suptitle('Fetal head circumference: every graded attempt of every model, against the specialist', x=0.01,
+                 ha='left', fontsize=10.5, fontweight='bold', color=INK, y=0.99)
+    n = footer(fig, ["Sources: docs/research/suite/hosted-agents3.json (Opus, Sonnet: R1-R3) and "
+                     "docs/research/suite/hosted-models4.json (round 4, snapshot 06:15 EST). Hosted grades."])
+    fig.tight_layout(rect=(0, 0.02 + 0.03 * n, 1, 0.94))
+    return save(fig, out, 'round4_hc18_six_models')
 
 
 SOURCES = [

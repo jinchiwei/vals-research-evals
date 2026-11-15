@@ -170,18 +170,18 @@ def k2_lines():
 K2S = k2_lines()
 
 # ------------------------------------------------------------------ overview slot (Jin)
+# Jin's overview paragraph, read verbatim from the deck source (never typed or edited here).
+_md = (DECK / "CLINICAL_SUITE.md").read_text().split("\n")
+JIN_OVERVIEW = _md[_md.index("<!-- Human-written by Jin, placed verbatim. Do not edit. -->") + 1]
+assert JIN_OVERVIEW.startswith("Best-known benchmarks") and len(JIN_OVERVIEW) > 1000
 slides["h2-overview"] = dict(
     title="Overview",
     code=(
-        R("body_l", "body_top + 0.3", "body_w", "body_h - 0.9", "SURFACE_RGB")
-        + R("body_l", "body_top + 0.3", 0.10, "body_h - 0.9", "AMBER_RGB")
-        + T("RESERVED", "body_l + 0.45", "body_top + 0.65", 6, 0.4, 14, "AMBER_RGB", "MONO_FONT", True)
-        + T("Jin's overview, in his own words.", "body_l + 0.45", "body_top + 1.3", "body_w - 0.9", 0.8,
-            28, ONS, "MONO_FONT", True)
-        + T("This slide is intentionally left for the presenter. Replace this text with the overview "
-            "before the demo.", "body_l + 0.45", "body_top + 2.3", "body_w - 0.9", 0.8, 16, ONS)
+        R("body_l", "body_top + 0.1", "body_w", "body_h - 0.55", "SURFACE_RGB")
+        + R("body_l", "body_top + 0.1", 0.10, "body_h - 0.55", "AMBER_RGB")
+        + T(JIN_OVERVIEW, "body_l + 0.4", "body_top + 0.3", "body_w - 0.8", "body_h - 0.95", 14.5, ONS)
     ),
-    notes=("Reserved for Jin's own overview. Nothing here has been drafted on his behalf. "
+    notes=("Jin's own overview, placed verbatim from his text. Nothing here has been drafted on his behalf. "
            "Transition: from the overview into why clinical evaluation needs more than a benchmark score."),
 )
 
@@ -698,7 +698,85 @@ slides["h1-backup/h2-clinical-thresholds-and-their-sources"] = dict(
            "Where no published number existed, for example the 90 % family bar or the calibration bounds, we declared our own convention before any agent ran and say so."),
 )
 
-DIVIDER_NOTES = {"divider-h1-backup": "Backup slides for questions: gap verdicts, reward keys, session use, the Sonnet registration trace, trust checks, earlier runs, report labels, the causal control, the PCNSL attempt, dataset selection, cost and thresholds."}
+# ------------------------------------------------------------------ round 4: six models
+# Values copied from docs/research/suite/hosted-models4.md (snapshot 06:15 EST) "Per-attempt results" and
+# "Comparison with Opus 5.5 and Sonnet 5.5"; Opus/Sonnet from hosted-agents3.json and seg_vessel.md (via H3/VES).
+NG = "not graded (OpenAI rate limit / quota)"
+
+
+def _r2(fam, model):
+    return " · ".join(f"{r:.2f}" for r in pooled(fam, model)["rewards"])
+
+
+def _g(fam, model):
+    p = pooled(fam, model)
+    return f"gap {p['gap_shown_in']} of {p['n_attempts']}"
+
+
+def _c(fam, model):
+    return f"{_r2(fam, model)}\n{_g(fam, model)}"
+
+
+def _cohort(fam, model):
+    p = pooled(fam, model)
+    return " · ".join(str(int(r)) for r in p["rewards"]) + "\n" + _g(fam, model)
+
+
+six_rows = [["Task (specialist)", "Opus 5.5", "Sonnet 5.5", "Fable 5.2", "Astra · Codex", "Sol · Codex", "Luna · Codex"],
+            ["Fetal head (1.00)", _c("measure_hc18", O5), _c("measure_hc18", S5), "0.93 · 0.89 · 0.81\ngap 3 of 3", "3 × " + NG, "3 × " + NG, "0.84 · 0.81 · 0.58\ngap 3 of 3"],
+            ["Registration (0.67)", _c("reg_resect", O5), _c("reg_resect", S5), "0.33 · 0.50 · 0.50\ngap 0 of 3", "3 × " + NG, "0.83 · gap 0 of 1\n+2 " + NG, "0.17 · 0.17 · 0.00\ngap 3 of 3"],
+            ["Spleen (0.50)", _c("seg_spleen", O5), _c("seg_spleen", S5), "0.17 · 0.33 · 0.67\ngap 0 of 3", "0.33 · 0.33 · 0.17\ngap 0 of 3", "0.00 · 0.33 · 0.17\ngap 2 of 3", "0.00 · 0.00 · 0.00\ngap 3 of 3"],
+            ["Vessels (0.75)", f"{ves_o['n_acceptable'] / 8:.3f} ({ves_o['n_acceptable']}/8)\ngap 0 of 1", f"{ves_s['n_acceptable'] / 8:.3f} ({ves_s['n_acceptable']}/8)\ngap 0 of 1", "0.625 (5/8)\ngap 0 of 1", NG, "0.750 (6/8)\ngap 0 of 1", "0.250 (2/8)\ngap 1 of 1"],
+            ["ECG (1)", _cohort("ecg_ptbxl", O5), _cohort("ecg_ptbxl", S5), "0 · 1 · 1\ngap 1 of 3", "1 · 1 · 1\ngap 0 of 3", "1 · 1 · gap 0 of 2\n+1 " + NG, "0 · 0 · 0\ngap 3 of 3"],
+            ["ICU risk (1)", _cohort("risk_icu", O5), _cohort("risk_icu", S5), "1 · 1 · 1\ngap 0 of 3", "1 · 1 · gap 0 of 2\n+1 " + NG, "1 · 1 · gap 0 of 2\n+1 " + NG, "1 · 1 · 1\ngap 0 of 3"]]
+code = TABLE(six_rows, [1.65, 1.75, 1.75, 1.75, 1.8, 1.8, 1.8], "body_l", "body_top", 0.6, "TURQUOISE_RGB", 9.5)
+code += R("body_l + 6.88", "body_top", 0.04, 4.2, "AMBER_RGB")
+code += R("body_l", "body_top + 4.32", "body_w", 0.62, "SURFACE_RGB") + R("body_l", "body_top + 4.32", 0.08, 0.62, "AMBER_RGB")
+code += T("Right of the amber line: Codex CLI 0.167.0 (web search off, default effort) on OpenAI-network twins of the same tasks. "
+          "A different harness, shown side by side and never pooled with Claude. “Not graded” is an infrastructure failure, not a 0.",
+          "body_l + 0.3", "body_top + 4.36", 11.9, 0.56, 11, ONS)
+code += FOOT("Sources: docs/research/suite/hosted-models4.md and .json (snapshot 06:15 EST); Opus/Sonnet hosted-agents3.json, seg_vessel.md. Hosted-grade rewards per attempt, 2 dp.")
+slides["h2-six-models-rewards-and-gap-verdicts-per-attempt"] = dict(
+    title="Six models — rewards and gap verdicts per attempt",
+    code=code,
+    notes=("Round 4 asked whether the findings hold for other frontier models. We added Claude Fable 5.2 in the same Claude Code harness, and three OpenAI models, Astra, Sol and Luna, in OpenAI's Codex harness with web search turned off. "
+           "Each cell lists the reward of every attempt and how many attempts show a gap against the specialist on the same hidden cases. "
+           "The columns right of the amber line come from a different harness, with its own tools, prompts and effort settings, so they are side-by-side observations, never pooled with the Claude columns. "
+           "Fetal head is the stable result: every model with graded attempts shows a gap in 3 of 3. Fable's best attempt, 77 of 83 images, is the best of any model and still short of the specialist's 83. "
+           "Fable also stops early: two of its fetal head attempts said they had run out of session time at 27 and 37 percent of the session. "
+           "Sol has the best single registration attempt, 0.833, 5 of 6 cases, and the best vessel attempt, 6 of 8, equal to the specialist. Luna is the weakest model: a gap in every attempt on registration, spleen, fetal head and ECG, and the only vessel gap. "
+           "Astra and Sol have holes: OpenAI's rate limit killed many of their tasks, and the quota ran out at 05:46 before every relaunch could finish. Those cells say not graded, not zero. The backup slide on round-4 coverage has the details. "
+           "Transition: the limits of all this."),
+)
+
+# ------------------------------------------------------------------ round 4: coverage and cost (backup)
+r4_rows = [["Model", "Harness", "Graded / 16", "Not graded", "API cost (list)"],
+           ["Fable 5.2", "Claude Code", "16", "0", "$16.85"],
+           ["gpt-6-astra", "Codex CLI", "8", "8 (rate limit; budget hold; quota)", "$60.29 *"],
+           ["gpt-6.1-sol", "Codex CLI", "9 (1 relaunch)", "7 (rate limit; schedule; quota)", "$10.31 *"],
+           ["gpt-6-luna", "Codex CLI", "16", "0", "$0.95 *"]]
+code = TABLE(r4_rows, [1.7, 1.5, 1.5, 3.3, 1.6], "body_l", "body_top + 0.05", 0.5, "AMBER_RGB", 11)
+code += T("* completed tasks only, from trace token counts: a lower bound. Fable stayed under the $80 Anthropic stop.",
+          "body_l", "body_top + 2.62", 9.6, 0.5, 11, PRI)
+r4_cards = [("03:50–03:52 · RATE LIMIT", "All 12 Codex runs start together; Astra and Sol exceed 1M tokens per minute per model. Codex retries 5 times, then the task dies.", "DEEPPINK_RGB"),
+            ("RELAUNCH RULE", "Preregistered: one single-task relaunch per failed task. 05:13 Astra relaunches on budget hold; none start after 05:45 (schedule).", "TURQUOISE_RGB"),
+            ("05:46 · QUOTA EXHAUSTED", "“Quota exceeded.” ends the Astra vessel and Sol fetal head relaunches. Sol's registration relaunch had finished: 0.833.", "AMBER_RGB")]
+code += R("body_l", "body_top + 3.2", 9.5, 1.15, "SURFACE_RGB") + R("body_l", "body_top + 3.2", 0.08, 1.15, "DEEPPINK_RGB")
+code += T("RAN UNDER RATE LIMITING", "body_l + 0.3", "body_top + 3.28", 9.0, 0.3, 10.5, "DEEPPINK_RGB", "MONO_FONT", True)
+code += T("6 finished Astra tasks and 5 finished Sol tasks show rate-limit retries in their traces (1 to 27 events), each stalling the agent and costing session time. They are reported as they are, not relaunched.",
+          "body_l + 0.3", "body_top + 3.6", 9.0, 0.7, 11.5, ONS)
+code += side_cards(r4_cards, "body_l + 9.75", 2.55, "body_top + 0.05", 1.4, 0.12, 10.5, 10.5)
+code += FOOT("Source: docs/research/suite/hosted-models4.md 'Cost', 'Rate-limit confound', 'Pending at snapshot'; round4-prereg.md changes 7, 7a, 7b, 8. Run IDs: hosted-models4.md 'Runs'.")
+slides["h1-backup/h2-round-4-coverage-and-cost-openai-rate-limit-and-quota"] = dict(
+    title="Round 4 coverage and cost — OpenAI rate limit and quota",
+    code=code,
+    notes=("Why the Astra and Sol columns have holes. We launched all twelve Codex runs at once, and OpenAI's account limit of one million tokens per minute per model was exceeded for Astra and Sol. Codex retries five times and then gives up, so those tasks died. That is an API quota, not agent behaviour, so they are classed as infrastructure failures and not scored. "
+           "The preregistered rule allowed one relaunch per failed task, run alone. Astra relaunches were then put on hold for budget at 05:13, because Astra costs several dollars per task; no relaunch started after 05:45 for schedule reasons; and at 05:46 the OpenAI quota ran out, ending the two relaunches still running. Sol's registration relaunch had already finished and scored 0.833. "
+           "Luna never hit the limit, so all 16 of its attempts are graded, as are all 16 of Fable's. "
+           "Cost: Fable 16.85 dollars at list price. The OpenAI figures cover completed tasks only, computed from token counts in each trace, so they are lower bounds; tasks that died report no usage. Several finished Astra and Sol tasks also ran under rate-limit retries, which cost them session time."),
+)
+
+DIVIDER_NOTES = {"divider-h1-backup": "Backup slides for questions: gap verdicts, reward keys, session use, the Sonnet registration trace, trust checks, earlier runs, report labels, the causal control, the PCNSL attempt, dataset selection, cost, round-4 coverage and thresholds."}
 
 for s in plan["slides"]:
     sid = s["slide_id"]

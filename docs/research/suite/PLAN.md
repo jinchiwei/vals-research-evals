@@ -1,6 +1,6 @@
 # Clinical deliverables suite: plan and status
 
-Updated 2026-11-15 after round 3. Demos are Sunday 2 PM. Design and task contract:
+Updated 2026-11-15 after round 4. Demos are Sunday 2 PM. Design and task contract:
 [DESIGN.md](DESIGN.md).
 
 ## The idea
@@ -57,6 +57,15 @@ Preregistered in [round3-prereg.md](round3-prereg.md); results against it, with 
 - **T** `label_ptbxl_reports` ([label_ptbxl_reports](label_ptbxl_reports.md)): excluded; Opus beat the specialist but missed the F1 bar by 0.01.
 - README results, figures (`scripts/make_suite_figures.py`, `round3_*` in `docs/figures/suite/`) and deck rebuilt from round 3.
 - Round-3 API spend: $17.10, under the $60 stop rule.
+
+## Round 4 (done)
+
+Preregistered in [round4-prereg.md](round4-prereg.md) (changes 1 to 8 list every deviation); results in
+[hosted-models4.md](hosted-models4.md) and [hosted-models4.json](hosted-models4.json), snapshot 06:15 EST.
+
+- **Fable 5.2** (`claude-fable-5-2`, Claude Code, same datasets): 16 attempts, all graded. Fetal head gap in 3 of 3 (77, 74, 67 of 83); no gap shown on registration or spleen in any attempt; ECG 1 of 3 misses MI sensitivity; ICU 3 of 3; vessel 5/8. Two fetal head attempts stopped below the bar claiming to be out of time at 27 % and 37 % of the session. API cost $16.85.
+- **Codex models** (`gpt-6-astra`, `gpt-6.1-sol`, `gpt-6-luna`; agent `codex_noweb-v1.0.0`, web search off) on OpenAI-network twins `suite/clinical-openai-v1@1` and `suite/vessel-openai-v1@1`; never pooled with Claude. Luna: 16 attempts graded, weakest (gap 3 of 3 on registration, spleen, fetal head, ECG; vessel 2/8). Sol: best registration (0.833, one attempt) and vessel (6/8) attempts of any model. Astra and Sol coverage incomplete: OpenAI rate limit (1M tokens per minute per model), Astra budget hold, 05:45 relaunch cut-off, OpenAI quota exhausted 05:46 EST. OpenAI cost (completed tasks, lower bound): Astra $60.29, Sol $10.31, Luna $0.95.
+- README "More models (round 4)" and the deck updated.
 
 ## Running now
 

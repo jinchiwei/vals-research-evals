@@ -1,33 +1,34 @@
 {
-  "status": "complete (K2 folded in)",
-  "model": "claude-opus-5-5 (Claude Opus 5.5; effort level not recorded)",
+  "status": "complete (round 4 folded in: six-models slide 10, round-4 coverage backup slide 24; slide 2 shows Jin's overview paragraph verbatim from CLINICAL_SUITE.md)",
+  "model": "claude-opus-5-5 (Claude Opus 5.5) for the round-4 update; earlier builds as recorded before",
   "skill": "build-pptx (~/.claude/skills/build-pptx/build.py, expressive mode, theme slate, --qa; LibreOffice from /tmp/lo-qa for rasterising)",
-  "data_source": "docs/research/suite/hosted-agents2.json, hosted-agents3.json, hosted-keepworking1.json, hosted-clockcheck1.json, data/*.json|csv",
+  "data_source": "docs/research/suite/hosted-agents2.json, hosted-agents3.json, hosted-keepworking1.json, hosted-clockcheck1.json, data/*.json|csv, hosted-models4.md/.json (round 4, snapshot 06:15 EST)",
   "rebuild": [
     "~/miniconda3/envs/vals-suite/bin/python results/suite-deck/src/make_figs.py",
     "build.py --input CLINICAL_SUITE.md --output CLINICAL_SUITE.pptx --plan-only --shake (from results/suite-deck)",
     "~/miniconda3/envs/vals-suite/bin/python results/suite-deck/src/make_layout.py",
     "PATH=/tmp/lo-qa/bin:$PATH build.py --input CLINICAL_SUITE.md --output CLINICAL_SUITE.pptx --qa",
-    "PATH=/tmp/lo-qa/bin:$PATH ~/miniconda3/envs/vals-suite/bin/python results/suite-deck/src/finalize.py"
+    "PATH=/tmp/lo-qa/bin:$PATH ~/miniconda3/envs/vals-suite/bin/python results/suite-deck/src/finalize.py",
+    "~/miniconda3/envs/vals-suite/bin/python results/brand/add_vals_logo.py results/suite-deck/CLINICAL_SUITE.pptx"
   ],
   "slides": {
-    "main": "1-10 (cover, overview reserved for Jin, why, contract, pooled headline, fetal head per image, stop-early trace, stated time pressure with K/K2, vessels, limits and how to run)",
-    "backup": "11 divider, 12-23",
-    "closing": 24
+    "main": "1-11 (cover, Jin overview, why, contract, pooled headline, fetal head per image, stop-early trace, stated time pressure with K/K2, vessels, six models (round 4), limits and how to run)",
+    "backup": "12 divider, 13-25 (incl. 24 round-4 coverage and cost)",
+    "closing": 26
   },
-  "qa": "24 slides rasterised to CLINICAL_SUITE_qa/slide-NN.png (1600x900) and inspected; contrast check passed",
+  "qa": "26 slides rasterised to CLINICAL_SUITE_qa/slide-NN.png (1600x900, from the final pptx after the Vals logo pass); slides 1, 2, 10, 24 inspected",
   "outputs": {
     "CLINICAL_SUITE.pptx": {
-      "sha256": "9d5895513167a6c3ef1297cd19f287bbd236d5a4a1e2c480c46d99cbd3fafb2f",
-      "bytes": 1898008
+      "sha256": "da70364ab98e997812d557b20c06a003ecc64676424408f1b248c3b3a5330874",
+      "bytes": 2178856
     },
     "CLINICAL_SUITE_notes.pdf": {
-      "sha256": "1e924e2510e858fcc25417e5bcc18870d858814308e8bb1e8c00a5da8073c1ff",
-      "bytes": 4053162
+      "sha256": "2085280a9c82f0679db4c35e8978ec9f6a2a3498b7616aec5b094f6026b1825e",
+      "bytes": 4693646
     },
     "CLINICAL_SUITE.md": {
-      "sha256": "991f8750436ac4114bf31f527797a5a6b0608ff5851ed5d88a6ae661831699c9",
-      "bytes": 3678
+      "sha256": "18d51fa9894c2dfbf848b5f6a42546549ec3e29e2badf83f5072228487ab88c3",
+      "bytes": 5575
     },
     "CLINICAL_SUITE.md.layout.json": {
       "sha256": "b559c829bbfabed798b5f8b9bd3eb47e5e62894f391b9d4d6ce43289601406ff",

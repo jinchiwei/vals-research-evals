@@ -12,7 +12,7 @@ slides = list(prs.slides)
 slides[0].notes_slide.notes_text_frame.text = (
     "Title slide. Name the track (Vals AI, Build Your Own Eval) and hand over to the overview on the next slide.")
 slides[-1].notes_slide.notes_text_frame.text = (
-    "Closing slide. In the 3-minute demo, stop after 'Limits and how to run' (slide 10); the slides between the Backup divider and this one are for questions.")
+    "Closing slide. In the 3-minute demo, stop after 'Limits and how to run' (slide 11); the slides between the Backup divider and this one are for questions.")
 prs.save(DECK)
 print("notes added to cover and closing slides:", DECK)
 
