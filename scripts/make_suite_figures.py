@@ -211,6 +211,41 @@ def rows_from_hosted(data, manifest_fam) -> list[dict]:
     return rows
 
 
+# Raw per-case value keys in hosted-agents2.json gap.per_case, and the mean in agent_metrics.
+HOSTED2_RAW = {
+    'reg_resect': ('agent_mean_tre_mm', 'specialist_mean_tre_mm', 'mean_mean_tre_mm'),
+    'seg_spleen': ('agent_dice', 'specialist_dice', 'mean_dice'),
+    'measure_hc18': ('agent_abs_err_mm', 'specialist_abs_err_mm', 'mean_abs_err_mm'),
+}
+
+
+def rows_from_hosted2(data, manifest_fam) -> list[dict]:
+    """hosted-agents2.json schema (suite-hosted-agents2/1): one attempt per task and model."""
+    rows = []
+    for a in data.get('attempts', []):
+        fam = a.get('family') or task_family(a['task_id'], manifest_fam)
+        am = a.get('agent_metrics') or {}
+        keys = HOSTED2_RAW.get(fam)
+        cases = []
+        if keys:
+            for c in (a.get('gap') or {}).get('per_case') or []:
+                cases.append({
+                    'case': c['case'], 'agent_raw': c.get(keys[0]),
+                    'agent_pass': bool(c.get('agent_acceptable')),
+                    'agent_valid': bool(c.get('agent_valid')),
+                    'spec_raw': c.get(keys[1]),
+                    'spec_pass': bool(c.get('specialist_acceptable')),
+                })
+        rows.append({
+            'family': fam, 'task': a['task_id'], 'model': short_model(a['model']),
+            'rewards': a.get('rewards') or {},
+            'agent_raw_mean': am.get(keys[2]) if keys else None,
+            'agent_raw_n': am.get('n_valid'), 'per_case': cases,
+            'gate': am.get('gate'), 'status': a.get('agent_caused_exit_reason') or a.get('status'),
+        })
+    return rows
+
+
 # ---------------------------------------------------------------------------------------------
 # (a) headline metric per task
 # ---------------------------------------------------------------------------------------------
@@ -437,7 +472,7 @@ def _scatter_hc18(plot_rows, no_output, models_all, source_label, source_file, o
     ax.set_axisbelow(True)
     ax.set_title(f'Fetal head circumference, per hidden image\n{source_label}', loc='left')
     ax.legend(handles=_legend_handles([r['model'] for r in plot_rows], models_all, spec=False),
-              fontsize=7.5, frameon=False, loc='upper left')
+              fontsize=7.5, frameon=False, loc='lower right')
     notes = [f'Source: {source_file}. Points above the diagonal: agent error larger than specialist.',
              f'Errors below {floor} mm drawn at {floor} mm. The per-image limit is 4.9 % of the hidden '
              'reference HC, which is not reproduced, so no fixed line is drawn.']
@@ -492,7 +527,6 @@ def _paired_dots(fam, frs, plot_rows, no_output, models_all, source_label, sourc
             ax.scatter([xo], [c['agent_raw']], s=40, zorder=5,
                        facecolor=col if c['agent_pass'] else SURFACE, edgecolor=col, linewidth=1.6)
     ax.axhline(thr, color=INK, linestyle=(0, (4, 3)), linewidth=1.1)
-    ax.text(len(cases) - 0.5, thr, thr_label, ha='right', va='bottom', fontsize=7, color=INK)
     ax.set_xticks(range(len(cases)))
     ax.set_xticklabels(cases, fontsize=8)
     ax.set_xlim(-0.7, len(cases) - 0.3 + 0.16 * k)
@@ -503,8 +537,9 @@ def _paired_dots(fam, frs, plot_rows, no_output, models_all, source_label, sourc
     ax.yaxis.grid(True, color=GRID, linewidth=0.6)
     ax.set_axisbelow(True)
     ax.set_title(f'{title}\n{source_label}', loc='left')
-    ax.legend(handles=_legend_handles([r['model'] for r in plot_rows], models_all),
-              fontsize=7, frameon=False, loc='upper left', ncol=2)
+    handles = _legend_handles([r['model'] for r in plot_rows], models_all)
+    handles.append(Line2D([], [], color=INK, linestyle=(0, (4, 3)), linewidth=1.1, label=thr_label))
+    ax.legend(handles=handles, fontsize=7, frameon=False, loc='upper left', ncol=2)
     notes = [f'Source: {source_file}. × = invalid output for that case (no value).']
     if no_output:
         notes.append('No valid output on any case, not plotted: ' + ', '.join(no_output) + '.')
@@ -528,7 +563,8 @@ SOURCES = [
     # stem, file, label, loader
     ('pilot1', 'pilot1-results.json', 'local pilot 1 (bubblewrap, v1 instructions)', rows_from_pilot1),
     ('hosted1', 'hosted-agents1.json', 'hosted run 1 (Valkyrie, v2 instructions)', rows_from_hosted),
-    ('hosted2', 'hosted-agents2.json', 'hosted run 2 (Valkyrie, v3 instructions)', rows_from_hosted),
+    ('hosted2', 'hosted-agents2.json', 'hosted run 2 (Valkyrie, suite/clinical-v1@2, v3 instructions)',
+     rows_from_hosted2),
 ]
 
 

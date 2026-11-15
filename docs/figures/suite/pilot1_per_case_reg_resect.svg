@@ -219,9 +219,6 @@ L 451.08 236.1008
 " style="fill: none; stroke: #52514e; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_14">
-    <text style="fill: #0b0b0b; font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="438.280937" y="197.481605" transform="rotate(-0 438.280937 197.481605)">2.0 mm limit</text>
-   </g>
-   <g id="text_15">
     <text style="font: 700 9.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(41.51 17.007859)">MRI to ultrasound registration, per hidden case</text>
     <text style="font: 700 9.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(41.51 27.72)">local pilot 1 (bubblewrap, v1 instructions)</text>
    </g>
@@ -285,7 +282,7 @@ z
       <use xlink:href="#m446945a702" x="54.81" y="42.888906" style="fill: #52514e; stroke: #52514e; stroke-linejoin: miter"/>
      </g>
     </g>
-    <g id="text_16">
+    <g id="text_15">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="67.41" y="45.338906" transform="rotate(-0 67.41 45.338906)">specialist</text>
     </g>
     <g id="line2d_21">
@@ -303,11 +300,20 @@ z
 " style="stroke: #52514e"/>
      </defs>
      <g>
-      <use xlink:href="#m45bc2e27ac" x="121.171094" y="42.888906" style="fill: #fcfcfb; stroke: #52514e"/>
+      <use xlink:href="#m45bc2e27ac" x="54.81" y="53.163594" style="fill: #fcfcfb; stroke: #52514e"/>
      </g>
     </g>
+    <g id="text_16">
+     <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="67.41" y="55.613594" transform="rotate(-0 67.41 55.613594)">hollow = not clinically acceptable</text>
+    </g>
+    <g id="line2d_22">
+     <path d="M 199.013281 42.888906 
+L 206.013281 42.888906 
+L 213.013281 42.888906 
+" style="fill: none; stroke-dasharray: 4.4,3.3; stroke-dashoffset: 0; stroke: #0b0b0b; stroke-width: 1.1"/>
+    </g>
     <g id="text_17">
-     <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="133.771094" y="45.338906" transform="rotate(-0 133.771094 45.338906)">hollow = not clinically acceptable</text>
+     <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="218.613281" y="45.338906" transform="rotate(-0 218.613281 45.338906)">2.0 mm limit</text>
     </g>
    </g>
   </g>

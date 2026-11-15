@@ -1,0 +1,115 @@
+{
+ "source": "docs/research/suite/hosted-agents2.json",
+ "reg_resect": [
+  {
+   "case": "c18b03",
+   "specialist": 1.9813789250297509,
+   "specialist_pass": true,
+   "opus": 1.258251142576659,
+   "opus_pass": true,
+   "sonnet": 6.3938998372260745,
+   "sonnet_pass": false
+  },
+  {
+   "case": "c57eed",
+   "specialist": 1.3805874527426134,
+   "specialist_pass": true,
+   "opus": 1.3612469440622883,
+   "opus_pass": true,
+   "sonnet": 3.390851922550948,
+   "sonnet_pass": false
+  },
+  {
+   "case": "c65c1b",
+   "specialist": 8.378356499856727,
+   "specialist_pass": false,
+   "opus": 2.6900821999278333,
+   "opus_pass": false,
+   "sonnet": 5.675539313171705,
+   "sonnet_pass": false
+  },
+  {
+   "case": "cb06b4",
+   "specialist": 1.8306973037761773,
+   "specialist_pass": true,
+   "opus": 2.0144762847388176,
+   "opus_pass": false,
+   "sonnet": 4.546296045832936,
+   "sonnet_pass": false
+  },
+  {
+   "case": "cdd96a",
+   "specialist": 3.2577929613730046,
+   "specialist_pass": false,
+   "opus": 1.2246798505431191,
+   "opus_pass": true,
+   "sonnet": 10.060071316271745,
+   "sonnet_pass": false
+  },
+  {
+   "case": "ce4785",
+   "specialist": 1.3739042490658413,
+   "specialist_pass": true,
+   "opus": 1.1215042226295193,
+   "opus_pass": true,
+   "sonnet": 7.01024134349101,
+   "sonnet_pass": false
+  }
+ ],
+ "seg_spleen": [
+  {
+   "case": "hid_1200",
+   "specialist": 0.9587218864479912,
+   "specialist_pass": true,
+   "opus": 0.9654693375701591,
+   "opus_pass": true,
+   "sonnet": 0.9596550317207613,
+   "sonnet_pass": true
+  },
+  {
+   "case": "hid_1392",
+   "specialist": 0.936403744754116,
+   "specialist_pass": false,
+   "opus": 0.9095925569457812,
+   "opus_pass": false,
+   "sonnet": 0.9069138339589405,
+   "sonnet_pass": false
+  },
+  {
+   "case": "hid_2997",
+   "specialist": 0.9554520340978945,
+   "specialist_pass": true,
+   "opus": 0.9509182185769587,
+   "opus_pass": true,
+   "sonnet": 0.9395013249050219,
+   "sonnet_pass": false
+  },
+  {
+   "case": "hid_4506",
+   "specialist": 0.9622322765618422,
+   "specialist_pass": true,
+   "opus": 0.9612057624879858,
+   "opus_pass": true,
+   "sonnet": 0.7732632006911623,
+   "sonnet_pass": false
+  },
+  {
+   "case": "hid_6971",
+   "specialist": 0.8923533531196852,
+   "specialist_pass": false,
+   "opus": 0.9329406576792239,
+   "opus_pass": false,
+   "sonnet": 0.0,
+   "sonnet_pass": false
+  },
+  {
+   "case": "hid_8298",
+   "specialist": 0.9269578313253012,
+   "specialist_pass": false,
+   "opus": 0.9212596629649055,
+   "opus_pass": false,
+   "sonnet": 0.14372309584468065,
+   "sonnet_pass": false
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "source": "docs/research/suite/hosted-agents2.json",
+ "session_limit_min": {
+  "reg_resect": 45,
+  "seg_spleen": 60,
+  "measure_hc18": 45,
+  "ecg_ptbxl": 30,
+  "risk_icu": 45
+ },
+ "rows": [
+  {
+   "fam": "reg_resect",
+   "model": "Opus 5.5",
+   "used": 18.1,
+   "limit": 45,
+   "reward": 0.6666666666666666
+  },
+  {
+   "fam": "reg_resect",
+   "model": "Sonnet 5.5",
+   "used": 3.1,
+   "limit": 45,
+   "reward": 0.0
+  },
+  {
+   "fam": "seg_spleen",
+   "model": "Opus 5.5",
+   "used": 31.2,
+   "limit": 60,
+   "reward": 0.5
+  },
+  {
+   "fam": "seg_spleen",
+   "model": "Sonnet 5.5",
+   "used": 16.3,
+   "limit": 60,
+   "reward": 0.16666666666666666
+  },
+  {
+   "fam": "measure_hc18",
+   "model": "Opus 5.5",
+   "used": 11.6,
+   "limit": 45,
+   "reward": 0.42168674698795183
+  },
+  {
+   "fam": "measure_hc18",
+   "model": "Sonnet 5.5",
+   "used": 10.7,
+   "limit": 45,
+   "reward": 0.7710843373493976
+  },
+  {
+   "fam": "ecg_ptbxl",
+   "model": "Opus 5.5",
+   "used": 7.9,
+   "limit": 30,
+   "reward": 1.0
+  },
+  {
+   "fam": "ecg_ptbxl",
+   "model": "Sonnet 5.5",
+   "used": 9.8,
+   "limit": 30,
+   "reward": 1.0
+  },
+  {
+   "fam": "risk_icu",
+   "model": "Opus 5.5",
+   "used": 3.1,
+   "limit": 45,
+   "reward": 1.0
+  },
+  {
+   "fam": "risk_icu",
+   "model": "Sonnet 5.5",
+   "used": 1.6,
+   "limit": 45,
+   "reward": 1.0
+  }
+ ]
+}

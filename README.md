@@ -35,7 +35,7 @@ cases. The design is in [DESIGN.md](docs/research/suite/DESIGN.md) and the curre
   and against the specialist's stored outputs for the same cases.
 - **Session limit.** Each task has an agent session limit (30 to 60 minutes). Whatever is in
   `/workspace/output/pipeline/` when the session ends is graded as found. From task version 3
-  ([instructions-v3.md](docs/research/suite/instructions-v3.md)) the instruction states this; earlier
+  (dataset `suite/clinical-v1@2`; [instructions-v3.md](docs/research/suite/instructions-v3.md)) the instruction states this; earlier
   versions did not (see Results).
 
 Every task writes `reward.json` with exactly seven keys, each in [0, 1]
@@ -120,43 +120,154 @@ splits and hidden-case hashes recorded per family ([PLAN.md](docs/research/suite
 
 ## Results
 
-**Status on 2026-11-15.** Hosted agent results on the current task version are pending. The results
-that exist are a local pilot on two tasks and hosted checks of the reference solutions. Every number
-below has one attempt per task and model, and hidden sets are small (6 cases for registration and
-spleen). Read each section with its label.
+**Status on 2026-11-15.** The headline is hosted run 2: Claude Code (no web tools) with Claude Opus 5.5
+and Claude Sonnet 5.5 on the five scored tasks, task instructions v3, Valkyrie dataset
+`suite/clinical-v1@2`. Every number has one attempt per task and model, and the hidden sets for
+registration and spleen have only 6 cases. Earlier runs used instructions that did not state the
+session limit; they are summarised separately under [Earlier runs](#earlier-runs) and never pooled
+with hosted run 2. Full write-up, trace notes and per-case values:
+[hosted-agents2.md](docs/research/suite/hosted-agents2.md) and
+[hosted-agents2.json](docs/research/suite/hosted-agents2.json).
 
-### Hosted agent runs, task version 3 (headline)
+### Summary
 
-<!-- RESULTS PLACEHOLDER (hosted-agents2): fill from docs/research/suite/hosted-agents2.json and
-hosted-agents2.md once they exist. Table columns: task, model, reward, ran, valid, within_time,
-clinically_acceptable, quality, vs_specialist, headline raw metric (agent / specialist), agents
-passing / specialist-passed cases, paired difference with 95 % interval, verdict (gap shown, no gap,
-control, not interpretable), agent wall time, cost. Then run
-`~/miniconda3/envs/vals-suite/bin/python scripts/make_suite_figures.py` and uncomment:
-![Agent vs specialist, hosted run 2](docs/figures/suite/hosted2_headline.png)
-![Reward keys, hosted run 2](docs/figures/suite/hosted2_reward_keys.png)
-![Per case, fetal head, hosted run 2](docs/figures/suite/hosted2_per_case_measure_hc18.png)
-![Per case, registration, hosted run 2](docs/figures/suite/hosted2_per_case_reg_resect.png)
-![Per case, spleen, hosted run 2](docs/figures/suite/hosted2_per_case_seg_spleen.png)
--->
-> **Placeholder.** Claude Code (no web) with Claude Opus 5.5 and Claude Sonnet 5.5 on the five
-> scored tasks, dataset `suite/clinical-v1@2`. Table and figures to be added from
-> `docs/research/suite/hosted-agents2.json`.
+- **Both models fall short of the specialist on a measurement in physical units.** On fetal head
+  circumference the specialist U-Net is within tolerance on 83 of 83 hidden images; Opus 5.5 on 35
+  and Sonnet 5.5 on 64. Both paired intervals lie well below 0, and neither agent reaches the 90 %
+  family bar.
+- **Opus 5.5 matches the specialist on registration and spleen.** Registration: 4 of 6 cases under
+  2 mm and mean TRE 1.61 mm, against the specialist's 4 of 6 and 3.03 mm. Spleen: the same 3 of 6
+  cases pass, with mean Dice 0.940 against 0.939, from a small U-Net it trained on CPU. With 3 or 4
+  specialist-passed cases these "no gap" results are underpowered, not proof of parity.
+- **Sonnet 5.5 shipped a no-op on registration.** After 3 minutes it replaced its pipeline with one
+  that copies the landmarks unchanged (mean TRE 6.18 mm, the uncorrected error), so it fails all four
+  cases the specialist passes.
+- **Controls hold.** On ECG classes and ICU mortality risk both models meet every gate part, as the
+  specialists do.
+- **Agents stop early.** All ten attempts ended by themselves with 48 to 96 % of their session
+  unused, several while stating they were below the clinical bar. None was killed at the limit.
+- **Clean runs.** No infrastructure failure or relaunch, no web search or fetch in any trace, no
+  recalled labels. Total API cost 3.77 USD.
 
-### Hosted agent runs, task version 2
+### Hosted run 2: agent against specialist (headline)
 
-<!-- RESULTS PLACEHOLDER (hosted-agents1): the operator's write-up (hosted-agents1.md) is not yet
-written. hosted-agents1.json already holds 8 attempts (seg_spleen absent) and the figure script
-already draws docs/figures/suite/hosted1_*.png from it. Under the prespecified analysis rule in
-exp/suite-hosted-agents1/prespec.txt, a session timeout on reg_resect, seg_spleen, measure_hc18 or
-risk_icu is "our bug / not interpretable", because version 2 did not state the session limit. -->
-> **Placeholder.** Runs `0ae696de-4237-44bf-be49-25b90940772b` (Opus 5.5) and
-> `1a4037a0-e1a9-4670-aee0-ceda221c6264` (Sonnet 5.5) on `suite/clinical-v1@1`, whose instructions
-> did not state the session limit. Results to be added from
-> [hosted-agents1.md](docs/research/suite/hosted-agents1.md) once written. These runs are not pooled
-> with version 3 runs.
+Runs `1f2e6208-f148-4aaa-b72f-5225bed3b745` (Opus 5.5, Valkyrie `final_score` 71.77) and
+`5110a198-2582-414a-a9fd-81cc15103cdd` (Sonnet 5.5, 58.76), agent `claude_code_noweb-v1.0.0`
+(Claude Code 2.1.325, WebFetch and WebSearch disallowed, 8 USD cap per task, the Claude Code default
+effort). Reward keys are the hosted grades. Raw values in units come from a local regrade of each
+run's saved pipeline with the task's own grader, because Valkyrie does not keep `metrics.json`; the
+regrade matches all seven hosted keys in 9 of 10 attempts, and in the tenth (Opus registration) only
+`quality` differs, by 0.0002. Specialist values are on the same hidden cases. Session is the
+minute the agent ended its turn, out of its limit (Opus 5.5 fetal head: first answer at 11.6
+minutes; a background job woke it for one more turn that changed nothing, and the process ended at
+19.7 minutes).
 
-### Hosted checks of the reference solutions (final)
+| Task | Model | reward | ran / valid / within_time | quality | vs_specialist | Agent (raw, in units) | Specialist (same cases) | Session | API cost |
+|---|---|---|---|---|---|---|---|---|---|
+| reg_resect (6 cases; < 2 mm) | Opus 5.5 | **0.667** | 1 / 1 / 1 | 0.463 | 1.000 | 4/6 under 2 mm; mean TRE 1.61 mm (median 1.31) | 4/6; 3.03 mm (median 1.91) | 18 of 45 min | $0.553 |
+| | Sonnet 5.5 | **0.000** | 1 / 1 / 1 | 0.070 | 0.213 | 0/6; mean TRE 6.18 mm, the uncorrected error | as above | 3 of 45 min | $0.142 |
+| seg_spleen (6 cases; Dice ≥ 0.94 and volume error ≤ 10 %) | Opus 5.5 | **0.500** | 1 / 1 / 1 | 0.940 | 1.000 | 3/6; mean Dice 0.940; mean abs. volume error 4.1 % | 3/6; 0.939; 4.3 % | 31 of 60 min | $0.910 |
+| | Sonnet 5.5 | **0.167** | 1 / 1 / 1 | 0.621 | 0.661 | 1/6; mean Dice 0.621 (median 0.840); volume error 34 % | as above | 16 of 60 min | $0.332 |
+| measure_hc18 (83 images; within 4.9 %) | Opus 5.5 | **0.422** | 1 / 1 / 1 | 0.293 | 0.409 | 35/83; mean error 16.2 mm (median 8.8) | 83/83; 2.05 mm (median 1.51) | 11.6 of 45 min | $0.567 |
+| | Sonnet 5.5 | **0.771** | 1 / 1 / 1 | 0.502 | 0.700 | 64/83; mean error 18.0 mm (median 3.3) | as above | 10.7 of 45 min | $0.356 |
+| ecg_ptbxl (1,000 ECGs; 3 gate parts) | Opus 5.5 | **1.000** | 1 / 1 / 1 | 0.953 | 0.970 | 3/3 parts; macro AUROC 0.908; MI sensitivity 0.717; ECE 0.030; subgroup gap 0.029 | 3/3; 0.921; 0.744; 0.022; 0.026 | 8 of 30 min | $0.382 |
+| | Sonnet 5.5 | **1.000** | 1 / 1 / 1 | 0.967 | 0.984 | 3/3; 0.914; 0.760; 0.025; 0.023 | as above | 10 of 30 min | $0.121 |
+| risk_icu (4,000 stays; 4 gate parts) | Opus 5.5 | **1.000** | 1 / 1 / 1 | 0.747 | 1.000 | 4/4 parts; AUROC 0.874; calibration slope 1.04 | 4/4; 0.873; 1.04 | 3 of 45 min | $0.334 |
+| | Sonnet 5.5 | **1.000** | 1 / 1 / 1 | 0.730 | 0.980 | 4/4; 0.865; 1.07 | as above | 1.6 of 45 min | $0.070 |
+
+Every hidden case finished inside its time limit (slowest: Opus registration, 90.1 s of 120 s on one
+case), so all rewards lost here are clinical, not delivery failures.
+
+![Agent vs specialist on each task's headline clinical metric, hosted run 2](docs/figures/suite/hosted2_headline.png)
+
+![Reward keys per task and model, hosted run 2](docs/figures/suite/hosted2_reward_keys.png)
+
+### Gap verdicts
+
+The rule is fixed in [DESIGN.md](docs/research/suite/DESIGN.md) and was operationalised before
+launch: on the hidden cases the specialist passes (S), paired difference agent minus specialist,
+2,000 bootstrap resamples, seed 20261114, 95 % percentile interval.
+
+| Task · model | Cases in S | Agent passes in S | Pass-rate difference (95 % CI) | Raw difference on S (95 % CI) | Verdict |
+|---|---|---|---|---|---|
+| reg_resect · Opus 5.5 | 4 | 3 | −0.25 (−0.75 to 0.00) | TRE −0.20 mm (−0.55 to +0.08) | no gap shown; the one miss was 2.01 mm against the 2.0 mm bar; n = 4 |
+| reg_resect · Sonnet 5.5 | 4 | 0 | −1.00 (degenerate) | TRE +3.69 mm (+2.36 to +5.02) | **gap shown**: an agent-chosen no-op pipeline |
+| seg_spleen · Opus 5.5 | 3 | 3 | 0.00 | Dice 0.000 (−0.005 to +0.007) | no gap |
+| seg_spleen · Sonnet 5.5 | 3 | 1 | −0.67 (−1.00 to 0.00) | Dice −0.068 (−0.189 to +0.001) | no gap shown; underpowered at n = 3, not reassuring |
+| measure_hc18 · Opus 5.5 | 83 | 35 | −0.578 (−0.675 to −0.470) | abs. error +14.1 mm (+9.8 to +18.7) | **gap shown** |
+| measure_hc18 · Sonnet 5.5 | 83 | 64 | −0.229 (−0.313 to −0.145) | abs. error +15.9 mm (+5.4 to +29.0) | **gap shown** |
+| ecg_ptbxl · both | – | – | – | gate 3/3 vs 3/3 | no gap (control) |
+| risk_icu · both | – | – | – | gate 4/4 vs 4/4 | no gap (control) |
+
+No verdict is "not interpretable": no infrastructure failure, no grading error, and the v3
+instruction stated the session limit, which no attempt reached. The fetal head gaps are the only
+ones with intervals well clear of 0; on registration and spleen, 6 hidden cases cannot show a gap
+short of a total failure.
+
+![Per hidden image, fetal head circumference, hosted run 2](docs/figures/suite/hosted2_per_case_measure_hc18.png)
+
+![Per hidden case, registration, hosted run 2](docs/figures/suite/hosted2_per_case_reg_resect.png)
+
+![Per hidden case, spleen, hosted run 2](docs/figures/suite/hosted2_per_case_seg_spleen.png)
+
+Per case: Opus 5.5 passes registration case cdd96a, which the specialist fails, and misses cb06b4 by
+0.01 mm. On fetal head, Opus 5.5's errors are spread across the range (median 8.8 mm, 9 errors above
+40 mm) and are worst on large heads (5 of 27 within tolerance); Sonnet 5.5 has a median error of
+3.3 mm but 5 gross under-estimates of 221 to 275 mm on large heads, where its output fell to its own
+clamp.
+
+### What frontier agents get wrong
+
+From the hosted run 2 traces, all ten read in full
+([hosted-agents2.md](docs/research/suite/hosted-agents2.md), "Trace findings, per attempt"). Each
+item is one observed run, not a rate.
+
+1. **Stopping while knowing the result is below the bar.** Opus 5.5 on fetal head circumference had
+   a working baseline `run.sh` within 5 seconds, built a pixel classifier with an ellipse fit, and
+   estimated by 4-fold cross-validation "about 60% … well below the 90% target, so expect a headline
+   score around 0.6". It then ended its turn at 11.6 of 45 minutes. The hidden result was 42 % (35 of
+   83), against 100 % for the specialist.
+2. **Shipping a no-op.** Sonnet 5.5 on registration tried SimpleITK rigid registration with mutual
+   information, normalised cross-correlation and a translation grid on the four development cases,
+   found them worse than no correction, and replaced the pipeline with a copy of the input
+   landmarks: "Conservative fallback: image-based rigid registration … was consistently WORSE than
+   the navigation alignment, so landmarks are passed through." It stopped after 7 turns and 3
+   minutes: "I didn't try deformable registration … I stopped partway through the 45 minutes." Its
+   grid search may contain a sign or axis error in the world-to-array mapping (our inference from the
+   trace, not verified), which would explain errors larger than no correction.
+3. **Mislocalising the organ.** Sonnet 5.5 on spleen (two-stage ExtraTrees) expected "roughly 4–5 of
+   the 6 hidden scans to pass" and stopped with 44 minutes left. One hidden case scored Dice 0.000
+   (wrong structure), another 0.144, and a third over-estimated the volume by 50 %.
+4. **Optimistic self-validation.** In-sample tuning and random-ID folds made the agents' own
+   estimates too high: Opus 5.5 fetal head, cross-validation about 60 %, hidden 42 %; Opus 5.5 ECG,
+   myocardial infarction sensitivity 0.81 on its fold 8, hidden 0.717 against the 0.70 bar.
+
+What went right, also from the traces: 8 of 10 attempts had a working `run.sh` within 3 minutes;
+Opus 5.5 checked units and frames explicitly (world RAS mm via the affines for registration, pixel
+size against the references for fetal head); and Opus 5.5 on spleen shipped a held-out checkpoint at
+13 minutes "as a safe model" before fine-tuning further.
+
+**Early stopping is the cross-cutting finding.** Every attempt ended its own turn with 48 to 96 % of
+its session unused (Opus 5.5 spleen used 31 of 60 minutes; Sonnet 5.5 ICU 1.6 of 45). Three stated
+that they were below the bar or had stopped early: Opus 5.5 fetal head ("about 60%"), Sonnet 5.5
+fetal head ("it probably won't reach the 90% bar") and Sonnet 5.5 registration ("I stopped partway").
+Nothing in the instruction tells the agent to stop; `claude -p` ends when the model ends its turn.
+Whether an instruction to use the remaining time would change this is untested, and adding one would
+be a new task version.
+
+**Contamination and web use.** No WebFetch or WebSearch was offered or used, no tool call reached for
+another host, and no trace recalled hidden labels or published per-case values. The one sign of prior
+familiarity with the data is method-level: Opus 5.5 on ICU risk wrote unit repairs specific to the
+PhysioNet 2012 data (FiO2 as a percentage, pH × 100, temperature in °F) before inspecting any value.
+
+### Cost
+
+| Item | Opus 5.5 | Sonnet 5.5 | Total |
+|---|---|---|---|
+| API, Claude Code `total_cost_usd` (list price) | $2.75 | $1.02 | **$3.77** |
+| Modal sandboxes | not reported by Valkyrie | | about 2.5 h sandbox time across 10 tasks |
+
+### Hosted checks of the reference solutions
 
 Before any agent run, each task's shipped reference solution (the "oracle") was run on Valkyrie to
 check that the hosted image, artifact carry and separate verifier reproduce the locally measured
@@ -182,97 +293,50 @@ files.pythonhosted.org and example.com were unreachable and api.anthropic.com wa
 for public names still resolved. Earlier, a synthetic smoke task gave reward 1.0 for both the oracle
 and a Claude Sonnet 5.5 agent ([hosted-smoke.md](docs/research/suite/hosted-smoke.md)).
 
-### Local pilot 1 (final, local only)
+### Earlier runs
 
-Claude Code 2.1.325 in a local bubblewrap sandbox with network access only to the model API, effort
-high, 45-minute session, 5 USD cap, one attempt each, on the fetal head and registration tasks (task
-version 1). This is not a hosted Valkyrie run: the local host had no CPU or memory caps and was
-shared with other jobs. Source: [pilot1-results.md](docs/research/suite/pilot1-results.md) and
-[pilot1-results.json](docs/research/suite/pilot1-results.json).
+Both earlier rounds used instructions that did not state the agent's session limit or that the
+pipeline is graded as found when the session ends. Agents planned work that could not fit and were
+killed mid-task. That was our bug; instructions v3 fixed it, and none of the hosted run 2 attempts
+reached its limit. These rounds are reported for completeness and are not pooled with hosted run 2.
 
-| Task | Model | reward | ran | valid | within_time | clinically_acceptable | quality | Headline raw metric | Specialist | Agent session |
-|---|---|---|---|---|---|---|---|---|---|---|
-| measure_hc18 | claude-opus-5-5 | 0.928 | 1 | 1 | 1 | 0.928 | 0.626 | mean error 10.08 mm (median 2.05) | 1.00 within; mean error 2.05 mm | 1,813 s, completed |
-| measure_hc18 | claude-sonnet-5-5 | 0.819 | 1 | 1 | 1 | 0.819 | 0.424 | mean error 8.57 mm (median 4.08) | same | 2,701 s, timeout |
-| reg_resect | claude-opus-5-5 | 0 | 0 | 0 | 0 | 0 | 0 | no output | 0.667; mean TRE 3.03 mm | 2,701 s, timeout |
-| reg_resect | claude-sonnet-5-5 | 0 | 0 | 0 | 0 | 0 | 0 | no pipeline | same | 2,702 s, timeout |
+**Hosted run 1** (instructions v2, `suite/clinical-v1@1`; runs `0ae696de-4237-44bf-be49-25b90940772b`
+Opus 5.5 and `1a4037a0-e1a9-4670-aee0-ceda221c6264` Sonnet 5.5;
+[hosted-agents1.md](docs/research/suite/hosted-agents1.md)). The session limit killed five of ten
+attempts (registration and spleen for both models, fetal head for Opus 5.5), which the rule fixed
+before results classes as not interpretable. Registration and spleen had no interpretable attempt.
+ECG and ICU were controls for both models, as in run 2. The one interpretable gap was Sonnet 5.5 on
+fetal head: 72 of 83 within tolerance against 83 of 83, pass-rate difference −0.133 (−0.205 to
+−0.060). Opus 5.5's killed fetal head attempt scored 0.928 (77 of 83). API cost about 5.20 USD (Opus 5.5)
+and 2.05 USD (Sonnet 5.5). Figures: `docs/figures/suite/hosted1_*.png`.
 
-![Agent vs specialist, local pilot 1](docs/figures/suite/pilot1_headline.png)
+**Local pilot 1** (instructions v1, local bubblewrap sandbox with only the model API reachable, effort
+high, 45-minute session; [pilot1-results.md](docs/research/suite/pilot1-results.md)). Fetal head:
+Opus 5.5 0.928 and Sonnet 5.5 0.819, both with gaps shown against the specialist (−0.072, −0.133 to
+−0.024; −0.181, −0.265 to −0.108). Registration: both 0, a delivery failure at the deadline (Opus 5.5
+wrote `run.sh` 2.5 minutes before the end, never ran it, and `python3 -I` broke its import; Sonnet 5.5
+left the pipeline folder empty), not a measured accuracy gap. The local host had no CPU or memory caps
+and was shared. Figures: `docs/figures/suite/pilot1_*.png`.
 
-![Reward keys, local pilot 1](docs/figures/suite/pilot1_reward_keys.png)
-
-![Per hidden image, fetal head circumference, local pilot 1](docs/figures/suite/pilot1_per_case_measure_hc18.png)
-
-Gap verdicts under the per-case rule (paired difference, agent minus specialist, on the cases the
-specialist passes, 95 % bootstrap interval):
-
-| Run | Specialist-passed cases | Agent passes | Pass-rate difference | Verdict |
-|---|---|---|---|---|
-| measure_hc18, Opus 5.5 | 83 | 77 | −0.072 (−0.133 to −0.024) | gap shown; the agent still clears the 90 % family bar (92.8 %) |
-| measure_hc18, Sonnet 5.5 | 83 | 68 | −0.181 (−0.265 to −0.108) | gap shown; below the family bar (81.9 %) |
-| reg_resect, Opus 5.5 | 4 | 0 | −1.0 (degenerate) | delivery failure at the deadline, not a measured accuracy gap |
-| reg_resect, Sonnet 5.5 | 4 | 0 | −1.0 (degenerate) | delivery failure at the deadline, not a measured accuracy gap |
-
-What this does and does not show:
-
-- On fetal head circumference both agents fail images that the specialist U-Net passes. Opus 5.5
-  has a lower median error than its mean suggests (2.05 mm, equal to the specialist's mean): its
-  misses are gross detections of the wrong structure, not boundary error.
-- The registration zeros are not evidence of a registration capability gap. The version 1
-  instruction never stated the 45-minute session limit or that the pipeline is graded as found
-  (pilot 1, "Our bugs" 1). The agents' own development-case errors were comparable to the
-  specialist's (Opus 1.70 mm tuned in-sample on 4 cases, Sonnet 1.3 to 3.0 mm, specialist 1.85 mm).
-  Version 3 fixes the instruction.
-- **No gap is shown yet** for seg_spleen, ecg_ptbxl or risk_icu: no agent result on them is reported
-  here.
-- Pilot cost: 1.70 USD reported for the one run that completed; the upper bound for all four is
-  16.70 USD.
+Run to run, fetal head moved a lot for the same model: Opus 5.5 scored 0.928 in pilot 1 and hosted
+run 1 but 0.422 in hosted run 2; Sonnet 5.5 0.819, 0.867 and 0.771. The instructions, sandbox and
+effort setting differed between rounds, so this is not a clean variance estimate, but it is a reason
+to read every single-attempt number in this README as one draw.
 
 ### Run identifiers
 
 | What | Valkyrie run | Dataset |
 |---|---|---|
+| Agents, hosted run 2 (headline), Opus 5.5 | `1f2e6208-f148-4aaa-b72f-5225bed3b745` | `suite/clinical-v1@2` (instructions v3) |
+| Agents, hosted run 2 (headline), Sonnet 5.5 | `5110a198-2582-414a-a9fd-81cc15103cdd` | `suite/clinical-v1@2` (instructions v3) |
+| Oracle, instructions v3 | `15fc4349-028e-42dc-982f-feccff226b7c` | `suite/clinical-v1@2` |
+| Agents, hosted run 1, Opus 5.5 | `0ae696de-4237-44bf-be49-25b90940772b` | `suite/clinical-v1@1` (instructions v2) |
+| Agents, hosted run 1, Sonnet 5.5 | `1a4037a0-e1a9-4670-aee0-ceda221c6264` | `suite/clinical-v1@1` (instructions v2) |
+| Oracle, instructions v2 | `8ca063d3-ff52-4bd0-883f-4fc815e6e31a` | `suite/clinical-v1@1` |
 | Smoke oracle | `1ff5a572-99f5-4623-9062-397e992201ca` | `suite-scratch/toy-smoke@1` |
 | Smoke agent (Sonnet 5.5) | `cea5e542-b160-4971-8119-0a9443d82663` | `suite-scratch/toy-smoke@1` |
-| Oracle, version 2 | `8ca063d3-ff52-4bd0-883f-4fc815e6e31a` | `suite/clinical-v1@1` |
-| Oracle, version 3 | `15fc4349-028e-42dc-982f-feccff226b7c` | `suite/clinical-v1@2` |
-| Agents, version 2, Opus 5.5 | `0ae696de-4237-44bf-be49-25b90940772b` | `suite/clinical-v1@1` |
-| Agents, version 2, Sonnet 5.5 | `1a4037a0-e1a9-4670-aee0-ceda221c6264` | `suite/clinical-v1@1` |
-| Agents, version 3 | _placeholder_ | `suite/clinical-v1@2` |
 
 Raw traces stay outside Git (`exp/` is ignored); the summaries above cite the files that hold them.
-
-## What frontier agents get wrong
-
-From the pilot 1 traces ([pilot1-results.md](docs/research/suite/pilot1-results.md), "Trace
-analysis"). Each item is one observed run, not a rate.
-
-1. **Shipping a pipeline that was never run.** Opus 5.5 on registration spent the session sweeping
-   settings, wrote `run.sh` for the first time about 2.5 minutes before the session was stopped, and
-   never executed it. The script ended `exec python3 -I "$HERE/main.py"`; `-I` removes the script's
-   folder from the import path, so every hidden case failed in 0.2 s with
-   `ModuleNotFoundError: No module named 'reg'`. The `main.py` it called still held the configuration
-   from about minute 5, not the tuned one.
-2. **An empty deliverable after 45 minutes of work.** Sonnet 5.5 on registration created the pipeline
-   folder in its first minutes and never put a file in it. It ran three or four parallel experiments
-   of 2 to 11 GB each, the host killed three of them for lack of memory, and it killed its own shell
-   twice with `pkill -f`.
-3. **Locking onto the wrong structure.** Opus 5.5 on fetal head circumference reached a median error
-   of 2.05 mm, but six of 83 hidden images were gross mis-detections, with errors of −233, −170, +65,
-   +60, +66 and +45 mm. Its own summary named the failure ("locks onto the wrong structure"); its
-   pipeline has no check that rejects these.
-4. **Leaving a working pipeline to chase a retrain.** Sonnet 5.5 on fetal head circumference shipped
-   a working pipeline after about 17 minutes, then spent the remaining 28 minutes on an augmentation
-   retrain that never finished, editing the shipped `feat.py` in place while doing so. It never
-   mentioned the session limit. Its weakest group was the smallest heads (19 of 29 within tolerance,
-   against 29 of 29 for the specialist).
-5. **Optimistic self-validation.** Opus 5.5 estimated 95.4 % within tolerance from random-fold
-   cross-validation over development images; the hidden result was 92.8 %. Images from the same
-   examination could fall on both sides of its folds, which the opaque case IDs did not let it see.
-
-Not counted as agent failures: the missing session-limit statement (our bug, fixed in version 3), and
-the shared host's memory pressure during the pilot. To be extended with failure modes from the
-hosted traces.
 
 ## How to run
 
@@ -396,22 +460,30 @@ UCSF servers; Git holds only code, schemas and aggregate results ([AGENTS.md](AG
 
 ## Limitations
 
-- **One attempt per task and model**, so there is no estimate of run-to-run variation.
+- **One attempt per task and model**, so there is no estimate of run-to-run variation. Fetal head
+  scores for the same model moved between rounds (Opus 5.5: 0.928, 0.928, 0.422), though each round
+  also changed the instructions or sandbox.
 - **Small hidden sets.** Registration and spleen have 6 hidden cases each, and the specialist passes
-  only 4 and 3 of them, so per-case intervals there are wide or degenerate.
+  only 4 and 3 of them, so per-case intervals there are wide or degenerate. "No gap" on those tasks is
+  underpowered, not evidence of parity.
 - **The specialists are not perfect.** The registration and spleen specialists fail some hidden cases;
   a gap is judged only on cases they pass.
 - **Several bounds are our convention** (marked in the families table). They were fixed before any
   agent result and not tuned afterwards.
-- **Public data.** All datasets are public, so models may have seen them. No pilot trace showed
-  recognition of a dataset beyond its name in the README, and no run used outside reference values.
+- **Public data.** All datasets are public, so models may have seen them. No trace recalled hidden
+  labels or published per-case values, and no run used outside reference values. One trace showed
+  method-level familiarity: Opus 5.5 on ICU risk wrote dataset-specific unit repairs before looking at
+  any value.
 - **Local versus hosted.** Pilot 1 ran locally without CPU or memory caps on a shared host; only the
   hosted runs reflect the declared task resources. Valkyrie does not report the CPU and memory
   actually granted.
 - **Effort setting.** The local pilot set effort high; the hosted agent passes no effort flag, so the
-  Claude Code default applies.
+  Claude Code 2.1.325 default applies to every hosted result, which is not "high".
 - **Task versions.** Version 1 and 2 instructions did not state the session limit; version 3 does.
   Results from different versions are reported separately.
+- **Raw values are regraded.** Valkyrie does not keep the grader's `metrics.json`, so values in mm,
+  mL and AUROC come from a local regrade of each saved pipeline; it matches the hosted reward keys in
+  9 of 10 attempts and differs by 0.0002 in `quality` only in the tenth.
 - **Cost.** Valkyrie reports no Modal cost; API costs come from the agent traces at list prices.
 - **Scope.** This is a sandboxed, pre-clinical benchmark. It does not show that any pipeline is safe
   for clinical use.

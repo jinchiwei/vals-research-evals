@@ -1,0 +1,25 @@
+{
+  "status": "complete",
+  "model": "claude-opus-5-5 (Claude Opus 5.5; effort level not recorded)",
+  "skill": "build-pptx (~/.claude/skills/build-pptx/build.py, expressive mode, theme slate, --qa)",
+  "data_source": "docs/research/suite/hosted-agents2.json (hosted run 2, suite/clinical-v1@2)",
+  "qa": "19 slides rasterised (CLINICAL_SUITE_qa/) and inspected; contrast check passed; one non-fatal proportion note on the timeline slide (wide timeline figure, kept)",
+  "outputs": {
+    "CLINICAL_SUITE.pptx": {
+      "sha256": "db52158d917aab4cfa9ec8cadb678e85f4c19cc146e567d64a65a591f6e7528c",
+      "bytes": 1320706
+    },
+    "CLINICAL_SUITE_notes.pdf": {
+      "sha256": "3333160e419fe022c054f43db534e605f3117369e536cf254c34f07ae0faec42",
+      "bytes": 2805081
+    },
+    "CLINICAL_SUITE.md": {
+      "sha256": "696834fe0233978e83a7d0069622e53d86734957ab6791011a84942d1709ff54",
+      "bytes": 3458
+    },
+    "CLINICAL_SUITE.md.layout.json": {
+      "sha256": "fafec12a7c07c938b3066d1d554b76da97c71076c7f1c26c55b3f78b942b2f58",
+      "bytes": 126569
+    }
+  }
+}

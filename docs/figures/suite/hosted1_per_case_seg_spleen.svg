@@ -264,9 +264,6 @@ L 451.08 235.4483
 " style="fill: none; stroke: #52514e; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_15">
-    <text style="fill: #0b0b0b; font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="428.766585" y="82.40222" transform="rotate(-0 428.766585 82.40222)">Dice 0.94 limit</text>
-   </g>
-   <g id="text_16">
     <text style="font: 700 9.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(44.48 17.082078)">CT spleen, per hidden case</text>
     <text style="font: 700 9.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(44.48 27.72)">hosted run 1 (Valkyrie, v2 instructions)</text>
    </g>
@@ -378,7 +375,7 @@ z
       <use xlink:href="#m592ccf1cdd" x="57.78" y="42.888906" style="fill: #2a78d6; stroke: #2a78d6"/>
      </g>
     </g>
-    <g id="text_17">
+    <g id="text_16">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="70.38" y="45.338906" transform="rotate(-0 70.38 45.338906)">claude-opus-5-5</text>
     </g>
     <g id="line2d_29">
@@ -394,7 +391,7 @@ z
       <use xlink:href="#m446945a702" x="57.78" y="53.163594" style="fill: #52514e; stroke: #52514e; stroke-linejoin: miter"/>
      </g>
     </g>
-    <g id="text_18">
+    <g id="text_17">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="70.38" y="55.613594" transform="rotate(-0 70.38 55.613594)">specialist</text>
     </g>
     <g id="line2d_30">
@@ -415,8 +412,17 @@ z
       <use xlink:href="#m45bc2e27ac" x="148.075625" y="42.888906" style="fill: #fcfcfb; stroke: #52514e"/>
      </g>
     </g>
-    <g id="text_19">
+    <g id="text_18">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="160.675625" y="45.338906" transform="rotate(-0 160.675625 45.338906)">hollow = not clinically acceptable</text>
+    </g>
+    <g id="line2d_31">
+     <path d="M 141.075625 53.163594 
+L 148.075625 53.163594 
+L 155.075625 53.163594 
+" style="fill: none; stroke-dasharray: 4.4,3.3; stroke-dashoffset: 0; stroke: #0b0b0b; stroke-width: 1.1"/>
+    </g>
+    <g id="text_19">
+     <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="160.675625" y="55.613594" transform="rotate(-0 160.675625 55.613594)">Dice 0.94 limit</text>
     </g>
    </g>
   </g>

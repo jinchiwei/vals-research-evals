@@ -1,0 +1,7 @@
+{
+ "source": "hosted-agents2.json + hosted-agents2.md (measure_hc18 \u00b7 Opus)",
+ "first_runsh_min": 0.1,
+ "end_turn_min": 11.6,
+ "process_end_min": 19.7,
+ "limit_min": 45
+}

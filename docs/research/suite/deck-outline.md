@@ -1,13 +1,58 @@
 # Deck outline: clinical deliverables suite (3-minute demo plus backup)
 
-Written 2026-11-14 by a Claude Code worker (model: Claude Opus 5.5, `claude-opus-5-5`) for the coordinator.
-This is an outline only. The deck is to be built later with Jin's `build-pptx` skill (AGENTS.md). Slides
-marked **[pending]** need the hosted version 3 results (`hosted-agents2.json`); until then use the
-named fallback. Every number must be copied from the cited file, not from this outline.
+First written 2026-11-14 as an outline. Updated 2026-11-15 to the hosted run 2 results
+(`hosted-agents2.json`; dataset `suite/clinical-v1@2`, instructions v3) and built with Jin's `build-pptx`
+skill as [`results/suite-deck/CLINICAL_SUITE.pptx`](../../../results/suite-deck/CLINICAL_SUITE.pptx).
+Source: `results/suite-deck/CLINICAL_SUITE.md`, its `.layout.json` sidecar, and `results/suite-deck/src/`
+(`make_figs.py` draws every figure from `hosted-agents2.json`; `make_layout.py` writes the slides and
+speaker notes; `finalize.py` adds cover and closing notes). Every number on a slide is read from the cited
+file, not from this outline.
 
-Timing: 11 main slides in about 3 minutes, so roughly 15 seconds each; slides 5 to 8 carry the result.
+Timing: 9 main content slides after the cover in about 3 minutes; slides 4 to 7 carry the result.
 
-## Main slides
+## Main slides (as built)
+
+| # | Title | Message | Evidence | Figure |
+|---|---|---|---|---|
+| 1 | Clinical deliverables: coding agents against specialist systems | Cover | — | none |
+| 2 | Overview | Reserved for Jin's own words; not drafted | — | none |
+| 3 | Clinical evaluation — what a generic benchmark score leaves out | Clinical deliverables are judged in units, in time and against a specialist on the same cases | `metrics-review.md` | shape diagram |
+| 4 | Task contract and the five scored tasks | Agent leaves a pipeline; a hidden verifier runs it under a clinical time limit and compares with the specialist | README task contract and families table | `fig_contract.png` plus task cards |
+| 5 | Agent vs specialist — hosted run 2, same hidden cases | Gap on fetal head for both models; Opus matches the specialist on registration and spleen (underpowered); ECG and ICU controls | `hosted-agents2.json` | `fig_headline.png` |
+| 6 | Fetal head circumference — error per hidden image | 83/83 vs 35/83 and 64/83; paired differences with intervals | `hosted-agents2.json` | `fig_hc18.png` |
+| 7 | One trace — Opus 5.5 on fetal head stops at 11.6 of 45 minutes | It estimated about 60 % against a 90 % bar and ended its turn; hidden 42 % | `hosted-agents2.md` trace findings | `fig_timeline.png` |
+| 8 | Session use — when each agent ended its turn | All ten attempts ended with 48 to 96 % of the session unused | `hosted-agents2.json` | `fig_session.png` |
+| 9 | Registration and spleen per case; ECG and ICU controls | Per-case agreement for Opus; Sonnet no-op and mislocalisation; controls | `hosted-agents2.json` | `fig_percase.png` |
+| 10 | Limits and how to run | One attempt, small hidden sets, default effort, regraded raw values, public data; Valkyrie commands | README | none |
+
+## Backup slides (as built)
+
+| # | Title | Evidence |
+|---|---|---|
+| B1 | Gap verdicts — paired differences on specialist-passed cases | `hosted-agents2.md` "Gap verdicts" |
+| B2 | Reward keys for every attempt — hosted run 2 | `hosted-agents2.json` |
+| B3 | Sonnet 5.5 on registration — a no-op pipeline after 3 minutes | `hosted-agents2.md` "reg_resect · Sonnet" |
+| B4 | Why the numbers can be trusted | `hosted-oracle1.md`, `instructions-v3.md`, `hosted-agents2.md` |
+| B5 | Earlier runs — the session-limit bug and its fix | `hosted-agents1.md`, `pilot1-results.md`, `instructions-v3.md` |
+| B6 | Cost and run identifiers | `hosted-agents2.md` "Cost"; README "Run identifiers" |
+| B7 | Clinical thresholds and their sources | README families table |
+
+The skill's Thank-You slide is last, after the backup slides.
+
+## Rebuild
+
+```bash
+cd results/suite-deck
+~/miniconda3/envs/vals-suite/bin/python src/make_figs.py
+~/miniconda3/envs/vals-suite/bin/python src/make_layout.py
+~/miniconda3/envs/vals-suite/bin/python ~/.claude/skills/build-pptx/build.py \
+  --input CLINICAL_SUITE.md --output CLINICAL_SUITE.pptx --qa   # --qa needs soffice and pdftoppm on PATH
+~/miniconda3/envs/vals-suite/bin/python src/finalize.py
+```
+
+## Original outline (2026-11-14, superseded)
+
+### Main slides
 
 | # | Title (draft) | Message | Evidence (file) | Figure |
 |---|---|---|---|---|
@@ -23,7 +68,7 @@ Timing: 11 main slides in about 3 minutes, so roughly 15 seconds each; slides 5 
 | 10 | Why the numbers can be trusted | Hidden cases only on the verifier; oracle rewards reproduced on Modal for all five tasks; agent network limited to the model API (PyPI and web unreachable); web tools removed from the agent; thresholds fixed before any agent result; one attempt, nothing rerun | `hosted-oracle1.md`; `instructions-v3.md`; `prespec.txt` in `exp/suite-hosted-agents1/` | none, or the oracle table |
 | 11 | What it adds, and its limits | Combination not covered elsewhere: coding-agent harness, artifacts beyond segmentation, time limits as gates, same-case specialist (ReX-MLE, AutoMedBench, HealthAgentBench as nearest work). Limits: one attempt, 6 hidden cases for registration and spleen, public data | `landscape.md` sections 2 and 4; README "Limitations" | none |
 
-## Backup slides
+### Backup slides
 
 | # | Title (draft) | Message | Evidence (file) | Figure |
 |---|---|---|---|---|
@@ -38,7 +83,7 @@ Timing: 11 main slides in about 3 minutes, so roughly 15 seconds each; slides 5 
 | B9 | Cost and run identifiers | API cost from traces at list prices; Modal cost not reported by Valkyrie; Valkyrie run IDs | README "Run identifiers"; `hosted-oracle1.md` "Cost" | none |
 | B10 | Data and licences | Six public datasets and their licences; no UCSF data on the platform or in Git | README "Data and licences" | none |
 
-## Notes for the deck builder
+### Notes for the deck builder
 
 - Label every result slide with its source: "hosted, task version 3", "hosted, task version 2" or
   "local pilot 1". Do not mix sources in one chart.

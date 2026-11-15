@@ -1,0 +1,60 @@
+{
+ "source": "docs/research/suite/hosted-agents2.json",
+ "rows": [
+  {
+   "fam": "reg_resect",
+   "n_lab": "6 hidden cases",
+   "spec": 0.6666666666666666,
+   "opus": 0.6666666666666666,
+   "sonnet": 0.0,
+   "opus_n": 4,
+   "sonnet_n": 0,
+   "spec_n": 4,
+   "n": 6
+  },
+  {
+   "fam": "seg_spleen",
+   "n_lab": "6 hidden cases",
+   "spec": 0.5,
+   "opus": 0.5,
+   "sonnet": 0.16666666666666666,
+   "opus_n": 3,
+   "sonnet_n": 1,
+   "spec_n": 3,
+   "n": 6
+  },
+  {
+   "fam": "measure_hc18",
+   "n_lab": "83 hidden cases",
+   "spec": 1.0,
+   "opus": 0.42168674698795183,
+   "sonnet": 0.7710843373493976,
+   "opus_n": 35,
+   "sonnet_n": 64,
+   "spec_n": 83,
+   "n": 83
+  },
+  {
+   "fam": "ecg_ptbxl",
+   "n_lab": "1 cohort \u00b7 all gate parts",
+   "spec": 1.0,
+   "opus": 1.0,
+   "sonnet": 1.0,
+   "opus_n": null,
+   "sonnet_n": null,
+   "spec_n": null,
+   "n": null
+  },
+  {
+   "fam": "risk_icu",
+   "n_lab": "1 cohort \u00b7 all gate parts",
+   "spec": 1.0,
+   "opus": 1.0,
+   "sonnet": 1.0,
+   "opus_n": null,
+   "sonnet_n": null,
+   "spec_n": null,
+   "n": null
+  }
+ ]
+}

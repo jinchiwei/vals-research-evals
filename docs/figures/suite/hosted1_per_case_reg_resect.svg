@@ -274,9 +274,6 @@ L 451.08 236.1008
 " style="fill: none; stroke: #52514e; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
    </g>
    <g id="text_16">
-    <text style="fill: #0b0b0b; font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: end" x="429.077744" y="212.261476" transform="rotate(-0 429.077744 212.261476)">2.0 mm limit</text>
-   </g>
-   <g id="text_17">
     <text style="font: 700 9.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(50.15 17.007859)">MRI to ultrasound registration, per hidden case</text>
     <text style="font: 700 9.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif" transform="translate(50.15 27.72)">hosted run 1 (Valkyrie, v2 instructions)</text>
    </g>
@@ -321,7 +318,7 @@ z
      <use xlink:href="#m4564c84c2e" x="327.622896" y="199.640326" style="fill: #fcfcfb; stroke: #52514e; stroke-width: 1.5"/>
     </g>
    </g>
-   <g id="text_18">
+   <g id="text_17">
     <text style="fill: #eb6834; font: 10px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: middle" x="337.401677" y="234.021113" transform="rotate(-0 337.401677 234.021113)">×</text>
    </g>
    <g id="PathCollection_6">
@@ -386,7 +383,7 @@ z
       <use xlink:href="#m3237e843cc" x="63.45" y="42.888906" style="fill: #eb6834; stroke: #eb6834"/>
      </g>
     </g>
-    <g id="text_19">
+    <g id="text_18">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="76.05" y="45.338906" transform="rotate(-0 76.05 45.338906)">claude-sonnet-5-5</text>
     </g>
     <g id="line2d_30">
@@ -402,7 +399,7 @@ z
       <use xlink:href="#m446945a702" x="63.45" y="53.163594" style="fill: #52514e; stroke: #52514e; stroke-linejoin: miter"/>
      </g>
     </g>
-    <g id="text_20">
+    <g id="text_19">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="76.05" y="55.613594" transform="rotate(-0 76.05 55.613594)">specialist</text>
     </g>
     <g id="line2d_31">
@@ -423,8 +420,17 @@ z
       <use xlink:href="#m45bc2e27ac" x="160.658125" y="42.888906" style="fill: #fcfcfb; stroke: #52514e"/>
      </g>
     </g>
-    <g id="text_21">
+    <g id="text_20">
      <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="173.258125" y="45.338906" transform="rotate(-0 173.258125 45.338906)">hollow = not clinically acceptable</text>
+    </g>
+    <g id="line2d_32">
+     <path d="M 153.658125 53.163594 
+L 160.658125 53.163594 
+L 167.658125 53.163594 
+" style="fill: none; stroke-dasharray: 4.4,3.3; stroke-dashoffset: 0; stroke: #0b0b0b; stroke-width: 1.1"/>
+    </g>
+    <g id="text_21">
+     <text style="font: 7px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="173.258125" y="55.613594" transform="rotate(-0 173.258125 55.613594)">2.0 mm limit</text>
     </g>
    </g>
   </g>

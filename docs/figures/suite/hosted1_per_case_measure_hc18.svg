@@ -905,11 +905,11 @@ z
 " style="stroke: #2a78d6"/>
      </defs>
      <g>
-      <use xlink:href="#m592ccf1cdd" x="65.997809" y="43.543828" style="fill: #2a78d6; stroke: #2a78d6"/>
+      <use xlink:href="#m592ccf1cdd" x="247.226484" y="238.216047" style="fill: #2a78d6; stroke: #2a78d6"/>
      </g>
     </g>
     <g id="text_13">
-     <text style="font: 7.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="79.497809" y="46.168828" transform="rotate(-0 79.497809 46.168828)">claude-opus-5-5</text>
+     <text style="font: 7.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="260.726484" y="240.841047" transform="rotate(-0 260.726484 240.841047)">claude-opus-5-5</text>
     </g>
     <g id="line2d_77">
      <defs>
@@ -926,11 +926,11 @@ z
 " style="stroke: #eb6834"/>
      </defs>
      <g>
-      <use xlink:href="#m3237e843cc" x="65.997809" y="54.552422" style="fill: #eb6834; stroke: #eb6834"/>
+      <use xlink:href="#m3237e843cc" x="247.226484" y="249.224641" style="fill: #eb6834; stroke: #eb6834"/>
      </g>
     </g>
     <g id="text_14">
-     <text style="font: 7.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="79.497809" y="57.177422" transform="rotate(-0 79.497809 57.177422)">claude-sonnet-5-5</text>
+     <text style="font: 7.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="260.726484" y="251.849641" transform="rotate(-0 260.726484 251.849641)">claude-sonnet-5-5</text>
     </g>
     <g id="line2d_78">
      <defs>
@@ -947,11 +947,11 @@ z
 " style="stroke: #52514e"/>
      </defs>
      <g>
-      <use xlink:href="#m45bc2e27ac" x="65.997809" y="65.561016" style="fill: #fcfcfb; stroke: #52514e"/>
+      <use xlink:href="#m45bc2e27ac" x="247.226484" y="260.233234" style="fill: #fcfcfb; stroke: #52514e"/>
      </g>
     </g>
     <g id="text_15">
-     <text style="font: 7.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="79.497809" y="68.186016" transform="rotate(-0 79.497809 68.186016)">hollow = not clinically acceptable</text>
+     <text style="font: 7.5px 'DejaVu Sans', 'Bitstream Vera Sans', 'Computer Modern Sans Serif', 'Lucida Grande', 'Verdana', 'Geneva', 'Lucid', 'Arial', 'Helvetica', 'Avant Garde', sans-serif; text-anchor: start" x="260.726484" y="262.858234" transform="rotate(-0 260.726484 262.858234)">hollow = not clinically acceptable</text>
     </g>
    </g>
   </g>
