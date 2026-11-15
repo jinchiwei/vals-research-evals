@@ -6,7 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from research_evals.pilot import model_response_ids
+from prototype_evals.pilot import model_response_ids
 rows, traces, total = [], [], 0.0
 for directory in sorted((ROOT / 'results').glob('*')):
     manifest = directory / 'manifest.json'

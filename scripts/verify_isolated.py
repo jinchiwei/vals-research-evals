@@ -5,7 +5,7 @@ import sys
 import tempfile
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from research_evals.pilot import sandbox_command
+from prototype_evals.pilot import sandbox_command
 
 parser = argparse.ArgumentParser()
 parser.add_argument('tasks', type=Path)

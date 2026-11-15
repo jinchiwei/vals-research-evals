@@ -181,9 +181,9 @@ or patient identifiers are included. Domain failure patterns informed the tasks.
 
 ```bash
 python3 -m unittest discover -s tests -v
-python3 -m research_evals smoke --out results/my-controls
-python3 -m research_evals export --out dist/my-tasks --seeds 11 23 37
-python3 -m research_evals export --out dist/workflow-tasks --workflow --seeds 11 23 37
+python3 -m prototype_evals smoke --out results/my-controls
+python3 -m prototype_evals export --out dist/my-tasks --seeds 11 23 37
+python3 -m prototype_evals export --out dist/workflow-tasks --workflow --seeds 11 23 37
 ```
 
 The smoke loop evaluates three **scripted controls**, not LLMs. It records a
@@ -197,7 +197,7 @@ are not overwritten. Touch `RESULT_DIRECTORY/STOP` to stop before the next itera
 On Linux with bubblewrap, the native Claude executable, and an existing Claude login:
 
 ```bash
-python3 -m research_evals pilot --out results/my-opus-pilot \
+python3 -m prototype_evals pilot --out results/my-opus-pilot \
   --model claude-opus-5-5 --effort high --seed 11 --max-tasks 4 \
   --timeout 240 --budget 3
 ```
@@ -248,7 +248,7 @@ TASK_ID/
   tests/grade.py
   tests/expected.json
   solution/solve.sh
-  solution/research_evals/...
+  solution/prototype_evals/...
 ```
 
 Valkyrie supports publishing these task folders as a dataset. Each task's Docker

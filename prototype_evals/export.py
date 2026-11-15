@@ -30,7 +30,7 @@ storage_mb = 2048
     (root / 'tests' / 'test.sh').write_text(
         '#!/bin/sh\nset -eu\npython3 /tests/grade.py /tests/expected.json /workspace/answer.json /logs/verifier\n')
     # Only the reference-solution component receives the reference implementation.
-    package = root / 'solution' / 'research_evals'
+    package = root / 'solution' / 'prototype_evals'
     package.mkdir()
     for name in ('__init__.py', 'metrics.py', 'solve.py', 'challenge.py', 'cases.py'):
         (package / name).write_text(Path(__file__).with_name(name).read_text())
@@ -39,8 +39,8 @@ set -eu
 PYTHONPATH=/solution python3 - <<'PY'
 import json
 from pathlib import Path
-from research_evals.solve import solve
-from research_evals.challenge import normalize
+from prototype_evals.solve import solve
+from prototype_evals.challenge import normalize
 p = Path('/workspace')
 (p / 'answer.json').write_text(json.dumps(solve(normalize(json.loads((p / 'input.json').read_text())))))
 PY

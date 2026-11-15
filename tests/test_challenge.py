@@ -3,10 +3,10 @@ import unittest
 
 class ChallengeTests(unittest.TestCase):
     def test_challenge_preserves_answers_through_join_and_unit_transforms(self):
-        from research_evals.cases import generate
-        from research_evals.challenge import complicate, normalize
-        from research_evals.solve import solve
-        from research_evals.grade import grade
+        from prototype_evals.cases import generate
+        from prototype_evals.challenge import complicate, normalize
+        from prototype_evals.solve import solve
+        from prototype_evals.grade import grade
         for case in generate(23):
             hard = complicate(case)
             answer = solve(normalize(hard['public']))
@@ -15,8 +15,8 @@ class ChallengeTests(unittest.TestCase):
             self.assertNotIn('expected', hard['public'])
 
     def test_audit_excludes_later_visits_and_training_people(self):
-        from research_evals.cases import generate
-        from research_evals.challenge import complicate, normalize
+        from prototype_evals.cases import generate
+        from prototype_evals.challenge import complicate, normalize
         case = generate(11)[0]
         hard = complicate(case)
         clean = normalize(hard['public'])

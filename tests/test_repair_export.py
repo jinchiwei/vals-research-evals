@@ -92,7 +92,7 @@ class RepairExportTests(unittest.TestCase):
 
     def test_oracle_script_installs_a_passing_solution(self):
         # Catches an unusable solve.sh path or installing the flawed submission.
-        from research_evals.pilot import sandbox_command
+        from prototype_evals.pilot import sandbox_command
         task = self.export_case(make_case('claims', 101), self.base)
         workspace = self.base / 'oracle-workspace'
         shutil.copytree(task / 'environment' / 'workspace', workspace)

@@ -14,7 +14,7 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from research_evals.pilot import sandbox_command, model_response_ids
+from prototype_evals.pilot import sandbox_command, model_response_ids
 
 REPLAY_BOOTSTRAP = (
     "import resource,os; "
@@ -256,7 +256,7 @@ def main():
         raise ValueError("Pilot bounds exceeded")
     args.out.mkdir(parents=True, exist_ok=False)
     models = {"claude": "claude-opus-5-5", "codex": "gpt-6-astra"}
-    sources = list((ROOT / "repair_evals").glob("*.py")) + [Path(__file__), ROOT / "research_evals/pilot.py"]
+    sources = list((ROOT / "repair_evals").glob("*.py")) + [Path(__file__), ROOT / "prototype_evals/pilot.py"]
     manifest = {"seed": args.seed, "variant": args.variant, "families": args.families,
         "models": {b: models[b] for b in args.backends}, "effort": "high", "timeout_seconds": args.timeout,
         "claude_usage_cap_per_task_usd": args.budget, "codex_billing": "existing ChatGPT login; no API billing configured",

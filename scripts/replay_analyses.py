@@ -10,10 +10,10 @@ import tempfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from research_evals.cases import generate
-from research_evals.challenge import complicate
-from research_evals.grade import grade
-from research_evals.pilot import sandbox_command
+from prototype_evals.cases import generate
+from prototype_evals.challenge import complicate
+from prototype_evals.grade import grade
+from prototype_evals.pilot import sandbox_command
 
 rows = []
 for run in sorted((ROOT / 'results').glob('*')):

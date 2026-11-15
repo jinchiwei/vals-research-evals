@@ -23,7 +23,7 @@ Valkyrie in the organisation `hackathon-neuronetwork-b91c517178`. The exact trac
 | Slides and video | [`results/suite-deck/CLINICAL_SUITE.pptx`](results/suite-deck/CLINICAL_SUITE.pptx), [`results/demo-video/`](results/demo-video/) |
 | How to run it yourself | [How to run](#how-to-run) |
 
-`pcnsl/`, `research_evals/` and `repair_evals/` hold earlier UCSF PCNSL work that is not part of this
+`pcnsl/`, `prototype_evals/` and `repair_evals/` hold earlier UCSF PCNSL work that is not part of this
 submission (see [Related UCSF PCNSL work](#related-ucsf-pcnsl-work)).
 
 ## How the benchmark works

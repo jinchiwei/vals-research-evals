@@ -6,7 +6,7 @@ from pathlib import Path
 
 class RunTests(unittest.TestCase):
     def test_smoke_loop_selects_on_development_only(self):
-        from research_evals.experiment import smoke_loop
+        from prototype_evals.experiment import smoke_loop
         with tempfile.TemporaryDirectory() as d:
             result = smoke_loop(Path(d), [11, 23], [101])
             self.assertEqual(result['selected'], 'careful')
@@ -17,7 +17,7 @@ class RunTests(unittest.TestCase):
             self.assertTrue((Path(d) / 'experiments.jsonl').exists())
 
     def test_stop_file_and_overlapping_splits(self):
-        from research_evals.experiment import smoke_loop
+        from prototype_evals.experiment import smoke_loop
         with tempfile.TemporaryDirectory() as d:
             root = Path(d)
             with self.assertRaises(ValueError):
@@ -26,7 +26,7 @@ class RunTests(unittest.TestCase):
             self.assertEqual(smoke_loop(root, [11], [101])['status'], 'stopped')
 
     def test_report_gold_handles_late_signature_and_addendum(self):
-        from research_evals.solve import solve
+        from prototype_evals.solve import solve
         data = dict(family='reports', queries=[dict(id='x', finding='superficial siderosis')], reports=[
             dict(id='old', subject='x', exam_date='2024-01-01', signed_at='2026-02-03', text='New edema is present.'),
             dict(id='new', subject='x', exam_date='2026-01-01', signed_at='2026-01-02', text='No edema is seen.'),
