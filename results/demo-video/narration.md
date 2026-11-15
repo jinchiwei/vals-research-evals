@@ -5,7 +5,7 @@ Video length 235.0 s; scenes: title 0 s, why 8 s, pipeline 44 s, tasks 82 s, res
 
 ## title — starts 0.0 s (8 s scene)
 
-- **   0.6–  6.1 s** (scene +0.6 s, 5.5 s, 10 words, 108 wpm): Clinical deliverables: coding agents against specialist systems. By Jinchi Wei.
+- **   0.6–  6.1 s** (scene +0.6 s, 5.5 s, 10 words, 108 wpm): Clinical deliverables: coding agents against specialist systems. By [Jinchi](/ʤˈɪnʧi/) Wei.
 
 ## why — starts 8.0 s (36 s scene)
 
