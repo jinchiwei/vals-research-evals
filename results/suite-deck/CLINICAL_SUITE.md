@@ -1,7 +1,7 @@
 ---
 title: "Clinical deliverables: coding agents against specialist systems"
 eyebrow: "VALS AI HACKATHON · BUILD YOUR OWN EVAL · 2026"
-subtitle: "Five real medical tasks, clinical metrics, clinical time limits, a specialist on the same hidden cases"
+subtitle: "Real medical tasks, clinical metrics, clinical time limits, a specialist on the same hidden cases"
 name: "Jinchi Wei"
 org: "Vals AI hackathon · Build Your Own Eval track"
 date: "2026-11-15"
@@ -23,29 +23,27 @@ Slot for the presenter's own overview, to be written and spoken by Jin.
 
 ---
 
-## Task contract and the five scored tasks
+## Task contract and the seven task families
 
 ![Task contract](figures/fig_contract.png)
 
-- Registration (RESECT), spleen mask and volume (MSD Task09), fetal head circumference (HC18), 12-lead ECG (PTB-XL), ICU mortality (PhysioNet 2012)
+- Registration, spleen, fetal head, retinal vessels, ECG, ICU risk, treatment effect
 
 ---
 
-## Agent vs specialist — hosted run 2, same hidden cases
+## Agent vs specialist — three attempts per task and model
 
 ![Headline](figures/fig_headline.png)
 
-- Fetal head: gap shown for both models
-- Opus 5.5 matches the specialist on registration and spleen
-- ECG and ICU: controls
+- Fetal head: gap shown in 3 of 3 attempts for both models
 
 ---
 
-## Fetal head circumference — error per hidden image
+## Fetal head circumference — error per hidden image, six attempts
 
 ![Fetal head per image](figures/fig_hc18.png)
 
-- Specialist 83/83, Opus 5.5 35/83, Sonnet 5.5 64/83 within 4.9 %
+- Specialist 83/83; agents 35 to 74 of 83
 
 ---
 
@@ -57,29 +55,25 @@ Slot for the presenter's own overview, to be written and spoken by Jin.
 
 ---
 
-## Session use — when each agent ended its turn
+## Stated time pressure — early endings and two instruction tests
 
-![Session use](figures/fig_session.png)
+![Instruction tests](figures/fig_elicitation.png)
 
-- 48 to 96 % of the session unused in all ten attempts
+- "I stopped there because of the session limit." at 8 of 45 minutes
 
 ---
 
-## Registration and spleen per case; ECG and ICU controls
+## Retinal vessels — near-parity with the specialist
 
-![Per case](figures/fig_percase.png)
+![Vessel per image](figures/fig_vessel.png)
 
-- Opus 5.5 registration 4/6, mean TRE 1.61 mm vs specialist 4/6, 3.03 mm
-- Opus 5.5 spleen 3/6, Dice 0.940 vs 0.939
-- ECG and ICU: every gate part met by both models and the specialists
+- Opus 5/8, Sonnet 4/8, specialist 6/8; no gap shown
 
 ---
 
 ## Limits and how to run
 
-- One attempt per task and model; 6 hidden cases for registration and spleen
-- Claude Code default effort; raw values from local regrades
-- Public datasets: contamination risk
+- Three attempts per task and model; 6 hidden cases for registration and spleen
 - `valkyrie run start --agent claude_code_noweb-v1.0.0 --dataset suite/clinical-v1@instr2`
 
 ---
@@ -88,19 +82,25 @@ Slot for the presenter's own overview, to be written and spoken by Jin.
 
 ---
 
-## Gap verdicts — paired differences on specialist-passed cases
+## Gap verdicts — every attempt, specialist-passed cases
 
-| Task · model | S | Agent passes | Pass diff (95 % CI) | Verdict |
-|---|---|---|---|---|
-| reg · Opus | 4 | 3 | −0.25 (−0.75 to 0.00) | no gap shown |
+- Per-attempt verdicts
 
 ---
 
-## Reward keys for every attempt — hosted run 2
+## Reward keys for every headline attempt
 
-| Task | Model | reward | quality | vs_specialist |
-|---|---|---|---|---|
-| reg_resect | Opus | 0.667 | 0.463 | 1.000 |
+![Reward keys](figures/fig_reward_keys.png)
+
+- All seven reward keys for the 30 headline attempts
+
+---
+
+## Session use — every attempt in every workstream
+
+![Session use](figures/fig_session.png)
+
+- No attempt used its whole session
 
 ---
 
@@ -122,12 +122,44 @@ Slot for the presenter's own overview, to be written and spoken by Jin.
 
 ---
 
+## Report labelling — excluded from scoring, worked example
+
+![Report labels](figures/fig_report_label.png)
+
+- Opus 5.5 beat the specialist but missed the F1 bar by 0.01
+
+---
+
+## Treatment effect — a control family
+
+![Causal](figures/fig_causal.png)
+
+- Specialist and all six agent attempts pass
+
+---
+
+## PCNSL mutation prediction — no method above chance
+
+![PCNSL](figures/fig_pcnsl.png)
+
+- No comparator succeeds, so no frontier gap can be shown
+
+---
+
+## Dataset selection — licence, clinical bar, specialist, size
+
+![Funnel](figures/fig_funnel.png)
+
+- About 40 datasets screened
+
+---
+
 ## Cost and run identifiers
 
-- API $3.77 for hosted run 2; Modal cost not reported
+- API cost by round; Modal cost not reported
 
 ---
 
 ## Clinical thresholds and their sources
 
-- Registration, spleen, fetal head, ECG, ICU
+- Every family's bar and its source

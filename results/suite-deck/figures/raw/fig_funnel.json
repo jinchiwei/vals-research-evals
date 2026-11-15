@@ -1,0 +1,43 @@
+{
+ "source": "docs/research/suite/dataset-survey.md sections 1, 2, 4; README families table",
+ "stages": [
+  {
+   "n": "50",
+   "label": "candidate rows\nvetted in the\ndataset survey"
+  },
+  {
+   "n": "34",
+   "label": "licence allows\nredistribution\n(13 usable,\n21 with care)"
+  },
+  {
+   "n": "8",
+   "label": "ranked shortlist:\nclinical metric,\nbaseline, size"
+  },
+  {
+   "n": "9",
+   "label": "families built\n(6, then 3 more\nin round 3)"
+  },
+  {
+   "n": "7",
+   "label": "specialist\npasses on\nhidden cases:\nscored or control"
+  }
+ ],
+ "course_and_local": [
+  [
+   "HAM10000",
+   "CC BY-NC 4.0"
+  ],
+  [
+   "APTOS 2019",
+   "Kaggle rules: NC,\nno redistribution"
+  ],
+  [
+   "Open-i",
+   "CC BY-NC-ND 4.0\n(per mirrors)"
+  ],
+  [
+   "DRIVE/STARE",
+   "no licence stated"
+  ]
+ ]
+}

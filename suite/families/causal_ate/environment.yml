@@ -1,0 +1,10 @@
+# Project environment for the causal_ate family. Create with:
+#   ~/miniconda3/bin/conda env create -f suite/families/causal_ate/environment.yml
+name: vals-suite-causal_ate
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

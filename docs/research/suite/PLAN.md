@@ -1,6 +1,6 @@
 # Clinical deliverables suite: plan and status
 
-Updated 2026-11-15. Demos are Sunday 2 PM. Design and task contract:
+Updated 2026-11-15 after round 3. Demos are Sunday 2 PM. Design and task contract:
 [DESIGN.md](DESIGN.md).
 
 ## The idea
@@ -18,9 +18,12 @@ specialist system run on the same cases.
 | `reg_resect`: pre-op MRI to intra-op ultrasound registration | RESECT (CC BY 4.0) | 4 of 6 under 2 mm; 6.18 → 3.03 mm mean error | scored |
 | `seg_spleen`: CT spleen mask + volume in mL | MSD Task09 (CC BY-SA 4.0) | TotalSegmentator 3 of 6; Dice 0.939 | scored |
 | `measure_hc18`: fetal head circumference in mm | HC18 (CC BY 4.0) | U-Net 100% within tolerance; 2.05 mm error | scored |
-| `ecg_ptbxl`: calibrated 12-lead ECG classes with subgroups | PTB-XL (CC BY 4.0) | meets all 3 gate parts; AUROC 0.921 | scored |
-| `risk_icu`: calibrated ICU mortality risk | PhysioNet 2012 (ODC-By) | gradient boosting meets all 4 parts; AUROC 0.873 | scored (control in both hosted runs) |
+| `ecg_ptbxl`: calibrated 12-lead ECG classes with subgroups | PTB-XL (CC BY 4.0) | meets all 3 gate parts; AUROC 0.921 | scored (behaved as a control: Sonnet 3 of 3 pass, Opus 2 of 3) |
+| `risk_icu`: calibrated ICU mortality risk | PhysioNet 2012 (ODC-By) | gradient boosting meets all 4 parts; AUROC 0.873 | scored (control: every attempt passes) |
 | `triage_pharyngitis`: bacterial sore throat from photo + symptoms | Shojaei 2025 (CC BY 4.0) | no comparator passes; labels are physician votes | not scored: worked example of label and shortcut problems |
+| `seg_vessel`: retinal vessel mask, second human observer as the bar | CHASE_DB1 (CC BY 4.0) | U-Net 6 of 8 images | scored (round 3) |
+| `causal_ate`: treatment effect on the treated with a 95 % interval | our ACIC-style generator over PhysioNet 2012 covariates (ODC-By) | doubly robust estimator meets all 4 parts | control (round 3) |
+| `label_ptbxl_reports`: ECG report text to diagnostic classes | PTB-XL report text (CC BY 4.0) | no comparator meets the gate | excluded; agents reported descriptively (round 3) |
 
 UCSF PCNSL imaging and genetics stay on FAC/SCS and are reported separately
 (`pcnsl/`). No UCSF data goes to Valkyrie or GitHub.
@@ -41,20 +44,34 @@ UCSF PCNSL imaging and genetics stay on FAC/SCS and are reported separately
 - README results section written from hosted run 2, with earlier runs summarised separately. The opening overview paragraph is still left for Jin.
 - Demo deck built with Jin's build-pptx skill: `results/suite-deck/CLINICAL_SUITE.pptx`.
 
+## Round 3 (done)
+
+Preregistered in [round3-prereg.md](round3-prereg.md); results against it, with every deviation, in
+[round3-results.md](round3-results.md).
+
+- **R** two more full runs per model of `suite/clinical-v1@2` ([hosted-agents3](hosted-agents3.md)): 20 attempts, all graded. Pooled with run 2: gap shown in 3 of 3 attempts on fetal head (both models) and on registration for Sonnet; 1 of 3 on Opus registration, Opus spleen, Sonnet spleen and Opus ECG.
+- **K** keep-working instruction on fetal head ([hosted-keepworking1](hosted-keepworking1.md)): did not change the endings; all 6 stopped below the bar.
+- **K2** clock-check instruction on fetal head (addendum, `suite/hc18-clockcheck-v1@1`; [hosted-clockcheck1](hosted-clockcheck1.md)): every agent checked the clock and stated the time correctly, but all 6 still stopped below the bar with 8–31 minutes left. The belief about time was real; fixing it did not remove the early stopping.
+- **V** `seg_vessel` ([seg_vessel](seg_vessel.md)): near-parity, no gap shown (Opus 5/8, Sonnet 4/8, specialist 6/8).
+- **C** `causal_ate` ([causal_ate](causal_ate.md)): control; specialist and all 6 agent attempts pass.
+- **T** `label_ptbxl_reports` ([label_ptbxl_reports](label_ptbxl_reports.md)): excluded; Opus beat the specialist but missed the F1 bar by 0.01.
+- README results, figures (`scripts/make_suite_figures.py`, `round3_*` in `docs/figures/suite/`) and deck rebuilt from round 3.
+- Round-3 API spend: $17.10, under the $60 stop rule.
+
 ## Running now
 
-Nothing. No agent or oracle run is in progress.
+Nothing.
 
 ## Next
 
-1. Jin writes the README overview paragraph and his overview slide.
-2. Jin reviews the README results and the deck before the demo.
+1. Jin writes the README overview paragraph and his overview slide (slide 2).
+2. Jin reviews the README results and the deck before the demo, including the closing slide's email.
 3. Commit and push. The repository stays private unless Jin changes it.
-4. Optional, not before the demo: repeat attempts per task and model for run-to-run variance, larger hidden sets for registration and spleen, effort set to high, and a task version that tells the agent to use its remaining time (a new version, not pooled).
+4. Optional, after the demo: larger hidden sets for registration, spleen and vessel; effort set to high; a report-label gate set from the measured label ceiling (a new task version); a causal instruction that does not name the method.
 
 ## Rules kept throughout
 
-- One attempt per task and model, fixed before running; failures are kept, nothing is rerun for a better number.
+- The number of attempts per task and model is fixed before running (one per round; three pooled for the headline after round 3); failures are kept, nothing is rerun for a better number.
 - Clinical thresholds are fixed from the literature or stated as our own convention before any agent result is seen.
 - A gap is claimed only against the specialist on the same hidden cases.
 - All installs go in project environments. Commits carry the human Git identity only.

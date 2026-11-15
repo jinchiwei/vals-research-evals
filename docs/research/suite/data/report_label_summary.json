@@ -1,0 +1,17 @@
+{
+  "schema": "suite-report-label-summary/1",
+  "family": "label_ptbxl_reports",
+  "dataset": "suite/report-label-v1@1",
+  "role": "excluded from scoring (no comparator met the gate); agent attempts reported descriptively",
+  "sources": ["docs/research/suite/label_ptbxl_reports.md section 3", "exp/label_ptbxl_hosted/summary.json (git-ignored; cross-checked)"],
+  "gate": {"min_kappa_each_class": 0.60, "macro_f1_min": 0.80, "both_required": true},
+  "hidden": {"records": 500, "patients": 482},
+  "session_limit_s": 2700,
+  "runs": {"oracle": "72b3ac93-782a-4fc9-8a42-8e9c064c9168", "opus": "60111604-75d3-4bd2-b928-e814a888244b", "sonnet": "e1d46b7a-11ef-45ff-9294-670761bd54c0"},
+  "rows": [
+    {"name": "Specialist (TF-IDF char 2-5 + LR)", "kind": "specialist", "macro_f1": 0.7353, "macro_f1_ci95": [0.7012, 0.7634], "min_kappa": 0.4774, "min_kappa_class": "HYP", "gate_kappa": false, "gate_f1": false, "reward": 0},
+    {"name": "Keyword rules", "kind": "comparator", "macro_f1": 0.7568, "macro_f1_ci95": [0.7263, 0.7862], "min_kappa": 0.5786, "min_kappa_class": "STTC", "gate_kappa": false, "gate_f1": false, "reward": 0},
+    {"name": "Opus 5.5", "kind": "agent", "model": "claude-opus-5-5", "macro_f1": 0.7901, "macro_f1_ci95": [0.7612, 0.8172], "min_kappa": 0.6663, "min_kappa_class": "HYP", "gate_kappa": true, "gate_f1": false, "reward": 0, "minus_specialist_macro_f1": 0.0548, "minus_specialist_ci95_patient_paired": [0.0254, 0.0856], "session_s": 68.6},
+    {"name": "Sonnet 5.5", "kind": "agent", "model": "claude-sonnet-5-5", "macro_f1": 0.7574, "macro_f1_ci95": [0.7276, 0.7845], "min_kappa": 0.5397, "min_kappa_class": "HYP", "gate_kappa": false, "gate_f1": false, "reward": 0, "minus_specialist_macro_f1": 0.0221, "minus_specialist_ci95_patient_paired": [-0.0030, 0.0476], "session_s": 672.8}
+  ]
+}

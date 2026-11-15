@@ -1,0 +1,425 @@
+{
+ "source": "docs/research/suite/hosted-agents3.json per_attempt_including_run2",
+ "columns": [
+  {
+   "family": "reg_resect",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 0.6666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.6666666666666666,
+    "quality": 0.46320217366168964,
+    "vs_specialist": 1.0
+   }
+  },
+  {
+   "family": "reg_resect",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 0.3333333333333333,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.3333333333333333,
+    "quality": 0.3553329848615603,
+    "vs_specialist": 1.0
+   }
+  },
+  {
+   "family": "reg_resect",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 0.8333333333333334,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.16666666666666666,
+    "quality": 0.132632434081742,
+    "vs_specialist": 0.4003921155324564
+   }
+  },
+  {
+   "family": "reg_resect",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.07042217825914476,
+    "vs_specialist": 0.21259117446495102
+   }
+  },
+  {
+   "family": "reg_resect",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 0.16666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.16666666666666666,
+    "quality": 0.14039856168138096,
+    "vs_specialist": 0.423836579027698
+   }
+  },
+  {
+   "family": "reg_resect",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.06687608392054474,
+    "vs_specialist": 0.20188618948944584
+   }
+  },
+  {
+   "family": "seg_spleen",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 0.5,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.5,
+    "quality": 0.940231032704169,
+    "vs_specialist": 1.0
+   }
+  },
+  {
+   "family": "seg_spleen",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.9045757421401959,
+    "vs_specialist": 0.9636608182111556
+   }
+  },
+  {
+   "family": "seg_spleen",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.16666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.16666666666666666,
+    "quality": 0.9122578301409737,
+    "vs_specialist": 0.9718446848168248
+   }
+  },
+  {
+   "family": "seg_spleen",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 0.16666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.16666666666666666,
+    "quality": 0.6205094145200944,
+    "vs_specialist": 0.6610398469114422
+   }
+  },
+  {
+   "family": "seg_spleen",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.8571257829993065,
+    "vs_specialist": 0.9131115227573443
+   }
+  },
+  {
+   "family": "seg_spleen",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.16666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.16666666666666666,
+    "quality": 0.7195087767192988,
+    "vs_specialist": 0.7665056492040732
+   }
+  },
+  {
+   "family": "measure_hc18",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 0.42168674698795183,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.42168674698795183,
+    "quality": 0.29320588137674647,
+    "vs_specialist": 0.4088489841255144
+   }
+  },
+  {
+   "family": "measure_hc18",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 0.8554216867469879,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.8554216867469879,
+    "quality": 0.560705632447144,
+    "vs_specialist": 0.7818531031610123
+   }
+  },
+  {
+   "family": "measure_hc18",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.6746987951807228,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.6746987951807228,
+    "quality": 0.38454645026386536,
+    "vs_specialist": 0.5362151154718375
+   }
+  },
+  {
+   "family": "measure_hc18",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 0.7710843373493976,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.7710843373493976,
+    "quality": 0.501858674366889,
+    "vs_specialist": 0.6997963622899982
+   }
+  },
+  {
+   "family": "measure_hc18",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 0.8554216867469879,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.8554216867469879,
+    "quality": 0.5209100866275019,
+    "vs_specialist": 0.7263618271856341
+   }
+  },
+  {
+   "family": "measure_hc18",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.891566265060241,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.891566265060241,
+    "quality": 0.5501510172923099,
+    "vs_specialist": 0.7671356504836393
+   }
+  },
+  {
+   "family": "ecg_ptbxl",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.9526991583455572,
+    "vs_specialist": 0.9696859870016538
+   }
+  },
+  {
+   "family": "ecg_ptbxl",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.959579149332371,
+    "vs_specialist": 0.9766886496913076
+   }
+  },
+  {
+   "family": "ecg_ptbxl",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.9557561412069816,
+    "vs_specialist": 0.9727974765177937
+   }
+  },
+  {
+   "family": "ecg_ptbxl",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.9672339502484726,
+    "vs_specialist": 0.9844799373361097
+   }
+  },
+  {
+   "family": "ecg_ptbxl",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.9122320288632025,
+    "vs_specialist": 0.9284973199922643
+   }
+  },
+  {
+   "family": "ecg_ptbxl",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.9461444527530593,
+    "vs_specialist": 0.9630144096140928
+   }
+  },
+  {
+   "family": "risk_icu",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7472370645786139,
+    "vs_specialist": 1.0
+   }
+  },
+  {
+   "family": "risk_icu",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7315027988443481,
+    "vs_specialist": 0.9817255276698809
+   }
+  },
+  {
+   "family": "risk_icu",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7428207795725401,
+    "vs_specialist": 0.9969150124129271
+   }
+  },
+  {
+   "family": "risk_icu",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R1",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7304983748645721,
+    "vs_specialist": 0.9803775237208766
+   }
+  },
+  {
+   "family": "risk_icu",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R2",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7295278078728782,
+    "vs_specialist": 0.9790749581072317
+   }
+  },
+  {
+   "family": "risk_icu",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R3",
+   "rewards": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7358426491349026,
+    "vs_specialist": 0.9875498961114424
+   }
+  }
+ ]
+}

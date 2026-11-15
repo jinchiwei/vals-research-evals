@@ -1,0 +1,6 @@
+# Pins installed into /opt/benchmark-venv in the agent and verifier images (read by spec.py through
+# suite.core.export.family_packages). Tabular causal-inference task: no imaging libraries.
+numpy==2.1.3
+scipy==1.14.1
+pandas==2.2.3
+scikit-learn==1.5.2

@@ -6,6 +6,13 @@ Reads, when present (a missing input is skipped with a message, never an error):
   docs/research/suite/pilot1-results.json  local pilot 1 (bubblewrap, not hosted)
   docs/research/suite/hosted-agents1.json  hosted Valkyrie agent runs on the v2 instructions
   docs/research/suite/hosted-agents2.json  hosted Valkyrie agent runs on the v3 instructions
+  Round 3 (round3-prereg.md), written as docs/figures/suite/round3_*.{png,svg}:
+  docs/research/suite/hosted-agents3.json        R: 3 attempts per task and model (run 2 + 2 repeats)
+  docs/research/suite/hosted-keepworking1.json   K: fetal head keep-working variant (with R rows)
+  docs/research/suite/hosted-clockcheck1.json    K2: fetal head clock-check variant (skipped if absent)
+  docs/research/suite/data/seg_vessel_per_image.csv, seg_vessel_summary.json   V: retinal vessels
+  docs/research/suite/data/causal_ate_summary.json                             C: causal control
+  docs/research/suite/data/report_label_summary.json                           T: report labels
 
 Writes PNG and SVG files to docs/figures/suite/, one set per source. Sources are never pooled
 in one panel: pilot 1, hosted run 1 and hosted run 2 used different sandboxes or instruction texts.
@@ -21,6 +28,7 @@ the inputs already contain. Every figure states its source file in its footer.
 
 Run with the vals-suite env:
   ~/miniconda3/envs/vals-suite/bin/python scripts/make_suite_figures.py
+  ~/miniconda3/envs/vals-suite/bin/python scripts/make_suite_figures.py --round3-only
 """
 from __future__ import annotations
 
@@ -137,7 +145,9 @@ def short_model(model: str) -> str:
 def manifest_by_family(manifest) -> dict:
     out = {}
     for t in (manifest or {}).get('tasks', []):
-        out[t['family']] = t
+        # First entry per family wins, so variant tasks of the same family added later
+        # (for example the fetal head K and K2 versions) never replace the scored task.
+        out.setdefault(t['family'], t)
     return out
 
 
@@ -559,6 +569,427 @@ def save(fig, out: Path, name: str) -> list[Path]:
     return paths
 
 
+# ---------------------------------------------------------------------------------------------
+# Round 3 (round3-prereg.md): pooled repeats R, elicitation variants K and K2, new families
+# V (seg_vessel), C (causal_ate) and T (label_ptbxl_reports). Every value is read from a tracked
+# file under docs/research/suite/ (JSON or the vessel per-image CSV); nothing is typed in here.
+# ---------------------------------------------------------------------------------------------
+
+R3_FILES = {
+    'R': 'hosted-agents3.json',
+    'K': 'hosted-keepworking1.json',
+    'K2': 'hosted-clockcheck1.json',
+    'V_csv': 'data/seg_vessel_per_image.csv',
+    'V': 'data/seg_vessel_summary.json',
+    'C': 'data/causal_ate_summary.json',
+    'T': 'data/report_label_summary.json',
+}
+R3_TASKS = ['reg_resect', 'seg_spleen', 'measure_hc18', 'ecg_ptbxl', 'risk_icu', 'seg_vessel']
+R3_TITLE = dict(FAMILY_TITLE, seg_vessel='Retinal vessel mask', reg_resect='MRI to US registration')
+R3_MODELS = ['claude-opus-5-5', 'claude-sonnet-5-5']
+R3_LABEL = {'claude-opus-5-5': 'Opus 5.5', 'claude-sonnet-5-5': 'Sonnet 5.5'}
+ARM_MARKER = {'R': 'o', 'K': 's', 'K2': '^'}
+ARM_LABEL = {'R': 'R: unchanged task (suite/clinical-v1@2)',
+             'K': 'K: + keep-working paragraph',
+             'K2': 'K2: + keep-working and clock-check paragraphs'}
+
+
+def _r3_model(m: str) -> str:
+    return short_model(m or '')
+
+
+def _r3_color(m: str) -> str:
+    return MODEL_SLOTS[R3_MODELS.index(m)] if m in R3_MODELS else MODEL_SLOTS[2]
+
+
+def _src(key: str) -> str:
+    return f'docs/research/suite/{R3_FILES[key]}'
+
+
+def load_vessel_csv(path: Path):
+    import csv
+    if not path.is_file():
+        log(f'skip: {show(path)} not found')
+        return None
+    with path.open(newline='') as fh:
+        return list(csv.DictReader(fh))
+
+
+def load_k2_attempts(data) -> list[dict]:
+    """Tolerant reader for hosted-clockcheck1.json (schema not fixed when this was written).
+
+    Accepts a list under per_attempt / attempts / per_attempt_including_k_and_r; keeps rows whose
+    arm is K2 (or that carry no arm); needs a model, a reward and a session fraction (or the
+    agent seconds and the limit)."""
+    if not data:
+        return []
+    rows = None
+    for key in ('per_attempt', 'attempts', 'per_attempt_k2', 'k2_attempts'):
+        if isinstance(data.get(key), list):
+            rows = data[key]
+            break
+    if rows is None:
+        log('skip K2: no attempt list found in hosted-clockcheck1.json')
+        return []
+    out = []
+    for a in rows:
+        arm = str(a.get('arm', 'K2')).upper()
+        if arm not in ('K2', 'CLOCKCHECK', 'CLOCK-CHECK', 'C2'):
+            continue
+        rew = a.get('rewards', {}).get('reward') if isinstance(a.get('rewards'), dict) else a.get('reward')
+        frac = a.get('session_fraction_used')
+        if frac is None and a.get('agent_process_wall_s') and a.get('session_limit_s'):
+            frac = a['agent_process_wall_s'] / a['session_limit_s']
+        if rew is None or frac is None:
+            continue
+        out.append({'arm': 'K2', 'model': _r3_model(a.get('model')), 'reward': float(rew),
+                    'frac': float(frac), 'attempt': a.get('attempt')})
+    if not out:
+        log('skip K2: hosted-clockcheck1.json has no usable K2 rows')
+    return out
+
+
+def fig_r3_pooled_headline(r3, vcsv, vsum, mf, out: Path) -> list[Path]:
+    attempts = r3['per_attempt_including_run2']
+    pooled = {(p['family'], _r3_model(p['model'])): p for p in r3['pooled_3_attempts']}
+    fig, axes = plt.subplots(1, len(R3_TASKS), figsize=(13.2, 4.3), sharey=True)
+    for ax, fam in zip(axes, R3_TASKS):
+        xs = {m: i for i, m in enumerate(R3_MODELS)}
+        xs['spec'] = len(R3_MODELS)
+        if fam == 'seg_vessel':
+            n_img = vsum['n_hidden']
+            spec = vsum['specialist']['n_acceptable'] / n_img
+            per_model = {_r3_model(a['model']): [a['reward']] for a in vsum['attempts']}
+            gap_txt = {_r3_model(a['model']): f"gap shown in 0 of 1" if a['gap_verdict'].startswith('no')
+                       else 'gap shown in 1 of 1' for a in vsum['attempts']}
+            # cross-check the summary against the per-image CSV
+            for m, vals in per_model.items():
+                key = 'opus' if 'opus' in m else 'sonnet'
+                n_ok = sum(int(r['acceptable']) for r in vcsv if r['system'] == key)
+                if abs(n_ok / n_img - vals[0]) > 1e-9:
+                    log(f'warning: vessel {m} summary reward {vals[0]} != CSV {n_ok}/{n_img}')
+        else:
+            spec = (mf.get(fam) or {}).get('specialist_reward_keys', {}).get('reward')
+            per_model, gap_txt = {}, {}
+            for m in R3_MODELS:
+                vals = [a['rewards']['reward'] for a in attempts
+                        if a['family'] == fam and _r3_model(a['model']) == m]
+                per_model[m] = vals
+                p = pooled.get((fam, m))
+                if p:
+                    gap_txt[m] = f"gap shown in {p['gap_shown_in']} of {p['n_attempts']}"
+        for m in R3_MODELS:
+            vals = per_model.get(m, [])
+            k = len(vals)
+            offs = [(-0.16 + 0.16 * i) if k == 3 else 0.0 for i in range(k)]
+            ax.scatter([xs[m] + o for o in offs], vals, s=46, color=_r3_color(m), edgecolor=SURFACE,
+                       linewidth=0.9, zorder=4)
+            if vals:
+                mean = sum(vals) / k
+                ax.plot([xs[m] - 0.28, xs[m] + 0.28], [mean, mean], color=_r3_color(m), linewidth=1.6,
+                        zorder=3)
+        if spec is not None:
+            ax.scatter([xs['spec']], [spec], marker='D', s=46, color=SPECIALIST_COLOR, zorder=4)
+        if fam == 'measure_hc18':
+            ax.axhline(HC18_FAMILY_BAR, color=INK, linestyle=(0, (4, 3)), linewidth=1.0, zorder=1)
+            ax.text(2.45, HC18_FAMILY_BAR + 0.015, '90 % bar', fontsize=6.8, color=INK, ha='right', va='bottom')
+        ax.set_xticks([0, 1, 2])
+        ax.set_xticklabels([f"Opus\n{gap_txt.get('claude-opus-5-5', '').replace('gap shown in ', 'gap ')}",
+                            f"Sonnet\n{gap_txt.get('claude-sonnet-5-5', '').replace('gap shown in ', 'gap ')}",
+                            'spec.'], fontsize=7.6)
+        ax.set_xlim(-0.55, 2.55)
+        ax.set_ylim(-0.05, 1.08)
+        n_att = 1 if fam == 'seg_vessel' else 3
+        ax.set_title(f"{R3_TITLE[fam]}\n{n_att} attempt{'s' if n_att > 1 else ''} per model", loc='left',
+                     fontsize=8.6)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.6)
+        ax.set_axisbelow(True)
+    axes[0].set_ylabel('reward (fraction of hidden cases acceptable;\ncohort tasks 0 or 1)', fontsize=8)
+    handles = [Line2D([], [], marker='o', linestyle='', markersize=6.5, color=_r3_color(m), label=f'{R3_LABEL[m]}, one dot per attempt')
+               for m in R3_MODELS]
+    handles += [Line2D([], [], color=INK_2, linewidth=1.6, label='mean of attempts'),
+                Line2D([], [], marker='D', linestyle='', markersize=6, color=SPECIALIST_COLOR,
+                       label='specialist, same hidden cases')]
+    fig.legend(handles=handles, loc='upper right', ncol=4, fontsize=7.5, frameon=False,
+               bbox_to_anchor=(0.995, 0.955))
+    fig.suptitle('Agent vs specialist, pooled attempts per task and model (round 3)', x=0.01, ha='left',
+                 fontsize=10.5, fontweight='bold', color=INK, y=0.985)
+    n = footer(fig, [
+        f"Sources: {_src('R')} (attempt 1 = hosted run 2, attempts 2-3 = round 3 repeats, all on suite/clinical-v1@2); "
+        f"{_src('V')} and {_src('V_csv')} (suite/vessel-v1@1, one attempt per model). Specialist rewards: "
+        "task-manifest.json (vessel: seg_vessel.md). y is the hosted reward: registration attempt Opus R3 has reward 0 "
+        "because one case was invalid. Under each model, 'gap k of n' = gap shown against the specialist in k of n attempts (DESIGN.md rule, per attempt)."])
+    fig.tight_layout(rect=(0, 0.02 + 0.035 * n, 1, 0.9))
+    return save(fig, out, 'round3_pooled_headline')
+
+
+def _session_rows(r3, kw, k2, vsum, csum, tsum) -> list[tuple]:
+    """(group, model, fraction, label) for every attempt in round 3 and hosted run 2."""
+    rows = []
+    for fam in ['reg_resect', 'seg_spleen', 'measure_hc18', 'ecg_ptbxl', 'risk_icu']:
+        for a in r3['per_attempt_including_run2']:
+            if a['family'] == fam:
+                rows.append((f'R · {R3_TITLE[fam]}', _r3_model(a['model']), a['session_fraction_used']))
+    for a in kw['per_attempt']:
+        if a['arm'] == 'K':
+            rows.append(('K · Fetal head, keep-working', _r3_model(a['model']), a['session_fraction_used']))
+    for a in k2:
+        rows.append(('K2 · Fetal head, clock check', a['model'], a['frac']))
+    for a in vsum['attempts']:
+        rows.append(('V · Retinal vessel mask', _r3_model(a['model']), a['session_s'] / vsum['session_limit_s']))
+    for a in csum['attempts']:
+        rows.append(('C · Causal effect (control)', _r3_model(a['model']), a['session_s'] / csum['session_limit_s']))
+    for a in tsum['rows']:
+        if a.get('kind') == 'agent':
+            rows.append(('T · Report labels (excluded)', _r3_model(a['model']), a['session_s'] / tsum['session_limit_s']))
+    return rows
+
+
+def fig_r3_session(r3, kw, k2, vsum, csum, tsum, out: Path) -> list[Path]:
+    rows = _session_rows(r3, kw, k2, vsum, csum, tsum)
+    groups = []
+    for g, _, _ in rows:
+        if g not in groups:
+            groups.append(g)
+    fig, ax = plt.subplots(figsize=(7.6, 0.36 * len(groups) * 2 + 1.7))
+    ylab, yticks = [], []
+    y = 0
+    for g in groups:
+        for m in R3_MODELS:
+            vals = [f for gg, mm, f in rows if gg == g and mm == m]
+            if not vals:
+                continue
+            ax.scatter(vals, [y] * len(vals), s=40, color=_r3_color(m), edgecolor=SURFACE, linewidth=0.8,
+                       zorder=4)
+            ax.text(1.02, y, f"{len(vals)}×, max {max(vals) * 100:.0f} %", va='center', fontsize=7,
+                    color=INK_2)
+            ylab.append(f"{g} · {R3_LABEL[m].split()[0]}")
+            yticks.append(y)
+            y += 1
+        y += 0.5
+    ax.axvline(1.0, color=INK, linewidth=1.0)
+    ax.set_yticks(yticks)
+    ax.set_yticklabels(ylab, fontsize=7.6)
+    ax.set_ylim(y - 0.4, -0.7)
+    ax.set_xlim(0, 1.18)
+    ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+    ax.set_xticklabels(['0', '25 %', '50 %', '75 %', '100 %\n(session limit)'])
+    ax.set_xlabel('fraction of the agent session used before the agent ended its own turn')
+    ax.xaxis.grid(True, color=GRID, linewidth=0.6)
+    ax.set_axisbelow(True)
+    ax.set_title('Session use per attempt, hosted run 2 and round 3', loc='left')
+    srcs = [_src('R'), _src('K')] + ([_src('K2')] if k2 else []) + [_src('V'), _src('C'), _src('T')]
+    notes = ['Sources: ' + ', '.join(srcs) + '. One dot per attempt. Session used = agent process time '
+             '(V, C, T: session seconds as reported in each family document) over the task limit (30 to 60 min).',
+             'No attempt reached its limit. Arms are separate task versions and are never pooled.']
+    if not k2:
+        notes.append('K2 (clock-check variant, hosted-clockcheck1.json) not available when this figure was made.')
+    n = footer(fig, notes)
+    fig.tight_layout(rect=(0, 0.012 * n + 0.03, 1, 1))
+    return save(fig, out, 'round3_session_use')
+
+
+def fig_r3_hc18_elicitation(kw, k2, out: Path) -> list[Path]:
+    pts = [{'arm': a['arm'], 'model': _r3_model(a['model']), 'reward': a['rewards']['reward'],
+            'frac': a['session_fraction_used']} for a in kw['per_attempt'] if a['arm'] in ('R', 'K')]
+    pts += [{'arm': 'K2', 'model': a['model'], 'reward': a['reward'], 'frac': a['frac']} for a in k2]
+    arms = [a for a in ('R', 'K', 'K2') if any(p['arm'] == a for p in pts)]
+    fig, ax = plt.subplots(figsize=(6.6, 4.6))
+    for p in pts:
+        ax.scatter([p['frac']], [p['reward']], marker=ARM_MARKER[p['arm']], s=70,
+                   facecolor=_r3_color(p['model']) if p['arm'] == 'R' else SURFACE,
+                   edgecolor=_r3_color(p['model']), linewidth=1.8, zorder=4)
+    for arm in arms:
+        for m in R3_MODELS:
+            v = [p for p in pts if p['arm'] == arm and p['model'] == m]
+            if v:
+                mx = sum(p['frac'] for p in v) / len(v)
+                my = sum(p['reward'] for p in v) / len(v)
+                ax.scatter([mx], [my], marker='+', s=90, color=_r3_color(m), linewidth=1.4, zorder=5)
+    ax.axhline(HC18_FAMILY_BAR, color=INK, linestyle=(0, (4, 3)), linewidth=1.0)
+    ax.text(0.99, HC18_FAMILY_BAR + 0.01, 'family bar: 90 % of images', ha='right', va='bottom', fontsize=7.2)
+    ax.axhline(1.0, color=SPECIALIST_COLOR, linewidth=1.0)
+    ax.text(0.99, 0.99, 'specialist: 83 of 83', ha='right', va='top', fontsize=7.2, color=SPECIALIST_COLOR)
+    for p in pts:
+        if p['arm'] == 'K2' and p['reward'] == 0:
+            ax.annotate('reward 0: 2 hidden images over the\n10 s limit (time gate, not accuracy)',
+                        (p['frac'], 0.0), xytext=(p['frac'] - 0.30, 0.30), fontsize=6.9, color=INK_2,
+                        arrowprops=dict(arrowstyle='-', color=INK_2, linewidth=0.8))
+    ax.set_xlim(0, 1.0)
+    ax.set_ylim(-0.04, 1.04)
+    ax.set_xlabel('fraction of the 45-minute session used')
+    ax.set_ylabel('reward (fraction of 83 hidden images within 4.9 %)')
+    ax.grid(True, color=GRID, linewidth=0.6)
+    ax.set_axisbelow(True)
+    arm_names = ' and '.join([', '.join(arms[:-1]), arms[-1]]) if len(arms) > 1 else arms[0]
+    ax.set_title(f'Fetal head circumference: instruction variants {arm_names}\n'
+                 '(separate task versions, never pooled)', loc='left')
+    handles = [Line2D([], [], marker='o', linestyle='', markersize=7, color=_r3_color(m), label=R3_LABEL[m])
+               for m in R3_MODELS]
+    handles += [Line2D([], [], marker=ARM_MARKER[a], linestyle='', markersize=7,
+                       markerfacecolor=INK_2 if a == 'R' else SURFACE, markeredgecolor=INK_2,
+                       label=ARM_LABEL[a]) for a in arms]
+    handles.append(Line2D([], [], marker='+', linestyle='', markersize=8, color=INK_2, label='mean per arm and model'))
+    ax.legend(handles=handles, fontsize=6.9, frameon=False, loc='lower left')
+    notes = [f"Sources: {_src('K')} (arms R and K)" + (f", {_src('K2')} (arm K2)" if k2 else '') +
+             '. One marker per attempt; 3 attempts per arm and model. Every attempt shows a gap against the specialist.']
+    if not k2:
+        notes.append('K2 not available when this figure was made (hosted-clockcheck1.json absent).')
+    n = footer(fig, notes)
+    fig.tight_layout(rect=(0, 0.012 + 0.03 * n, 1, 1))
+    return save(fig, out, 'round3_hc18_elicitation')
+
+
+def fig_r3_vessel(vcsv, out: Path) -> list[Path]:
+    systems = [('specialist_unet', 'specialist (U-Net)', SPECIALIST_COLOR, 'D'),
+               ('opus', 'Opus 5.5', MODEL_SLOTS[0], 'o'), ('sonnet', 'Sonnet 5.5', MODEL_SLOTS[1], 'o')]
+    cases = []
+    for r in vcsv:
+        if r['case'] not in cases:
+            cases.append(r['case'])
+    fig, axes = plt.subplots(1, 2, figsize=(10.4, 4.0))
+    for ax, metric, bar, lab in [(axes[0], 'dice', 'dice_bar_2ndHO', 'Dice'),
+                                 (axes[1], 'cldice', 'cldice_bar_2ndHO', 'clDice (centreline Dice)')]:
+        for x, case in enumerate(cases):
+            rs = {r['system']: r for r in vcsv if r['case'] == case}
+            b = float(next(iter(rs.values()))[bar])
+            ax.plot([x - 0.36, x + 0.36], [b, b], color=INK, linewidth=2.0, zorder=3)
+            for i, (key, _, col, mk) in enumerate(systems):
+                r = rs.get(key)
+                if r is None:
+                    continue
+                ok = r['acceptable'] == '1'
+                ax.scatter([x - 0.22 + 0.22 * i], [float(r[metric])], marker=mk, s=44, zorder=4,
+                           facecolor=col if ok else SURFACE, edgecolor=col, linewidth=1.6)
+        ax.set_xticks(range(len(cases)))
+        ax.set_xticklabels(cases, rotation=35, ha='right', fontsize=7.5)
+        ax.set_ylim(0.74, 0.91)
+        ax.set_ylabel(lab)
+        ax.yaxis.grid(True, color=GRID, linewidth=0.6)
+        ax.set_axisbelow(True)
+        ax.set_title(f'{lab} per hidden image', loc='left')
+    handles = [Line2D([], [], marker=mk, linestyle='', markersize=7, color=col, label=name)
+               for _, name, col, mk in systems]
+    handles += [Line2D([], [], color=INK, linewidth=2.0, label="bar: second human observer's value on that image"),
+                Line2D([], [], marker='o', linestyle='', markersize=7, markerfacecolor=SURFACE,
+                       markeredgecolor=INK_2, label='hollow = image not acceptable (needs both Dice and clDice at or above the bar)')]
+    fig.legend(handles=handles, loc='upper left', ncol=3, fontsize=7.2, frameon=False, bbox_to_anchor=(0.01, 0.93))
+    fig.suptitle('Retinal vessel segmentation (CHASE_DB1): 8 hidden images, one attempt per model', x=0.01,
+                 ha='left', fontsize=10.5, fontweight='bold', color=INK, y=0.99)
+    n = footer(fig, [f"Source: {_src('V_csv')} (local regrade, matches the hosted keys). Acceptable images: specialist 6/8, "
+                     'Opus 5.5 5/8, Sonnet 5.5 4/8. The Frangi filter comparator (0/8, mean Dice 0.47) is in the CSV '
+                     'but not drawn, because it would compress the scale.'])
+    fig.tight_layout(rect=(0, 0.02 + 0.03 * n, 1, 0.87))
+    return save(fig, out, 'round3_vessel_per_image')
+
+
+def fig_r3_causal(csum, out: Path) -> list[Path]:
+    g = csum['gate']
+    n = csum['n_hidden_datasets']
+    items = []
+    for c in csum['comparators']:
+        items.append((c['name'].replace(' (specialist)', '\n(specialist)'), SPECIALIST_COLOR if 'specialist' in c['name'] else INK_2,
+                      'D' if 'specialist' in c['name'] else 'x', c))
+    for a in csum['attempts']:
+        items.append((f"{R3_LABEL[_r3_model(a['model'])]} · attempt {a['attempt']}", _r3_color(_r3_model(a['model'])), 'o', a))
+    panels = [('coverage of the true SATT', lambda d: d['coverage_n'] / n, g['coverage_min'], 'min 0.85', (0.3, 1.02)),
+              ('RMSE (outcome sd units)', lambda d: d['rmse_sd'], g['rmse_max_sd'], 'max 0.10', (0, 0.2)),
+              ('mean interval length (sd units)', lambda d: d['mean_length_sd'], g['mean_length_max_sd'], 'max 0.50', (0, 0.55))]
+    fig, axes = plt.subplots(1, 3, figsize=(10.4, 3.9), sharey=True)
+    ys = list(range(len(items)))
+    for ax, (lab, fn, thr, thr_lab, xl) in zip(axes, panels):
+        for y, (name, col, mk, d) in zip(ys, items):
+            ax.scatter([fn(d)], [y], marker=mk, s=46, color=col, zorder=4, linewidth=1.6)
+        ax.axvline(thr, color=INK, linestyle=(0, (4, 3)), linewidth=1.0)
+        ax.text(thr, -0.9, f'gate: {thr_lab} ', fontsize=7, ha='right', va='bottom')
+        ax.set_xlim(*xl)
+        ax.set_title(lab, loc='left', fontsize=8.8)
+        ax.xaxis.grid(True, color=GRID, linewidth=0.6)
+        ax.set_axisbelow(True)
+    axes[0].set_yticks(ys)
+    axes[0].set_yticklabels([i[0] for i in items], fontsize=7.6)
+    axes[0].set_ylim(len(items) - 0.4, -1.1)
+    fig.suptitle('Causal effect with a 95 % interval (48 hidden semi-synthetic datasets): a control family', x=0.01,
+                 ha='left', fontsize=10.5, fontweight='bold', color=INK)
+    k = footer(fig, [f"Source: {_src('C')} (from causal_ate.md). Gate: all four parts (coverage, RMSE, |bias| <= 0.05 sd, "
+                     'length). The specialist and all six agent attempts meet every part; OLS and the naive comparator fail '
+                     'coverage. Agents widened their intervals by a factor tuned on the development datasets.'])
+    fig.tight_layout(rect=(0, 0.02 + 0.03 * k, 1, 0.94))
+    return save(fig, out, 'round3_causal')
+
+
+def fig_r3_report_label(tsum, out: Path) -> list[Path]:
+    rows = tsum['rows']
+    g = tsum['gate']
+
+    def col(r):
+        if r['kind'] == 'agent':
+            return _r3_color(r['model'])
+        return SPECIALIST_COLOR if r['kind'] == 'specialist' else INK_2
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 3.4), sharey=True, gridspec_kw={'width_ratios': [1.4, 1]})
+    ys = list(range(len(rows)))
+    ax = axes[0]
+    for y, r in zip(ys, rows):
+        lo, hi = r['macro_f1_ci95']
+        ax.plot([lo, hi], [y, y], color=col(r), linewidth=2.0, zorder=3)
+        ax.scatter([r['macro_f1']], [y], marker='D' if r['kind'] == 'specialist' else 'o', s=46, color=col(r), zorder=4)
+        ax.text(r['macro_f1'], y - 0.17, f"{r['macro_f1']:.3f}", ha='center', va='bottom', fontsize=7.4)
+    ax.axvline(g['macro_f1_min'], color=INK, linestyle=(0, (4, 3)), linewidth=1.0)
+    ax.text(g['macro_f1_min'] - 0.002, -0.75, 'gate: macro F1 >= 0.80', fontsize=7, ha='right', va='bottom')
+    ax.set_xlim(0.68, 0.86)
+    ax.set_title('macro F1 over 5 classes, 95 % interval', loc='left', fontsize=8.8)
+    ax = axes[1]
+    for y, r in zip(ys, rows):
+        ax.scatter([r['min_kappa']], [y], marker='D' if r['kind'] == 'specialist' else 'o', s=46, color=col(r), zorder=4)
+        ax.text(r['min_kappa'], y - 0.17, f"{r['min_kappa']:.3f} ({r['min_kappa_class']})", ha='center', va='bottom', fontsize=7.4)
+    ax.axvline(g['min_kappa_each_class'], color=INK, linestyle=(0, (4, 3)), linewidth=1.0)
+    ax.text(g['min_kappa_each_class'] + 0.005, -0.75, 'gate: kappa >= 0.60 in every class', fontsize=7, ha='left', va='bottom')
+    ax.set_xlim(0.40, 0.80)
+    ax.set_title('lowest per-class Cohen kappa', loc='left', fontsize=8.8)
+    for a in axes:
+        a.xaxis.grid(True, color=GRID, linewidth=0.6)
+        a.set_axisbelow(True)
+    axes[0].set_yticks(ys)
+    axes[0].set_yticklabels([r['name'] for r in rows], fontsize=7.8)
+    axes[0].set_ylim(len(rows) - 0.5, -1.0)
+    fig.suptitle('ECG report text to diagnostic classes (500 hidden PTB-XL reports): excluded from scoring; descriptive',
+                 x=0.01, ha='left', fontsize=10.2, fontweight='bold', color=INK)
+    k = footer(fig, [f"Source: {_src('T')} (from label_ptbxl_reports.md section 3). No labeller meets both gate parts, so "
+                     'every reward is 0 and the family is not scored. Opus 5.5 minus specialist macro F1 +0.055 '
+                     '(patient-paired 95 % CI +0.025 to +0.086). Both agents had a model label the reports through API '
+                     'calls from inside the sandbox.'])
+    fig.tight_layout(rect=(0, 0.02 + 0.035 * k, 1, 0.93))
+    return save(fig, out, 'round3_report_label')
+
+
+def make_round3(docs: Path, out: Path, mf: dict) -> list[Path]:
+    r3 = load_json(docs / R3_FILES['R'])
+    kw = load_json(docs / R3_FILES['K'])
+    k2_path = docs / R3_FILES['K2']
+    k2 = load_k2_attempts(load_json(k2_path)) if k2_path.is_file() else []
+    if not k2_path.is_file():
+        log(f'K2: {show(k2_path)} not found; K2 left out of round-3 figures')
+    vcsv = load_vessel_csv(docs / R3_FILES['V_csv'])
+    vsum = load_json(docs / R3_FILES['V'])
+    csum = load_json(docs / R3_FILES['C'])
+    tsum = load_json(docs / R3_FILES['T'])
+    written = []
+    if r3 and vcsv and vsum:
+        written += fig_r3_pooled_headline(r3, vcsv, vsum, mf, out)
+    if r3 and kw and vsum and csum and tsum:
+        written += fig_r3_session(r3, kw, k2, vsum, csum, tsum, out)
+    if kw:
+        written += fig_r3_hc18_elicitation(kw, k2, out)
+    if vcsv:
+        written += fig_r3_vessel(vcsv, out)
+    if csum:
+        written += fig_r3_causal(csum, out)
+    if tsum:
+        written += fig_r3_report_label(tsum, out)
+    return written
+
+
 SOURCES = [
     # stem, file, label, loader
     ('pilot1', 'pilot1-results.json', 'local pilot 1 (bubblewrap, v1 instructions)', rows_from_pilot1),
@@ -572,9 +1003,12 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--docs', type=Path, default=SUITE_DOCS, help='folder with the input JSON files')
     ap.add_argument('--out', type=Path, default=OUT_DEFAULT, help='output folder for PNG and SVG')
-    ap.add_argument('--only', choices=[s[0] for s in SOURCES], action='append',
-                    help='limit to one or more sources')
+    ap.add_argument('--only', choices=[s[0] for s in SOURCES] + ['round3'], action='append',
+                    help='limit to one or more sources (round3 = the round-3 figure set)')
+    ap.add_argument('--round3-only', action='store_true', help='same as --only round3')
     args = ap.parse_args(argv)
+    if args.round3_only:
+        args.only = ['round3']
 
     manifest = load_json(args.docs / 'task-manifest.json')
     if manifest is None:
@@ -582,6 +1016,8 @@ def main(argv=None) -> int:
         return 1
     mf = manifest_by_family(manifest)
     written = []
+    if not args.only or 'round3' in args.only:
+        written += make_round3(args.docs, args.out, mf)
     for stem, fname, label, loader in SOURCES:
         if args.only and stem not in args.only:
             continue

@@ -1,0 +1,135 @@
+{
+ "sources": [
+  "docs/research/suite/hosted-keepworking1.json",
+  "docs/research/suite/hosted-clockcheck1.json"
+ ],
+ "k2_included": true,
+ "points": [
+  {
+   "arm": "R",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R1",
+   "reward": 0.42168674698795183,
+   "frac": 0.43755962962962963
+  },
+  {
+   "arm": "R",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R1",
+   "reward": 0.7710843373493976,
+   "frac": 0.23879555555555557
+  },
+  {
+   "arm": "R",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R2",
+   "reward": 0.8554216867469879,
+   "frac": 0.1781437037037037
+  },
+  {
+   "arm": "R",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "R3",
+   "reward": 0.6746987951807228,
+   "frac": 0.17971185185185184
+  },
+  {
+   "arm": "R",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R2",
+   "reward": 0.8554216867469879,
+   "frac": 0.15963074074074074
+  },
+  {
+   "arm": "R",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "R3",
+   "reward": 0.891566265060241,
+   "frac": 0.7233881481481481
+  },
+  {
+   "arm": "K",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "K1",
+   "reward": 0.6867469879518072,
+   "frac": 0.3320925925925926
+  },
+  {
+   "arm": "K",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "K2",
+   "reward": 0.7469879518072289,
+   "frac": 0.48650592592592595
+  },
+  {
+   "arm": "K",
+   "model": "anthropic/claude-opus-5-5",
+   "attempt": "K3",
+   "reward": 0.6506024096385542,
+   "frac": 0.3542018518518519
+  },
+  {
+   "arm": "K",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "K1",
+   "reward": 0.8313253012048193,
+   "frac": 0.43971814814814814
+  },
+  {
+   "arm": "K",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "K2",
+   "reward": 0.4939759036144578,
+   "frac": 0.22022481481481482
+  },
+  {
+   "arm": "K",
+   "model": "anthropic/claude-sonnet-5-5",
+   "attempt": "K3",
+   "reward": 0.6265060240963856,
+   "frac": 0.2437351851851852
+  },
+  {
+   "arm": "K2",
+   "model": "anthropic/claude-opus-5-5",
+   "reward": 0.7831325301204819,
+   "frac": 0.8193551851851852,
+   "attempt": "K2-1"
+  },
+  {
+   "arm": "K2",
+   "model": "anthropic/claude-sonnet-5-5",
+   "reward": 0.0,
+   "frac": 0.7643522222222223,
+   "attempt": "K2-1"
+  },
+  {
+   "arm": "K2",
+   "model": "anthropic/claude-opus-5-5",
+   "reward": 0.8072289156626506,
+   "frac": 0.6292181481481481,
+   "attempt": "K2-2"
+  },
+  {
+   "arm": "K2",
+   "model": "anthropic/claude-sonnet-5-5",
+   "reward": 0.8433734939759037,
+   "frac": 0.3205385185185185,
+   "attempt": "K2-2"
+  },
+  {
+   "arm": "K2",
+   "model": "anthropic/claude-opus-5-5",
+   "reward": 0.8072289156626506,
+   "frac": 0.6038600000000001,
+   "attempt": "K2-3"
+  },
+  {
+   "arm": "K2",
+   "model": "anthropic/claude-sonnet-5-5",
+   "reward": 0.7831325301204819,
+   "frac": 0.6681607407407408,
+   "attempt": "K2-3"
+  }
+ ]
+}

@@ -106,7 +106,8 @@
           "oracle_matched_expected": true
         }
       },
-      "path": "dist/suite-tasks/reg_resect/reg-resect-build-0001"
+      "path": "dist/suite-tasks/reg_resect/reg-resect-build-0001",
+      "role": "scored"
     },
     {
       "task_id": "seg-spleen-build-0001",
@@ -205,7 +206,8 @@
           "oracle_matched_expected": true
         }
       },
-      "path": "dist/suite-tasks/seg_spleen/seg-spleen-build-0001"
+      "path": "dist/suite-tasks/seg_spleen/seg-spleen-build-0001",
+      "role": "scored"
     },
     {
       "task_id": "measure-hc18-0001",
@@ -303,7 +305,8 @@
           "oracle_matched_expected": true
         }
       },
-      "path": "dist/suite-tasks/measure_hc18/measure-hc18-0001"
+      "path": "dist/suite-tasks/measure_hc18/measure-hc18-0001",
+      "role": "scored"
     },
     {
       "task_id": "ecg-ptbxl-superdiag-0001",
@@ -402,7 +405,8 @@
           "oracle_matched_expected": true
         }
       },
-      "path": "dist/suite-tasks/ecg_ptbxl/ecg-ptbxl-superdiag-0001"
+      "path": "dist/suite-tasks/ecg_ptbxl/ecg-ptbxl-superdiag-0001",
+      "role": "scored (behaved as a control: Sonnet passed 3 of 3 attempts, Opus 2 of 3)"
     },
     {
       "task_id": "risk-icu-mortality-0001",
@@ -499,7 +503,8 @@
           "oracle_matched_expected": true
         }
       },
-      "path": "dist/suite-tasks/risk_icu/risk-icu-mortality-0001"
+      "path": "dist/suite-tasks/risk_icu/risk-icu-mortality-0001",
+      "role": "scored (control: both models passed 3 of 3 attempts)"
     },
     {
       "task_id": "triage-pharyngitis-0001",
@@ -592,7 +597,8 @@
         "hosted_run": false,
         "docker_build": false
       },
-      "path": "dist/suite-tasks/triage_pharyngitis/triage-pharyngitis-0001"
+      "path": "dist/suite-tasks/triage_pharyngitis/triage-pharyngitis-0001",
+      "role": "excluded (no comparator passes)"
     },
     {
       "task_id": "toy-sphere-volume-0001",
@@ -680,7 +686,150 @@
         "hosted_run": false,
         "docker_build": false
       },
-      "path": "dist/suite-tasks/toy/toy-sphere-volume-0001"
+      "path": "dist/suite-tasks/toy/toy-sphere-volume-0001",
+      "role": "platform smoke test only"
+    }
+  ],
+  "updated": "2026-11-15",
+  "hosted_datasets": [
+    {
+      "dataset": "suite/clinical-v1@1",
+      "tag": "v1",
+      "tasks": "reg_resect, seg_spleen, measure_hc18, ecg_ptbxl, risk_icu (instructions v2)",
+      "role": "earlier run; not pooled (session limit not stated)",
+      "runs": {
+        "oracle": "8ca063d3-ff52-4bd0-883f-4fc815e6e31a",
+        "hosted run 1 Opus": "0ae696de-4237-44bf-be49-25b90940772b",
+        "hosted run 1 Sonnet": "1a4037a0-e1a9-4670-aee0-ceda221c6264"
+      },
+      "source": "docs/research/suite/hosted-agents1.md"
+    },
+    {
+      "dataset": "suite/clinical-v1@2",
+      "tag": "instr2",
+      "digest": "f7d7cd08f525",
+      "tasks": "reg_resect, seg_spleen, measure_hc18, ecg_ptbxl, risk_icu (instructions v3)",
+      "role": "scored (headline; 3 attempts per task and model pooled: R1 = run 2, R2, R3)",
+      "runs": {
+        "oracle": "15fc4349-028e-42dc-982f-feccff226b7c",
+        "R1 Opus (run 2)": "1f2e6208-f148-4aaa-b72f-5225bed3b745",
+        "R1 Sonnet (run 2)": "5110a198-2582-414a-a9fd-81cc15103cdd",
+        "R2 Opus": "7db8faca-9295-4231-9dde-4580dfb8921a",
+        "R3 Opus": "39d574d3-7ee3-444e-b300-fb3c8cd74ae9",
+        "R2 Sonnet": "a3525e04-cb77-4e97-9dc6-ce71a86d3960",
+        "R3 Sonnet": "5378cf20-6ce9-4f13-b007-537c331d8ab5"
+      },
+      "source": "docs/research/suite/hosted-agents2.md, hosted-agents3.md"
+    },
+    {
+      "dataset": "suite/vessel-v1@1",
+      "tag": "v1",
+      "task_id": "seg-vessel-build-0001",
+      "family": "seg_vessel",
+      "role": "scored",
+      "data_licence": "CC BY 4.0 (CHASE_DB1)",
+      "n_development": 20,
+      "n_hidden": 8,
+      "n_hidden_unit": "fundus images (4 children)",
+      "clinical_threshold": "per image: Dice >= second observer's Dice and clDice >= second observer's clDice against the first observer; family scored only if the specialist passes >= 4 of 8",
+      "time_limit": "60 s per image; agent session 3600 s",
+      "specialist": "small U-Net trained on development images: 6 of 8 acceptable, mean Dice 0.837, clDice 0.855",
+      "expected_solution_reward": 0.75,
+      "runs": {
+        "oracle": "7d02411d-dd46-437a-bcc6-9d72b33a5323",
+        "Opus": "123e97b9-acda-4504-96cb-3c46e935a277",
+        "Sonnet": "8c5fa3ce-06cd-42a6-885b-42522e3ae7a2"
+      },
+      "result": "Opus 0.625 (5/8), Sonnet 0.500 (4/8); no gap shown for either",
+      "source": "docs/research/suite/seg_vessel.md; per-image values docs/research/suite/data/seg_vessel_per_image.csv"
+    },
+    {
+      "dataset": "suite/causal-v1@1",
+      "tag": "v1",
+      "task_id": "causal-satt-0001",
+      "family": "causal_ate",
+      "role": "control (specialist and every agent attempt pass)",
+      "data_licence": "semi-synthetic outcomes over PhysioNet/CinC 2012 covariates, ODC-By 1.0",
+      "n_development": 32,
+      "n_hidden": 48,
+      "n_hidden_unit": "datasets of 2,000 stays",
+      "clinical_threshold": "all of: 95% interval coverage of true SATT >= 0.85; RMSE <= 0.10 sd; |mean bias| <= 0.05 sd; mean interval length <= 0.50 sd (Dorie et al. 2019)",
+      "time_limit": "960 s for the 48 datasets (20 s each); agent session 2700 s",
+      "specialist": "cross-fitted doubly robust (AIPW) ATT estimator: all 4 parts; coverage 47/48, RMSE 0.046 sd",
+      "expected_solution_reward": 1.0,
+      "runs": {
+        "oracle": "11115f4f-39bf-4a20-b894-7c1361f9a14b",
+        "Opus 1": "bd885935-899e-4031-a574-79f46b1af1b9",
+        "Opus 2": "f0c183b4-f5c1-4da5-991f-a69ddad5c4f8",
+        "Opus 3": "c5bfb9c1-2fd4-4d19-9b50-7f2f3cf2982d",
+        "Sonnet 1": "c4e354b9-0e2a-4ab4-9434-4ac7317db88d",
+        "Sonnet 2": "48e2209f-975b-4b84-a350-e1e45d1e2fe6",
+        "Sonnet 3": "c0d950b0-f2e2-4cf3-b6a1-c939b22295b7"
+      },
+      "result": "all 6 attempts reward 1.0 (coverage 48/48, RMSE 0.039-0.043 sd)",
+      "source": "docs/research/suite/causal_ate.md"
+    },
+    {
+      "dataset": "suite/report-label-v1@1",
+      "tag": "v1",
+      "digest": "4362bce62a50",
+      "task_id": "label-ptbxl-reports-0001",
+      "family": "label_ptbxl_reports",
+      "role": "excluded (no comparator met the gate; agents reported descriptively)",
+      "data_licence": "CC BY 4.0 (PTB-XL 1.0.3 report text)",
+      "n_development": 2000,
+      "n_hidden": 500,
+      "n_hidden_unit": "reports (fold 9, human-validated, not auto-generated)",
+      "clinical_threshold": "all of: Cohen's kappa >= 0.60 in each of NORM, MI, STTC, CD, HYP; macro F1 >= 0.80",
+      "contract": "direct answer: agent writes labels.json for the hidden reports; no pipeline run by the verifier",
+      "specialist": "TF-IDF character n-grams + logistic regression: macro F1 0.735, worst kappa 0.477 (gate not met)",
+      "expected_solution_reward": 0.0,
+      "runs": {
+        "oracle": "72b3ac93-782a-4fc9-8a42-8e9c064c9168",
+        "Opus": "60111604-75d3-4bd2-b928-e814a888244b",
+        "Sonnet": "e1d46b7a-11ef-45ff-9294-670761bd54c0"
+      },
+      "result": "Opus macro F1 0.790 (kappa part met, F1 part missed by 0.0099), Sonnet 0.757; both reward 0",
+      "source": "docs/research/suite/label_ptbxl_reports.md"
+    },
+    {
+      "dataset": "suite/hc18-keepworking-v1@1",
+      "tag": "k1",
+      "digest": "5f62a0680905",
+      "task_id": "measure-hc18-0001",
+      "family": "measure_hc18",
+      "role": "elicitation test K (compared with R on fetal head; never pooled)",
+      "change": "measure_hc18 from suite/clinical-v1@2 plus one 'Using your session time' paragraph; every other file byte-identical",
+      "runs": {
+        "oracle": "a73a3bc3-397c-419d-b26a-e993621b4917",
+        "K1 Opus": "f8a4f7b6-8a1d-4007-b84a-d28c43fa0a23",
+        "K2 Opus": "0e58cc29-a54e-4b57-97e3-5f790377a967",
+        "K3 Opus": "7a155d74-b565-4a24-b0e0-5dd939c12890",
+        "K1 Sonnet": "6c5f28d3-72a7-4439-a623-bf050cf30a80",
+        "K2 Sonnet": "6b14667c-73e0-49ae-8a68-aeb2a16c5ee1",
+        "K3 Sonnet": "44c0ffb5-7b48-4852-9629-52acdbeb8d62"
+      },
+      "source": "docs/research/suite/hosted-keepworking1.md"
+    },
+    {
+      "dataset": "suite/hc18-clockcheck-v1@1",
+      "tag": "k2",
+      "digest": "11aa6e43ada3",
+      "task_id": "measure-hc18-0001",
+      "family": "measure_hc18",
+      "role": "elicitation test K2 (compared with K and R on fetal head; never pooled)",
+      "change": "the K task plus one 'Checking the time' paragraph (round3-prereg.md addendum K2)",
+      "runs": {
+        "oracle": "8b8782de-d8d4-4f17-811f-81b80d322122",
+        "K2-1 Opus": "42343602-d6f5-449a-bfcc-7339a37f78ba",
+        "K2-2 Opus": "6d6a9980-29f1-4343-b812-d97a0b289aca",
+        "K2-3 Opus": "8d248879-6e7a-4fed-adf4-b363c4423732",
+        "K2-1 Sonnet": "964a63e9-a12f-43eb-8cc5-6aee20834905",
+        "K2-2 Sonnet": "36830d5f-f8e0-4047-b062-bca7ee5d5cc0",
+        "K2-3 Sonnet": "e8e49d18-baa8-4579-a9f5-56a24ce7f515"
+      },
+      "source": "docs/research/suite/hosted-clockcheck1.md",
+      "result": "every agent checked the clock; all 6 still stopped below the bar with 8-31 minutes left; Opus mean reward 0.799, Sonnet 0.542 (one 0 from a time-limit failure); gap shown in 6 of 6"
     }
   ]
 }

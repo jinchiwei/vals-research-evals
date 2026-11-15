@@ -1,0 +1,12 @@
+# Project environment for the seg_vessel family (data staging, grader, Frangi reference,
+# U-Net specialist training on the shared GPU, tests). Create with:
+#   ~/miniconda3/bin/conda env create --override-channels -c conda-forge \
+#       -f suite/families/seg_vessel/environment.yml
+name: vals-suite-seg_vessel
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

@@ -1,82 +1,271 @@
 {
- "source": "docs/research/suite/hosted-agents2.json",
- "session_limit_min": {
-  "reg_resect": 45,
-  "seg_spleen": 60,
-  "measure_hc18": 45,
-  "ecg_ptbxl": 30,
-  "risk_icu": 45
- },
+ "sources": [
+  "docs/research/suite/hosted-agents3.json",
+  "docs/research/suite/hosted-keepworking1.json",
+  "docs/research/suite/data/seg_vessel_summary.json",
+  "docs/research/suite/data/causal_ate_summary.json",
+  "docs/research/suite/data/report_label_summary.json"
+ ],
+ "k2_included": true,
+ "max_fraction": 0.8193551851851852,
  "rows": [
   {
-   "fam": "reg_resect",
-   "model": "Opus 5.5",
-   "used": 18.1,
-   "limit": 45,
-   "reward": 0.6666666666666666
+   "row": "R \u00b7 Registration",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.4033892592592593
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.06897851851851851
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.32257888888888886
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.3107322222222222
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.18659703703703703
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.04685037037037037
+    ]
+   ]
   },
   {
-   "fam": "reg_resect",
-   "model": "Sonnet 5.5",
-   "used": 3.1,
-   "limit": 45,
-   "reward": 0.0
+   "row": "R \u00b7 Spleen",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.5192536111111111
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.2715844444444444
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.4194111111111111
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.5858880555555556
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.5866669444444444
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.45958166666666667
+    ]
+   ]
   },
   {
-   "fam": "seg_spleen",
-   "model": "Opus 5.5",
-   "used": 31.2,
-   "limit": 60,
-   "reward": 0.5
+   "row": "R \u00b7 Fetal head",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.43755962962962963
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.23879555555555557
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.1781437037037037
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.17971185185185184
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.15963074074074074
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.7233881481481481
+    ]
+   ]
   },
   {
-   "fam": "seg_spleen",
-   "model": "Sonnet 5.5",
-   "used": 16.3,
-   "limit": 60,
-   "reward": 0.16666666666666666
+   "row": "R \u00b7 ECG",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.26275666666666664
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.32690166666666665
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.4282094444444445
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.24240944444444443
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.38129555555555555
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.2530011111111111
+    ]
+   ]
   },
   {
-   "fam": "measure_hc18",
-   "model": "Opus 5.5",
-   "used": 11.6,
-   "limit": 45,
-   "reward": 0.42168674698795183
+   "row": "R \u00b7 ICU risk",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.06874000000000001
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.03628962962962963
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.04952814814814815
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.09355666666666666
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.027776666666666668
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.03240592592592592
+    ]
+   ]
   },
   {
-   "fam": "measure_hc18",
-   "model": "Sonnet 5.5",
-   "used": 10.7,
-   "limit": 45,
-   "reward": 0.7710843373493976
+   "row": "K \u00b7 Fetal head",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.3320925925925926
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.48650592592592595
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.3542018518518519
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.43971814814814814
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.22022481481481482
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.2437351851851852
+    ]
+   ]
   },
   {
-   "fam": "ecg_ptbxl",
-   "model": "Opus 5.5",
-   "used": 7.9,
-   "limit": 30,
-   "reward": 1.0
+   "row": "K2 \u00b7 Fetal head",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.8193551851851852
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.7643522222222223
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.6292181481481481
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.3205385185185185
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.6038600000000001
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.6681607407407408
+    ]
+   ]
   },
   {
-   "fam": "ecg_ptbxl",
-   "model": "Sonnet 5.5",
-   "used": 9.8,
-   "limit": 30,
-   "reward": 1.0
+   "row": "V \u00b7 Vessel",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.6277777777777778
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.5977777777777777
+    ]
+   ]
   },
   {
-   "fam": "risk_icu",
-   "model": "Opus 5.5",
-   "used": 3.1,
-   "limit": 45,
-   "reward": 1.0
+   "row": "C \u00b7 Causal",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.1685185185185185
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.05148148148148148
+    ],
+    [
+     "anthropic/claude-opus-5-5",
+     0.2625925925925926
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.0811111111111111
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.0637037037037037
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.043333333333333335
+    ]
+   ]
   },
   {
-   "fam": "risk_icu",
-   "model": "Sonnet 5.5",
-   "used": 1.6,
-   "limit": 45,
-   "reward": 1.0
+   "row": "T \u00b7 Report labels",
+   "points": [
+    [
+     "anthropic/claude-opus-5-5",
+     0.025407407407407406
+    ],
+    [
+     "anthropic/claude-sonnet-5-5",
+     0.24918518518518518
+    ]
+   ]
   }
  ]
 }

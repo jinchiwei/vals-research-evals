@@ -1,60 +1,137 @@
 {
- "source": "docs/research/suite/hosted-agents2.json",
+ "sources": [
+  "docs/research/suite/hosted-agents3.json",
+  "docs/research/suite/data/seg_vessel_summary.json",
+  "docs/research/suite/task-manifest.json"
+ ],
  "rows": [
   {
-   "fam": "reg_resect",
-   "n_lab": "6 hidden cases",
-   "spec": 0.6666666666666666,
-   "opus": 0.6666666666666666,
-   "sonnet": 0.0,
-   "opus_n": 4,
-   "sonnet_n": 0,
-   "spec_n": 4,
-   "n": 6
+   "family": "measure_hc18",
+   "specialist": 1.0,
+   "opus": {
+    "rewards": [
+     0.42168674698795183,
+     0.8554216867469879,
+     0.6746987951807228
+    ],
+    "gap": 3,
+    "n": 3
+   },
+   "sonnet": {
+    "rewards": [
+     0.7710843373493976,
+     0.8554216867469879,
+     0.891566265060241
+    ],
+    "gap": 3,
+    "n": 3
+   }
   },
   {
-   "fam": "seg_spleen",
-   "n_lab": "6 hidden cases",
-   "spec": 0.5,
-   "opus": 0.5,
-   "sonnet": 0.16666666666666666,
-   "opus_n": 3,
-   "sonnet_n": 1,
-   "spec_n": 3,
-   "n": 6
+   "family": "reg_resect",
+   "specialist": 0.6666666666666666,
+   "opus": {
+    "rewards": [
+     0.6666666666666666,
+     0.3333333333333333,
+     0.0
+    ],
+    "gap": 1,
+    "n": 3
+   },
+   "sonnet": {
+    "rewards": [
+     0.0,
+     0.16666666666666666,
+     0.0
+    ],
+    "gap": 3,
+    "n": 3
+   }
   },
   {
-   "fam": "measure_hc18",
-   "n_lab": "83 hidden cases",
-   "spec": 1.0,
-   "opus": 0.42168674698795183,
-   "sonnet": 0.7710843373493976,
-   "opus_n": 35,
-   "sonnet_n": 64,
-   "spec_n": 83,
-   "n": 83
+   "family": "seg_spleen",
+   "specialist": 0.5,
+   "opus": {
+    "rewards": [
+     0.5,
+     0.0,
+     0.16666666666666666
+    ],
+    "gap": 1,
+    "n": 3
+   },
+   "sonnet": {
+    "rewards": [
+     0.16666666666666666,
+     0.0,
+     0.16666666666666666
+    ],
+    "gap": 1,
+    "n": 3
+   }
   },
   {
-   "fam": "ecg_ptbxl",
-   "n_lab": "1 cohort \u00b7 all gate parts",
-   "spec": 1.0,
-   "opus": 1.0,
-   "sonnet": 1.0,
-   "opus_n": null,
-   "sonnet_n": null,
-   "spec_n": null,
-   "n": null
+   "family": "seg_vessel",
+   "specialist": 0.75,
+   "opus": {
+    "rewards": [
+     0.625
+    ],
+    "gap": 0,
+    "n": 1
+   },
+   "sonnet": {
+    "rewards": [
+     0.5
+    ],
+    "gap": 0,
+    "n": 1
+   }
   },
   {
-   "fam": "risk_icu",
-   "n_lab": "1 cohort \u00b7 all gate parts",
-   "spec": 1.0,
-   "opus": 1.0,
-   "sonnet": 1.0,
-   "opus_n": null,
-   "sonnet_n": null,
-   "spec_n": null,
-   "n": null
+   "family": "ecg_ptbxl",
+   "specialist": 1.0,
+   "opus": {
+    "rewards": [
+     1.0,
+     1.0,
+     0.0
+    ],
+    "gap": 1,
+    "n": 3
+   },
+   "sonnet": {
+    "rewards": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "gap": 0,
+    "n": 3
+   }
+  },
+  {
+   "family": "risk_icu",
+   "specialist": 1.0,
+   "opus": {
+    "rewards": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "gap": 0,
+    "n": 3
+   },
+   "sonnet": {
+    "rewards": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "gap": 0,
+    "n": 3
+   }
   }
  ]
 }

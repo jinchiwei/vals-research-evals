@@ -1,0 +1,14 @@
+{
+  "schema": "suite-seg-vessel-summary/1",
+  "family": "seg_vessel",
+  "dataset": "suite/vessel-v1@1",
+  "role": "scored (specialist passes 6 of 8 hidden images, family rule >= 4)",
+  "source": "docs/research/suite/seg_vessel.md sections 4 and 7; per-image values in seg_vessel_per_image.csv",
+  "session_limit_s": 3600,
+  "n_hidden": 8,
+  "specialist": {"name": "U-Net (trained on development images only)", "n_acceptable": 6, "mean_dice": 0.837, "mean_cldice": 0.855, "oracle_run_id": "7d02411d-dd46-437a-bcc6-9d72b33a5323"},
+  "attempts": [
+    {"model": "claude-opus-5-5", "attempt": 1, "run_id": "123e97b9-acda-4504-96cb-3c46e935a277", "reward": 0.625, "n_acceptable": 5, "mean_dice": 0.827, "mean_cldice": 0.854, "session_s": 2260, "turns": 19, "api_cost_usd": 0.696, "gap_verdict": "no gap shown", "pass_diff": [-0.17, -0.50, 0.00]},
+    {"model": "claude-sonnet-5-5", "attempt": 1, "run_id": "8c5fa3ce-06cd-42a6-885b-42522e3ae7a2", "reward": 0.500, "n_acceptable": 4, "mean_dice": 0.824, "mean_cldice": 0.841, "session_s": 2152, "turns": 32, "api_cost_usd": 0.315, "gap_verdict": "no gap shown", "pass_diff": [-0.33, -0.67, 0.00]}
+  ]
+}

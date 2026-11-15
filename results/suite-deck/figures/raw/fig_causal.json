@@ -1,0 +1,74 @@
+{
+ "source": "docs/research/suite/data/causal_ate_summary.json",
+ "gate": {
+  "coverage_min": 0.85,
+  "rmse_max_sd": 0.1,
+  "abs_bias_max_sd": 0.05,
+  "mean_length_max_sd": 0.5
+ },
+ "rows": [
+  {
+   "name": "Specialist (AIPW)",
+   "coverage": 0.9791666666666666,
+   "coverage_n": 47,
+   "rmse_sd": 0.046,
+   "mean_length_sd": 0.215
+  },
+  {
+   "name": "OLS adjustment",
+   "coverage": 0.75,
+   "coverage_n": 36,
+   "rmse_sd": 0.076,
+   "mean_length_sd": 0.148
+  },
+  {
+   "name": "Naive difference",
+   "coverage": 0.4166666666666667,
+   "coverage_n": 20,
+   "rmse_sd": 0.183,
+   "mean_length_sd": 0.18
+  },
+  {
+   "name": "Opus 1",
+   "coverage": 1.0,
+   "coverage_n": 48,
+   "rmse_sd": 0.039,
+   "mean_length_sd": 0.375
+  },
+  {
+   "name": "Opus 2",
+   "coverage": 1.0,
+   "coverage_n": 48,
+   "rmse_sd": 0.04,
+   "mean_length_sd": 0.335
+  },
+  {
+   "name": "Opus 3",
+   "coverage": 1.0,
+   "coverage_n": 48,
+   "rmse_sd": 0.041,
+   "mean_length_sd": 0.346
+  },
+  {
+   "name": "Sonnet 1",
+   "coverage": 1.0,
+   "coverage_n": 48,
+   "rmse_sd": 0.039,
+   "mean_length_sd": 0.292
+  },
+  {
+   "name": "Sonnet 2",
+   "coverage": 1.0,
+   "coverage_n": 48,
+   "rmse_sd": 0.041,
+   "mean_length_sd": 0.262
+  },
+  {
+   "name": "Sonnet 3",
+   "coverage": 1.0,
+   "coverage_n": 48,
+   "rmse_sd": 0.043,
+   "mean_length_sd": 0.272
+  }
+ ]
+}

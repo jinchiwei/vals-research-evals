@@ -1,0 +1,10 @@
+# Project environment for the label_ptbxl_reports family. Create with:
+#   ~/miniconda3/bin/conda env create -f suite/families/label_ptbxl_reports/environment.yml
+name: vals-suite-label_ptbxl_reports
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

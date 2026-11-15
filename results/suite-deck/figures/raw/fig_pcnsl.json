@@ -1,0 +1,35 @@
+{
+ "sources": [
+  "pcnsl/results/20261114-prediction-baselines/REPORT.md",
+  "pcnsl/results/20261114-tabpfn-pilot/REPORT.md",
+  "pcnsl/results/20261114-versa-pilot/REPORT.md",
+  "pcnsl/results/20261114-hosted-release/REPORT.md"
+ ],
+ "rows": [
+  {
+   "method": "Logistic, 439 features",
+   "MYD88": 0.562,
+   "CD79B": 0.347
+  },
+  {
+   "method": "TabPFN v2.5, 439 features",
+   "MYD88": 0.42,
+   "CD79B": 0.386
+  },
+  {
+   "method": "GPT-5.2, fold 0 only",
+   "MYD88": 0.567,
+   "CD79B": 0.361
+  },
+  {
+   "method": "Logistic, 10 FLAIR features\n(mean of 3 seeds)",
+   "MYD88": 0.6684,
+   "CD79B": 0.4434
+  },
+  {
+   "method": "Opus 5.5, fold 0",
+   "MYD88": null,
+   "CD79B": null
+  }
+ ]
+}

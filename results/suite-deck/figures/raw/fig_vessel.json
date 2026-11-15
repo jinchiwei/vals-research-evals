@@ -1,0 +1,174 @@
+{
+ "source": "docs/research/suite/data/seg_vessel_per_image.csv",
+ "note": "Frangi rows omitted (Dice 0.37-0.50, off this scale)",
+ "cases": {
+  "hid_1625": {
+   "specialist_unet": {
+    "dice": 0.7907,
+    "acceptable": false,
+    "cldice": 0.8099
+   },
+   "opus": {
+    "dice": 0.7852,
+    "acceptable": false,
+    "cldice": 0.8185
+   },
+   "sonnet": {
+    "dice": 0.7779,
+    "acceptable": false,
+    "cldice": 0.7871
+   },
+   "bar": {
+    "dice": 0.781,
+    "cldice": 0.8185
+   }
+  },
+  "hid_3693": {
+   "specialist_unet": {
+    "dice": 0.8553,
+    "acceptable": true,
+    "cldice": 0.835
+   },
+   "opus": {
+    "dice": 0.846,
+    "acceptable": true,
+    "cldice": 0.8338
+   },
+   "sonnet": {
+    "dice": 0.8389,
+    "acceptable": true,
+    "cldice": 0.8198
+   },
+   "bar": {
+    "dice": 0.7513,
+    "cldice": 0.8189
+   }
+  },
+  "hid_4179": {
+   "specialist_unet": {
+    "dice": 0.8328,
+    "acceptable": false,
+    "cldice": 0.8657
+   },
+   "opus": {
+    "dice": 0.8058,
+    "acceptable": false,
+    "cldice": 0.8554
+   },
+   "sonnet": {
+    "dice": 0.8212,
+    "acceptable": false,
+    "cldice": 0.8554
+   },
+   "bar": {
+    "dice": 0.8268,
+    "cldice": 0.8668
+   }
+  },
+  "hid_6429": {
+   "specialist_unet": {
+    "dice": 0.8565,
+    "acceptable": true,
+    "cldice": 0.8832
+   },
+   "opus": {
+    "dice": 0.8589,
+    "acceptable": true,
+    "cldice": 0.8916
+   },
+   "sonnet": {
+    "dice": 0.8495,
+    "acceptable": true,
+    "cldice": 0.8821
+   },
+   "bar": {
+    "dice": 0.7545,
+    "cldice": 0.8464
+   }
+  },
+  "hid_7089": {
+   "specialist_unet": {
+    "dice": 0.8314,
+    "acceptable": true,
+    "cldice": 0.8796
+   },
+   "opus": {
+    "dice": 0.8087,
+    "acceptable": false,
+    "cldice": 0.8693
+   },
+   "sonnet": {
+    "dice": 0.8181,
+    "acceptable": false,
+    "cldice": 0.8607
+   },
+   "bar": {
+    "dice": 0.808,
+    "cldice": 0.8762
+   }
+  },
+  "hid_7747": {
+   "specialist_unet": {
+    "dice": 0.8678,
+    "acceptable": true,
+    "cldice": 0.8711
+   },
+   "opus": {
+    "dice": 0.8589,
+    "acceptable": true,
+    "cldice": 0.8679
+   },
+   "sonnet": {
+    "dice": 0.8536,
+    "acceptable": false,
+    "cldice": 0.8588
+   },
+   "bar": {
+    "dice": 0.7814,
+    "cldice": 0.8663
+   }
+  },
+  "hid_8323": {
+   "specialist_unet": {
+    "dice": 0.8123,
+    "acceptable": true,
+    "cldice": 0.8496
+   },
+   "opus": {
+    "dice": 0.8088,
+    "acceptable": true,
+    "cldice": 0.8545
+   },
+   "sonnet": {
+    "dice": 0.8075,
+    "acceptable": true,
+    "cldice": 0.843
+   },
+   "bar": {
+    "dice": 0.7883,
+    "cldice": 0.8357
+   }
+  },
+  "hid_9702": {
+   "specialist_unet": {
+    "dice": 0.8524,
+    "acceptable": true,
+    "cldice": 0.848
+   },
+   "opus": {
+    "dice": 0.8412,
+    "acceptable": true,
+    "cldice": 0.8417
+   },
+   "sonnet": {
+    "dice": 0.8276,
+    "acceptable": true,
+    "cldice": 0.8176
+   },
+   "bar": {
+    "dice": 0.7721,
+    "cldice": 0.8126
+   }
+  }
+ }
+}
