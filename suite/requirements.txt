@@ -9,3 +9,5 @@ scikit-learn==1.5.2
 # Light extra so `pytest tests/suite` collects in this env (family tests read CSVs with pandas).
 pandas==2.2.3
 pytest==8.3.3
+# Figures only (scripts/make_suite_figures.py); not an image pin.
+matplotlib==3.9.2
