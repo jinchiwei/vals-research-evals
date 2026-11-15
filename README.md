@@ -229,8 +229,8 @@ instruction stated the session limit, which no attempt reached.
 
 **Fetal head per image.** The best attempt (Sonnet 5.5 R3, 74 of 83) is still nine images short of
 the specialist. In run 2, Opus 5.5's errors were spread across the range (median 8.8 mm) and Sonnet
-5.5 had five gross under-estimates of 221 to 275 mm on large heads, where its output fell to its own
-clamp ([hosted-agents2.md](docs/research/suite/hosted-agents2.md)). Mean absolute error over the
+5.5 had four gross under-estimates of 221 to 275 mm, plus one of 107 mm, on large heads, where its output
+fell to its own clamp ([hosted-agents2.md](docs/research/suite/hosted-agents2.md)). Mean absolute error over the
 three attempts ranged from 6.6 to 18.0 mm, against 2.05 mm for the specialist.
 
 ![Per hidden image, fetal head circumference, hosted run 2 (attempt R1)](docs/figures/suite/hosted2_per_case_measure_hc18.png)

@@ -141,7 +141,7 @@ measure_hc18, within tolerance by HC tertile (small / mid / large, n = 29 / 27 /
 
 - **Opus.** 9 errors above 40 mm (largest +127 mm), and a broad error spread (median 8.8 mm), so its
   failures are mostly boundary error rather than wrong-structure detections.
-- **Sonnet.** A median error of 3.3 mm, but 5 gross under-estimates of 221–275 mm on large heads,
+- **Sonnet.** A median error of 3.3 mm, but 4 gross under-estimates of 221–275 mm plus one of 107 mm (corrected 2026-11-15 from the per-case values in hosted-agents2.json) on large heads,
   where its output fell to near the 41 mm clamp. Per-case values for all 83 images are in the JSON;
   hidden reference values are not reproduced.
 
