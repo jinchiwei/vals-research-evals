@@ -7,6 +7,25 @@ Submission to the Vals AI hackathon track "Build Your Own Eval" (14 to 15 Novemb
 Valkyrie in the organisation `hackathon-neuronetwork-b91c517178`. The exact track text is in
 [docs/research/hackathon-prompt.md](docs/research/hackathon-prompt.md).
 
+**Demo video** (5:33, narrated): <https://claude.ai/artifact/QStEBfSNRTFTgwSwRCXDZw>, also in
+[`results/demo-video/demo-narrated.mp4`](results/demo-video/demo-narrated.mp4).
+
+## Where to find things
+
+| Looking for | Where |
+|---|---|
+| **The tasks** (Harbor format: instruction, `task.toml`, Dockerfile, reference solution, verifier) | [`tasks/`](tasks/README.md), one folder per task, grouped by Valkyrie dataset; data and hidden answers left out |
+| Results, figures, run IDs | [Results](#results) below; figures in [`docs/figures/suite/`](docs/figures/suite/) |
+| Per-run reports with traces read | [`docs/research/suite/`](docs/research/suite/): `hosted-agents3.md` (Opus, Sonnet), `hosted-models4.md` (Fable, Codex models), one document per task family |
+| Design, gap rule, preregistrations | [`DESIGN.md`](docs/research/suite/DESIGN.md), [`round3-prereg.md`](docs/research/suite/round3-prereg.md), [`round4-prereg.md`](docs/research/suite/round4-prereg.md) |
+| Task generators and graders | [`suite/families/`](suite/families/) (one per family), shared core in [`suite/core/`](suite/core/) |
+| Agents used on Valkyrie | [`agents/claude_code_noweb/`](agents/claude_code_noweb/), [`agents/codex_noweb/`](agents/codex_noweb/) (web tools off) |
+| Slides and video | [`results/suite-deck/CLINICAL_SUITE.pptx`](results/suite-deck/CLINICAL_SUITE.pptx), [`results/demo-video/`](results/demo-video/) |
+| How to run it yourself | [How to run](#how-to-run) |
+
+`pcnsl/`, `research_evals/` and `repair_evals/` hold earlier UCSF PCNSL work that is not part of this
+submission (see [Related UCSF PCNSL work](#related-ucsf-pcnsl-work)).
+
 ## How the benchmark works
 
 ### What it tests

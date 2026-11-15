@@ -1,0 +1,16 @@
+{
+  "schema": "suite-task-config/1",
+  "family": "risk_icu",
+  "task_id": "risk-icu-mortality-0001",
+  "grader_module": "suite.families.risk_icu.grader",
+  "cases": [
+    "cohort"
+  ],
+  "grading": "cohort",
+  "time_limit_seconds": 300.0,
+  "hard_kill_seconds": 300.0,
+  "threads": 4,
+  "memory_bytes": null,
+  "pipeline_path": "/opt/benchmark-venv/bin:/usr/local/bin:/usr/bin:/bin",
+  "grading_deadline_seconds": 630.0
+}

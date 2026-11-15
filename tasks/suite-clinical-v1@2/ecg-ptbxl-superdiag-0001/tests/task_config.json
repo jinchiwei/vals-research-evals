@@ -1,0 +1,16 @@
+{
+  "schema": "suite-task-config/1",
+  "family": "ecg_ptbxl",
+  "task_id": "ecg-ptbxl-superdiag-0001",
+  "grader_module": "suite.families.ecg_ptbxl.grader",
+  "cases": [
+    "cohort"
+  ],
+  "grading": "cohort",
+  "time_limit_seconds": 560.0,
+  "hard_kill_seconds": 1120.0,
+  "threads": 4,
+  "memory_bytes": null,
+  "pipeline_path": "/opt/benchmark-venv/bin:/usr/local/bin:/usr/bin:/bin",
+  "grading_deadline_seconds": 1860.0
+}

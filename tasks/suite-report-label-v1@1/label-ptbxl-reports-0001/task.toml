@@ -1,0 +1,39 @@
+schema_version = "1.4"
+# Only the agent output folder is carried into the separate verifier sandbox.
+artifacts = [{ source = "/workspace/output", exclude = ["*.tmp", "__pycache__"] }]
+
+[metadata]
+category = "clinical-text"
+family = "label_ptbxl_reports"
+suite = "vals-healthcare-suite"
+tier = "direct-answer control"
+grading = "direct_answer"
+scored = false
+contract = "direct_answer: agent writes /workspace/output/labels.json"
+specialist = "TF-IDF char 2-5 + one-vs-rest logistic regression (dev reports)"
+oracle_expected_reward = 0.0
+
+[agent]
+timeout_sec = 2700.0
+network_mode = "allowlist"
+allowed_hosts = ["api.anthropic.com"]
+
+[verifier]
+timeout_sec = 600.0
+# Hidden references in tests/ reach only a fresh verifier sandbox.
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+# Fixed, explicit timing machine (same image as the agent).
+cpus = 2
+memory_mb = 4096
+
+[environment]
+cpus = 2
+memory_mb = 4096
+storage_mb = 20480
+workdir = "/workspace"
+build_timeout_sec = 1500.0
+network_mode = "no-network"
+env = { CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1", PIP_NO_INDEX = "1" }

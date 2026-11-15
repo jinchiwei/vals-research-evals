@@ -1,0 +1,23 @@
+{
+  "schema": "suite-task-config/1",
+  "family": "seg_vessel",
+  "task_id": "seg-vessel-build-0001",
+  "grader_module": "suite.families.seg_vessel.grader",
+  "cases": [
+    "hid_1625",
+    "hid_3693",
+    "hid_4179",
+    "hid_6429",
+    "hid_7089",
+    "hid_7747",
+    "hid_8323",
+    "hid_9702"
+  ],
+  "grading": "per_case",
+  "time_limit_seconds": 60.0,
+  "hard_kill_seconds": 60.0,
+  "threads": 4,
+  "memory_bytes": null,
+  "pipeline_path": "/opt/benchmark-venv/bin:/usr/local/bin:/usr/bin:/bin",
+  "grading_deadline_seconds": 900.0
+}

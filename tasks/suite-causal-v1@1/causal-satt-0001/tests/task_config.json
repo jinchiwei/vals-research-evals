@@ -1,0 +1,16 @@
+{
+  "schema": "suite-task-config/1",
+  "family": "causal_ate",
+  "task_id": "causal-satt-0001",
+  "grader_module": "suite.families.causal_ate.grader",
+  "cases": [
+    "cohort"
+  ],
+  "grading": "cohort",
+  "time_limit_seconds": 960.0,
+  "hard_kill_seconds": 960.0,
+  "threads": 4,
+  "memory_bytes": null,
+  "pipeline_path": "/opt/benchmark-venv/bin:/usr/local/bin:/usr/bin:/bin",
+  "grading_deadline_seconds": 1620.0
+}

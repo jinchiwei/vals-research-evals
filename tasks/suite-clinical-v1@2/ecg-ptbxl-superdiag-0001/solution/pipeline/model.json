@@ -1,0 +1,7 @@
+{
+ "n_dev": 8000,
+ "n_features": 572,
+ "feature_seconds": 15.281814813613892,
+ "total_seconds": 242.40077948570251,
+ "model": "HistGradientBoostingClassifier per class, 300 iters, lr 0.05"
+}

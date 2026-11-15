@@ -1,0 +1,42 @@
+schema_version = "1.4"
+# Only the agent output folder is carried into the separate verifier sandbox.
+artifacts = [{ source = "/workspace/output", exclude = ["*.tmp", "__pycache__"] }]
+
+[metadata]
+category = "causal-inference"
+family = "causal_ate"
+suite = "vals-healthcare-suite"
+tier = "build"
+grading = "cohort"
+scored = true
+runtime_budget_sec_per_case = 960.0
+dataset = "semi-synthetic over PhysioNet/CinC 2012 covariates (ODC-BY 1.0); ACIC-2016-style DGP"
+hidden = "48 datasets (16 settings x 3), set-B stays"
+estimand = "SATT"
+tags = ["tabular", "causal", "interval-coverage"]
+oracle_expected_reward = 1.0
+
+[agent]
+timeout_sec = 2700.0
+network_mode = "allowlist"
+allowed_hosts = ["api.anthropic.com"]
+
+[verifier]
+timeout_sec = 1740.0
+# Hidden references in tests/ reach only a fresh verifier sandbox.
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+# Fixed, explicit timing machine (same image as the agent).
+cpus = 4
+memory_mb = 8192
+
+[environment]
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
+workdir = "/workspace"
+build_timeout_sec = 1500.0
+network_mode = "no-network"
+env = { CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1", PIP_NO_INDEX = "1" }

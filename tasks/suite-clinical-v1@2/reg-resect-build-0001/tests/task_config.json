@@ -1,0 +1,21 @@
+{
+  "schema": "suite-task-config/1",
+  "family": "reg_resect",
+  "task_id": "reg-resect-build-0001",
+  "grader_module": "suite.families.reg_resect.grader",
+  "cases": [
+    "c18b03",
+    "c57eed",
+    "c65c1b",
+    "cb06b4",
+    "cdd96a",
+    "ce4785"
+  ],
+  "grading": "per_case",
+  "time_limit_seconds": 120.0,
+  "hard_kill_seconds": 120.0,
+  "threads": 4,
+  "memory_bytes": null,
+  "pipeline_path": "/opt/benchmark-venv/bin:/usr/local/bin:/usr/bin:/bin",
+  "grading_deadline_seconds": 1260.0
+}

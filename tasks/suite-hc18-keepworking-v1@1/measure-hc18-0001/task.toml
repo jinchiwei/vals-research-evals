@@ -1,0 +1,44 @@
+schema_version = "1.4"
+# Only the agent output folder is carried into the separate verifier sandbox.
+artifacts = [{ source = "/workspace/output", exclude = ["*.tmp", "__pycache__"] }]
+
+[metadata]
+category = "medical-imaging"
+family = "measure_hc18"
+suite = "vals-healthcare-suite"
+tier = "build"
+grading = "per_case"
+scored = true
+runtime_budget_sec_per_case = 10.0
+dataset = "HC18 (Zenodo 1327317, CC BY 4.0)"
+family_kind = "measurement"
+n_dev = 152
+n_hidden = 83
+tolerance = "4.9% of reference HC (Sarris 2012)"
+time_limit_source = "Han 2024 Table 7"
+oracle_expected_reward = 0.759
+
+[agent]
+timeout_sec = 2700.0
+network_mode = "allowlist"
+allowed_hosts = ["api.anthropic.com"]
+
+[verifier]
+timeout_sec = 1545.0
+# Hidden references in tests/ reach only a fresh verifier sandbox.
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+# Fixed, explicit timing machine (same image as the agent).
+cpus = 4
+memory_mb = 8192
+
+[environment]
+cpus = 4
+memory_mb = 8192
+storage_mb = 20480
+workdir = "/workspace"
+build_timeout_sec = 1500.0
+network_mode = "no-network"
+env = { CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1", PIP_NO_INDEX = "1" }

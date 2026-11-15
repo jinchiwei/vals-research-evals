@@ -1,0 +1,21 @@
+{
+  "schema": "suite-task-config/1",
+  "family": "seg_spleen",
+  "task_id": "seg-spleen-build-0001",
+  "grader_module": "suite.families.seg_spleen.grader",
+  "cases": [
+    "hid_1200",
+    "hid_1392",
+    "hid_2997",
+    "hid_4506",
+    "hid_6971",
+    "hid_8298"
+  ],
+  "grading": "per_case",
+  "time_limit_seconds": 300.0,
+  "hard_kill_seconds": 300.0,
+  "threads": 4,
+  "memory_bytes": null,
+  "pipeline_path": "/opt/benchmark-venv/bin:/usr/local/bin:/usr/bin:/bin",
+  "grading_deadline_seconds": 2880.0
+}

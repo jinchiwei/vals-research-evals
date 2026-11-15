@@ -1,0 +1,42 @@
+schema_version = "1.4"
+# Only the agent output folder is carried into the separate verifier sandbox.
+artifacts = [{ source = "/workspace/output", exclude = ["*.tmp", "__pycache__"] }]
+
+[metadata]
+category = "medical-imaging"
+family = "seg_spleen"
+suite = "vals-healthcare-suite"
+tier = "build"
+grading = "per_case"
+scored = true
+runtime_budget_sec_per_case = 300.0
+dataset = "Medical Segmentation Decathlon Task09_Spleen (release 1.0 06/08/2018) (CC BY-SA 4.0)"
+n_dev = 8
+n_hidden = 6
+tags = ["segmentation", "volumetry", "ct", "spleen"]
+oracle_expected_reward = 0.0
+
+[agent]
+timeout_sec = 3600.0
+network_mode = "allowlist"
+allowed_hosts = ["api.anthropic.com"]
+
+[verifier]
+timeout_sec = 3000.0
+# Hidden references in tests/ reach only a fresh verifier sandbox.
+environment_mode = "separate"
+network_mode = "no-network"
+
+[verifier.environment]
+# Fixed, explicit timing machine (same image as the agent).
+cpus = 4
+memory_mb = 16384
+
+[environment]
+cpus = 4
+memory_mb = 16384
+storage_mb = 20480
+workdir = "/workspace"
+build_timeout_sec = 1500.0
+network_mode = "no-network"
+env = { CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1", PIP_NO_INDEX = "1" }
