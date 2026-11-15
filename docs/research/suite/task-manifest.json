@@ -1,0 +1,646 @@
+{
+ "schema": "suite-manifest/1",
+ "generated": "2026-11-14",
+ "reward_keys": [
+  "reward",
+  "ran",
+  "valid",
+  "within_time",
+  "clinically_acceptable",
+  "quality",
+  "vs_specialist"
+ ],
+ "notes": "Rewards measured locally with each task's own tests/grade.py (suite.core), --sandbox-root none, as a normal user, no Docker. specialist_reward = the stored specialist outputs replayed through the same grader. See docs/research/suite/integration.md.",
+ "tasks": [
+  {
+   "task_id": "reg-resect-build-0001",
+   "family": "reg_resect",
+   "tier": "build",
+   "scored": true,
+   "grading": "per_case",
+   "data_licence": "CC BY 4.0 (RESECT)",
+   "n_development": 4,
+   "n_hidden": 6,
+   "n_hidden_unit": "cases (one run each)",
+   "limits": {
+    "time_limit_seconds": 120.0,
+    "time_limit_applies_to": "each case",
+    "hard_kill_seconds": 120.0,
+    "clinical_threshold": "mean target registration error over the expert landmarks < 2.0 mm and lower than the initial (unregistered) mean error (Gerard et al. 2021, Front Oncol 10:618837)",
+    "primary_metric": "mean_tre_mm"
+   },
+   "resources": {
+    "cpus": 4,
+    "memory_mb": 16384,
+    "gpus": 0,
+    "agent_timeout_sec": 2700.0,
+    "verifier_timeout_sec": 1380.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "nibabel==5.3.2",
+    "SimpleITK==2.4.0",
+    "scikit-image==0.24.0",
+    "scikit-learn==1.5.2"
+   ],
+   "expected_solution_reward": 0.6667,
+   "measured_solution_reward": 0.6666666666666666,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 0.6666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.6666666666666666,
+    "quality": 0.3312563582960729,
+    "vs_specialist": 1.0
+   },
+   "solution_local_note": null,
+   "specialist_reward": 0.6666666666666666,
+   "specialist_reward_keys": {
+    "reward": 0.6666666666666666,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.6666666666666666,
+    "quality": 0.3312563582960729,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "mean of per-case mean TRE (mm)",
+    "value": 3.033786231974019
+   },
+   "documented": {
+    "solution": 0.667,
+    "specialist": 0.667,
+    "source": "reg_resect.md: 4 of 6 cases, reward 0.667"
+   },
+   "gate_fraction": null,
+   "bytes": {
+    "environment": 211472721,
+    "tests": 298054939,
+    "solution": 9653
+   },
+   "sha256": {
+    "agent_side": "708cc6d0d04abdc7c1cebf9e8b0a1b711e7ea1541bbf5c29c8be008268f3688f",
+    "verifier": "47e0238246e00b8afd16f542fbd8d58cbeb37f66b58ab731bf1efd8609a25992",
+    "solution": "dc9e9bddf85bec27ec518b8b8cba0f3fcf89bd4f38790a480e4f50b9da088649",
+    "task_toml": "a5c5dd6799b8fe16d1050a91955ad335c65d960c24c6bb29eb666f4ec03b54bd"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/reg_resect/reg-resect-build-0001"
+  },
+  {
+   "task_id": "seg-spleen-build-0001",
+   "family": "seg_spleen",
+   "tier": "build",
+   "scored": true,
+   "grading": "per_case",
+   "data_licence": "CC BY-SA 4.0 (MSD Task09)",
+   "n_development": 8,
+   "n_hidden": 6,
+   "n_hidden_unit": "cases (one run each)",
+   "limits": {
+    "time_limit_seconds": 300.0,
+    "time_limit_applies_to": "each case",
+    "hard_kill_seconds": 300.0,
+    "clinical_threshold": "Dice >= 0.94 and |relative volume error| <= 10% (Humpire-Mamani 2020 inter-observer)",
+    "primary_metric": "Dice"
+   },
+   "resources": {
+    "cpus": 4,
+    "memory_mb": 16384,
+    "gpus": 0,
+    "agent_timeout_sec": 3600.0,
+    "verifier_timeout_sec": 3000.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "nibabel==5.3.2",
+    "SimpleITK==2.4.0",
+    "scikit-image==0.24.0",
+    "scikit-learn==1.5.2",
+    "pandas==2.2.3",
+    "torch==2.15.0+cpu",
+    "--extra-index-url=https://download.pytorch.org/whl/cpu"
+   ],
+   "expected_solution_reward": 0.0,
+   "measured_solution_reward": 0.0,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.409486762977904,
+    "vs_specialist": 0.43623361834167595
+   },
+   "solution_local_note": null,
+   "specialist_reward": 0.5,
+   "specialist_reward_keys": {
+    "reward": 0.5,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.5,
+    "quality": 0.9386868543844717,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "mean Dice",
+    "value": 0.9386868543844717
+   },
+   "documented": {
+    "solution": 0.0,
+    "specialist": 0.5,
+    "source": "seg_spleen.md: classical 0/6; TotalSegmentator 3/6 (acceptable_fraction 0.5)"
+   },
+   "gate_fraction": null,
+   "bytes": {
+    "environment": 161069631,
+    "tests": 98516329,
+    "solution": 21632
+   },
+   "sha256": {
+    "agent_side": "56ea3514c6b10b38dedf0cda3405791fcbd6673110e250164a4fafbc267317c7",
+    "verifier": "6588802cf2d756f76d63ee070c8f6d71a5cb702271a54e67b65432487dc2e68f",
+    "solution": "ad43148aa6ab3cb74aabca35e3d4d0c7bc07b4d53883da194d415ac213f89540",
+    "task_toml": "a5380045ea2b455c998d2c48c18ffcb8d519ff6cdbeeedfdb633a81a61668bb3"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/seg_spleen/seg-spleen-build-0001"
+  },
+  {
+   "task_id": "measure-hc18-0001",
+   "family": "measure_hc18",
+   "tier": "build",
+   "scored": true,
+   "grading": "per_case",
+   "data_licence": "CC BY 4.0 (HC18)",
+   "n_development": 152,
+   "n_hidden": 83,
+   "n_hidden_unit": "cases (one run each)",
+   "limits": {
+    "time_limit_seconds": 10.0,
+    "time_limit_applies_to": "each case",
+    "hard_kill_seconds": 10.0,
+    "clinical_threshold": "|HC error| <= 4.9% of reference HC (Sarris 2012 inter-observer 95% LoA); family bar: >= 90% of hidden images",
+    "primary_metric": "mean over images of clip(1 - |HC error mm| / 7.26, 0, 1); MAE in mm reported in metrics"
+   },
+   "resources": {
+    "cpus": 4,
+    "memory_mb": 8192,
+    "gpus": 0,
+    "agent_timeout_sec": 2700.0,
+    "verifier_timeout_sec": 1545.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "nibabel==5.3.2",
+    "SimpleITK==2.4.0",
+    "scikit-image==0.24.0",
+    "scikit-learn==1.5.2",
+    "pillow==11.0.0",
+    "pandas==2.2.3"
+   ],
+   "expected_solution_reward": 0.759,
+   "measured_solution_reward": 0.7590361445783133,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 0.7590361445783133,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.7590361445783133,
+    "quality": 0.4368880480600088,
+    "vs_specialist": 0.6092007219882445
+   },
+   "solution_local_note": null,
+   "specialist_reward": 1.0,
+   "specialist_reward_keys": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7171495900959213,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "mean absolute HC error (mm)",
+    "value": 2.0548192771084306
+   },
+   "documented": {
+    "solution": 0.76,
+    "specialist": 1.0,
+    "source": "measure_hc18.md: classical reward 0.76, U-Net 1.00"
+   },
+   "gate_fraction": null,
+   "bytes": {
+    "environment": 19405039,
+    "tests": 10745923,
+    "solution": 5087
+   },
+   "sha256": {
+    "agent_side": "ab28cb047b5edd953ed9d38dbae3ea4339a6b097b937fa9bf1a2f1d7df42920e",
+    "verifier": "4df2dadbe8c212b70ff8da4004a3b0ac260d65fb0d062fca8870eb48a38a86a9",
+    "solution": "8859ab7d8108d13d44ab25863dd92d7c520d3ecce8afc7c2ebeb20dbe2a9c7f6",
+    "task_toml": "89df4e48b7bb5d4085a548a1b3d26bbcf172f82997520c265bd23035f7785cef"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/measure_hc18/measure-hc18-0001"
+  },
+  {
+   "task_id": "ecg-ptbxl-superdiag-0001",
+   "family": "ecg_ptbxl",
+   "tier": "build",
+   "scored": true,
+   "grading": "cohort",
+   "data_licence": "CC BY 4.0 (PTB-XL 1.0.3)",
+   "n_development": 8000,
+   "n_hidden": 1000,
+   "n_hidden_unit": "records in one cohort run",
+   "limits": {
+    "time_limit_seconds": 560.0,
+    "time_limit_applies_to": "whole hidden set",
+    "hard_kill_seconds": 1120.0,
+    "clinical_threshold": "on the hidden ECGs, all of: MI sensitivity >= 0.7 at specificity 0.9; mean 5-class ECE <= 0.05; overall macro AUROC minus worst sex/age-band macro AUROC <= 0.05",
+    "primary_metric": "clip((macro AUROC - 0.5) / (0.928 - 0.5), 0, 1)"
+   },
+   "resources": {
+    "cpus": 4,
+    "memory_mb": 8192,
+    "gpus": 0,
+    "agent_timeout_sec": 1800.0,
+    "verifier_timeout_sec": 1980.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "pandas==2.2.3",
+    "scikit-learn==1.5.2",
+    "torch==2.5.1+cpu",
+    "--extra-index-url=https://download.pytorch.org/whl/cpu"
+   ],
+   "expected_solution_reward": 0.0,
+   "measured_solution_reward": 0.0,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.9729767378160996,
+    "vs_specialist": 0.9903251200277012
+   },
+   "solution_local_note": null,
+   "specialist_reward": 1.0,
+   "specialist_reward_keys": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.9824821345427284,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "macro AUROC",
+    "value": 0.9205023535842878
+   },
+   "documented": {
+    "solution": 0.67,
+    "specialist": 1.0,
+    "source": "ecg_ptbxl.md: simple reference 2/3 -> 0.67 under the earlier fraction rule; specialist 3/3 -> 1.00"
+   },
+   "gate_fraction": {
+    "solution": 0.6666666666666666,
+    "specialist": 1.0
+   },
+   "bytes": {
+    "environment": 133452686,
+    "tests": 17139531,
+    "solution": 11109923
+   },
+   "sha256": {
+    "agent_side": "e23a06448f6f7d2a0ecefa1bbc931189ed15f3b7c48dfa5cfa1067d4203083f7",
+    "verifier": "5789cf2cf0eb76105cada6774d58dfcfa344995a4e3b02816a96048c5ebf798d",
+    "solution": "56e85339141b9b2abd8b730ae5d000cbb5b63964da469383e0d37b14e5916c8b",
+    "task_toml": "518e75a2e1296080601e7d4d662ddedb78cbbcf0ab506fc73a8426c5b2d27589"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/ecg_ptbxl/ecg-ptbxl-superdiag-0001"
+  },
+  {
+   "task_id": "risk-icu-mortality-0001",
+   "family": "risk_icu",
+   "tier": "build",
+   "scored": true,
+   "grading": "cohort",
+   "data_licence": "ODC-By 1.0 (PhysioNet/CinC 2012)",
+   "n_development": 4000,
+   "n_hidden": 4000,
+   "n_hidden_unit": "records in one cohort run",
+   "limits": {
+    "time_limit_seconds": 300.0,
+    "time_limit_applies_to": "whole hidden set",
+    "hard_kill_seconds": 300.0,
+    "clinical_threshold": "on the hidden cohort: challenge event-1 >= 0.321 (SAPS-I + 0.05); calibration slope 0.8-1.2 and |calibration-in-the-large| <= 0.2; net benefit at p_t=0.2 above treat-all and treat-none; worst ICU-type/sex AUROC >= overall - 0.1",
+    "primary_metric": "clip(2*AUROC - 1, 0, 1)"
+   },
+   "resources": {
+    "cpus": 4,
+    "memory_mb": 8192,
+    "gpus": 0,
+    "agent_timeout_sec": 2700.0,
+    "verifier_timeout_sec": 750.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "pandas==2.2.3",
+    "scikit-learn==1.5.2"
+   ],
+   "expected_solution_reward": 1.0,
+   "measured_solution_reward": 1.0,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7451194638694638,
+    "vs_specialist": 1.0
+   },
+   "solution_local_note": null,
+   "specialist_reward": 1.0,
+   "specialist_reward_keys": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.7451194638694638,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "AUROC",
+    "value": 0.8725597319347319
+   },
+   "documented": {
+    "solution": 1.0,
+    "specialist": 1.0,
+    "source": "risk_icu.md: GBM oracle/specialist 4/4 -> 1.0"
+   },
+   "gate_fraction": {
+    "solution": 1.0,
+    "specialist": 1.0
+   },
+   "bytes": {
+    "environment": 27681351,
+    "tests": 28016847,
+    "solution": 3748802
+   },
+   "sha256": {
+    "agent_side": "afd17f4020179e16d0fb13af5bec1ee607ad17ce952929b186dd54affac82276",
+    "verifier": "720439c315bf8253033ac90d49716994cc9649a9bafb554a09690faa15f5b13a",
+    "solution": "1e93b3de0c08b6a0ce0b2dd89a6bde8ec6fcef087b8412efc11229422bdd6952",
+    "task_toml": "a4073318840877ea9b2ee65973db526dc3c6511b5fea9e26b090b8fab01f7bac"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/risk_icu/risk-icu-mortality-0001"
+  },
+  {
+   "task_id": "triage-pharyngitis-0001",
+   "family": "triage_pharyngitis",
+   "tier": "build",
+   "scored": false,
+   "grading": "cohort",
+   "data_licence": "CC BY 4.0 (PGUPharyngitis)",
+   "n_development": 561,
+   "n_hidden": 180,
+   "n_hidden_unit": "records in one cohort run",
+   "limits": {
+    "time_limit_seconds": 420.0,
+    "time_limit_applies_to": "whole hidden set",
+    "hard_kill_seconds": 420.0,
+    "clinical_threshold": "all of: specificity >= 0.4 at sensitivity >= 0.85; ECE <= 0.1 and calibration slope in [0.5, 2.0]; net benefit at p_t=0.15 above treat-all and treat-none; sensitivity >= 0.7 in every sex/age/device group with >= 10 bacterial cases (physician-vote reference)",
+    "primary_metric": "auroc_mapped"
+   },
+   "resources": {
+    "cpus": 2,
+    "memory_mb": 8192,
+    "gpus": 0,
+    "agent_timeout_sec": 2700.0,
+    "verifier_timeout_sec": 930.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "pandas==2.2.3",
+    "scikit-learn==1.5.2",
+    "pillow==11.0.0",
+    "torch==2.5.1+cpu",
+    "torchvision==0.20.1+cpu",
+    "--extra-index-url=https://download.pytorch.org/whl/cpu"
+   ],
+   "expected_solution_reward": 0.0,
+   "measured_solution_reward": 0.0,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.3473846153846154,
+    "vs_specialist": 1.0
+   },
+   "solution_local_note": "graded with a copy of solution/ whose model.json points at the exported environment/data/models weights (the image path /workspace/data does not exist on teal); unremapped it exits 1 locally",
+   "specialist_reward": 0.0,
+   "specialist_reward_keys": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.3473846153846154,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "AUROC",
+    "value": 0.6736923076923077
+   },
+   "documented": {
+    "solution": 0.0,
+    "specialist": 0.0,
+    "source": "triage_pharyngitis.md: comparator (d) 2/4 -> 0"
+   },
+   "gate_fraction": {
+    "solution": 0.5,
+    "specialist": 0.5
+   },
+   "bytes": {
+    "environment": 245788526,
+    "tests": 48542195,
+    "solution": 141541
+   },
+   "sha256": {
+    "agent_side": "8a60a786480b91086cd628140fe2c8d12bc16fe6483974a45e539220e2a050fd",
+    "verifier": "a6f5d61a901627bd8316ee3d9947d5fc5b281b8f280abc2f71bf65aef2dd23f1",
+    "solution": "80c982cfbc484a780426f03207b985f09bf10c0bd05b8a57626791ae28ca8eb6",
+    "task_toml": "e96376f93515ee05dcc1f53b833f91dd991c581ba419a4466b628d9059af130c"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/triage_pharyngitis/triage-pharyngitis-0001"
+  },
+  {
+   "task_id": "toy-sphere-volume-0001",
+   "family": "toy",
+   "tier": "build",
+   "scored": false,
+   "grading": "per_case",
+   "data_licence": "none (synthetic phantoms)",
+   "n_development": 2,
+   "n_hidden": 3,
+   "n_hidden_unit": "cases (one run each)",
+   "limits": {
+    "time_limit_seconds": 30.0,
+    "time_limit_applies_to": "each case",
+    "hard_kill_seconds": 30.0,
+    "clinical_threshold": "Dice >= 0.90 against the reference mask and reported volume_ml within 10% of the reference volume",
+    "primary_metric": "mean of Dice and NSD at 1 mm (metrics.segmentation_headline)"
+   },
+   "resources": {
+    "cpus": 2,
+    "memory_mb": 4096,
+    "gpus": 0,
+    "agent_timeout_sec": 2700.0,
+    "verifier_timeout_sec": 435.0,
+    "agent_allowed_hosts": [
+     "api.anthropic.com"
+    ]
+   },
+   "image_packages": [
+    "numpy==2.1.3",
+    "scipy==1.14.1",
+    "nibabel==5.3.2",
+    "SimpleITK==2.4.0",
+    "scikit-image==0.24.0",
+    "scikit-learn==1.5.2"
+   ],
+   "expected_solution_reward": 1.0,
+   "measured_solution_reward": 1.0,
+   "solution_reward_matches": true,
+   "solution_reward_keys": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 1.0,
+    "vs_specialist": 1.0
+   },
+   "solution_local_note": null,
+   "specialist_reward": 1.0,
+   "specialist_reward_keys": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 0.9819099773751053,
+    "vs_specialist": 1.0
+   },
+   "specialist_headline": {
+    "name": "mean quality (Dice-based)",
+    "value": 0.9819099773751053
+   },
+   "documented": {
+    "solution": 1.0,
+    "specialist": null,
+    "source": "tests/suite/test_export_e2e.py (oracle 1.0)"
+   },
+   "gate_fraction": null,
+   "bytes": {
+    "environment": 226138,
+    "tests": 487286,
+    "solution": 2262
+   },
+   "sha256": {
+    "agent_side": "6e08a1a56e64bf30738d68fc08d7d70a981bea2eb3f47dd60c03b14e4a9bca9c",
+    "verifier": "d4644aa879345feea1e6fa3f18f73622f4654ff913a851e4fc25a27e4b9917b4",
+    "solution": "a38aaf997d03605d18e4b16249c041f597483fc3d7ba6689989cd083ada888b7",
+    "task_toml": "10aeaf1c112ce2c6e6fe5f5a2fc80ab6967ebdb8b989a83c491a16d93c18a4e0"
+   },
+   "validation": {
+    "leak_check": "pass",
+    "taskconfig_ok": true,
+    "packing_ok": true,
+    "hosted_run": false,
+    "docker_build": false
+   },
+   "path": "dist/suite-tasks/toy/toy-sphere-volume-0001"
+  }
+ ]
+}
