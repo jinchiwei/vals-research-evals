@@ -1,0 +1,161 @@
+{
+ "n_rows_spreadsheet": 742,
+ "n_images": 741,
+ "patients_without_image": [
+  666
+ ],
+ "images_per_patient": "exactly one (one folder per patient, one file per folder)",
+ "image_formats": {
+  "JPEG": 740,
+  "PNG": 1
+ },
+ "image_modes": {
+  "RGB": 740,
+  "RGBA": 1
+ },
+ "width_px": {
+  "p0": 289.0,
+  "p5": 400.0,
+  "p25": 817.0,
+  "p50": 1263.0,
+  "p75": 1645.0,
+  "p95": 2674.0,
+  "p100": 5688.0
+ },
+ "height_px": {
+  "p0": 137.0,
+  "p5": 294.0,
+  "p25": 574.0,
+  "p50": 864.0,
+  "p75": 1271.0,
+  "p95": 2314.0,
+  "p100": 4762.0
+ },
+ "min_side_lt_224": 12,
+ "file_bytes": {
+  "p0": 14728.0,
+  "p5": 33849.0,
+  "p25": 94377.0,
+  "p50": 163959.0,
+  "p75": 250057.0,
+  "p95": 921225.0,
+  "p100": 3294761.0
+ },
+ "mean_luma_0_255": {
+  "p0": 46.73314254679144,
+  "p5": 80.35356957872928,
+  "p25": 106.37903866525424,
+  "p50": 129.90710663377192,
+  "p75": 149.2447680995475,
+  "p95": 172.96497844827587,
+  "p100": 213.91476894946808
+ },
+ "sharpness_laplacian_var_at_256px": {
+  "p0": 4.983907063802083,
+  "p5": 39.364246323529414,
+  "p25": 83.50603070175438,
+  "p50": 149.90084134615384,
+  "p75": 266.028775659824,
+  "p95": 506.46039438502675,
+  "p100": 1449.723615269461
+ },
+ "symptom_prevalence": {
+  "feeling_cold": 0.035,
+  "sore_throat": 0.4501,
+  "cephalalgia": 0.1617,
+  "myalgia": 0.19,
+  "rhinorrhea": 0.2749,
+  "diarrhea": 0.0391,
+  "vomit": 0.0876,
+  "cough": 0.3329,
+  "pyrexia": 0.2089,
+  "rigors": 0.0701,
+  "lethargy": 0.0849,
+  "sputum": 0.0997,
+  "abdominal_pain": 0.031,
+  "vertigo": 0.0499,
+  "sternutation": 0.0243,
+  "eye_infection": 0.0162,
+  "otalgia": 0.0485,
+  "nasal_congestion": 0.0162,
+  "asthma": 0.0296,
+  "anorexia": 0.0162
+ },
+ "missing_values": {
+  "symptoms": 0,
+  "age": 0,
+  "sex": 0
+ },
+ "age": {
+  "p0": 2.0,
+  "p5": 6.0,
+  "p25": 13.0,
+  "p50": 28.0,
+  "p75": 40.0,
+  "p95": 60.0,
+  "p100": 83.0,
+  "mean": 28.83153638814016
+ },
+ "sex_counts": {
+  "M": 377,
+  "F": 365
+ },
+ "votes_per_patient": {
+  "3": 1,
+  "4": 312,
+  "5": 250,
+  "6": 136,
+  "8": 6,
+  "9": 37
+ },
+ "labels": {
+  "bacterial_primary_ge_half": 205,
+  "bacterial_strict_gt_half": 105,
+  "ties": 100,
+  "unanimous": 234,
+  "unanimous_bacterial": 8,
+  "n": 742
+ },
+ "subgroups_with_images": {
+  "sex": {
+   "F": {
+    "n": 365,
+    "bacterial_primary": 105
+   },
+   "M": {
+    "n": 376,
+    "bacterial_primary": 100
+   }
+  },
+  "age_band": {
+   "adult_ge15": {
+    "n": 539,
+    "bacterial_primary": 149
+   },
+   "child_lt15": {
+    "n": 202,
+    "bacterial_primary": 56
+   }
+  },
+  "device": {
+   "samsung": {
+    "n": 388,
+    "bacterial_primary": 57
+   },
+   "unknown": {
+    "n": 63,
+    "bacterial_primary": 21
+   },
+   "xiaomi": {
+    "n": 290,
+    "bacterial_primary": 127
+   }
+  }
+ },
+ "paper_discrepancies": {
+  "unanimous_cases": "paper: 182; file: 234",
+  "votes_per_patient": "paper: 4 to 9; file: 3 to 9",
+  "images": "paper: 742; release: 741 (patient 666 has no image)",
+  "ties": "paper: discrepancies re-read by an extra physician; file: 100 exact ties"
+ }
+}

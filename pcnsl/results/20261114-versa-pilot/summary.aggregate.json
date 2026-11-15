@@ -1,0 +1,150 @@
+{
+  "manifest": {
+    "version": "public-prediction-pilot-v1",
+    "models": [
+      "us.anthropic.claude-opus-5-5",
+      "gpt-5.2-2025-12-11"
+    ],
+    "genes": [
+      "MYD88",
+      "CD79B"
+    ],
+    "fold": 0,
+    "max_calls": 4,
+    "automatic_retries": 0,
+    "output_token_cap": 8192,
+    "timeout_seconds_per_call": 600,
+    "max_concurrent_calls": 2,
+    "dataset_sha256": "67a103774a314dc0de792b6e7ceec419d3fcb963a6237b17cb9322c705a90f62",
+    "runner_sha256": "e7c56f7ab3069ca209f1d0a25be078541116f5af6611f18c448d1edd82a49d15",
+    "evaluator_sha256": "bf5a3ddc26e3be470dcf9e8034e045305e4ff5f055cbb5a5078602760d4cc5d8",
+    "client_sha256": "0869bee034482ca638a4218ef78306a1ac36d702878a883aefbdb1b99c1717d8",
+    "feature_count": 439,
+    "feature_names_replaced": 0,
+    "context_limit": "Gateway limit undisclosed; character cap checked; token estimates are not provider counts",
+    "preflight": [
+      {
+        "gene": "MYD88",
+        "model": "us.anthropic.claude-opus-5-5",
+        "request_chars": 251563,
+        "rough_tokens_not_provider_verified": 100625
+      },
+      {
+        "gene": "MYD88",
+        "model": "gpt-5.2-2025-12-11",
+        "request_chars": 251563,
+        "rough_tokens_not_provider_verified": 100625
+      },
+      {
+        "gene": "CD79B",
+        "model": "us.anthropic.claude-opus-5-5",
+        "request_chars": 251563,
+        "rough_tokens_not_provider_verified": 100625
+      },
+      {
+        "gene": "CD79B",
+        "model": "gpt-5.2-2025-12-11",
+        "request_chars": 251563,
+        "rough_tokens_not_provider_verified": 100625
+      }
+    ],
+    "interpretation": "Single-fold engineering pilot, not a ranking, significance test or clinical validation"
+  },
+  "attempts": [
+    {
+      "gene": "MYD88",
+      "model": "us.anthropic.claude-opus-5-5",
+      "fold": 0,
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625,
+      "request_sha256": "a4593d6380f913f7382be7e65b7a16016b7022a68be2b4d6ab339581d535fc50",
+      "model_reported": "claude-opus-5-5",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 170429,
+        "output_tokens": 811,
+        "total_tokens": 171240
+      },
+      "latency_s": 20.472,
+      "error_type": null,
+      "status_code": null,
+      "status": "response_format_error",
+      "parse_code": "not_a_json_object"
+    },
+    {
+      "gene": "MYD88",
+      "model": "gpt-5.2-2025-12-11",
+      "fold": 0,
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625,
+      "request_sha256": "a4593d6380f913f7382be7e65b7a16016b7022a68be2b4d6ab339581d535fc50",
+      "model_reported": "gpt-5.2-2025-12-11",
+      "stop_reason": "stop",
+      "usage": {
+        "input_tokens": 164740,
+        "output_tokens": 1957,
+        "total_tokens": 166697,
+        "reasoning_tokens": 1773
+      },
+      "latency_s": 36.359,
+      "error_type": null,
+      "status_code": null,
+      "status": "scored",
+      "test_rows": 13,
+      "test_positive": 10,
+      "metrics": {
+        "auroc": 0.5666666666666667,
+        "average_precision": 0.8186435786435786,
+        "brier": 0.17635384615384617
+      }
+    },
+    {
+      "gene": "CD79B",
+      "model": "us.anthropic.claude-opus-5-5",
+      "fold": 0,
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625,
+      "request_sha256": "5a40dd575628d4357a30ba78b886d7acf64aa887da957dc5318b302750fd3364",
+      "model_reported": "claude-opus-5-5",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 170429,
+        "output_tokens": 1162,
+        "total_tokens": 171591
+      },
+      "latency_s": 15.159,
+      "error_type": null,
+      "status_code": null,
+      "status": "response_format_error",
+      "parse_code": "not_a_json_object"
+    },
+    {
+      "gene": "CD79B",
+      "model": "gpt-5.2-2025-12-11",
+      "fold": 0,
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625,
+      "request_sha256": "5a40dd575628d4357a30ba78b886d7acf64aa887da957dc5318b302750fd3364",
+      "model_reported": "gpt-5.2-2025-12-11",
+      "stop_reason": "stop",
+      "usage": {
+        "input_tokens": 164740,
+        "output_tokens": 2202,
+        "total_tokens": 166942,
+        "reasoning_tokens": 2018
+      },
+      "latency_s": 29.041,
+      "error_type": null,
+      "status_code": null,
+      "status": "scored",
+      "test_rows": 13,
+      "test_positive": 4,
+      "metrics": {
+        "auroc": 0.3611111111111111,
+        "average_precision": 0.3269230769230769,
+        "brier": 0.2268076923076923
+      }
+    }
+  ],
+  "elapsed_seconds": 64.8828237298876
+}

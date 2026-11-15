@@ -1,0 +1,134 @@
+{
+ "unet": {
+  "reward": {
+   "reward": 1.0,
+   "ran": 1.0,
+   "valid": 1.0,
+   "within_time": 1.0,
+   "clinically_acceptable": 1.0,
+   "quality": 0.7171495900959213,
+   "vs_specialist": 0.0
+  },
+  "overall": {
+   "n": 83,
+   "n_valid": 83,
+   "mae_mm": 2.0548192771084306,
+   "mae_valid_only_mm": 2.0548192771084306,
+   "mean_signed_err_mm": -0.2251807228915659,
+   "median_abs_err_mm": 1.509999999999991,
+   "p95_abs_err_mm": 5.807999999999998,
+   "frac_within_tol": 1.0
+  },
+  "by_stratum": {
+   "hc_tertile_large": {
+    "mae_mm": 3.1099999999999928,
+    "frac_within_tol": 1.0,
+    "n": 27
+   },
+   "hc_tertile_mid": {
+    "mae_mm": 1.9374074074074055,
+    "frac_within_tol": 1.0,
+    "n": 27
+   },
+   "hc_tertile_small": {
+    "mae_mm": 1.181724137931034,
+    "frac_within_tol": 1.0,
+    "n": 29
+   }
+  },
+  "by_hc_band": {
+   "band_100to260mm": {
+    "mae_mm": 1.6484313725490167,
+    "frac_within_tol": 1.0,
+    "n": 51
+   },
+   "band_ge260mm": {
+    "mae_mm": 3.9970588235294042,
+    "frac_within_tol": 1.0,
+    "n": 17
+   },
+   "band_lt100mm": {
+    "mae_mm": 1.2353333333333334,
+    "frac_within_tol": 1.0,
+    "n": 15
+   }
+  },
+  "worst_subgroup": {
+   "stratum": "hc_tertile_large",
+   "mae_mm": 3.1099999999999928,
+   "frac_within_tol": 1.0
+  },
+  "runtime_s": {
+   "median": 1.7481448790058494,
+   "max": 2.1866500140167773,
+   "n_timed_out": 0,
+   "limit_s": 10.0
+  }
+ },
+ "classical": {
+  "reward": {
+   "reward": 0.7590361445783133,
+   "ran": 1.0,
+   "valid": 1.0,
+   "within_time": 1.0,
+   "clinically_acceptable": 0.7590361445783133,
+   "quality": 0.43688804806000875,
+   "vs_specialist": 0.0
+  },
+  "overall": {
+   "n": 83,
+   "n_valid": 83,
+   "mae_mm": 13.737349397590359,
+   "mae_valid_only_mm": 13.737349397590359,
+   "mean_signed_err_mm": -1.994216867469878,
+   "median_abs_err_mm": 3.480000000000004,
+   "p95_abs_err_mm": 67.38699999999983,
+   "frac_within_tol": 0.7590361445783133
+  },
+  "by_stratum": {
+   "hc_tertile_large": {
+    "mae_mm": 22.45148148148148,
+    "frac_within_tol": 0.7777777777777778,
+    "n": 27
+   },
+   "hc_tertile_mid": {
+    "mae_mm": 4.220370370370367,
+    "frac_within_tol": 0.8888888888888888,
+    "n": 27
+   },
+   "hc_tertile_small": {
+    "mae_mm": 14.4848275862069,
+    "frac_within_tol": 0.6206896551724138,
+    "n": 29
+   }
+  },
+  "by_hc_band": {
+   "band_100to260mm": {
+    "mae_mm": 4.932745098039212,
+    "frac_within_tol": 0.8823529411764706,
+    "n": 51
+   },
+   "band_ge260mm": {
+    "mae_mm": 29.821764705882348,
+    "frac_within_tol": 0.7647058823529411,
+    "n": 17
+   },
+   "band_lt100mm": {
+    "mae_mm": 25.444,
+    "frac_within_tol": 0.3333333333333333,
+    "n": 15
+   }
+  },
+  "worst_subgroup": {
+   "stratum": "hc_tertile_large",
+   "mae_mm": 22.45148148148148,
+   "frac_within_tol": 0.7777777777777778
+  },
+  "runtime_s": {
+   "median": 0.2384522509528324,
+   "max": 0.3592968719894998,
+   "n_timed_out": 0,
+   "limit_s": 10.0
+  }
+ }
+}

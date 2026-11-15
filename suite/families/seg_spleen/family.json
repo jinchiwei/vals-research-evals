@@ -1,0 +1,94 @@
+{
+  "family": "seg_spleen",
+  "spec_version": 1,
+  "title": "Spleen segmentation and volumetry from abdominal CT",
+  "data_root": "/home/jkwei/data/vals-suite/seg_spleen",
+  "source": {
+    "dataset": "Medical Segmentation Decathlon Task09_Spleen (release 1.0 06/08/2018)",
+    "url": "https://msd-for-monai.s3-us-west-2.amazonaws.com/Task09_Spleen.tar",
+    "sha256": "dfeba347daae4fb08c38f4d243ab606b28b91b206ffc445ec55c35489fa65e60",
+    "licence": "CC BY-SA 4.0",
+    "licence_file": "LICENSE-CC-BY-SA-4.0.txt",
+    "attribution": "Simpson et al. 2019 arXiv:1902.09063; Antonelli et al. Nat Commun 2022;13:4128. Data: Memorial Sloan Kettering Cancer Center via the Medical Segmentation Decathlon. Modified: cropped to body outline, re-encoded int16, headers cleaned, re-identified case IDs. Share-alike: derived task data stay CC BY-SA 4.0."
+  },
+  "split_file": "split.json",
+  "seed": 20261114,
+  "agent_visible": {
+    "from": "staged/dev/<case>/{image.nii.gz,label.nii.gz}",
+    "to": "environment/data/dev/<case>/",
+    "generated": {
+      "environment/data/dev/volumes.csv": "case,spleen_volume_ml from label voxel count x |det(affine[:3,:3])|/1000, 2 decimals",
+      "environment/data/LICENSE-CC-BY-SA-4.0.txt": "copy of data_root/LICENSE-CC-BY-SA-4.0.txt",
+      "environment/data/ATTRIBUTION.md": "source.attribution"
+    },
+    "instruction": "task/README.md with placeholders filled per tier"
+  },
+  "verifier_only": {
+    "hidden": "staged/hidden/<case>/{image.nii.gz,label.nii.gz} -> tests/hidden/<case>/",
+    "grader": "grader.py -> tests/grader.py",
+    "entry": "harbor/test.sh -> tests/test.sh; harbor/grade_entry.py -> tests/grade_entry.py",
+    "specialist_summary": "specialist/summary_hidden.json -> tests/specialist.json",
+    "grading_config": "tests/grading.json = tiers.<tier>.grading"
+  },
+  "solution": {
+    "pipeline": "classical/pipeline/ -> solution/pipeline/",
+    "solve_sh": "mkdir -p /workspace/output && cp -r /solution/pipeline /workspace/output/pipeline",
+    "note": "The Harbor oracle is the classical reference: it proves the contract is satisfiable from agent-visible material, not that 1.0 is reachable. The grader's 1.0 self-check uses selfcheck/oracle with hidden labels, locally only."
+  },
+  "reward_keys": ["reward", "ran", "valid", "within_time", "clinically_acceptable", "quality", "vs_specialist"],
+  "reward_definition": {
+    "ran": "fraction of hidden cases with exit 0 and no timeout",
+    "valid": "fraction with mask on input grid, labels 0/1, volume.json finite and within 1% / 0.5 mL of mask voxels x voxel volume",
+    "within_time": "fraction finished within case_time_limit_sec on the grader's monotonic clock",
+    "clinically_acceptable": "fraction with valid, in-time output, Dice >= 0.94 and |relative volume error| <= 0.10",
+    "quality": "mean Dice over hidden cases (0 for invalid or late cases)",
+    "vs_specialist": "min(1, quality / specialist mean Dice on the same hidden cases)",
+    "reward": "clinically_acceptable if ran == valid == within_time == 1 else 0"
+  },
+  "thresholds": {
+    "dice_min": 0.94,
+    "volume_rel_error_max": 0.10,
+    "nsd_tolerance_mm": 2.0,
+    "source": "Humpire-Mamani GE et al. Fully automatic volume measurement of the spleen at CT using deep learning. Radiol Artif Intell 2020;2(4):e190102 (PMC8082410): independent observer vs reference, 50 CT scans, Dice 0.964 +/- 0.012, mean relative absolute volume difference 3.93 %. Dice limit = mean - 2 SD; volume limit = 95th percentile of |e| if e ~ N(0, s) with E|e| = 3.93 % (1.96 * 3.93 * sqrt(pi/2) = 9.65 %, rounded to 10 %). Fixed 2026-11-14 before any agent run."
+  },
+  "tiers": {
+    "build": {
+      "main": true,
+      "task_id_prefix": "seg_spleen-build",
+      "pip": ["numpy==2.1.3", "scipy==1.14.1", "nibabel==5.3.2", "SimpleITK==2.4.0", "scikit-image==0.24.0",
+              "scikit-learn==1.5.2", "pandas==2.2.3"],
+      "pip_extra_index": {"url": "https://download.pytorch.org/whl/cpu", "packages": ["torch==2.15.0+cpu"]},
+      "torch_note": "CPU-only PyTorch, no pretrained weights. Set include_torch=false to build the no-torch variant.",
+      "include_torch": true,
+      "readme_fill": {"N_DEV": 8, "LIMIT": 300, "CPUS": 4, "MEM_GB": 16, "TORCH_LINE": ", and CPU-only PyTorch with no pretrained weights"},
+      "task_toml": {
+        "artifacts": [{"source": "/workspace/output", "exclude": ["*.tmp", "__pycache__", "dev_predictions"]}],
+        "agent": {"timeout_sec": 3600.0, "network_mode": "allowlist", "allowed_hosts": ["api.anthropic.com"]},
+        "verifier": {"timeout_sec": 4500.0, "environment_mode": "separate", "network_mode": "no-network"},
+        "verifier.environment": {"cpus": 4, "memory_mb": 16384},
+        "environment": {"cpus": 4, "memory_mb": 16384, "storage_mb": 20480, "workdir": "/workspace",
+                        "build_timeout_sec": 1500.0, "network_mode": "no-network",
+                        "env": {"CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC": "1", "PIP_NO_INDEX": "1"}},
+        "metadata": {"category": "medical-imaging", "family": "segmentation", "dataset": "MSD Task09 Spleen",
+                     "runtime_budget_sec_per_case": 300}
+      },
+      "grading": {"case_time_limit_sec": 300, "threads": 4, "pipeline_env": {}}
+    },
+    "toolbox": {
+      "main": false,
+      "task_id_prefix": "seg_spleen-toolbox",
+      "pip": ["numpy==2.1.3", "scipy==1.14.1", "nibabel==5.3.2", "SimpleITK==2.4.0", "scikit-image==0.24.0",
+              "scikit-learn==1.5.2", "pandas==2.2.3", "TotalSegmentator==2.18.0"],
+      "pip_extra_index": {"url": "https://download.pytorch.org/whl/cpu", "packages": ["torch==2.15.0+cpu"]},
+      "weights": {
+        "from": "data_root/totalseg_home (config.json with send_usage_stats=false; nnunet/results/Dataset291*, Dataset297* or Dataset298* as needed by --roi_subset spleen)",
+        "to": "environment/totalseg_home -> /opt/totalseg_home (read-only), ENV TOTALSEG_HOME_DIR=/opt/totalseg_home",
+        "licence": "TotalSegmentator 'total' task weights: Apache-2.0 (github.com/wasserth/TotalSegmentator)"
+      },
+      "readme_extra": "TotalSegmentator 2.18.0 and its 'total' task weights are installed offline (TOTALSEG_HOME_DIR=/opt/totalseg_home). Running it is allowed.",
+      "readme_fill": {"N_DEV": 8, "LIMIT": 300, "CPUS": 4, "MEM_GB": 16, "TORCH_LINE": ", CPU-only PyTorch and TotalSegmentator"},
+      "grading": {"case_time_limit_sec": 300, "threads": 4,
+                  "pipeline_env": {"TOTALSEG_HOME_DIR": "/opt/totalseg_home"}}
+    }
+  }
+}

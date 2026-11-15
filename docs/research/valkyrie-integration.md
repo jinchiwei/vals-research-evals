@@ -4,6 +4,20 @@ Checked 2026-11-14 against official `vals-ai/valkyrie` source commit `1fe5c33d8c
 
 ## Decision
 
+**Installation constraint (Jin, 2026-11-14):** all tools and dependencies stay
+inside project virtualenvs or conda environments on every machine. Use
+`.venv-valkyrie/bin/valkyrie`; do not follow the official prompt's global
+`uv tool install` example. For a fresh machine, create a project virtualenv and
+install the CLI through that environment's Python. Generated task images also
+use an internal project virtualenv for new dependencies.
+
+**Current access check:** `.venv-valkyrie/bin/valkyrie org list` returned
+"Run `valkyrie login`" on teal. The assigned organization is now known:
+`hackathon-neuronetwork-b91c517178`. No hosted credentials or runs have been
+validated. Real mutation-prediction packaging is documented in
+[prediction-harbor.md](prediction-harbor.md); the older repair examples below
+remain separate controls.
+
 **Prepare the hosted Valkyrie task package and launch sequence now; hosted execution remains pending access.** The user does not yet have organizer-provided Valkyrie, provider, or model access and explicitly requested preparation meanwhile. Do not repeatedly ask for login or claim package validation meets the execution requirement.
 
 There is also a genuine no-Vals-account route: **local Tracker + Docker + local task folder + `oracle`**. This executes the reference solution through Valkyrie, including sandbox setup and grading. It does not require a model key or Modal account. However, this teal WSL currently has no `docker`, `podman`, or `uv` executable on the inspected PATH, no `/var/run/docker.sock`, and no checked Docker Desktop CLI integration path. Local Tracker therefore requires new infrastructure and is not the fastest currently available path. Nothing was installed or changed globally.

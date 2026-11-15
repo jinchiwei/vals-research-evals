@@ -1,0 +1,77 @@
+{
+  "n_training_images": 999,
+  "n_test_images": 335,
+  "csv_columns": [
+    "filename",
+    "pixel size(mm)",
+    "head circumference (mm)"
+  ],
+  "test_csv_columns": [
+    "filename",
+    "pixel size(mm)"
+  ],
+  "test_set_has_hc_reference": false,
+  "image_sizes": {
+    "800x540": 975,
+    "786x542": 1,
+    "782x542": 1,
+    "794x544": 1,
+    "738x541": 1,
+    "780x544": 1,
+    "783x541": 1,
+    "783x543": 1,
+    "797x541": 1,
+    "790x539": 1,
+    "800x542": 5,
+    "799x563": 1,
+    "780x539": 1,
+    "794x543": 1,
+    "788x545": 1,
+    "798x541": 1,
+    "789x540": 1,
+    "796x542": 1,
+    "789x545": 1,
+    "796x544": 1,
+    "791x544": 1
+  },
+  "image_modes": {
+    "L/L": 999
+  },
+  "annotation_pixel_values": [
+    0,
+    255
+  ],
+  "pixel_size_mm": {
+    "min": 0.04941494158,
+    "median": 0.128357242315,
+    "max": 0.393280178308
+  },
+  "hc_mm": {
+    "min": 44.3,
+    "p33.3": 165.74666666666667,
+    "median": 174.06,
+    "p66.7": 181.57666666666668,
+    "max": 346.4
+  },
+  "hc_band_counts_approx_trimester": {
+    "lt100mm": 184,
+    "100to260mm": 676,
+    "ge260mm": 139
+  },
+  "groups": {
+    "n_prefixes": 806,
+    "images_per_prefix": {
+      "1": 642,
+      "2": 141,
+      "3": 17,
+      "4": 6
+    }
+  },
+  "recompute_diff_mm": {
+    "mean": 0.002336026995368018,
+    "mean_abs": 0.005861767762866037,
+    "p95_abs": 0.015574369901611354,
+    "max_abs": 0.04600648098949023,
+    "rel_mean_abs_pct": 0.0036994217129271687
+  }
+}

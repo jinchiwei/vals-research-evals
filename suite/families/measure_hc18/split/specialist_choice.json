@@ -1,0 +1,4 @@
+{"specialist": "unet",
+ "rule": "comparator with the higher development-set quality / lower MAE, decided before hidden runs",
+ "dev": {"unet": {"mae_mm": 2.66, "frac_within_tol": 0.980, "median_abs_err_mm": 1.76},
+         "classical": {"mae_mm": 9.03, "frac_within_tol": 0.770, "median_abs_err_mm": 3.55}}}

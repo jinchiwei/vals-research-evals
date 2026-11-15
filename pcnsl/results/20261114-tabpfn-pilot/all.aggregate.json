@@ -1,0 +1,3507 @@
+{
+  "schema": "pcnsl-prediction-eval/v1",
+  "genes": {
+    "CD79B": {
+      "patients": 64,
+      "rows": 64,
+      "positive": 20,
+      "no_qualifying_report": 44,
+      "fold_sizes": [
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 4
+        },
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 4
+        },
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 4
+        },
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 4
+        },
+        {
+          "train": 52,
+          "test": 12,
+          "test_positive": 4
+        }
+      ],
+      "arms": {
+        "training_prevalence": {
+          "status": "complete",
+          "folds_completed": 5,
+          "pooled_oof": {
+            "auroc": 0.4909090909090909,
+            "average_precision": 0.30865384615384617,
+            "brier": 0.21489643832936353
+          },
+          "split_fingerprint": "3b342c141ace44180c7af1e10a6da00c3cfd54bb4274e4ff9f3e26474067fefd",
+          "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+          "per_fold": [
+            {
+              "fold": 0,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.5,
+              "average_precision": 0.3076923076923077,
+              "brier": 0.21305415077041376
+            },
+            {
+              "fold": 1,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.5,
+              "average_precision": 0.3076923076923077,
+              "brier": 0.21305415077041376
+            },
+            {
+              "fold": 2,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.5,
+              "average_precision": 0.3076923076923077,
+              "brier": 0.21305415077041376
+            },
+            {
+              "fold": 3,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.5,
+              "average_precision": 0.3076923076923077,
+              "brier": 0.21305415077041376
+            },
+            {
+              "fold": 4,
+              "test_rows": 12,
+              "test_positive": 4,
+              "auroc": 0.5,
+              "average_precision": 0.3333333333333333,
+              "brier": 0.22287968441814596
+            }
+          ],
+          "fold_auroc": {
+            "mean": 0.5,
+            "min": 0.5,
+            "max": 0.5
+          },
+          "bootstrap_95": {
+            "auroc": [
+              0.379862012987013,
+              0.5937584667487684
+            ],
+            "average_precision": [
+              0.19359833857742184,
+              0.4373729124493926
+            ],
+            "brier": [
+              0.173712915378473,
+              0.2613639511089272
+            ]
+          }
+        },
+        "logistic_regression": {
+          "status": "complete",
+          "folds_completed": 5,
+          "pooled_oof": {
+            "auroc": 0.3465909090909091,
+            "average_precision": 0.2447337516521636,
+            "brier": 0.4882825014521454
+          },
+          "split_fingerprint": "3b342c141ace44180c7af1e10a6da00c3cfd54bb4274e4ff9f3e26474067fefd",
+          "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+          "settings": {
+            "C": 1.0,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "max_iter": 5000,
+            "hyperparameter_search": false
+          },
+          "versions": {
+            "numpy": "2.3.5",
+            "scikit_learn": "1.8.0"
+          },
+          "per_fold": [
+            {
+              "fold": 0,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.3333333333333333,
+              "average_precision": 0.28484848484848485,
+              "brier": 0.48897816910455677
+            },
+            {
+              "fold": 1,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.3055555555555556,
+              "average_precision": 0.2733516483516483,
+              "brier": 0.5590222907839068
+            },
+            {
+              "fold": 2,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.3611111111111111,
+              "average_precision": 0.28809523809523807,
+              "brier": 0.49814465679295566
+            },
+            {
+              "fold": 3,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.4722222222222222,
+              "average_precision": 0.34656593406593406,
+              "brier": 0.3486933945441119
+            },
+            {
+              "fold": 4,
+              "test_rows": 12,
+              "test_positive": 4,
+              "auroc": 0.25,
+              "average_precision": 0.2797619047619047,
+              "brier": 0.5514316205837834
+            }
+          ],
+          "fold_auroc": {
+            "mean": 0.34444444444444444,
+            "min": 0.25,
+            "max": 0.4722222222222222
+          },
+          "bootstrap_95": {
+            "auroc": [
+              0.2140284134248665,
+              0.48540777619724973
+            ],
+            "average_precision": [
+              0.16497104825457662,
+              0.3772771474350328
+            ],
+            "brier": [
+              0.38387138798500564,
+              0.5951051777150125
+            ]
+          }
+        },
+        "tabpfn": {
+          "status": "complete",
+          "folds_completed": 5,
+          "pooled_oof": {
+            "auroc": 0.38636363636363635,
+            "average_precision": 0.26014178035220636,
+            "brier": 0.24300404567820907
+          },
+          "split_fingerprint": "3b342c141ace44180c7af1e10a6da00c3cfd54bb4274e4ff9f3e26474067fefd",
+          "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+          "settings": {
+            "model": "tabpfn.TabPFNClassifier",
+            "other_parameters": "package defaults",
+            "random_state": 20261114,
+            "device": "cpu",
+            "checkpoint_file": "tabpfn-v2.5-classifier-v2.5_default.ckpt",
+            "checkpoint_sha256": "5d7170e2d3af01f9c501bb09ec3bd12e9944f8604de18002c647873c6ec04a12",
+            "offline": true,
+            "missing_values": "passed as NaN",
+            "hyperparameter_search": false
+          },
+          "versions": {
+            "tabpfn": "8.0.2"
+          },
+          "per_fold": [
+            {
+              "fold": 0,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.6388888888888888,
+              "average_precision": 0.4154761904761905,
+              "brier": 0.20082435810861485
+            },
+            {
+              "fold": 1,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.2777777777777778,
+              "average_precision": 0.26957070707070707,
+              "brier": 0.2525041562280496
+            },
+            {
+              "fold": 2,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.3333333333333333,
+              "average_precision": 0.2839646464646465,
+              "brier": 0.23488940764395186
+            },
+            {
+              "fold": 3,
+              "test_rows": 13,
+              "test_positive": 4,
+              "auroc": 0.5277777777777778,
+              "average_precision": 0.5047619047619047,
+              "brier": 0.21163415955316423
+            },
+            {
+              "fold": 4,
+              "test_rows": 12,
+              "test_positive": 4,
+              "auroc": 0.15625,
+              "average_precision": 0.2556818181818182,
+              "brier": 0.3211818219555194
+            }
+          ],
+          "fold_auroc": {
+            "mean": 0.3868055555555555,
+            "min": 0.15625,
+            "max": 0.6388888888888888
+          },
+          "bootstrap_95": {
+            "auroc": [
+              0.2427453886693017,
+              0.5319872714710884
+            ],
+            "average_precision": [
+              0.1713847252673064,
+              0.4111922829126547
+            ],
+            "brier": [
+              0.19100669729946435,
+              0.2986772803286658
+            ]
+          }
+        }
+      },
+      "paired_auroc_differences": {
+        "logistic_regression_minus_training_prevalence": {
+          "difference": -0.1443181818181818,
+          "bootstrap_95": [
+            -0.31522401908801706,
+            0.019396124708624257
+          ]
+        },
+        "tabpfn_minus_training_prevalence": {
+          "difference": -0.10454545454545455,
+          "bootstrap_95": [
+            -0.2620519323671498,
+            0.05316818335018518
+          ]
+        },
+        "tabpfn_minus_logistic_regression": {
+          "difference": 0.03977272727272724,
+          "bootstrap_95": [
+            -0.10571739732960574,
+            0.18347012503699603
+          ]
+        }
+      },
+      "bootstrap_resamples_skipped_one_class": 0
+    },
+    "MYD88": {
+      "patients": 64,
+      "rows": 64,
+      "positive": 46,
+      "no_qualifying_report": 18,
+      "fold_sizes": [
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 10
+        },
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 9
+        },
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 9
+        },
+        {
+          "train": 51,
+          "test": 13,
+          "test_positive": 9
+        },
+        {
+          "train": 52,
+          "test": 12,
+          "test_positive": 9
+        }
+      ],
+      "arms": {
+        "training_prevalence": {
+          "status": "complete",
+          "folds_completed": 5,
+          "pooled_oof": {
+            "auroc": 0.4583333333333333,
+            "average_precision": 0.7007119319299626,
+            "brier": 0.20278511628720405
+          },
+          "split_fingerprint": "fc1ab6ba76644bf155525156003876aa83c7c7854528fdbfc5f851e6bd7fab04",
+          "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+          "per_fold": [
+            {
+              "fold": 0,
+              "test_rows": 13,
+              "test_positive": 10,
+              "auroc": 0.5,
+              "average_precision": 0.7692307692307693,
+              "brier": 0.18152781474580784
+            },
+            {
+              "fold": 1,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.5,
+              "average_precision": 0.6923076923076923,
+              "brier": 0.21411883003578505
+            },
+            {
+              "fold": 2,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.5,
+              "average_precision": 0.6923076923076923,
+              "brier": 0.21411883003578505
+            },
+            {
+              "fold": 3,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.5,
+              "average_precision": 0.6923076923076923,
+              "brier": 0.21411883003578505
+            },
+            {
+              "fold": 4,
+              "test_rows": 12,
+              "test_positive": 9,
+              "auroc": 0.5,
+              "average_precision": 0.75,
+              "brier": 0.18897928994082838
+            }
+          ],
+          "fold_auroc": {
+            "mean": 0.5,
+            "min": 0.5,
+            "max": 0.5
+          },
+          "bootstrap_95": {
+            "auroc": [
+              0.3316258071168506,
+              0.5942885974702381
+            ],
+            "average_precision": [
+              0.5678915383903808,
+              0.8257864658925979
+            ],
+            "brier": [
+              0.15506999131135768,
+              0.25482608823483194
+            ]
+          }
+        },
+        "logistic_regression": {
+          "status": "complete",
+          "folds_completed": 5,
+          "pooled_oof": {
+            "auroc": 0.5615942028985508,
+            "average_precision": 0.7664164273818769,
+            "brier": 0.3131005491700013
+          },
+          "split_fingerprint": "fc1ab6ba76644bf155525156003876aa83c7c7854528fdbfc5f851e6bd7fab04",
+          "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+          "settings": {
+            "C": 1.0,
+            "penalty": "l2",
+            "solver": "lbfgs",
+            "max_iter": 5000,
+            "hyperparameter_search": false
+          },
+          "versions": {
+            "numpy": "2.3.5",
+            "scikit_learn": "1.8.0"
+          },
+          "per_fold": [
+            {
+              "fold": 0,
+              "test_rows": 13,
+              "test_positive": 10,
+              "auroc": 0.5666666666666667,
+              "average_precision": 0.8587484737484736,
+              "brier": 0.3765322719175281
+            },
+            {
+              "fold": 1,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.5,
+              "average_precision": 0.7711029711029712,
+              "brier": 0.42034523003465674
+            },
+            {
+              "fold": 2,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.6388888888888888,
+              "average_precision": 0.8400673400673401,
+              "brier": 0.2756611877700775
+            },
+            {
+              "fold": 3,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.6666666666666666,
+              "average_precision": 0.8519721019721019,
+              "brier": 0.23793396573482153
+            },
+            {
+              "fold": 4,
+              "test_rows": 12,
+              "test_positive": 9,
+              "auroc": 0.4074074074074074,
+              "average_precision": 0.7363235529902198,
+              "brier": 0.2501908854948328
+            }
+          ],
+          "fold_auroc": {
+            "mean": 0.5559259259259259,
+            "min": 0.4074074074074074,
+            "max": 0.6666666666666666
+          },
+          "bootstrap_95": {
+            "auroc": [
+              0.3918110357244801,
+              0.7193264663215383
+            ],
+            "average_precision": [
+              0.6337983018393382,
+              0.8968573787950828
+            ],
+            "brier": [
+              0.22195518302440612,
+              0.4126396098882154
+            ]
+          }
+        },
+        "tabpfn": {
+          "status": "complete",
+          "folds_completed": 5,
+          "pooled_oof": {
+            "auroc": 0.42028985507246375,
+            "average_precision": 0.7246495226326394,
+            "brier": 0.22036159580494108
+          },
+          "split_fingerprint": "fc1ab6ba76644bf155525156003876aa83c7c7854528fdbfc5f851e6bd7fab04",
+          "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+          "settings": {
+            "model": "tabpfn.TabPFNClassifier",
+            "other_parameters": "package defaults",
+            "random_state": 20261114,
+            "device": "cpu",
+            "checkpoint_file": "tabpfn-v2.5-classifier-v2.5_default.ckpt",
+            "checkpoint_sha256": "5d7170e2d3af01f9c501bb09ec3bd12e9944f8604de18002c647873c6ec04a12",
+            "offline": true,
+            "missing_values": "passed as NaN",
+            "hyperparameter_search": false
+          },
+          "versions": {
+            "tabpfn": "8.0.2"
+          },
+          "per_fold": [
+            {
+              "fold": 0,
+              "test_rows": 13,
+              "test_positive": 10,
+              "auroc": 0.43333333333333335,
+              "average_precision": 0.743142413142413,
+              "brier": 0.20809258710671175
+            },
+            {
+              "fold": 1,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.3888888888888889,
+              "average_precision": 0.7010693010693011,
+              "brier": 0.22819822433566975
+            },
+            {
+              "fold": 2,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.5555555555555556,
+              "average_precision": 0.794559761226428,
+              "brier": 0.21003925479377344
+            },
+            {
+              "fold": 3,
+              "test_rows": 13,
+              "test_positive": 9,
+              "auroc": 0.4444444444444444,
+              "average_precision": 0.7945437278770613,
+              "brier": 0.25650687276635864
+            },
+            {
+              "fold": 4,
+              "test_rows": 12,
+              "test_positive": 9,
+              "auroc": 0.4074074074074074,
+              "average_precision": 0.7762225428892096,
+              "brier": 0.1971884937069627
+            }
+          ],
+          "fold_auroc": {
+            "mean": 0.4459259259259259,
+            "min": 0.3888888888888889,
+            "max": 0.5555555555555556
+          },
+          "bootstrap_95": {
+            "auroc": [
+              0.2680224370449934,
+              0.5692690132145701
+            ],
+            "average_precision": [
+              0.5830316623329077,
+              0.855434127757577
+            ],
+            "brier": [
+              0.17423587182459174,
+              0.27068894680184585
+            ]
+          }
+        }
+      },
+      "paired_auroc_differences": {
+        "logistic_regression_minus_training_prevalence": {
+          "difference": 0.10326086956521746,
+          "bootstrap_95": [
+            -0.09701452099214924,
+            0.28925257034632
+          ]
+        },
+        "tabpfn_minus_training_prevalence": {
+          "difference": -0.03804347826086957,
+          "bootstrap_95": [
+            -0.211573387731483,
+            0.13573051948051937
+          ]
+        },
+        "tabpfn_minus_logistic_regression": {
+          "difference": -0.14130434782608703,
+          "bootstrap_95": [
+            -0.27720193340494087,
+            0.0034177309705312508
+          ]
+        }
+      },
+      "bootstrap_resamples_skipped_one_class": 0
+    }
+  },
+  "excluded_genes": {
+    "BTG1": {
+      "positive": 7,
+      "no_qualifying_report": 57,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "CARD11": {
+      "positive": 12,
+      "no_qualifying_report": 52,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "CDKN2A": {
+      "positive": 37,
+      "no_qualifying_report": 27,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "CDKN2B": {
+      "positive": 24,
+      "no_qualifying_report": 40,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "ETV6": {
+      "positive": 9,
+      "no_qualifying_report": 55,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "KMT2D": {
+      "positive": 18,
+      "no_qualifying_report": 46,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "PRDM1": {
+      "positive": 7,
+      "no_qualifying_report": 57,
+      "reason": "not in the prespecified gene list for this run"
+    },
+    "TP53": {
+      "positive": 5,
+      "no_qualifying_report": 59,
+      "reason": "not in the prespecified gene list for this run"
+    }
+  },
+  "summary": {
+    "training_prevalence": {
+      "genes_scored": 2,
+      "genes_total": 2,
+      "statuses": [
+        "complete"
+      ],
+      "mean_across_genes": {
+        "auroc": 0.4746212121212121,
+        "average_precision": 0.5046828890419044,
+        "brier": 0.2088407773082838
+      }
+    },
+    "logistic_regression": {
+      "genes_scored": 2,
+      "genes_total": 2,
+      "statuses": [
+        "complete"
+      ],
+      "mean_across_genes": {
+        "auroc": 0.45409255599473,
+        "average_precision": 0.5055750895170202,
+        "brier": 0.4006915253110733
+      }
+    },
+    "tabpfn": {
+      "genes_scored": 2,
+      "genes_total": 2,
+      "statuses": [
+        "complete"
+      ],
+      "mean_across_genes": {
+        "auroc": 0.40332674571805005,
+        "average_precision": 0.49239565149242287,
+        "brier": 0.2316828207415751
+      }
+    }
+  },
+  "design": {
+    "seed": 20261114,
+    "folds": 5,
+    "min_class_count": 5,
+    "split_method": "patient-stratified; SHA-256 ordering of (seed, gene, patient key) within class, dealt round-robin",
+    "splits_shared_by_all_arms": true,
+    "feature_groups": [
+      "all"
+    ],
+    "feature_count": 439,
+    "feature_fingerprint": "96318f15226680690d2cad0249ce7a50f2a9ca106a919f7d9437c79c81e094e9",
+    "feature_names_replaced_by_placeholders": 0,
+    "feature_rounding_significant_digits": 6,
+    "arms": [
+      "training_prevalence",
+      "logistic_regression",
+      "tabpfn"
+    ],
+    "gene_eligibility": "at least 5 patients in each class, decided from label counts before any model is run",
+    "endpoint": "Label 0 means no qualifying alteration was reported for this gene. It does not establish that the gene is unaltered.",
+    "score_direction": "fixed: higher probability = reported qualifying alteration; never flipped",
+    "preprocessing": "imputation and scaling are fitted inside each training fold; test rows never inform them",
+    "held_out_labels": "never passed to an arm; read only by the scorer after probabilities are returned",
+    "selection": "no hyperparameter search, no model or gene selection on held-out results",
+    "bootstrap": {
+      "resamples": 2000,
+      "unit": "patient",
+      "interval": "percentile 2.5-97.5",
+      "note": "conditional on the fitted folds; not a confidence interval for a new cohort"
+    },
+    "patient_level_outputs": false
+  },
+  "dataset_metadata": {
+    "subjects_with_mutation_records": 64,
+    "eligible_subjects": 64,
+    "excluded_no_imaging_features": 0,
+    "subjects_with_flair_summary": 63,
+    "gene_catalog": {
+      "ABCB11": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ABCB4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ABL1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ABL2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ACVR1B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AIP": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AJUBA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ALK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AMER1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "APC": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ARAF": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ARFRP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ARHGAP35": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ARID1A": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "ARID1B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ARID2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ARID5B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ASH2L": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ASXL1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "ASXL2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ATF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ATM": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "ATP6AP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ATP8B1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ATR": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "ATRX": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AURKA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AURKB": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AXIN1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AXIN2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "AXL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BAP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BARD1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BCL2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "BCL2L1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BCL6": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "BCOR": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "BCORL1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "BEND2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BIRC5": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BLM": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BMPR1A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BRAF": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BRCA1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "BRCA2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "BRD4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "BRIP1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "BTG1": {
+        "qualifying_positive": 7,
+        "no_qualifying_report": 57,
+        "eligible": true
+      },
+      "BTK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "C11ORF30": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "C11ORF95": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CALR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CAMTA1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CARD11": {
+        "qualifying_positive": 12,
+        "no_qualifying_report": 52,
+        "eligible": true
+      },
+      "CASP8": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CASR": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "CBL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CCND2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CCND3": {
+        "qualifying_positive": 4,
+        "no_qualifying_report": 60,
+        "eligible": false
+      },
+      "CCNE1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CD79A": {
+        "qualifying_positive": 4,
+        "no_qualifying_report": 60,
+        "eligible": false
+      },
+      "CD79B": {
+        "qualifying_positive": 20,
+        "no_qualifying_report": 44,
+        "eligible": true
+      },
+      "CDC42": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDC73": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDH1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDK12": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDK6": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDK8": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDKN1B": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "CDKN1C": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CDKN2A": {
+        "qualifying_positive": 37,
+        "no_qualifying_report": 27,
+        "eligible": true
+      },
+      "CDKN2B": {
+        "qualifying_positive": 24,
+        "no_qualifying_report": 40,
+        "eligible": true
+      },
+      "CEBPA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CHD1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CHD2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CHD4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CHD5": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CHEK1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CHEK2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "CIC": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "CLDN18": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CNOT3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "COL1A1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "COL2A1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CREBBP": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "CRLF2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CSF1R": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CSF3R": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CTNNA1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CTNNB1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CUL3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CUX1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CXCR4": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "CYLD": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "CYSLTR2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DAXX": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DCC": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DDIT3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DDR1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DDR2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DDX31": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DDX3X": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DDX41": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DICER1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DIS3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DIS3L2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DNAJB1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DNMT1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DNMT3A": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "DOT1L": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DROSHA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "DUSP2": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "DUSP4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EBF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EED": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EGFR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EIF1AX": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ELANE": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ELF3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EP300": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "EPCAM": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EPHA3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EPHA5": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EPHA7": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "EPHB1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EPHB4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EPOR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ERBB2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ERBB3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ERBB4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ERCC2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ERG": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ERRFI1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ESR1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ESR2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ETS1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ETV6": {
+        "qualifying_positive": 9,
+        "no_qualifying_report": 55,
+        "eligible": true
+      },
+      "EWSR1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "EZH1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "EZH2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "FAM46C": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FAM5C": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FANCA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FANCC": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FANCE": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FANCF": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FANCG": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FANCL": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "FAT1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "FAT3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FBXW7": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FGF14": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FGF4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FGF6": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FGFR2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "FGFR4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FH": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FISH": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "FLCN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FLT1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FLT3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FLT4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FOS": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FOXA1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FOXL2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FOXO1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FOXP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FOXR2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FRK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FRS2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FUBP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "FUS": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GAB2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GALNT12": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GATA2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GATA3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GFI1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GFI1B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GLI1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GLI2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GLMN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GNA11": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GNA13": {
+        "qualifying_positive": 4,
+        "no_qualifying_report": 60,
+        "eligible": false
+      },
+      "GNA14": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GNAQ": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GNAS": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GPC3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GPR124": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GRIN2A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "GRM3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "H3F3A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HDAC4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HEY1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HGF": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HIF1A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HIST1H3B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HNF1A": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "HNRNPK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HOXB13": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HSP90AB1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "HTRA1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ID3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IDH1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IDH2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IGF1R": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IGF2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IGF2BP3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IGF2R": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IKBKE": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IKZF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IKZF2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IKZF3": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "IL6ST": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IL7R": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "INHBA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "INPP4B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IPMK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "IRF4": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "IRS2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "JAK1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "JAK2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "JAK3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "JAZF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KAT6A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KDM5A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KDM5C": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KDM6A": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "KDR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KEAP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KIT": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KLF4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KLHL6": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KMT2A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KMT2B": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "KMT2C": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "KMT2D": {
+        "qualifying_positive": 18,
+        "no_qualifying_report": 46,
+        "eligible": true
+      },
+      "KNSTRN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KRAS": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "KRIT1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "LARP4B": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "LEF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "LRP1B": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "LUC7L2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "LZTR1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "MAML2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAML3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP2K2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP2K4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP3K1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP3K2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP3K5": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP3K7": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAP3K9": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAPK1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MAX": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MCL1": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "MDM4": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "MED12": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "MEF2B": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "MET": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MGA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MGEA5": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MGMT": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MITF": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MLH1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "MLH3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MN1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MPL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MRE11A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MSH2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MSH3": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "MSH6": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MUTYH": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MYB": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "MYBL1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MYC": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "MYCL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MYCN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MYD88": {
+        "qualifying_positive": 46,
+        "no_qualifying_report": 18,
+        "eligible": true
+      },
+      "MYH9": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "MYOD1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NAV3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NBN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NCOA2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NCOA3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NCOR1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NF2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NFE2L2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NFKBIA": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "NFKBIE": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "NIPBL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NKX2-1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NOTCH1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NOTCH2": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "NOTCH3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NPM1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NR4A3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NRG1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NRIP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NSD1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NT5C2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NTHL1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "NTRK1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NTRK2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NTRK3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NUP93": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "NUTM1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "OTX2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PAK3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PALB2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PARK2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PAX5": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PAX7": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PDCD1LG2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PDGFRA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PDGFRB": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PDK1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PHOX2B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PIK3CA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PIK3CG": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PIK3R1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PIK3R2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PLAG1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PLCB4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PMS1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "POLD1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "POLE": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "POLR2A": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "POT1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PPARG": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PPM1D": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PPP6C": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PRDM1": {
+        "qualifying_positive": 7,
+        "no_qualifying_report": 57,
+        "eligible": true
+      },
+      "PREX2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PRKACA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PRKAR1A": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "PRKCA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PRKDC": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PRPF40B": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PRPF8": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "PTCH1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "PTCH2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PTEN": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "PTPN1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PTPRB": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PTPRD": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PTPRK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "PTPRT": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "RAD21": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RAD50": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "RAD51C": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RAD51D": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RAF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RARA": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "RASA1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RASA2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RB1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RECQL4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "REL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RELA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RET": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RHOA": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "RICTOR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RNF43": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ROBO1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ROS1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RPTOR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RRAGC": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RRAS": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RSPO2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RSPO3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "RUNX1": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "RUNX1T1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SAMD9": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SAMD9L": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SDHA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SDHAF2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SETBP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SETD2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "SF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SF3B1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SH2B3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SHH": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SIN3A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SLIT2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMAD3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMAD4": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "SMARCA2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMARCA4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMARCAL1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMARCE1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMC1A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMC3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SMO": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SNCAIP": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SOCS1": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "SOS1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SOS2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SOX2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SOX9": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SPEN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SPRED1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SPTA1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SS18": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "STAG2": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "STAT3": {
+        "qualifying_positive": 3,
+        "no_qualifying_report": 61,
+        "eligible": false
+      },
+      "STAT4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "STAT6": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "STK11": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SUFU": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "SYK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "T": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TBX3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TCF12": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TCF7L2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TEK": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TERT": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TET2": {
+        "qualifying_positive": 2,
+        "no_qualifying_report": 62,
+        "eligible": false
+      },
+      "TFE3": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "TFEB": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TG": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "TGFBR2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "THADA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TMEM127": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TMPRSS2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TNFAIP3": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "TOP1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "TOP2A": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TP53": {
+        "qualifying_positive": 5,
+        "no_qualifying_report": 59,
+        "eligible": true
+      },
+      "TRAF3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TRAF7": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TSC1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TSC2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TSHR": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TTYH1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "TYK2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "U2AF1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "U2AF2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "USP6": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "VEGFA": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "VHL": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "WHSC1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "WISP3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "WRN": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "WT1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "WWTR1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "XBP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "XPO1": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "YAP1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "YWHAE": {
+        "qualifying_positive": 1,
+        "no_qualifying_report": 63,
+        "eligible": false
+      },
+      "ZBTB20": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZFHX3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZFHX4": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZFPM1": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZMYM3": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZNF217": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZNF703": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      },
+      "ZRSR2": {
+        "qualifying_positive": 0,
+        "no_qualifying_report": 64,
+        "eligible": false
+      }
+    },
+    "minimum_class_count": 5,
+    "endpoint": "Reported qualifying pathogenic/likely pathogenic alteration versus no qualifying report among mutation-record patients; not biological wild type or proven complete panel coverage.",
+    "source_kind": "public hosted UCSF-PCNSL v1.0 only",
+    "source_hashes": {
+      "mutation_table_sha256": "f63ed0a9d60a620c32378b920d0344cd575549e304f062c6e3677bcc28b03c15",
+      "demographics_sha256": "8339f41e249ebb0c95af24e3f0ea9d9b3e62edc10c918ccb173cdb16b51f223d",
+      "feature_content_manifest_sha256": {
+        "individual": "47175accc97b4bc5f17100c6940c658052d7598db72a937ce39c6fec7a963a7a",
+        "summary": "0a0bb0085cbf40f6099442ad071f8ece570915e7b69686f5799c3354bb37c138",
+        "radiomics": "87a017f7c5f5bf090af4f23092fc2e698d22bd80e49f89678ccf101e61c65fec"
+      }
+    },
+    "feature_file_counts": {
+      "individual": 128,
+      "summary": 125,
+      "radiomics": 124
+    },
+    "feature_count": 439,
+    "feature_groups": {
+      "spatial": 120,
+      "intensity": 114,
+      "morphology": 62,
+      "radiomics": 64,
+      "lesion_aggregates": 246,
+      "clinical": 1,
+      "all_imaging": 438,
+      "all": 439
+    },
+    "missing_by_feature": {
+      "FLAIR_individual_count": 0,
+      "FLAIR_individual_largest_average_dist_to_ventricles_(voxels)": 0,
+      "FLAIR_individual_largest_enhancement": 0,
+      "FLAIR_individual_largest_five_percentile_ADC_signal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_AnteriorTemporal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Brain Stem": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CSF": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Cerebellum": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CorpusCallosum": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CorpusCallosum_Body": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CorpusCallosum_Genu": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CorpusCallosum_Isthmus": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CorpusCallosum_Rostrum": 0,
+      "FLAIR_individual_largest_lesion_volume_in_CorpusCallosum_Splenium": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Cortical Gray Matter": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Deep Gray Matter": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Frontal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_MiddleTemporal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Occipital": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Parietal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Parietal_Occipital": 0,
+      "FLAIR_individual_largest_lesion_volume_in_PosteriorTemporal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_Temporal": 0,
+      "FLAIR_individual_largest_lesion_volume_in_White Matter": 0,
+      "FLAIR_individual_largest_lesion_volume_in_background": 0,
+      "FLAIR_individual_largest_lesion_volume_in_brain_stem": 0,
+      "FLAIR_individual_largest_lesion_volume_in_cerebellum": 0,
+      "FLAIR_individual_largest_lesion_volume_in_cortical_gray_matter": 0,
+      "FLAIR_individual_largest_lesion_volume_in_csf": 0,
+      "FLAIR_individual_largest_lesion_volume_in_deep_gray_matter": 0,
+      "FLAIR_individual_largest_lesion_volume_in_white_matter": 0,
+      "FLAIR_individual_largest_mean_ADC_signal": 0,
+      "FLAIR_individual_largest_median_ADC_signal": 0,
+      "FLAIR_individual_largest_min_ADC_signal": 0,
+      "FLAIR_individual_largest_minimum_dist_to_Ventricles_(voxels)": 0,
+      "FLAIR_individual_largest_ninety_five_percentile_ADC_signal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_AnteriorTemporal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Brain Stem": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CSF": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Cerebellum": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CorpusCallosum": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CorpusCallosum_Body": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CorpusCallosum_Genu": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CorpusCallosum_Isthmus": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CorpusCallosum_Rostrum": 0,
+      "FLAIR_individual_largest_percentage_volume_in_CorpusCallosum_Splenium": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Cortical Gray Matter": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Deep Gray Matter": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Frontal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_MiddleTemporal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Occipital": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Parietal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Parietal_Occipital": 0,
+      "FLAIR_individual_largest_percentage_volume_in_PosteriorTemporal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_Temporal": 0,
+      "FLAIR_individual_largest_percentage_volume_in_White Matter": 0,
+      "FLAIR_individual_largest_relative_ADC_signal": 0,
+      "FLAIR_individual_largest_relative_FLAIR_signal": 0,
+      "FLAIR_individual_largest_relative_T1Post_signal": 0,
+      "FLAIR_individual_largest_relative_T1_signal": 0,
+      "FLAIR_individual_largest_relative_min_ADC_signal": 0,
+      "FLAIR_individual_largest_total_lesion_volume": 0,
+      "FLAIR_individual_sum_lesion_volume_in_AnteriorTemporal": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Brain Stem": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CSF": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Cerebellum": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CorpusCallosum": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CorpusCallosum_Body": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CorpusCallosum_Genu": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CorpusCallosum_Isthmus": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CorpusCallosum_Rostrum": 0,
+      "FLAIR_individual_sum_lesion_volume_in_CorpusCallosum_Splenium": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Cortical Gray Matter": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Deep Gray Matter": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Frontal": 0,
+      "FLAIR_individual_sum_lesion_volume_in_MiddleTemporal": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Occipital": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Parietal": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Parietal_Occipital": 0,
+      "FLAIR_individual_sum_lesion_volume_in_PosteriorTemporal": 0,
+      "FLAIR_individual_sum_lesion_volume_in_Temporal": 0,
+      "FLAIR_individual_sum_lesion_volume_in_White Matter": 0,
+      "FLAIR_individual_sum_lesion_volume_in_background": 0,
+      "FLAIR_individual_sum_lesion_volume_in_brain_stem": 0,
+      "FLAIR_individual_sum_lesion_volume_in_cerebellum": 0,
+      "FLAIR_individual_sum_lesion_volume_in_cortical_gray_matter": 0,
+      "FLAIR_individual_sum_lesion_volume_in_csf": 0,
+      "FLAIR_individual_sum_lesion_volume_in_deep_gray_matter": 0,
+      "FLAIR_individual_sum_lesion_volume_in_white_matter": 0,
+      "FLAIR_individual_sum_total_lesion_volume": 0,
+      "FLAIR_individual_weighted_average_dist_to_ventricles_(voxels)": 0,
+      "FLAIR_individual_weighted_enhancement": 0,
+      "FLAIR_individual_weighted_five_percentile_ADC_signal": 0,
+      "FLAIR_individual_weighted_mean_ADC_signal": 0,
+      "FLAIR_individual_weighted_median_ADC_signal": 0,
+      "FLAIR_individual_weighted_min_ADC_signal": 0,
+      "FLAIR_individual_weighted_minimum_dist_to_Ventricles_(voxels)": 0,
+      "FLAIR_individual_weighted_ninety_five_percentile_ADC_signal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_AnteriorTemporal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Brain Stem": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CSF": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Cerebellum": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CorpusCallosum": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CorpusCallosum_Body": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CorpusCallosum_Genu": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CorpusCallosum_Isthmus": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CorpusCallosum_Rostrum": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_CorpusCallosum_Splenium": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Cortical Gray Matter": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Deep Gray Matter": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Frontal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_MiddleTemporal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Occipital": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Parietal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Parietal_Occipital": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_PosteriorTemporal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_Temporal": 0,
+      "FLAIR_individual_weighted_percentage_volume_in_White Matter": 0,
+      "FLAIR_individual_weighted_relative_ADC_signal": 0,
+      "FLAIR_individual_weighted_relative_FLAIR_signal": 0,
+      "FLAIR_individual_weighted_relative_T1Post_signal": 0,
+      "FLAIR_individual_weighted_relative_T1_signal": 0,
+      "FLAIR_individual_weighted_relative_min_ADC_signal": 0,
+      "FLAIR_radiomics_original_firstorder_10Percentile": 0,
+      "FLAIR_radiomics_original_firstorder_90Percentile": 0,
+      "FLAIR_radiomics_original_firstorder_Energy": 0,
+      "FLAIR_radiomics_original_firstorder_Entropy": 0,
+      "FLAIR_radiomics_original_firstorder_InterquartileRange": 0,
+      "FLAIR_radiomics_original_firstorder_Kurtosis": 0,
+      "FLAIR_radiomics_original_firstorder_Maximum": 0,
+      "FLAIR_radiomics_original_firstorder_Mean": 0,
+      "FLAIR_radiomics_original_firstorder_MeanAbsoluteDeviation": 0,
+      "FLAIR_radiomics_original_firstorder_Median": 0,
+      "FLAIR_radiomics_original_firstorder_Minimum": 0,
+      "FLAIR_radiomics_original_firstorder_Range": 0,
+      "FLAIR_radiomics_original_firstorder_RobustMeanAbsoluteDeviation": 0,
+      "FLAIR_radiomics_original_firstorder_RootMeanSquared": 0,
+      "FLAIR_radiomics_original_firstorder_Skewness": 0,
+      "FLAIR_radiomics_original_firstorder_TotalEnergy": 0,
+      "FLAIR_radiomics_original_firstorder_Uniformity": 0,
+      "FLAIR_radiomics_original_firstorder_Variance": 0,
+      "FLAIR_radiomics_original_shape_Elongation": 0,
+      "FLAIR_radiomics_original_shape_Flatness": 0,
+      "FLAIR_radiomics_original_shape_LeastAxisLength": 0,
+      "FLAIR_radiomics_original_shape_MajorAxisLength": 0,
+      "FLAIR_radiomics_original_shape_Maximum2DDiameterColumn": 0,
+      "FLAIR_radiomics_original_shape_Maximum2DDiameterRow": 0,
+      "FLAIR_radiomics_original_shape_Maximum2DDiameterSlice": 0,
+      "FLAIR_radiomics_original_shape_Maximum3DDiameter": 0,
+      "FLAIR_radiomics_original_shape_MeshVolume": 0,
+      "FLAIR_radiomics_original_shape_MinorAxisLength": 0,
+      "FLAIR_radiomics_original_shape_Sphericity": 0,
+      "FLAIR_radiomics_original_shape_SurfaceArea": 0,
+      "FLAIR_radiomics_original_shape_SurfaceVolumeRatio": 0,
+      "FLAIR_radiomics_original_shape_VoxelVolume": 0,
+      "FLAIR_summary_average_dist_to_ventricles_(voxels)": 1,
+      "FLAIR_summary_average_lesion_volume": 1,
+      "FLAIR_summary_enhancement": 1,
+      "FLAIR_summary_five_percentile_ADC_signal": 1,
+      "FLAIR_summary_largest_lesion_volume": 1,
+      "FLAIR_summary_lesion_volume_in_AnteriorTemporal": 1,
+      "FLAIR_summary_lesion_volume_in_Brain Stem": 1,
+      "FLAIR_summary_lesion_volume_in_CSF": 1,
+      "FLAIR_summary_lesion_volume_in_Cerebellum": 1,
+      "FLAIR_summary_lesion_volume_in_CorpusCallosum": 1,
+      "FLAIR_summary_lesion_volume_in_CorpusCallosum_Body": 1,
+      "FLAIR_summary_lesion_volume_in_CorpusCallosum_Genu": 1,
+      "FLAIR_summary_lesion_volume_in_CorpusCallosum_Isthmus": 1,
+      "FLAIR_summary_lesion_volume_in_CorpusCallosum_Rostrum": 1,
+      "FLAIR_summary_lesion_volume_in_CorpusCallosum_Splenium": 1,
+      "FLAIR_summary_lesion_volume_in_Cortical Gray Matter": 1,
+      "FLAIR_summary_lesion_volume_in_Deep Gray Matter": 1,
+      "FLAIR_summary_lesion_volume_in_Frontal": 1,
+      "FLAIR_summary_lesion_volume_in_MiddleTemporal": 1,
+      "FLAIR_summary_lesion_volume_in_Occipital": 1,
+      "FLAIR_summary_lesion_volume_in_Parietal": 1,
+      "FLAIR_summary_lesion_volume_in_Parietal_Occipital": 1,
+      "FLAIR_summary_lesion_volume_in_PosteriorTemporal": 1,
+      "FLAIR_summary_lesion_volume_in_Temporal": 1,
+      "FLAIR_summary_lesion_volume_in_White Matter": 1,
+      "FLAIR_summary_lesion_volume_in_background": 1,
+      "FLAIR_summary_lesion_volume_in_brain_stem": 1,
+      "FLAIR_summary_lesion_volume_in_cerebellum": 1,
+      "FLAIR_summary_lesion_volume_in_cortical_gray_matter": 1,
+      "FLAIR_summary_lesion_volume_in_csf": 1,
+      "FLAIR_summary_lesion_volume_in_deep_gray_matter": 1,
+      "FLAIR_summary_lesion_volume_in_white_matter": 1,
+      "FLAIR_summary_mean_ADC_signal": 1,
+      "FLAIR_summary_median_ADC_signal": 1,
+      "FLAIR_summary_min_ADC_signal": 1,
+      "FLAIR_summary_minimum_dist_to_Ventricles_(voxels)": 1,
+      "FLAIR_summary_ninety_five_percentile_ADC_signal": 1,
+      "FLAIR_summary_number_of_lesions": 1,
+      "FLAIR_summary_percentage_volume_in_AnteriorTemporal": 1,
+      "FLAIR_summary_percentage_volume_in_Brain Stem": 1,
+      "FLAIR_summary_percentage_volume_in_CSF": 1,
+      "FLAIR_summary_percentage_volume_in_Cerebellum": 1,
+      "FLAIR_summary_percentage_volume_in_CorpusCallosum": 1,
+      "FLAIR_summary_percentage_volume_in_CorpusCallosum_Body": 1,
+      "FLAIR_summary_percentage_volume_in_CorpusCallosum_Genu": 1,
+      "FLAIR_summary_percentage_volume_in_CorpusCallosum_Isthmus": 1,
+      "FLAIR_summary_percentage_volume_in_CorpusCallosum_Rostrum": 1,
+      "FLAIR_summary_percentage_volume_in_CorpusCallosum_Splenium": 1,
+      "FLAIR_summary_percentage_volume_in_Cortical Gray Matter": 1,
+      "FLAIR_summary_percentage_volume_in_Deep Gray Matter": 1,
+      "FLAIR_summary_percentage_volume_in_Frontal": 1,
+      "FLAIR_summary_percentage_volume_in_MiddleTemporal": 1,
+      "FLAIR_summary_percentage_volume_in_Occipital": 1,
+      "FLAIR_summary_percentage_volume_in_Parietal": 1,
+      "FLAIR_summary_percentage_volume_in_Parietal_Occipital": 1,
+      "FLAIR_summary_percentage_volume_in_PosteriorTemporal": 1,
+      "FLAIR_summary_percentage_volume_in_Temporal": 1,
+      "FLAIR_summary_percentage_volume_in_White Matter": 1,
+      "FLAIR_summary_relative_ADC_signal": 1,
+      "FLAIR_summary_relative_FLAIR_signal": 1,
+      "FLAIR_summary_relative_T1Post_signal": 1,
+      "FLAIR_summary_relative_T1_signal": 1,
+      "FLAIR_summary_relative_min_ADC_signal": 1,
+      "FLAIR_summary_total_lesion_volume": 1,
+      "T1Post_individual_count": 0,
+      "T1Post_individual_largest_average_dist_to_ventricles_(voxels)": 0,
+      "T1Post_individual_largest_enhancement": 0,
+      "T1Post_individual_largest_five_percentile_ADC_signal": 0,
+      "T1Post_individual_largest_lesion_volume_in_AnteriorTemporal": 0,
+      "T1Post_individual_largest_lesion_volume_in_Brain Stem": 0,
+      "T1Post_individual_largest_lesion_volume_in_CSF": 0,
+      "T1Post_individual_largest_lesion_volume_in_Cerebellum": 0,
+      "T1Post_individual_largest_lesion_volume_in_CorpusCallosum": 0,
+      "T1Post_individual_largest_lesion_volume_in_CorpusCallosum_Body": 0,
+      "T1Post_individual_largest_lesion_volume_in_CorpusCallosum_Genu": 0,
+      "T1Post_individual_largest_lesion_volume_in_CorpusCallosum_Isthmus": 0,
+      "T1Post_individual_largest_lesion_volume_in_CorpusCallosum_Rostrum": 0,
+      "T1Post_individual_largest_lesion_volume_in_CorpusCallosum_Splenium": 0,
+      "T1Post_individual_largest_lesion_volume_in_Cortical Gray Matter": 0,
+      "T1Post_individual_largest_lesion_volume_in_Deep Gray Matter": 0,
+      "T1Post_individual_largest_lesion_volume_in_Frontal": 0,
+      "T1Post_individual_largest_lesion_volume_in_MiddleTemporal": 0,
+      "T1Post_individual_largest_lesion_volume_in_Occipital": 0,
+      "T1Post_individual_largest_lesion_volume_in_Parietal": 0,
+      "T1Post_individual_largest_lesion_volume_in_Parietal_Occipital": 0,
+      "T1Post_individual_largest_lesion_volume_in_PosteriorTemporal": 0,
+      "T1Post_individual_largest_lesion_volume_in_Temporal": 0,
+      "T1Post_individual_largest_lesion_volume_in_White Matter": 0,
+      "T1Post_individual_largest_lesion_volume_in_background": 0,
+      "T1Post_individual_largest_lesion_volume_in_brain_stem": 0,
+      "T1Post_individual_largest_lesion_volume_in_cerebellum": 0,
+      "T1Post_individual_largest_lesion_volume_in_cortical_gray_matter": 0,
+      "T1Post_individual_largest_lesion_volume_in_csf": 0,
+      "T1Post_individual_largest_lesion_volume_in_deep_gray_matter": 0,
+      "T1Post_individual_largest_lesion_volume_in_white_matter": 0,
+      "T1Post_individual_largest_mean_ADC_signal": 0,
+      "T1Post_individual_largest_median_ADC_signal": 0,
+      "T1Post_individual_largest_min_ADC_signal": 0,
+      "T1Post_individual_largest_minimum_dist_to_Ventricles_(voxels)": 0,
+      "T1Post_individual_largest_ninety_five_percentile_ADC_signal": 0,
+      "T1Post_individual_largest_percentage_volume_in_AnteriorTemporal": 0,
+      "T1Post_individual_largest_percentage_volume_in_Brain Stem": 0,
+      "T1Post_individual_largest_percentage_volume_in_CSF": 0,
+      "T1Post_individual_largest_percentage_volume_in_Cerebellum": 0,
+      "T1Post_individual_largest_percentage_volume_in_CorpusCallosum": 0,
+      "T1Post_individual_largest_percentage_volume_in_CorpusCallosum_Body": 0,
+      "T1Post_individual_largest_percentage_volume_in_CorpusCallosum_Genu": 0,
+      "T1Post_individual_largest_percentage_volume_in_CorpusCallosum_Isthmus": 0,
+      "T1Post_individual_largest_percentage_volume_in_CorpusCallosum_Rostrum": 0,
+      "T1Post_individual_largest_percentage_volume_in_CorpusCallosum_Splenium": 0,
+      "T1Post_individual_largest_percentage_volume_in_Cortical Gray Matter": 0,
+      "T1Post_individual_largest_percentage_volume_in_Deep Gray Matter": 0,
+      "T1Post_individual_largest_percentage_volume_in_Frontal": 0,
+      "T1Post_individual_largest_percentage_volume_in_MiddleTemporal": 0,
+      "T1Post_individual_largest_percentage_volume_in_Occipital": 0,
+      "T1Post_individual_largest_percentage_volume_in_Parietal": 0,
+      "T1Post_individual_largest_percentage_volume_in_Parietal_Occipital": 0,
+      "T1Post_individual_largest_percentage_volume_in_PosteriorTemporal": 0,
+      "T1Post_individual_largest_percentage_volume_in_Temporal": 0,
+      "T1Post_individual_largest_percentage_volume_in_White Matter": 0,
+      "T1Post_individual_largest_relative_ADC_signal": 0,
+      "T1Post_individual_largest_relative_FLAIR_signal": 0,
+      "T1Post_individual_largest_relative_T1Post_signal": 0,
+      "T1Post_individual_largest_relative_T1_signal": 0,
+      "T1Post_individual_largest_relative_min_ADC_signal": 0,
+      "T1Post_individual_largest_total_lesion_volume": 0,
+      "T1Post_individual_sum_lesion_volume_in_AnteriorTemporal": 0,
+      "T1Post_individual_sum_lesion_volume_in_Brain Stem": 0,
+      "T1Post_individual_sum_lesion_volume_in_CSF": 0,
+      "T1Post_individual_sum_lesion_volume_in_Cerebellum": 0,
+      "T1Post_individual_sum_lesion_volume_in_CorpusCallosum": 0,
+      "T1Post_individual_sum_lesion_volume_in_CorpusCallosum_Body": 0,
+      "T1Post_individual_sum_lesion_volume_in_CorpusCallosum_Genu": 0,
+      "T1Post_individual_sum_lesion_volume_in_CorpusCallosum_Isthmus": 0,
+      "T1Post_individual_sum_lesion_volume_in_CorpusCallosum_Rostrum": 0,
+      "T1Post_individual_sum_lesion_volume_in_CorpusCallosum_Splenium": 0,
+      "T1Post_individual_sum_lesion_volume_in_Cortical Gray Matter": 0,
+      "T1Post_individual_sum_lesion_volume_in_Deep Gray Matter": 0,
+      "T1Post_individual_sum_lesion_volume_in_Frontal": 0,
+      "T1Post_individual_sum_lesion_volume_in_MiddleTemporal": 0,
+      "T1Post_individual_sum_lesion_volume_in_Occipital": 0,
+      "T1Post_individual_sum_lesion_volume_in_Parietal": 0,
+      "T1Post_individual_sum_lesion_volume_in_Parietal_Occipital": 0,
+      "T1Post_individual_sum_lesion_volume_in_PosteriorTemporal": 0,
+      "T1Post_individual_sum_lesion_volume_in_Temporal": 0,
+      "T1Post_individual_sum_lesion_volume_in_White Matter": 0,
+      "T1Post_individual_sum_lesion_volume_in_background": 0,
+      "T1Post_individual_sum_lesion_volume_in_brain_stem": 0,
+      "T1Post_individual_sum_lesion_volume_in_cerebellum": 0,
+      "T1Post_individual_sum_lesion_volume_in_cortical_gray_matter": 0,
+      "T1Post_individual_sum_lesion_volume_in_csf": 0,
+      "T1Post_individual_sum_lesion_volume_in_deep_gray_matter": 0,
+      "T1Post_individual_sum_lesion_volume_in_white_matter": 0,
+      "T1Post_individual_sum_total_lesion_volume": 0,
+      "T1Post_individual_weighted_average_dist_to_ventricles_(voxels)": 0,
+      "T1Post_individual_weighted_enhancement": 0,
+      "T1Post_individual_weighted_five_percentile_ADC_signal": 0,
+      "T1Post_individual_weighted_mean_ADC_signal": 0,
+      "T1Post_individual_weighted_median_ADC_signal": 0,
+      "T1Post_individual_weighted_min_ADC_signal": 0,
+      "T1Post_individual_weighted_minimum_dist_to_Ventricles_(voxels)": 0,
+      "T1Post_individual_weighted_ninety_five_percentile_ADC_signal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_AnteriorTemporal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Brain Stem": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CSF": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Cerebellum": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CorpusCallosum": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CorpusCallosum_Body": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CorpusCallosum_Genu": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CorpusCallosum_Isthmus": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CorpusCallosum_Rostrum": 0,
+      "T1Post_individual_weighted_percentage_volume_in_CorpusCallosum_Splenium": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Cortical Gray Matter": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Deep Gray Matter": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Frontal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_MiddleTemporal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Occipital": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Parietal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Parietal_Occipital": 0,
+      "T1Post_individual_weighted_percentage_volume_in_PosteriorTemporal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_Temporal": 0,
+      "T1Post_individual_weighted_percentage_volume_in_White Matter": 0,
+      "T1Post_individual_weighted_relative_ADC_signal": 0,
+      "T1Post_individual_weighted_relative_FLAIR_signal": 0,
+      "T1Post_individual_weighted_relative_T1Post_signal": 0,
+      "T1Post_individual_weighted_relative_T1_signal": 0,
+      "T1Post_individual_weighted_relative_min_ADC_signal": 0,
+      "T1Post_radiomics_original_firstorder_10Percentile": 4,
+      "T1Post_radiomics_original_firstorder_90Percentile": 4,
+      "T1Post_radiomics_original_firstorder_Energy": 4,
+      "T1Post_radiomics_original_firstorder_Entropy": 4,
+      "T1Post_radiomics_original_firstorder_InterquartileRange": 4,
+      "T1Post_radiomics_original_firstorder_Kurtosis": 4,
+      "T1Post_radiomics_original_firstorder_Maximum": 4,
+      "T1Post_radiomics_original_firstorder_Mean": 4,
+      "T1Post_radiomics_original_firstorder_MeanAbsoluteDeviation": 4,
+      "T1Post_radiomics_original_firstorder_Median": 4,
+      "T1Post_radiomics_original_firstorder_Minimum": 4,
+      "T1Post_radiomics_original_firstorder_Range": 4,
+      "T1Post_radiomics_original_firstorder_RobustMeanAbsoluteDeviation": 4,
+      "T1Post_radiomics_original_firstorder_RootMeanSquared": 4,
+      "T1Post_radiomics_original_firstorder_Skewness": 4,
+      "T1Post_radiomics_original_firstorder_TotalEnergy": 4,
+      "T1Post_radiomics_original_firstorder_Uniformity": 4,
+      "T1Post_radiomics_original_firstorder_Variance": 4,
+      "T1Post_radiomics_original_shape_Elongation": 4,
+      "T1Post_radiomics_original_shape_Flatness": 4,
+      "T1Post_radiomics_original_shape_LeastAxisLength": 4,
+      "T1Post_radiomics_original_shape_MajorAxisLength": 4,
+      "T1Post_radiomics_original_shape_Maximum2DDiameterColumn": 4,
+      "T1Post_radiomics_original_shape_Maximum2DDiameterRow": 4,
+      "T1Post_radiomics_original_shape_Maximum2DDiameterSlice": 4,
+      "T1Post_radiomics_original_shape_Maximum3DDiameter": 4,
+      "T1Post_radiomics_original_shape_MeshVolume": 4,
+      "T1Post_radiomics_original_shape_MinorAxisLength": 4,
+      "T1Post_radiomics_original_shape_Sphericity": 4,
+      "T1Post_radiomics_original_shape_SurfaceArea": 4,
+      "T1Post_radiomics_original_shape_SurfaceVolumeRatio": 4,
+      "T1Post_radiomics_original_shape_VoxelVolume": 4,
+      "T1Post_summary_average_dist_to_ventricles_(voxels)": 2,
+      "T1Post_summary_average_lesion_volume": 2,
+      "T1Post_summary_enhancement": 2,
+      "T1Post_summary_five_percentile_ADC_signal": 2,
+      "T1Post_summary_largest_lesion_volume": 2,
+      "T1Post_summary_lesion_volume_in_AnteriorTemporal": 2,
+      "T1Post_summary_lesion_volume_in_Brain Stem": 2,
+      "T1Post_summary_lesion_volume_in_CSF": 2,
+      "T1Post_summary_lesion_volume_in_Cerebellum": 2,
+      "T1Post_summary_lesion_volume_in_CorpusCallosum": 2,
+      "T1Post_summary_lesion_volume_in_CorpusCallosum_Body": 2,
+      "T1Post_summary_lesion_volume_in_CorpusCallosum_Genu": 2,
+      "T1Post_summary_lesion_volume_in_CorpusCallosum_Isthmus": 2,
+      "T1Post_summary_lesion_volume_in_CorpusCallosum_Rostrum": 2,
+      "T1Post_summary_lesion_volume_in_CorpusCallosum_Splenium": 2,
+      "T1Post_summary_lesion_volume_in_Cortical Gray Matter": 2,
+      "T1Post_summary_lesion_volume_in_Deep Gray Matter": 2,
+      "T1Post_summary_lesion_volume_in_Frontal": 2,
+      "T1Post_summary_lesion_volume_in_MiddleTemporal": 2,
+      "T1Post_summary_lesion_volume_in_Occipital": 2,
+      "T1Post_summary_lesion_volume_in_Parietal": 2,
+      "T1Post_summary_lesion_volume_in_Parietal_Occipital": 2,
+      "T1Post_summary_lesion_volume_in_PosteriorTemporal": 2,
+      "T1Post_summary_lesion_volume_in_Temporal": 2,
+      "T1Post_summary_lesion_volume_in_White Matter": 2,
+      "T1Post_summary_lesion_volume_in_background": 2,
+      "T1Post_summary_lesion_volume_in_brain_stem": 2,
+      "T1Post_summary_lesion_volume_in_cerebellum": 2,
+      "T1Post_summary_lesion_volume_in_cortical_gray_matter": 2,
+      "T1Post_summary_lesion_volume_in_csf": 2,
+      "T1Post_summary_lesion_volume_in_deep_gray_matter": 2,
+      "T1Post_summary_lesion_volume_in_white_matter": 2,
+      "T1Post_summary_mean_ADC_signal": 2,
+      "T1Post_summary_median_ADC_signal": 2,
+      "T1Post_summary_min_ADC_signal": 2,
+      "T1Post_summary_minimum_dist_to_Ventricles_(voxels)": 2,
+      "T1Post_summary_ninety_five_percentile_ADC_signal": 2,
+      "T1Post_summary_number_of_lesions": 2,
+      "T1Post_summary_percentage_volume_in_AnteriorTemporal": 2,
+      "T1Post_summary_percentage_volume_in_Brain Stem": 2,
+      "T1Post_summary_percentage_volume_in_CSF": 2,
+      "T1Post_summary_percentage_volume_in_Cerebellum": 2,
+      "T1Post_summary_percentage_volume_in_CorpusCallosum": 2,
+      "T1Post_summary_percentage_volume_in_CorpusCallosum_Body": 2,
+      "T1Post_summary_percentage_volume_in_CorpusCallosum_Genu": 2,
+      "T1Post_summary_percentage_volume_in_CorpusCallosum_Isthmus": 2,
+      "T1Post_summary_percentage_volume_in_CorpusCallosum_Rostrum": 2,
+      "T1Post_summary_percentage_volume_in_CorpusCallosum_Splenium": 2,
+      "T1Post_summary_percentage_volume_in_Cortical Gray Matter": 2,
+      "T1Post_summary_percentage_volume_in_Deep Gray Matter": 2,
+      "T1Post_summary_percentage_volume_in_Frontal": 2,
+      "T1Post_summary_percentage_volume_in_MiddleTemporal": 2,
+      "T1Post_summary_percentage_volume_in_Occipital": 2,
+      "T1Post_summary_percentage_volume_in_Parietal": 2,
+      "T1Post_summary_percentage_volume_in_Parietal_Occipital": 2,
+      "T1Post_summary_percentage_volume_in_PosteriorTemporal": 2,
+      "T1Post_summary_percentage_volume_in_Temporal": 2,
+      "T1Post_summary_percentage_volume_in_White Matter": 2,
+      "T1Post_summary_relative_ADC_signal": 2,
+      "T1Post_summary_relative_FLAIR_signal": 2,
+      "T1Post_summary_relative_T1Post_signal": 2,
+      "T1Post_summary_relative_T1_signal": 2,
+      "T1Post_summary_relative_min_ADC_signal": 2,
+      "T1Post_summary_total_lesion_volume": 2,
+      "sex_female": 0
+    },
+    "age_status": "excluded: consistent birth/scan date-shift semantics not established",
+    "clinical_scan_specimen_pairing_verified": false,
+    "complete_panel_coverage_verified": false,
+    "pseudonym_seed": 20261114,
+    "patient_level_split_required": true
+  },
+  "provenance": {
+    "dataset_sha256": "67a103774a314dc0de792b6e7ceec419d3fcb963a6237b17cb9322c705a90f62",
+    "evaluator_sha256": "bf5a3ddc26e3be470dcf9e8034e045305e4ff5f055cbb5a5078602760d4cc5d8",
+    "runner_sha256": "7159505102d5f54fe75da0d25689c163a38f8615f95106eb2a8bf3837b745845",
+    "torch": "2.10.0+cu128",
+    "device": "cpu",
+    "threads": 2
+  }
+}

@@ -1,0 +1,38 @@
+{
+ "family": "ecg_ptbxl",
+ "tier": "build",
+ "spec_version": 1,
+ "seed": 20261114,
+ "data_root": "/home/jkwei/data/vals-suite/ecg_ptbxl",
+ "agent_visible": {
+  "instruction": "suite/families/ecg_ptbxl/README.md",
+  "data_dir": "work/dev",
+  "data_dest": "environment/data/dev",
+  "files": ["signals.npz", "meta.csv", "labels.csv"],
+  "licence_file": "environment/data/LICENSE-DATA.md"
+ },
+ "verifier_only": {
+  "grader": "suite/families/ecg_ptbxl/grade.py",
+  "hidden_inputs": "work/hidden/input",
+  "hidden_reference": "work/hidden/reference.csv",
+  "specialist_summary": "work/specialist.json",
+  "test_sh": "exec /opt/benchmark-venv/bin/python -I /tests/grade.py --harbor"
+ },
+ "solution": {
+  "pipeline": "work/simple_pipeline",
+  "note": "simple reference (hand features + gradient boosting) fitted on the development set only"
+ },
+ "image": {
+  "base": "python:3.12-slim",
+  "venv": "/opt/benchmark-venv",
+  "requirements": "suite/families/ecg_ptbxl/image_requirements.txt",
+  "extra": ["torch==2.5.1+cpu --index-url https://download.pytorch.org/whl/cpu"],
+  "build_asserts": ["setpriv", "timeout"]
+ },
+ "resources": {"agent_timeout_sec": 1800, "cpus": 4, "memory_mb": 8192, "verifier_timeout_sec": 1800,
+               "agent_allowed_hosts": ["api.anthropic.com"], "verifier_network": "no-network",
+               "artifact": "/workspace/output", "artifact_limit_mb": 500},
+ "reward_keys": ["reward", "ran", "valid", "within_time", "clinically_acceptable", "quality", "vs_specialist"],
+ "gate": "see GATE, TIME_RULE, QUALITY_RULE in grade.py; sources in docs/research/suite/ecg_ptbxl.md",
+ "builder": "suite/families/ecg_ptbxl/build_task.py"
+}

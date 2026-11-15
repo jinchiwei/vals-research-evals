@@ -1,0 +1,15 @@
+# Claude worker: real prediction Harbor package
+
+Jin explicitly requests Claude Code Opus 5.5 high workers. Read `docs/research/hackathon-prompt.md` (exact official requirements), `docs/superpowers/plans/2026-11-14-real-prediction.md`, and README. Report actual model. No subagents, commits, pushes, network uploads or patient-data fetches.
+
+Own only `pcnsl/prediction_export.py`, `tests/test_prediction_export.py`, and `docs/research/prediction-harbor.md`. Neo Claude owns prediction_eval.py; another worker owns prediction_data.py. Root integrates. Do not edit others' files.
+
+Build a Harbor-format task exporter for the ACTUAL workflow: an agent receives labeled numeric training data and unlabeled test rows, can use Python/scikit-learn and optionally preinstalled/cached TabPFN, and must write probability predictions to a documented file. The grader measures held-out predictive AUROC/AP/Brier and execution validity. Do not turn it into a trivial code-repair task or instruct exact solution code. The task's primary value is prediction, not a checklist. Grade continuous predictive performance; do not invent a pass threshold from test outcomes. Return explicit valid-submission and predictive metrics, keeping comparator differences separate.
+
+Input contract from dataset worker: dict case_ids (anonymous), feature_names, X (numeric/null), labels (gene->binary list), feature_groups (dict[str,list[str]], overlapping). Use a preconstructed public payload and separate private gold for one fold; do NOT import patient data here. Prototype and tests use synthetic fixtures only.
+
+Study existing repair_evals/export.py and installed .venv-valkyrie SDK, but do not copy its code-repair task content. Main security invariant: heldout labels must be outside the agent-visible image/workspace, introduced only by trusted grader at verification. Agent must not get test labels in Docker build context/image layers. Document actual Harbor/Valkyrie verifier mounting assumptions and fail closed if unavailable; don't claim isolation that packaging cannot provide. Do not include original IDs, date metadata, or raw paths in prompt. Offline task runtime recommended; model API connection is harness-owned. Document dependencies/checkpoint preparation outside task runtime (TabPFN network disabled; no hidden download).
+
+Tests first for partitioned artifact visibility, invalid/missing/extra/NaN probabilities, correct metrics against hand-checked fixtures and SDK task validation. Read user's TDD skill reference if relevant. Use available dependencies; do not install global packages. Export only to caller-provided output directory; existing artifacts never overwritten silently.
+
+Actual hosted access is not yet verified; org is hackathon-neuronetwork-b91c517178. Do not launch or upload. README opening paragraph must be entirely human-written by Jin, so do not write it. No deck yet. Write limitations honestly; root will integrate with real data on FAC and run bounded pilots. Send completion/blocker to `hc send t18` with paths and test evidence.

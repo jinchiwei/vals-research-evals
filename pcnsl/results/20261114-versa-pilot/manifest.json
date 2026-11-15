@@ -1,0 +1,51 @@
+{
+  "version": "public-prediction-pilot-v1",
+  "models": [
+    "us.anthropic.claude-opus-5-5",
+    "gpt-5.2-2025-12-11"
+  ],
+  "genes": [
+    "MYD88",
+    "CD79B"
+  ],
+  "fold": 0,
+  "max_calls": 4,
+  "automatic_retries": 0,
+  "output_token_cap": 8192,
+  "timeout_seconds_per_call": 600,
+  "max_concurrent_calls": 2,
+  "dataset_sha256": "67a103774a314dc0de792b6e7ceec419d3fcb963a6237b17cb9322c705a90f62",
+  "runner_sha256": "e7c56f7ab3069ca209f1d0a25be078541116f5af6611f18c448d1edd82a49d15",
+  "evaluator_sha256": "bf5a3ddc26e3be470dcf9e8034e045305e4ff5f055cbb5a5078602760d4cc5d8",
+  "client_sha256": "0869bee034482ca638a4218ef78306a1ac36d702878a883aefbdb1b99c1717d8",
+  "feature_count": 439,
+  "feature_names_replaced": 0,
+  "context_limit": "Gateway limit undisclosed; character cap checked; token estimates are not provider counts",
+  "preflight": [
+    {
+      "gene": "MYD88",
+      "model": "us.anthropic.claude-opus-5-5",
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625
+    },
+    {
+      "gene": "MYD88",
+      "model": "gpt-5.2-2025-12-11",
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625
+    },
+    {
+      "gene": "CD79B",
+      "model": "us.anthropic.claude-opus-5-5",
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625
+    },
+    {
+      "gene": "CD79B",
+      "model": "gpt-5.2-2025-12-11",
+      "request_chars": 251563,
+      "rough_tokens_not_provider_verified": 100625
+    }
+  ],
+  "interpretation": "Single-fold engineering pilot, not a ranking, significance test or clinical validation"
+}

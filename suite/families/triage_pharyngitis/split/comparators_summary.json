@@ -1,0 +1,774 @@
+{
+ "schema": "triage_pharyngitis-comparators/1",
+ "development": {
+  "n": 561,
+  "n_bacterial": 155
+ },
+ "time_limit_seconds": 420.0,
+ "n_hidden": 180,
+ "threads": 2,
+ "hardware": "teal (WSL2, CPU inference)",
+ "internal_cv_development": {
+  "rule": {
+   "auroc": 0.5207770538693787,
+   "brier": 0.20030319904050697,
+   "ece": 0.034242748245948744,
+   "calibration": {
+    "slope": 0.4464475428164109,
+    "intercept": -0.5425552209850981,
+    "calibration_in_the_large": -0.028610537759558716,
+    "n": 561
+   },
+   "specificity_at_sens_0_85": 0.12807881773399016
+  },
+  "symptoms": {
+   "auroc": 0.5589385030986811,
+   "brier": 0.19731630406407413,
+   "ece": 0.016128355493722765,
+   "calibration": {
+    "slope": 0.849556480262155,
+    "intercept": -0.13802157394678344,
+    "calibration_in_the_large": 0.0046663272498886615,
+    "n": 561
+   },
+   "specificity_at_sens_0_85": 0.19950738916256158
+  },
+  "image": {
+   "auroc": 0.6862068965517242,
+   "brier": 0.18370581022529792,
+   "ece": 0.03226009173590875,
+   "calibration": {
+    "slope": 0.9169897493386554,
+    "intercept": -0.03945201097765187,
+    "calibration_in_the_large": 0.0353907319001247,
+    "n": 561
+   },
+   "specificity_at_sens_0_85": 0.3817733990147783
+  },
+  "combined": {
+   "auroc": 0.665247099952328,
+   "brier": 0.18831680290773903,
+   "ece": 0.04210104700601067,
+   "calibration": {
+    "slope": 1.3396551687533707,
+    "intercept": 0.3138700534644084,
+    "calibration_in_the_large": 0.0037522737360164097,
+    "n": 561
+   },
+   "specificity_at_sens_0_85": 0.312807881773399
+  }
+ },
+ "hidden": {
+  "rule": {
+   "run": {
+    "wall_seconds": 0.3932755650021136,
+    "timed_out": false,
+    "exit_code": 0
+   },
+   "time_limit_seconds": 420.0,
+   "valid": true,
+   "auroc": 0.5951538461538461,
+   "quality": 0.1903076923076923,
+   "brier": 0.19692149364228656,
+   "ece": 0.03850434330576176,
+   "calibration": {
+    "slope": 1.7404218666712377,
+    "intercept": 0.62953185441532,
+    "calibration_in_the_large": -0.037762497811806905,
+    "n": 180
+   },
+   "operating_point": {
+    "sensitivity": 0.98,
+    "specificity": 0.03076923076923077,
+    "threshold": 0.24113475177304963,
+    "sensitivity_target": 0.85,
+    "specificity_floor": 0.4
+   },
+   "at_referral_threshold": {
+    "threshold": 0.15,
+    "referred_fraction": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 0.0
+   },
+   "net_benefit": {
+    "net_benefit": 0.1503267973856209,
+    "treat_all": 0.1503267973856209,
+    "treat_none": 0.0,
+    "threshold": 0.15
+   },
+   "worst_subgroup": {
+    "group": "age_band=child_lt15",
+    "sensitivity": 0.9230769230769231
+   },
+   "gate_components": {
+    "operating_point": false,
+    "calibration": true,
+    "net_benefit": false,
+    "subgroup": true
+   },
+   "gate_fraction": 0.5,
+   "acceptable": false,
+   "bootstrap_95": {
+    "auroc": {
+     "estimate": 0.5951538461538461,
+     "low": 0.508456271793422,
+     "high": 0.6835686067019399,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "specificity_at_sens_0_85": {
+     "estimate": 0.03076923076923077,
+     "low": 0.0078125,
+     "high": 0.36220472440944884,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "ece": {
+     "estimate": 0.03850434330576176,
+     "low": 0.011997268557552274,
+     "high": 0.10733720846398151,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "brier": {
+     "estimate": 0.19692149364228656,
+     "low": 0.16820215483461107,
+     "high": 0.22491609367786633,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "net_benefit_gain_over_best_default": {
+     "estimate": 0.0,
+     "low": -2.7755575615628914e-17,
+     "high": 2.7755575615628914e-17,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    }
+   },
+   "secondary_strict_majority_label": {
+    "n_bacterial": 24,
+    "auroc": 0.5357905982905983
+   },
+   "mean_probability": 0.2853574901589086,
+   "subgroup_auroc": {
+    "sex": {
+     "F": 0.6096153846153847,
+     "M": 0.580952380952381
+    },
+    "age_band": {
+     "adult_ge15": 0.6131586131586132,
+     "child_lt15": 0.652605459057072
+    },
+    "device": {
+     "samsung": 0.6352678571428572,
+     "unknown": 0.67,
+     "xiaomi": 0.5588709677419355
+    }
+   }
+  },
+  "symptoms": {
+   "run": {
+    "wall_seconds": 0.16564551700139418,
+    "timed_out": false,
+    "exit_code": 0
+   },
+   "time_limit_seconds": 420.0,
+   "valid": true,
+   "auroc": 0.585076923076923,
+   "quality": 0.1701538461538461,
+   "brier": 0.1967943176505345,
+   "ece": 0.025668755958878256,
+   "calibration": {
+    "slope": 1.0354035972784608,
+    "intercept": 0.033692074418042034,
+    "calibration_in_the_large": 0.0005894895419304461,
+    "n": 180
+   },
+   "operating_point": {
+    "sensitivity": 0.88,
+    "specificity": 0.13076923076923078,
+    "threshold": 0.2213481887503396,
+    "sensitivity_target": 0.85,
+    "specificity_floor": 0.4
+   },
+   "at_referral_threshold": {
+    "threshold": 0.15,
+    "referred_fraction": 0.9722222222222222,
+    "sensitivity": 0.98,
+    "specificity": 0.03076923076923077
+   },
+   "net_benefit": {
+    "net_benefit": 0.1486928104575163,
+    "treat_all": 0.1503267973856209,
+    "treat_none": 0.0,
+    "threshold": 0.15
+   },
+   "worst_subgroup": {
+    "group": "device=samsung",
+    "sensitivity": 0.7857142857142857
+   },
+   "gate_components": {
+    "operating_point": false,
+    "calibration": true,
+    "net_benefit": false,
+    "subgroup": true
+   },
+   "gate_fraction": 0.5,
+   "acceptable": false,
+   "bootstrap_95": {
+    "auroc": {
+     "estimate": 0.585076923076923,
+     "low": 0.4847347165959362,
+     "high": 0.6838898996136149,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "specificity_at_sens_0_85": {
+     "estimate": 0.13076923076923078,
+     "low": 0.07258064516129033,
+     "high": 0.2782173456898058,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "ece": {
+     "estimate": 0.025668755958878256,
+     "low": 0.014906560164121497,
+     "high": 0.10013891976821922,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "brier": {
+     "estimate": 0.1967943176505345,
+     "low": 0.1678303204945759,
+     "high": 0.22617076211646545,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "net_benefit_gain_over_best_default": {
+     "estimate": -0.0016339869281045971,
+     "low": -0.013725490196078438,
+     "high": 0.006862745098039219,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    }
+   },
+   "secondary_strict_majority_label": {
+    "n_bacterial": 24,
+    "auroc": 0.5022702991452992
+   },
+   "mean_probability": 0.2776614286735568,
+   "subgroup_auroc": {
+    "sex": {
+     "F": 0.5653846153846154,
+     "M": 0.5851190476190476
+    },
+    "age_band": {
+     "adult_ge15": 0.552006552006552,
+     "child_lt15": 0.6898263027295285
+    },
+    "device": {
+     "samsung": 0.5169642857142858,
+     "unknown": 0.78,
+     "xiaomi": 0.5435483870967742
+    }
+   }
+  },
+  "image": {
+   "run": {
+    "wall_seconds": 40.73348174599232,
+    "timed_out": false,
+    "exit_code": 0
+   },
+   "time_limit_seconds": 420.0,
+   "valid": true,
+   "auroc": 0.6573846153846153,
+   "quality": 0.3147692307692307,
+   "brier": 0.19059337973445736,
+   "ece": 0.040891899807396624,
+   "calibration": {
+    "slope": 0.8269679691660753,
+    "intercept": -0.13561932055777984,
+    "calibration_in_the_large": 0.018547830895209942,
+    "n": 180
+   },
+   "operating_point": {
+    "sensitivity": 0.86,
+    "specificity": 0.33076923076923076,
+    "threshold": 0.19207588266064754,
+    "sensitivity_target": 0.85,
+    "specificity_floor": 0.4
+   },
+   "at_referral_threshold": {
+    "threshold": 0.15,
+    "referred_fraction": 0.8222222222222222,
+    "sensitivity": 0.94,
+    "specificity": 0.2230769230769231
+   },
+   "net_benefit": {
+    "net_benefit": 0.16209150326797386,
+    "treat_all": 0.1503267973856209,
+    "treat_none": 0.0,
+    "threshold": 0.15
+   },
+   "worst_subgroup": {
+    "group": "device=samsung",
+    "sensitivity": 0.7142857142857143
+   },
+   "gate_components": {
+    "operating_point": false,
+    "calibration": true,
+    "net_benefit": true,
+    "subgroup": true
+   },
+   "gate_fraction": 0.75,
+   "acceptable": false,
+   "bootstrap_95": {
+    "auroc": {
+     "estimate": 0.6573846153846153,
+     "low": 0.5668044130927475,
+     "high": 0.7456698029681714,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "specificity_at_sens_0_85": {
+     "estimate": 0.33076923076923076,
+     "low": 0.23330000000000006,
+     "high": 0.5220670544337138,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "ece": {
+     "estimate": 0.040891899807396624,
+     "low": 0.03703888223076256,
+     "high": 0.1200807889505764,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "brier": {
+     "estimate": 0.19059337973445736,
+     "low": 0.15998843695448345,
+     "high": 0.22131946369426786,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "net_benefit_gain_over_best_default": {
+     "estimate": 0.011764705882352955,
+     "low": -0.01242647058823529,
+     "high": 0.03169934640522874,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    }
+   },
+   "secondary_strict_majority_label": {
+    "n_bacterial": 24,
+    "auroc": 0.5528846153846154
+   },
+   "mean_probability": 0.2743904298595043,
+   "subgroup_auroc": {
+    "sex": {
+     "F": 0.666025641025641,
+     "M": 0.6589285714285714
+    },
+    "age_band": {
+     "adult_ge15": 0.6835926835926835,
+     "child_lt15": 0.5880893300248139
+    },
+    "device": {
+     "samsung": 0.6366071428571428,
+     "unknown": 0.66,
+     "xiaomi": 0.5145161290322581
+    }
+   }
+  },
+  "combined": {
+   "run": {
+    "wall_seconds": 35.30504810099956,
+    "timed_out": false,
+    "exit_code": 0
+   },
+   "time_limit_seconds": 420.0,
+   "valid": true,
+   "auroc": 0.6736923076923077,
+   "quality": 0.3473846153846154,
+   "brier": 0.18890755668315948,
+   "ece": 0.07003036459256336,
+   "calibration": {
+    "slope": 1.5544768596367635,
+    "intercept": 0.48712683796304124,
+    "calibration_in_the_large": -0.008844588066320052,
+    "n": 180
+   },
+   "operating_point": {
+    "sensitivity": 0.86,
+    "specificity": 0.3923076923076923,
+    "threshold": 0.2428816035574753,
+    "sensitivity_target": 0.85,
+    "specificity_floor": 0.4
+   },
+   "at_referral_threshold": {
+    "threshold": 0.15,
+    "referred_fraction": 0.9666666666666667,
+    "sensitivity": 1.0,
+    "specificity": 0.046153846153846156
+   },
+   "net_benefit": {
+    "net_benefit": 0.15620915032679739,
+    "treat_all": 0.1503267973856209,
+    "treat_none": 0.0,
+    "threshold": 0.15
+   },
+   "worst_subgroup": {
+    "group": "device=samsung",
+    "sensitivity": 0.6428571428571429
+   },
+   "gate_components": {
+    "operating_point": false,
+    "calibration": true,
+    "net_benefit": true,
+    "subgroup": false
+   },
+   "gate_fraction": 0.5,
+   "acceptable": false,
+   "bootstrap_95": {
+    "auroc": {
+     "estimate": 0.6736923076923077,
+     "low": 0.5824978462909524,
+     "high": 0.758455516806905,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "specificity_at_sens_0_85": {
+     "estimate": 0.3923076923076923,
+     "low": 0.11851851851851852,
+     "high": 0.5794030112044817,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "ece": {
+     "estimate": 0.07003036459256336,
+     "low": 0.034821849006655754,
+     "high": 0.1348025910532568,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "brier": {
+     "estimate": 0.18890755668315948,
+     "low": 0.1604291486658675,
+     "high": 0.2169052380354329,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "net_benefit_gain_over_best_default": {
+     "estimate": 0.0058823529411764774,
+     "low": 0.0019607843137254832,
+     "high": 0.010784313725490213,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    }
+   },
+   "secondary_strict_majority_label": {
+    "n_bacterial": 24,
+    "auroc": 0.5534188034188035
+   },
+   "mean_probability": 0.2795019942369799,
+   "subgroup_auroc": {
+    "sex": {
+     "F": 0.6525641025641026,
+     "M": 0.6827380952380953
+    },
+    "age_band": {
+     "adult_ge15": 0.6784056784056784,
+     "child_lt15": 0.6774193548387096
+    },
+    "device": {
+     "samsung": 0.5848214285714286,
+     "unknown": 0.74,
+     "xiaomi": 0.5330645161290323
+    }
+   }
+  },
+  "constant": {
+   "run": {
+    "wall_seconds": 0.33054590900428593,
+    "timed_out": false,
+    "exit_code": 0
+   },
+   "time_limit_seconds": 420.0,
+   "valid": true,
+   "auroc": 0.5,
+   "quality": 0.0,
+   "brier": 0.20061949049051908,
+   "ece": 0.0014854426619131944,
+   "calibration": {
+    "slope": null,
+    "intercept": null,
+    "calibration_in_the_large": 0.007416597655049547,
+    "n": 180
+   },
+   "operating_point": {
+    "sensitivity": 1.0,
+    "specificity": 0.0,
+    "threshold": 0.27629233511586454,
+    "sensitivity_target": 0.85,
+    "specificity_floor": 0.4
+   },
+   "at_referral_threshold": {
+    "threshold": 0.15,
+    "referred_fraction": 1.0,
+    "sensitivity": 1.0,
+    "specificity": 0.0
+   },
+   "net_benefit": {
+    "net_benefit": 0.1503267973856209,
+    "treat_all": 0.1503267973856209,
+    "treat_none": 0.0,
+    "threshold": 0.15
+   },
+   "worst_subgroup": {
+    "group": "sex=F",
+    "sensitivity": 1.0
+   },
+   "gate_components": {
+    "operating_point": false,
+    "calibration": false,
+    "net_benefit": false,
+    "subgroup": true
+   },
+   "gate_fraction": 0.25,
+   "acceptable": false,
+   "bootstrap_95": {
+    "auroc": {
+     "estimate": 0.5,
+     "low": 0.5,
+     "high": 0.5,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "specificity_at_sens_0_85": {
+     "estimate": 0.0,
+     "low": 0.0,
+     "high": 0.0,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "ece": {
+     "estimate": 0.0014854426619131944,
+     "low": 0.0014854426619131944,
+     "high": 0.07629233511586458,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "brier": {
+     "estimate": 0.20061949049051908,
+     "low": 0.17079180183930107,
+     "high": 0.23044717914173718,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "net_benefit_gain_over_best_default": {
+     "estimate": 0.0,
+     "low": -2.7755575615628914e-17,
+     "high": 2.7755575615628914e-17,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    }
+   },
+   "secondary_strict_majority_label": {
+    "n_bacterial": 24,
+    "auroc": 0.5
+   },
+   "mean_probability": 0.2762923351158646,
+   "subgroup_auroc": {
+    "sex": {
+     "F": 0.5,
+     "M": 0.5
+    },
+    "age_band": {
+     "adult_ge15": 0.5,
+     "child_lt15": 0.5
+    },
+    "device": {
+     "samsung": 0.5,
+     "unknown": 0.5,
+     "xiaomi": 0.5
+    }
+   }
+  },
+  "overconfident": {
+   "run": {
+    "wall_seconds": 0.15112527698511258,
+    "timed_out": false,
+    "exit_code": 0
+   },
+   "time_limit_seconds": 420.0,
+   "valid": true,
+   "auroc": 0.585076923076923,
+   "quality": 0.1701538461538461,
+   "brier": 0.2989648586576639,
+   "ece": 0.3055186552527518,
+   "calibration": {
+    "slope": 0.17256726621307672,
+    "intercept": -0.9633270848957111,
+    "calibration_in_the_large": -1.3910421707446188,
+    "n": 180
+   },
+   "operating_point": {
+    "sensitivity": 0.88,
+    "specificity": 0.13076923076923078,
+    "threshold": 0.14561773849742968,
+    "sensitivity_target": 0.85,
+    "specificity_floor": 0.4
+   },
+   "at_referral_threshold": {
+    "threshold": 0.15,
+    "referred_fraction": 0.8666666666666667,
+    "sensitivity": 0.86,
+    "specificity": 0.13076923076923078
+   },
+   "net_benefit": {
+    "net_benefit": 0.12810457516339868,
+    "treat_all": 0.1503267973856209,
+    "treat_none": 0.0,
+    "threshold": 0.15
+   },
+   "worst_subgroup": {
+    "group": "device=samsung",
+    "sensitivity": 0.7857142857142857
+   },
+   "gate_components": {
+    "operating_point": false,
+    "calibration": false,
+    "net_benefit": false,
+    "subgroup": true
+   },
+   "gate_fraction": 0.25,
+   "acceptable": false,
+   "bootstrap_95": {
+    "auroc": {
+     "estimate": 0.585076923076923,
+     "low": 0.4847347165959362,
+     "high": 0.6838898996136149,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "specificity_at_sens_0_85": {
+     "estimate": 0.13076923076923078,
+     "low": 0.07258064516129033,
+     "high": 0.2782173456898058,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "ece": {
+     "estimate": 0.3055186552527518,
+     "low": 0.24841071922132368,
+     "high": 0.3767469407875091,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "brier": {
+     "estimate": 0.2989648586576639,
+     "low": 0.2579952316540078,
+     "high": 0.3416705577595588,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "net_benefit_gain_over_best_default": {
+     "estimate": -0.022222222222222227,
+     "low": -0.054583333333333345,
+     "high": 0.0058823529411764774,
+     "confidence": 0.95,
+     "n": 180,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    }
+   },
+   "secondary_strict_majority_label": {
+    "n_bacterial": 24,
+    "auroc": 0.5022702991452992
+   },
+   "mean_probability": 0.5035726777474187,
+   "subgroup_auroc": {
+    "sex": {
+     "F": 0.5653846153846154,
+     "M": 0.5851190476190476
+    },
+    "age_band": {
+     "adult_ge15": 0.552006552006552,
+     "child_lt15": 0.6898263027295285
+    },
+    "device": {
+     "samsung": 0.5169642857142858,
+     "unknown": 0.78,
+     "xiaomi": 0.5435483870967742
+    }
+   }
+  },
+  "slow": {
+   "run": {
+    "wall_seconds": 20.08608873200137,
+    "timed_out": true,
+    "exit_code": null
+   },
+   "time_limit_seconds": 20.0,
+   "valid": false
+  }
+ }
+}

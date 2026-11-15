@@ -1,0 +1,121 @@
+{
+ "task_dir": "/home/jkwei/data/vals-suite/triage_pharyngitis/dist/triage-pharyngitis-0001",
+ "results": {
+  "oracle_lookup": {
+   "reward": {
+    "reward": 1.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 1.0,
+    "quality": 1.0,
+    "vs_specialist": 1.0
+   },
+   "failure": null,
+   "seconds": 0.12,
+   "auroc": 1.0,
+   "gate_fraction": 1.0,
+   "gate_components": {
+    "operating_point": true,
+    "calibration": true,
+    "net_benefit": true,
+    "subgroup": true
+   }
+  },
+  "solution_combined": {
+   "reward": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.3473846153846154,
+    "vs_specialist": 1.0
+   },
+   "failure": "below_clinical_threshold: gate components not met: operating_point, subgroup",
+   "seconds": 18.17,
+   "auroc": 0.6736923076923077,
+   "gate_fraction": 0.5,
+   "gate_components": {
+    "operating_point": false,
+    "calibration": true,
+    "net_benefit": true,
+    "subgroup": false
+   }
+  },
+  "constant_prevalence": {
+   "reward": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.0,
+    "vs_specialist": 0.0
+   },
+   "failure": "below_clinical_threshold: gate components not met: operating_point, calibration, net_benefit",
+   "seconds": 0.12,
+   "auroc": 0.5,
+   "gate_fraction": 0.25,
+   "gate_components": {
+    "operating_point": false,
+    "calibration": false,
+    "net_benefit": false,
+    "subgroup": true
+   }
+  },
+  "overconfident": {
+   "reward": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.1701538461538461,
+    "vs_specialist": 0.48981399468556225
+   },
+   "failure": "below_clinical_threshold: gate components not met: operating_point, calibration, net_benefit",
+   "seconds": 0.12,
+   "auroc": 0.585076923076923,
+   "gate_fraction": 0.25,
+   "gate_components": {
+    "operating_point": false,
+    "calibration": false,
+    "net_benefit": false,
+    "subgroup": true
+   }
+  },
+  "too_slow": {
+   "reward": {
+    "reward": 0.0,
+    "ran": 0.0,
+    "valid": 0.0,
+    "within_time": 0.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.0,
+    "vs_specialist": 0.0
+   },
+   "failure": "timeout",
+   "seconds": 30.01,
+   "auroc": null,
+   "gate_fraction": null,
+   "gate_components": null
+  },
+  "invalid_nan": {
+   "reward": {
+    "reward": 0.0,
+    "ran": 1.0,
+    "valid": 0.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.0,
+    "vs_specialist": 0.0
+   },
+   "failure": "invalid: predictions.json rejected: non_finite_number",
+   "seconds": 0.01,
+   "auroc": null,
+   "gate_fraction": null,
+   "gate_components": null
+  }
+ }
+}

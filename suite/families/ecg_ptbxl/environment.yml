@@ -1,0 +1,10 @@
+# Project environment for the ecg_ptbxl family (data checks, split, grader, comparators). Create with:
+#   ~/miniconda3/bin/conda env create -f suite/families/ecg_ptbxl/environment.yml
+name: vals-suite-ecg_ptbxl
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

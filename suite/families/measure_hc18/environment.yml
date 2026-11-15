@@ -1,0 +1,12 @@
+# Project environment for the measure_hc18 family. Create with:
+#   ~/miniconda3/bin/conda create -y -n vals-suite-measure_hc18 --override-channels -c conda-forge python=3.12 pip
+#   ~/miniconda3/envs/vals-suite-measure_hc18/bin/pip install -r suite/families/measure_hc18/requirements.txt
+# (`conda env create` does not accept --override-channels.)
+name: vals-suite-measure_hc18
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

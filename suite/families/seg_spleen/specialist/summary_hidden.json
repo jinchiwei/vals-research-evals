@@ -1,0 +1,19 @@
+{
+ "tool": "TotalSegmentator 2.18.0, task total, --roi_subset spleen, full (1.5 mm) model",
+ "device_for_masks": "GPU (RTX 3060)",
+ "n": 6,
+ "mean_dice": 0.9386868543844716,
+ "min_dice": 0.8923533531196852,
+ "median_dice": 0.9459278894260053,
+ "mean_nsd_2mm": 0.9172674672550558,
+ "mean_hd95_mm": 3.9386800368604296,
+ "median_hd95_mm": 3.122546595750862,
+ "mean_abs_volume_rel_error": 0.04341386900158913,
+ "max_abs_volume_rel_error": 0.08616396740652132,
+ "mean_abs_volume_error_ml": 8.363161434241867,
+ "acceptable_fraction": 0.5,
+ "wall_sec_median": 59.379999999999995,
+ "wall_sec_max": 88.55,
+ "cpu4_full_wall_sec_median": 32.17,
+ "cpu4_fast_wall_sec_median": 52.45
+}

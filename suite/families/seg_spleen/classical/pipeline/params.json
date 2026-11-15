@@ -1,0 +1,11 @@
+{
+ "hu_lo": -61.0,
+ "hu_hi": 189.0,
+ "min_core_ml": 5.0,
+ "grow_iters": 6,
+ "erode_mm": 8.0,
+ "prior_floor": 0.25,
+ "win_below": 40,
+ "win_above": 40,
+ "score": "sum"
+}

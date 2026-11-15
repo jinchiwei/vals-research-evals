@@ -1,0 +1,10 @@
+# Project environment for the reg_resect family. Create with:
+#   ~/miniconda3/bin/conda create -y -n vals-suite-reg_resect --override-channels -c conda-forge python=3.12 pip && conda run -n vals-suite-reg_resect pip install -r suite/families/reg_resect/requirements.txt  (conda env create rejects --override-channels; equivalent:  conda env create -f suite/families/reg_resect/environment.yml
+name: vals-suite-reg_resect
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

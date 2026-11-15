@@ -1,0 +1,26 @@
+[
+  {
+    "gene": "MYD88",
+    "strict_primary_status": "response_format_error",
+    "fenced_block_count": 1,
+    "required_schema_block_count": 1,
+    "interpretation": "Post-hoc structural diagnostic only; no text or individual predictions exported",
+    "diagnostic_only_metrics": {
+      "auroc": 0.4,
+      "average_precision": 0.7388461538461539,
+      "brier": 0.18815384615384617
+    }
+  },
+  {
+    "gene": "CD79B",
+    "strict_primary_status": "response_format_error",
+    "fenced_block_count": 1,
+    "required_schema_block_count": 1,
+    "interpretation": "Post-hoc structural diagnostic only; no text or individual predictions exported",
+    "diagnostic_only_metrics": {
+      "auroc": 0.4027777777777778,
+      "average_precision": 0.3326048951048951,
+      "brier": 0.21656923076923076
+    }
+  }
+]

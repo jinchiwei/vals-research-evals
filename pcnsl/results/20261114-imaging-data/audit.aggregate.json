@@ -1,0 +1,209 @@
+{
+  "scope": "Full released image/header and connected-component-mask voxel audit; no patient rows exported",
+  "counts": {
+    "other_image": 900,
+    "ADC": 300,
+    "mask": 300
+  },
+  "spatial_temporal_units": {
+    "other_image": {
+      "mm/sec": 600,
+      "unknown/unknown": 300
+    },
+    "ADC": {
+      "mm/sec": 300
+    },
+    "mask": {
+      "unknown/unknown": 300
+    }
+  },
+  "absolute_affine_determinant_in_header_coordinate_units": {
+    "other_image": {
+      "min": 0.12317578921627578,
+      "median": 0.34078572764058834,
+      "max": 7.153229263034856
+    },
+    "ADC": {
+      "min": 0.12317578921706572,
+      "median": 0.34078572764058834,
+      "max": 7.153229077734359
+    },
+    "mask": {
+      "min": 0.12317578921627578,
+      "median": 0.34078572764058834,
+      "max": 7.153229263034856
+    }
+  },
+  "compressed_file_size_bytes": {
+    "other_image": {
+      "min": 472210.0,
+      "median": 11923558.5,
+      "max": 49955031.0
+    },
+    "ADC": {
+      "min": 1158242.0,
+      "median": 15016485.5,
+      "max": 44542675.0
+    },
+    "mask": {
+      "min": 28744.0,
+      "median": 633040.0,
+      "max": 2037054.0
+    }
+  },
+  "dimension_ranges": {
+    "other_image": {
+      "min": [
+        118,
+        55,
+        22
+      ],
+      "max": [
+        512,
+        512,
+        512
+      ]
+    },
+    "ADC": {
+      "min": [
+        118,
+        55,
+        22
+      ],
+      "max": [
+        512,
+        512,
+        512
+      ]
+    },
+    "mask": {
+      "min": [
+        118,
+        55,
+        22
+      ],
+      "max": [
+        512,
+        512,
+        512
+      ]
+    }
+  },
+  "adc_scaling": [
+    {
+      "effective_intercept": 0.0,
+      "effective_slope": 1.0,
+      "stored_intercept": 0.0,
+      "stored_slope": 1.0,
+      "files": 300
+    }
+  ],
+  "mask_label_audit": {
+    "finite_masks": 300,
+    "nonnegative_integer_masks": 300,
+    "binary_masks": 157,
+    "instance_masks_gt1": 143,
+    "empty_masks": 0,
+    "positive_labels_contiguous_from_one": 300
+  },
+  "mask_positive_label_count": {
+    "min": 1.0,
+    "median": 1.0,
+    "max": 52.0
+  },
+  "adc_dictionary_definitions": [
+    {
+      "file type": "Raw Diffusion",
+      "directory": "sub-XXXX/ses-YYYY/dwi",
+      "filename pattern": "sub-XXXX_ses-YYYY_DWI_ADC.nii.gz",
+      "description": "Apparent Diffusion Coefficient (ADC) map derived from diffusion-weighted imaging in native acquisition space"
+    },
+    {
+      "file type": "Skullstripped",
+      "directory": "derivatives/pyalfe/sub-XXXX/ses-YYYY/skullstripped/lesions_FLAIR_space",
+      "filename pattern": "sub-XXXX_ses-YYYY_ADC_to_FLAIR_skullstripped.nii.gz",
+      "description": "ADC map coregistered to FLAIR space and skull-stripped"
+    },
+    {
+      "file type": "Skullstripped",
+      "directory": "derivatives/pyalfe/sub-XXXX/ses-YYYY/skullstripped/lesions_T1Post_space",
+      "filename pattern": "sub-XXXX_ses-YYYY_ADC_to_T1Post_skullstripped.nii.gz",
+      "description": "ADC map coregistered to T1Post space and skull-stripped"
+    },
+    {
+      "file type": "SummaryLesions CSV - relative_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "Mean lesion ADC value relative to normal-appearing white matter"
+    },
+    {
+      "file type": "SummaryLesions CSV - relative_min_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "Minimum lesion ADC value relative to normal-appearing white matter"
+    },
+    {
+      "file type": "SummaryLesions CSV - min_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "Minimum ADC value within the lesion (raw units)"
+    },
+    {
+      "file type": "SummaryLesions CSV - mean_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "Mean ADC value within the lesion (raw units)"
+    },
+    {
+      "file type": "SummaryLesions CSV - median_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "Median ADC value within the lesion (raw units)"
+    },
+    {
+      "file type": "SummaryLesions CSV - five_percentile_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "5th percentile ADC value within the lesion (raw units)"
+    },
+    {
+      "file type": "SummaryLesions CSV - ninety_five_percentile_ADC_signal",
+      "directory": "statistics/lesions_SummaryLesions",
+      "filename pattern": "",
+      "description": "95th percentile ADC value within the lesion (raw units)"
+    }
+  ],
+  "development_selection": {
+    "seed": 20261114,
+    "patients": 3,
+    "eligible_patients": 150,
+    "selection_before_agent_results": true,
+    "manifest_sha256": "824b40597664f4f776e1977020dda0b08b1334bfb71a426574be9d7b12f32042",
+    "reference_spaces_per_patient": 2,
+    "images_per_reference_space": 4
+  },
+  "tools": {
+    "nibabel": true,
+    "SimpleITK": true,
+    "radiomics": false,
+    "nnunetv2": false
+  },
+  "physical_adc_units_verified": false,
+  "preprocessing_mask_independence_verified": false,
+  "audit_execution": {
+    "slurm_job_id": 3068002,
+    "state": "COMPLETED",
+    "exit_code": "0:0",
+    "elapsed_seconds": 233,
+    "audit_script_sha256": "a9a4ab047fe9404025ecf0892429c1e3b211b3a06b1000ea371c112b5f8211a9"
+  },
+  "interpretation": {
+    "mask_header_physical_units_verified": false,
+    "volume_mm3_requires_verified_matching_adc_reference_units": true,
+    "physical_adc_units_verified": false,
+    "adc_report_unit": "image-native raw units",
+    "unknown_mask_units_must_not_be_assumed_mm": true,
+    "upstream_pyalfe_commit": "2e1a8ff6ebb6e1d3687aa98d0492a7a12beab52e",
+    "release_preprocessing_version_verified": false
+  }
+}

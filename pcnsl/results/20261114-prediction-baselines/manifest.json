@@ -1,0 +1,21 @@
+{
+  "source": "public hosted UCSF-PCNSL v1.0 only",
+  "dataset_sha256": "67a103774a314dc0de792b6e7ceec419d3fcb963a6237b17cb9322c705a90f62",
+  "evaluator_sha256": "2b19cbfb7f34c2422dedd86750429217fffbfd0bd434f2d402c5afdaf759f6ab",
+  "runner_sha256": "51f1a1bd38a1315086ff58b1ebf204999a71d4a481a84d880760ea105d154f33",
+  "runs": [
+    {
+      "feature_group": "all",
+      "genes": 10,
+      "elapsed_seconds": 6.769313480006531,
+      "report_sha256": "1a0b48efb9a6881be0309938816ce9fcff5146376510192cc2e7ca9ccf269066"
+    },
+    {
+      "feature_group": "clinical",
+      "genes": 10,
+      "elapsed_seconds": 2.1238916690927,
+      "report_sha256": "c61a86aa13a7f3173014099f4a3c3d96c235e0fa250045159761d70d929af1d8"
+    }
+  ],
+  "frontier_calls": 0
+}

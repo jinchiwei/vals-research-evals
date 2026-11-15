@@ -1,0 +1,11 @@
+# Project environment for the healthcare suite core (suite/). Create with:
+#   ~/miniconda3/bin/conda env create -f suite/environment.yml  (channels pinned below; nodefaults avoids the defaults-channel terms prompt)
+name: vals-suite
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

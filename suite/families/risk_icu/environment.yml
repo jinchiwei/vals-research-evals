@@ -1,0 +1,10 @@
+# Project environment for the risk_icu family. Create with:
+#   ~/miniconda3/bin/conda env create --override-channels -c conda-forge -f suite/families/risk_icu/environment.yml
+name: vals-suite-risk_icu
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

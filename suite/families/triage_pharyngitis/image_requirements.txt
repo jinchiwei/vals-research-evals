@@ -1,0 +1,11 @@
+# Pins installed into /opt/benchmark-venv in the agent and verifier images (build tier), read by spec.py
+# through suite.core.export.family_packages. torch/torchvision are the CPU wheels from the index below.
+# The verifier imports suite.core.geometry/metrics, which need numpy and scipy only (nibabel lazily, unused).
+# extra-index-url: https://download.pytorch.org/whl/cpu
+numpy==2.1.3
+scipy==1.14.1
+pandas==2.2.3
+scikit-learn==1.5.2
+pillow==11.0.0
+torch==2.5.1+cpu
+torchvision==0.20.1+cpu

@@ -1,18 +1,46 @@
-# PCNSL prediction and research-agent eval prototypes for Vals
+# Quantitative brain-imaging research-agent evals for Vals
+
+> **Submission placeholder — Jin must write the opening overview paragraph himself.**
+> The official track requires an entirely human-written opening paragraph.
+> The technical documentation below is preparation material, not that paragraph.
 
 Research-agent evaluation preparation for the
 [Vals AI hackathon](https://www.vals.ai/hackathon), November 14–15, 2026.
 The target is **Build Your Own Eval**, which requires a benchmark on Valkyrie
 for a task frontier models still get wrong. These are preparation prototypes;
-the public event page does not establish whether pre-event code may be submitted.
+the [exact track instructions](docs/research/hackathon-prompt.md) are saved here.
+The assigned Valkyrie organization is `hackathon-neuronetwork-b91c517178`.
+Hosted authentication and execution have not yet been verified.
 
-## Clarified primary objective: predict genetic outcomes
+The [current implementation plan](docs/superpowers/plans/2026-11-14-real-prediction.md)
+prioritizes a real prediction workflow packaged as Harbor agent tasks, with direct
+frontier-model prediction as a supporting comparison. Judging covers novelty,
+execution, difficulty, importance, and clear presentation of measured results.
+
+## Current scope: execute the brain-imaging workflow
+
+The main benchmark now tests frontier **agents** doing quantitative imaging work:
+produce a lesion mask, measure lesion burden and diffusion correctly, and carry
+those measurements through a reproducible workflow. Standard metrics such as Dice,
+volume error and ADC error score the requested artifacts. Running a segmentation
+network alone would evaluate that network; this suite evaluates the agent's use of
+the available data and tools. See [the revised scope](docs/research/imaging-suite-scope.md).
+
+Genetic prediction remains a separate research track. The public-release pilot
+has not established a reliable frontier-specific predictive gap. IRF4 currently
+has only **two qualifying positives** under the audited endpoint, and its original
+label definition is being reconciled before any IRF4-centered evaluation.
+
+## Completed genetic-prediction pilot and its limits
 
 Jin's original question is whether frontier models can predict held-out mutation
 status from the available imaging, PyALFE/radiomics features and clinical variables,
 compared with his actual TabPFN-based workflow. The twelve all-pass local attempts
 below tested highly scaffolded synthetic code repair. **They did not test this
-prediction question, and no frontier mutation-prediction result has been obtained.**
+prediction question.** A subsequent real direct-prediction pilot is now complete:
+see the [Versa results](pcnsl/results/20261114-versa-pilot/REPORT.md),
+[cached TabPFN comparison](pcnsl/results/20261114-tabpfn-pilot/REPORT.md), and
+[fixed conventional controls](pcnsl/results/20261114-prediction-baselines/REPORT.md).
 The ten-feature logistic-regression baseline also does not reproduce the full
 historical feature pipeline.
 
@@ -29,8 +57,11 @@ Poor held-out performance is a valid measured outcome. A specific frontier
 capability gap needs comparison with attainable performance and uncertainty;
 near-chance results across all systems do not establish bad genetic labels or
 prove the absence of biological signal. Existing repair tasks remain controls.
-Versa/`claudev` is available on SCS and FAC; its current live model catalog and
-prediction adapter still need validation before a new model comparison.
+Versa routes were checked with four synthetic health calls; four real requests
+then ran on SCS. GPT-5.2 returned valid probability objects; Opus 5.5's responses
+failed the frozen format rule but contained individually valid JSON blocks,
+scored only as post-hoc diagnostics. Single-fold scores are not model rankings.
+No real agent-with-tools prediction task has yet run on Valkyrie.
 
 ## Current PCNSL benchmark suite
 

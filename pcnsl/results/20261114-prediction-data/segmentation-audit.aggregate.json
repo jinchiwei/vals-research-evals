@@ -1,0 +1,56 @@
+{
+  "scope": "Read-only release inventory, documentation and NIfTI-header audit; no segmentation inference",
+  "patients": 150,
+  "masks": {
+    "FLAIR": 150,
+    "T1Post": 150
+  },
+  "mask_patterns": [
+    "sub-XXXX_ses-YYYY_FLAIR_abnormal_seg_comp.nii.gz",
+    "sub-XXXX_ses-YYYY_T1Post_abnormal_seg_comp.nii.gz"
+  ],
+  "images": {
+    "reference_spaces": [
+      "FLAIR",
+      "T1Post"
+    ],
+    "sequences_per_space": [
+      "T1",
+      "T1Post",
+      "FLAIR",
+      "ADC"
+    ],
+    "per_sequence_space": 150,
+    "total": 1200
+  },
+  "installed_in_neuronetwork_environment": {
+    "nibabel": true,
+    "SimpleITK": true,
+    "radiomics": false,
+    "nnunetv2": false
+  },
+  "archive_readme_count": 0,
+  "mask_dictionary_semantics": "Connected-component labels1-N denote distinct lesions in the respective native reference spaces.",
+  "distinct_vs_resampled_target_definition_verified": false,
+  "preprocessing_independent_of_lesion_masks_verified": false,
+  "candidate_model_training_overlap_verified": false,
+  "sources": [
+    "https://registry.opendata.aws/ucsf-pcnsl/",
+    "https://github.com/rauschecker-sugrue-labs/UCSF-PCNSL",
+    "hosted release data_dictionary_imaging.csv"
+  ],
+  "geometry_audit_status": "complete",
+  "geometry": {
+    "patients": 150,
+    "FLAIR_masks": 150,
+    "T1Post_masks": 150,
+    "pairs_checked": 1200,
+    "shape_mismatch": 0,
+    "affine_mismatch": 0,
+    "nonfinite_affine": 0,
+    "unexpected_sequence_count": 0,
+    "affine_rtol": 1e-05,
+    "affine_atol": 0.0001,
+    "voxel_values_read": false
+  }
+}

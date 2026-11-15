@@ -1,0 +1,11 @@
+# Project environment for the triage_pharyngitis family (data checks, split, grader, comparators). Create with:
+#   ~/miniconda3/bin/conda env create -f suite/families/triage_pharyngitis/environment.yml
+name: vals-suite-triage_pharyngitis
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.12
+  - pip
+  - pip:
+      - -r requirements.txt

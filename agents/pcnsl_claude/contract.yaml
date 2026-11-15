@@ -1,0 +1,47 @@
+# Single-attempt Claude Code harness for the PCNSL tasks. See docs/research/pcnsl-agent.md.
+# Push without --name: run_cmd calls the wrapper at /bundle/pcnsl_claude/.
+name: pcnsl_claude
+
+# Verifies the runtime baked into the task image (agents/pcnsl_claude/image). Installs nothing.
+install_cmd: /opt/benchmark-venv/bin/python -I run_agent.py check
+install_egress: []
+
+run_cmd: >-
+  /opt/benchmark-venv/bin/python -I /bundle/pcnsl_claude/run_agent.py run
+  "{problem_statement_path}" --task-id "{task_id}" --model "{model}"
+  --effort "{effort}" --max-budget-usd "{max_budget_usd}" --timeout-sec "{timeout_sec}"
+
+final_output: /logs/pcnsl-claude
+output_artifacts:
+  - path: pcnsl-claude/run.json
+    source: /logs/pcnsl-claude/run.json
+    required: false
+
+secrets:
+  ANTHROPIC_API_KEY: anthropic-api-key
+
+allow_provider_tools: false
+
+defaults:
+  model:
+    type: str
+    required: true
+    description: Anthropic model, for example anthropic/claude-opus-5-5
+
+kwargs:
+  effort:
+    type: str
+    required: false
+    default: high
+    choices: [low, medium, high, xhigh, max]
+    description: Claude Code --effort
+  max_budget_usd:
+    type: float
+    required: false
+    default: 5.0
+    description: Claude Code --max-budget-usd; the wrapper rejects values above 5
+  timeout_sec:
+    type: int
+    required: false
+    default: 1740
+    description: Wrapper wall-clock limit; must not exceed the task's 1800 s agent_timeout

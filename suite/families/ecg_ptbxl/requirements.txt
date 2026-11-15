@@ -1,0 +1,9 @@
+# Local (teal) environment. The task image pins are in image_requirements.txt (CPU torch only).
+numpy==2.1.3
+scipy==1.14.1
+pandas==2.2.3
+scikit-learn==1.5.2
+wfdb==4.1.2
+pytest==8.3.3
+# CUDA build for training the specialist on the shared RTX 3060; CPU inference is timed with torch threads capped.
+torch==2.5.1

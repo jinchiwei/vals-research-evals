@@ -1,0 +1,66 @@
+{
+ "oracle": {
+  "reward": {
+   "reward": 1.0,
+   "ran": 1.0,
+   "valid": 1.0,
+   "within_time": 1.0,
+   "clinically_acceptable": 1.0,
+   "quality": 1.0,
+   "vs_specialist": 1.0
+  },
+  "n_cases": 83,
+  "mae_mm": 0.0,
+  "n_invalid": 0,
+  "median_runtime_s": 0.021730338979978114,
+  "n_timed_out": 0
+ },
+ "pixels": {
+  "reward": {
+   "reward": 0.0,
+   "ran": 1.0,
+   "valid": 0.0,
+   "within_time": 1.0,
+   "clinically_acceptable": 0.0,
+   "quality": 0.0,
+   "vs_specialist": 0.0
+  },
+  "n_cases": 83,
+  "mae_mm": 181.91228915662649,
+  "n_invalid": 83,
+  "median_runtime_s": 0.02686755801551044,
+  "n_timed_out": 0
+ },
+ "constant": {
+  "reward": {
+   "reward": 0.3132530120481928,
+   "ran": 1.0,
+   "valid": 1.0,
+   "within_time": 1.0,
+   "clinically_acceptable": 0.3132530120481928,
+   "quality": 0.15699160277473528,
+   "vs_specialist": 0.21891053825149243
+  },
+  "n_cases": 83,
+  "mae_mm": 56.017228915662656,
+  "n_invalid": 0,
+  "median_runtime_s": 0.02135967498179525,
+  "n_timed_out": 0
+ },
+ "slow": {
+  "reward": {
+   "reward": 0.0,
+   "ran": 1.0,
+   "valid": 0.0,
+   "within_time": 0.0,
+   "clinically_acceptable": 0.0,
+   "quality": 0.0,
+   "vs_specialist": 0.0
+  },
+  "n_cases": 5,
+  "mae_mm": 174.036,
+  "n_invalid": 5,
+  "median_runtime_s": 10.010860393987969,
+  "n_timed_out": 5
+ }
+}
