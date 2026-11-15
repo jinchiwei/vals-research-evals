@@ -2,6 +2,7 @@
 title: "Clinical deliverables: coding agents against specialist systems"
 eyebrow: "VALS AI HACKATHON · BUILD YOUR OWN EVAL · 2026"
 subtitle: "Real medical tasks, clinical metrics, clinical time limits, a specialist on the same hidden cases"
+email: "mrjinch@gmail.com"
 name: "Jinchi Wei"
 org: "Vals AI hackathon · Build Your Own Eval track"
 date: "2026-11-15"
