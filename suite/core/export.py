@@ -226,11 +226,47 @@ def task_toml(spec, n_hidden):
     ]) + '\n'
 
 
+def session_minutes(spec):
+    """The agent session limit in minutes, from the same value task.toml writes as [agent] timeout_sec."""
+    return float(spec.agent_timeout_sec) / 60.0
+
+
+def pipeline_time_limit_text(spec):
+    """The grader's pipeline time limit, stated exactly as the grader applies it."""
+    if spec.grading == 'cohort':
+        text = f'{spec.time_limit_seconds:g} seconds of wall-clock time for the whole hidden set (one run)'
+        if spec.hard_kill_seconds and spec.hard_kill_seconds > spec.time_limit_seconds:
+            text += f'; the run is killed at {spec.hard_kill_seconds:g} seconds'
+        return text
+    return f'{spec.time_limit_seconds:g} seconds of wall-clock time per hidden case'
+
+
+def session_section(spec):
+    """Agent-facing statement of the session limit and of what is graded (top of instruction.md).
+
+    Added in the v3 export after pilot 1 (docs/research/suite/pilot1-results.md, "Our bugs" 1): the
+    instruction never stated the session limit or that the pipeline folder is graded as found.
+    """
+    seconds = float(spec.agent_timeout_sec)
+    return f"""## Session limit and what is graded (read first)
+
+- **Your session lasts at most {session_minutes(spec):g} minutes** ({seconds:g} seconds) of wall-clock
+  time. When the limit is reached the session is stopped, whether or not you have finished.
+- **What is graded is whatever is in `/workspace/output/pipeline/` when the session ends**, exactly as
+  it is at that moment. Nothing is finished, fixed or rerun for you afterwards. If `run.sh` is missing
+  or does not work at that moment, the score is 0.
+- We recommend putting a working `run.sh` in place early and improving it afterwards.
+- Separately, the grader limits your pipeline to **{pipeline_time_limit_text(spec)}**
+  (details under "What you must leave behind" below)."""
+
+
 def instruction(spec, n_hidden):
     if spec.grading == 'cohort':
         return _instruction_cohort(spec)
     hosts = ', '.join(spec.allowed_hosts) or 'none'
     return f"""# {spec.title}
+
+{session_section(spec)}
 
 {spec.readme_md.strip()}
 
@@ -283,6 +319,8 @@ def _instruction_cohort(spec):
         late = (f' A run that finishes after the limit but before {spec.hard_kill_seconds:g} s is graded but does'
                 f' not count as on time; at {spec.hard_kill_seconds:g} s it is killed.')
     return f"""# {spec.title}
+
+{session_section(spec)}
 
 {spec.readme_md.strip()}
 

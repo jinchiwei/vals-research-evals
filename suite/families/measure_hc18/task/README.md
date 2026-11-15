@@ -64,7 +64,8 @@ On each hidden image the grader compares your `hc_mm` with the sonographer's ref
 - **Quality**: the mean over images of `max(0, 1 - |error mm| / 7.26)`. This is 0.5 at the
   inter-observer mean absolute difference on this dataset (3.6 mm) and 0 at twice that.
 - **Validity**: every image needs exactly one finite `hc_mm` between 40 and 400 mm. A missing row,
-  NaN, or a value in pixels or centimetres makes that image invalid, and it then counts as a miss.
+  NaN, or a value in pixels or centimetres makes that image invalid. A single invalid image makes the
+  headline reward 0 (see below), not just one miss; in the reported quality it scores 0.
 - **Time**: each image must finish within the limit.
 
 The headline reward is the fraction of hidden images that are clinically acceptable. It is zero

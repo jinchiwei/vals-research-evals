@@ -65,7 +65,7 @@ Rules for the pipeline:
   pipeline reports about its own timing is ignored.
 - Keep `/workspace/output` under 500 MB in total.
 - You may put your own predictions for development cases in
-  `/workspace/output/dev_predictions/` for reference. They are not scored.
+  `/workspace/output/visible_predictions/` for reference. They are not scored.
 
 ## How it is scored
 

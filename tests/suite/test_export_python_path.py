@@ -18,7 +18,7 @@ def _spec(**kw):
     base = dict(packages=E.DEFAULT_PACKAGES, pip_extra_index_url=None, threads=None, cpus=4, family='x',
                 grading='per_case', allowed_hosts=('api.anthropic.com',), title='T', readme_md='R',
                 output_format_md='F', time_limit_seconds=60.0, memory_mb=4096, specialist_name='S',
-                cohort_size=None, hard_kill_seconds=None)
+                cohort_size=None, hard_kill_seconds=None, agent_timeout_sec=2700.0)
     base.update(kw)
     return types.SimpleNamespace(**base)
 

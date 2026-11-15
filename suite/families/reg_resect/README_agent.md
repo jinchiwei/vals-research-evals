@@ -80,7 +80,7 @@ Rules for the pipeline:
   scikit-learn) and files inside `pipeline/`. It must not use anything else you installed or downloaded.
 - It must finish each case within **120 seconds** of wall-clock time on 4 CPU cores. The grader's own
   clock is used, and over-time cases are killed and score as failures. Load and import time count.
-- Put any predictions you make on development cases in `/workspace/output/dev_predictions/` if you
+- Put any predictions you make on development cases in `/workspace/output/visible_predictions/` if you
   like; they are not scored.
 
 ## How it is scored

@@ -1,0 +1,2479 @@
+{
+ "schema": "suite-pilot-results/1",
+ "run_name": "20261114-pilot1",
+ "date": "2026-11-14",
+ "operator": "Claude Code subagent, model claude-opus-5-5 (Claude Opus 5.5)",
+ "evidence": "local bubblewrap pilot (scripts/run_suite_pilot.py); NOT a hosted Valkyrie run",
+ "design": {
+  "prespecified": true,
+  "tasks": {
+   "measure-hc18-0001": "/home/jkwei/data/vals-suite/measure_hc18/dist/measure-hc18-0001 (byte-identical copy of the worker export found in the coordinator scratchpad dist-hc18/measure-hc18-0001; diff -r clean)",
+   "reg-resect-build-0001": "/home/jkwei/data/vals-suite/reg_resect/dist/reg-resect-build-0001"
+  },
+  "tier": "build",
+  "models": [
+   "claude-opus-5-5",
+   "claude-sonnet-5-5"
+  ],
+  "backend": "Claude Code 2.1.325, --safe-mode, OAuth login, egress proxy (api.anthropic.com only)",
+  "effort": "high",
+  "attempts_per_task_model": 1,
+  "agent_time_limit_sec": 2700,
+  "budget_usd_cap": 5,
+  "max_concurrent_agents": 2,
+  "runs_total": 4,
+  "relaunches": 0,
+  "gap_rule": "fixed before any agent result was read: S = hidden cases the specialist passes; paired bootstrap (suite.core.metrics.paired_bootstrap_difference, np.mean, 2000 resamples, seed 20261114, 95% percentile) of agent minus specialist on the pass indicator (invalid/late = fail), quality, and raw error on valid cases. gap shown = agent fails >=1 case of S and the pass-difference interval lies below 0; no gap = agent passes all of S; otherwise not interpretable."
+ },
+ "pre_run_checks": {
+  "regrade_through_runner_grading_path": {
+   "method": "suite.pilot.pilot.grade() on a copy of the shipped solution/pipeline (shim + no-network pipeline sandbox + the task tests/grade.py); no model call",
+   "measure-hc18-0001": {
+    "pipeline": "solution/ (classical ellipse fit)",
+    "reward": 0.7590361445783133,
+    "quality": 0.4368880480600088,
+    "mae_mm": 13.737,
+    "documented": "classical reward 0.76, quality 0.437, MAE 13.74",
+    "specialist_stored_outputs": {
+     "clinically_acceptable": 1.0,
+     "quality": 0.7171495900959213,
+     "mae_mm": 2.055
+    },
+    "specialist_documented": "1.00 within, quality 0.717, MAE 2.05",
+    "reproduced": true
+   },
+   "reg-resect-build-0001": {
+    "pipeline": "solution/ (= specialist, MIND rigid)",
+    "reward": 0.6666666666666666,
+    "quality": 0.3312563582960729,
+    "mean_tre_mm": 3.034,
+    "per_case_tre_mm": {
+     "c18b03": 1.98,
+     "c57eed": 1.38,
+     "c65c1b": 8.38,
+     "cb06b4": 1.83,
+     "cdd96a": 3.26,
+     "ce4785": 1.37
+    },
+    "documented": "0.667, quality 0.331, 3.03 +/- 2.71 mm",
+    "reproduced": true
+   }
+  },
+  "agent_workspace": {
+   "method": "agent sandbox built with suite.pilot.sandbox.agent_command, a listing shell instead of the CLI (probe only: egress open, no login bound)",
+   "measure-hc18-0001": "/workspace: instruction.md, output/ (empty), data/{README.md, LICENSE-DATA.md, dev/references.csv, dev/case_* x152 with image.png, case.json, annotation.png} (459 files); /home/agent: .claude/, .claude.json; /opt: agent/claude, benchmark-venv",
+   "reg-resect-build-0001": "/workspace: instruction.md, output/ (empty), data/{README.md, LICENSE-DATA.md, dev/<4 cases>/{input/{mri_t1,mri_flair,us}.nii.gz, input/landmarks_mri.csv, reference/landmarks_us.csv}} (22 files)",
+   "hidden_paths_absent": [
+    "/tests",
+    "/solution",
+    "task tests/ and solution/ host paths",
+    "/home/jkwei",
+    "/home/jkwei/data",
+    "/mnt/c",
+    "repository"
+   ],
+   "hidden_case_ids_found_on_agent_side": 0,
+   "files_byte_identical_between_tests_or_solution_and_agent_data": 0,
+   "data_read_only": true,
+   "readme_states": {
+    "task": true,
+    "output_format": true,
+    "per_case_time_limit": true,
+    "scoring": true,
+    "agent_session_time_limit_2700s": false,
+    "budget": false
+   }
+  }
+ },
+ "runs": [
+  {
+   "task_id": "measure-hc18-0001",
+   "family": "measure_hc18",
+   "tier": "build",
+   "model_requested": "claude-opus-5-5",
+   "models_reported_by_api": [
+    "claude-opus-5-5"
+   ],
+   "effort": "high",
+   "agent_status": "completed",
+   "agent_exit_code": 0,
+   "agent_wall_seconds": 1813.157,
+   "cost_usd_reported": 1.6989941999999998,
+   "turns_reported": 41,
+   "turns_counted_from_trace": 41,
+   "reward": {
+    "reward": 0.927710843373494,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.927710843373494,
+    "quality": 0.6256264728334827,
+    "vs_specialist": 0.8723793215161748
+   },
+   "headline_raw_metric": {
+    "name": "mean absolute HC error",
+    "units": "mm",
+    "agent_mean": 10.077349397590359,
+    "agent_median": 2.0500000000000114,
+    "n_valid_cases": 83,
+    "specialist_mean": 2.0548192771084306
+   },
+   "specialist": {
+    "name": "U-Net comparator (stored outputs)",
+    "clinically_acceptable": 1.0,
+    "quality": 0.7171495900959213
+   },
+   "pipeline_case_seconds_median": 2.5733619470265694,
+   "pipeline_case_seconds_max": 3.1746598439640366,
+   "grading_infrastructure_error": false,
+   "egress": {
+    "api.anthropic.com:443": {
+     "allowed": 2,
+     "denied": 0
+    }
+   },
+   "credential_redactions": 0,
+   "agent_cli_version": "2.1.325 (Claude Code)",
+   "agent_side_sha256": "8eb64c2b1b6f0bef6e5ea07929a43adb7426a4edca97a2516a2612954bb2a29f",
+   "grader_version_sha256": "aef95142bb5d92651bac586521ff2d8dc4dc9e3a0a45ac80d898e7b721cb7890",
+   "failure_summary": null,
+   "gap": {
+    "family": "measure_hc18",
+    "raw_metric": "absolute HC error, mm",
+    "n_hidden": 83,
+    "n_specialist_pass": 83,
+    "agent_pass_on_S": 77,
+    "infrastructure_error": false,
+    "pass_diff_on_S": {
+     "difference": -0.07228915662650603,
+     "low": -0.1325301204819277,
+     "high": -0.02409638554216864,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "quality_diff_on_S": {
+     "difference": -0.09152311726243845,
+     "low": -0.1482778220319292,
+     "high": -0.030103471738192663,
+     "fraction_le_zero": 0.999,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "raw_diff_on_S_valid": {
+     "difference": 8.022530120481928,
+     "low": 1.972698795180719,
+     "high": 15.49149999999998,
+     "fraction_le_zero": 0.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0,
+     "n_valid_agent": 83
+    },
+    "agent_raw_mean_on_S_valid": 10.077349397590359,
+    "spec_raw_mean_on_S_valid": 2.0548192771084306,
+    "raw_diff_all_valid": {
+     "difference": 8.022530120481928,
+     "low": 1.972698795180719,
+     "high": 15.49149999999998,
+     "fraction_le_zero": 0.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "agent_raw_mean_all_valid": 10.077349397590359,
+    "agent_raw_median_all_valid": 2.0500000000000114,
+    "spec_raw_mean_all": 2.0548192771084306,
+    "verdict": "gap shown",
+    "why": "agent fails 6 of 83 specialist-passed cases; paired pass-rate difference -0.072 (95% CI -0.133 to -0.024)"
+   },
+   "per_case": [
+    {
+     "case": "case_010b1e",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.53,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.76,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_01dc2d",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.16,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.23,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_025cf7",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.53,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.74,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_0b9884",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 2.05,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.17,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_121194",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 3.99,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.8,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_166d59",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.92,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.44,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_1fb964",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 232.83,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.59,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_221022",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.72,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.77,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_242674",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.65,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.62,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_25b80f",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.68,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 6.65,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_305e43",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 14.75,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.18,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3211b5",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.22,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.66,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_337ccf",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.22,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.26,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3d4709",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 5.27,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.73,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3dbea3",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 6.66,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 7.37,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3fd876",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.1,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.05,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_43fc50",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 9.27,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.1,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_44b267",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.45,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.59,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_456022",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.42,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.67,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_47239f",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.13,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.03,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_49d5cd",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 3.79,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.74,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4aca5e",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.02,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.24,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4bdbfc",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.52,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.89,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4dd6e0",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 7.59,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.48,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4df431",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.4,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.17,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_52add3",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.22,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.64,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_53c8ee",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.2,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.62,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_56d788",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.52,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.23,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_56f59c",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.26,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.26,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_59b691",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.75,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.34,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_5a5f56",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 3.16,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.56,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_5c3a36",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.7,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.86,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_5ff515",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.75,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.47,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_62a460",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.75,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.37,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_694684",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 5.84,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.68,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_6b29f2",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.9,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.77,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_6b8777",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.57,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.56,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_6d44a0",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 2.92,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 6.14,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_739d79",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 6.59,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.22,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_7777da",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.25,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.51,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_78c9fe",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 4.22,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.49,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_7b3d77",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.55,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.01,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_7f66f5",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.71,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.03,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_809204",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 65.02,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.91,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_80a8a9",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.38,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.02,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8342d7",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 3.6,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.15,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_892768",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 11.09,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.65,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_89f045",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 65.64,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.69,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8d5ac1",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 9.42,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 6.61,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8d9d5e",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 2.12,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.18,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8ff363",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.4,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.83,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_9536d9",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 45.43,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.54,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_99eb48",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.53,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.25,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_a7aad3",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.58,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.48,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_a9526f",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 4.85,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.44,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_b5a0fe",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.31,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.1,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_b5bfde",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.26,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.11,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_c5de36",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.55,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.33,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_c75d8c",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 6.62,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.36,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ca7ae6",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.05,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.5,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_cd08c7",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 2.27,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.06,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_d24110",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.11,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.52,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_d50acf",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.62,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.48,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_de62a5",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.85,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.32,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e054e0",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.83,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.92,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e3cfa6",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 1.01,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.97,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e41cf9",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 4.26,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.2,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e9182a",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.98,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.11,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ed3d08",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 169.72,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.79,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ed9a05",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.91,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.53,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f0aac4",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.13,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.19,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f10d98",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.76,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.38,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f13733",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 5.1,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.63,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f34ae6",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.39,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.9,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f3690e",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.86,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.13,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f39ca9",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.16,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.16,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f8b768",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.49,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.05,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f8ec57",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.26,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.02,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f984ea",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.05,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.22,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f99d37",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.32,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.77,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_fb3c42",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 59.93,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.81,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_fdc97e",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.58,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.86,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ff63d3",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.25,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.69,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    }
+   ]
+  },
+  {
+   "task_id": "measure-hc18-0001",
+   "family": "measure_hc18",
+   "tier": "build",
+   "model_requested": "claude-sonnet-5-5",
+   "models_reported_by_api": [
+    "claude-sonnet-5-5"
+   ],
+   "effort": "high",
+   "agent_status": "timeout",
+   "agent_exit_code": -15,
+   "agent_wall_seconds": 2701.034,
+   "cost_usd_reported": null,
+   "turns_reported": null,
+   "turns_counted_from_trace": 59,
+   "reward": {
+    "reward": 0.8192771084337349,
+    "ran": 1.0,
+    "valid": 1.0,
+    "within_time": 1.0,
+    "clinically_acceptable": 0.8192771084337349,
+    "quality": 0.42418600019914376,
+    "vs_specialist": 0.5914888693478964
+   },
+   "headline_raw_metric": {
+    "name": "mean absolute HC error",
+    "units": "mm",
+    "agent_mean": 8.566096385542169,
+    "agent_median": 4.076999999999998,
+    "n_valid_cases": 83,
+    "specialist_mean": 2.0548192771084306
+   },
+   "specialist": {
+    "name": "U-Net comparator (stored outputs)",
+    "clinically_acceptable": 1.0,
+    "quality": 0.7171495900959213
+   },
+   "pipeline_case_seconds_median": 1.5707102169981226,
+   "pipeline_case_seconds_max": 3.5258808270446025,
+   "grading_infrastructure_error": false,
+   "egress": {
+    "api.anthropic.com:443": {
+     "allowed": 2,
+     "denied": 0
+    }
+   },
+   "credential_redactions": 0,
+   "agent_cli_version": "2.1.325 (Claude Code)",
+   "agent_side_sha256": "8eb64c2b1b6f0bef6e5ea07929a43adb7426a4edca97a2516a2612954bb2a29f",
+   "grader_version_sha256": "aef95142bb5d92651bac586521ff2d8dc4dc9e3a0a45ac80d898e7b721cb7890",
+   "failure_summary": null,
+   "gap": {
+    "family": "measure_hc18",
+    "raw_metric": "absolute HC error, mm",
+    "n_hidden": 83,
+    "n_specialist_pass": 83,
+    "agent_pass_on_S": 68,
+    "infrastructure_error": false,
+    "pass_diff_on_S": {
+     "difference": -0.1807228915662651,
+     "low": -0.2650602409638554,
+     "high": -0.10843373493975905,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "quality_diff_on_S": {
+     "difference": -0.2929635898967775,
+     "low": -0.3695485246772215,
+     "high": -0.21041961233363216,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "raw_diff_on_S_valid": {
+     "difference": 6.511277108433736,
+     "low": 3.245874698795183,
+     "high": 10.421089156626504,
+     "fraction_le_zero": 0.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0,
+     "n_valid_agent": 83
+    },
+    "agent_raw_mean_on_S_valid": 8.566096385542167,
+    "spec_raw_mean_on_S_valid": 2.0548192771084306,
+    "raw_diff_all_valid": {
+     "difference": 6.511277108433736,
+     "low": 3.245874698795183,
+     "high": 10.421089156626504,
+     "fraction_le_zero": 0.0,
+     "confidence": 0.95,
+     "n": 83,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "agent_raw_mean_all_valid": 8.566096385542167,
+    "agent_raw_median_all_valid": 4.076999999999998,
+    "spec_raw_mean_all": 2.0548192771084306,
+    "verdict": "gap shown",
+    "why": "agent fails 15 of 83 specialist-passed cases; paired pass-rate difference -0.181 (95% CI -0.265 to -0.108)"
+   },
+   "per_case": [
+    {
+     "case": "case_010b1e",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.325,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.76,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_01dc2d",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.192,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.23,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_025cf7",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 4.077,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.74,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_0b9884",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 6.113,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.17,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_121194",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.477,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.8,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_166d59",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.992,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.44,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_1fb964",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 3.486,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.59,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_221022",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 6.864,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.77,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_242674",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 3.443,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.62,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_25b80f",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.573,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 6.65,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_305e43",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 20.777,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.18,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3211b5",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 1.532,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.66,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_337ccf",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 7.553,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.26,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3d4709",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 4.745,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.73,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3dbea3",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 9.473,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 7.37,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_3fd876",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.397,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.05,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_43fc50",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 11.308,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.1,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_44b267",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.948,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.59,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_456022",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.955,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.67,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_47239f",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.842,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.03,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_49d5cd",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 6.086,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.74,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4aca5e",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 2.415,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.24,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4bdbfc",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.651,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.89,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4dd6e0",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 10.793,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.48,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_4df431",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 5.222,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.17,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_52add3",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 8.084,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.64,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_53c8ee",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 102.301,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.62,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_56d788",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 6.683,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.23,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_56f59c",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 5.854,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.26,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_59b691",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 4.098,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.34,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_5a5f56",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 4.235,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.56,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_5c3a36",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 1.991,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.86,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_5ff515",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 10.201,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.47,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_62a460",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 6.917,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.37,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_694684",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 7.939,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.68,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_6b29f2",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.665,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.77,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_6b8777",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.754,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.56,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_6d44a0",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.862,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 6.14,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_739d79",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 1.939,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.22,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_7777da",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.768,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.51,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_78c9fe",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 10.393,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.49,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_7b3d77",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.517,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.01,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_7f66f5",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.301,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.03,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_809204",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 19.118,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.91,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_80a8a9",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 7.382,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.02,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8342d7",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 31.211,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.15,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_892768",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 6.935,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.65,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_89f045",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 88.666,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.69,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8d5ac1",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 4.344,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 6.61,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8d9d5e",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 7.614,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.18,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_8ff363",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.066,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.83,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_9536d9",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 74.361,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.54,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_99eb48",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.47,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.25,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_a7aad3",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 4.912,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.48,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_a9526f",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 10.33,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.44,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_b5a0fe",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.025,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.1,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_b5bfde",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.173,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.11,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_c5de36",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 5.116,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.33,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_c75d8c",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 7.472,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 4.36,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ca7ae6",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 5.886,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.5,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_cd08c7",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 5.412,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.06,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_d24110",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.771,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.52,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_d50acf",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.304,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.48,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_de62a5",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.962,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 2.32,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e054e0",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 0.273,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.92,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e3cfa6",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 3.463,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.97,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e41cf9",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 5.586,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 3.2,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_e9182a",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 10.559,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.11,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ed3d08",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 51.295,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.79,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ed9a05",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 2.018,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.53,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f0aac4",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 0.25,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.19,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f10d98",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 1.675,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.38,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f13733",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 6.689,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.63,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f34ae6",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.258,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.9,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f3690e",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 9.642,
+     "agent_pass": false,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.13,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f39ca9",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 3.043,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.16,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f8b768",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 5.384,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.05,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f8ec57",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 3.009,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.02,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f984ea",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 0.767,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.22,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_f99d37",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 3.283,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 1.77,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_fb3c42",
+     "stratum": "hc_tertile_large",
+     "agent_error_mm": 4.319,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 5.81,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_fdc97e",
+     "stratum": "hc_tertile_mid",
+     "agent_error_mm": 3.162,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.86,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "case_ff63d3",
+     "stratum": "hc_tertile_small",
+     "agent_error_mm": 3.04,
+     "agent_pass": true,
+     "agent_valid": true,
+     "agent_within_time": true,
+     "specialist_error_mm": 0.69,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    }
+   ]
+  },
+  {
+   "task_id": "reg-resect-build-0001",
+   "family": "reg_resect",
+   "tier": "build",
+   "model_requested": "claude-opus-5-5",
+   "models_reported_by_api": [
+    "claude-opus-5-5"
+   ],
+   "effort": "high",
+   "agent_status": "timeout",
+   "agent_exit_code": -15,
+   "agent_wall_seconds": 2701.029,
+   "cost_usd_reported": null,
+   "turns_reported": null,
+   "turns_counted_from_trace": 39,
+   "reward": {
+    "reward": 0.0,
+    "ran": 0.0,
+    "valid": 0.0,
+    "within_time": 0.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.0,
+    "vs_specialist": 0.0
+   },
+   "headline_raw_metric": {
+    "name": "mean target registration error",
+    "units": "mm",
+    "agent_mean": null,
+    "agent_median": null,
+    "n_valid_cases": 0,
+    "specialist_mean": 3.033786231974019
+   },
+   "specialist": {
+    "name": "MIND-feature rigid registration",
+    "clinically_acceptable": 0.6666666666666666,
+    "quality": 0.3312563582960729
+   },
+   "pipeline_case_seconds_median": 0.21847791897016577,
+   "pipeline_case_seconds_max": 0.21865519497077912,
+   "grading_infrastructure_error": false,
+   "egress": {
+    "api.anthropic.com:443": {
+     "allowed": 3,
+     "denied": 0
+    }
+   },
+   "credential_redactions": 0,
+   "agent_cli_version": "2.1.325 (Claude Code)",
+   "agent_side_sha256": "ec9d281fe6b3a69e34cf97bd101a518f5a9fdccd8801f498a12b7601d27ba049",
+   "grader_version_sha256": "1000cfa38954c1c793bab9bfed8f3239c9ba8c4dc46fc75aeddcd04944799269",
+   "failure_summary": {
+    "c18b03": "no_output (exit code 1)",
+    "c57eed": "no_output (exit code 1)",
+    "c65c1b": "no_output (exit code 1)",
+    "cb06b4": "no_output (exit code 1)",
+    "cdd96a": "no_output (exit code 1)",
+    "ce4785": "no_output (exit code 1)"
+   },
+   "gap": {
+    "family": "reg_resect",
+    "raw_metric": "mean TRE, mm",
+    "n_hidden": 6,
+    "n_specialist_pass": 4,
+    "agent_pass_on_S": 0,
+    "infrastructure_error": false,
+    "pass_diff_on_S": {
+     "difference": -1.0,
+     "low": -1.0,
+     "high": -1.0,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 4,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "quality_diff_on_S": {
+     "difference": -0.44405837694758377,
+     "low": -0.5022784434218415,
+     "high": -0.3858488003355459,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 4,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "verdict": "gap shown",
+    "why": "agent fails 4 of 4 specialist-passed cases; paired pass-rate difference -1.000 (95% CI -1.000 to -1.000)"
+   },
+   "per_case": [
+    {
+     "case": "c18b03",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.981,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "c57eed",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.381,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "c65c1b",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 8.378,
+     "specialist_pass": false,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "cb06b4",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.831,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "cdd96a",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 3.258,
+     "specialist_pass": false,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "ce4785",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.374,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    }
+   ]
+  },
+  {
+   "task_id": "reg-resect-build-0001",
+   "family": "reg_resect",
+   "tier": "build",
+   "model_requested": "claude-sonnet-5-5",
+   "models_reported_by_api": [
+    "claude-sonnet-5-5"
+   ],
+   "effort": "high",
+   "agent_status": "timeout",
+   "agent_exit_code": -15,
+   "agent_wall_seconds": 2701.647,
+   "cost_usd_reported": null,
+   "turns_reported": null,
+   "turns_counted_from_trace": 44,
+   "reward": {
+    "reward": 0.0,
+    "ran": 0.0,
+    "valid": 0.0,
+    "within_time": 0.0,
+    "clinically_acceptable": 0.0,
+    "quality": 0.0,
+    "vs_specialist": 0.0
+   },
+   "headline_raw_metric": {
+    "name": "mean target registration error",
+    "units": "mm",
+    "agent_mean": null,
+    "agent_median": null,
+    "n_valid_cases": 0,
+    "specialist_mean": 3.033786231974019
+   },
+   "specialist": {
+    "name": "MIND-feature rigid registration",
+    "clinically_acceptable": 0.6666666666666666,
+    "quality": 0.3312563582960729
+   },
+   "pipeline_case_seconds_median": null,
+   "pipeline_case_seconds_max": null,
+   "grading_infrastructure_error": false,
+   "egress": {
+    "api.anthropic.com:443": {
+     "allowed": 1,
+     "denied": 0
+    }
+   },
+   "credential_redactions": 0,
+   "agent_cli_version": "2.1.325 (Claude Code)",
+   "agent_side_sha256": "ec9d281fe6b3a69e34cf97bd101a518f5a9fdccd8801f498a12b7601d27ba049",
+   "grader_version_sha256": "1000cfa38954c1c793bab9bfed8f3239c9ba8c4dc46fc75aeddcd04944799269",
+   "failure_summary": {
+    "c18b03": "not_run: pipeline/run.sh missing or not a regular file",
+    "c57eed": "not_run: pipeline/run.sh missing or not a regular file",
+    "c65c1b": "not_run: pipeline/run.sh missing or not a regular file",
+    "cb06b4": "not_run: pipeline/run.sh missing or not a regular file",
+    "cdd96a": "not_run: pipeline/run.sh missing or not a regular file",
+    "ce4785": "not_run: pipeline/run.sh missing or not a regular file"
+   },
+   "gap": {
+    "family": "reg_resect",
+    "raw_metric": "mean TRE, mm",
+    "n_hidden": 6,
+    "n_specialist_pass": 4,
+    "agent_pass_on_S": 0,
+    "infrastructure_error": false,
+    "pass_diff_on_S": {
+     "difference": -1.0,
+     "low": -1.0,
+     "high": -1.0,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 4,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "quality_diff_on_S": {
+     "difference": -0.44405837694758377,
+     "low": -0.5022784434218415,
+     "high": -0.3858488003355459,
+     "fraction_le_zero": 1.0,
+     "confidence": 0.95,
+     "n": 4,
+     "n_resamples_used": 2000,
+     "n_resamples_skipped": 0
+    },
+    "verdict": "gap shown",
+    "why": "agent fails 4 of 4 specialist-passed cases; paired pass-rate difference -1.000 (95% CI -1.000 to -1.000)"
+   },
+   "per_case": [
+    {
+     "case": "c18b03",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.981,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "c57eed",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.381,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "c65c1b",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 8.378,
+     "specialist_pass": false,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "cb06b4",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.831,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "cdd96a",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 3.258,
+     "specialist_pass": false,
+     "initial_mean_tre_mm": null
+    },
+    {
+     "case": "ce4785",
+     "stratum": null,
+     "agent_error_mm": null,
+     "agent_pass": false,
+     "agent_valid": false,
+     "agent_within_time": false,
+     "specialist_error_mm": 1.374,
+     "specialist_pass": true,
+     "initial_mean_tre_mm": null
+    }
+   ]
+  }
+ ],
+ "total_cost_usd_reported": 1.6989941999999998,
+ "cost_note": "only the completed run reported a cost; the three runs stopped at the 2700 s limit were killed before the CLI result event, so no cost was reported. Each was capped at 5 USD by --max-budget-usd, so the total is at most 16.70 USD.",
+ "infrastructure_incidents": [
+  {
+   "what": "host OOM killer killed three python3 processes at 18:44:22, 18:44:46 and 18:47:15 EST (anon RSS 4.6, 5.3 and 11.2 GB)",
+   "attribution": "by size and timing, the reg_resect claude-sonnet-5-5 agent's own parallel t6.py experiment workers (only python3 processes over 2 GB on the host at the time; gone after the kills)",
+   "effect": "one background experiment of that agent ended as killed; the agent continued and later timed out. The run did not die, so it was not relaunched.",
+   "context": "host has 15 GB RAM shared with other workers; the task declares 16 GB; no per-sandbox RAM cap locally"
+  },
+  {
+   "what": "measure_hc18 claude-opus-5-5 saw one development-case pipeline run take 116 s (another 15 s) during the same memory-pressure window; rerun alone they took 2.7 s",
+   "effect": "agent added an 8 s watchdog; hidden grading max 3.2 s per case"
+  }
+ ],
+ "our_bugs_or_ambiguities": [
+  "Neither task instruction tells the agent its session limit (2700 s) or that /workspace/output is graded as it stands when the session is killed. Three of four runs hit that limit; both reg_resect runs shipped nothing runnable. Missed in the pre-run README check.",
+  "summarize: the agent_headline_raw column is mean quality (0-1), not a raw value in mm, while the note for reg_resect says headline = mean_tre_mm.",
+  "Timed-out runs have no cost or turn count in run.json (the CLI result event never arrives).",
+  "reg_resect: the data README asks for optional diagnostics in dev_predictions/, instruction.md in visible_predictions/ (unscored either way).",
+  "measure_hc18 README says an invalid image counts as a miss, then says the headline is 0 unless every image is valid; the second is what the grader does.",
+  "Local sandbox gives the agent no CPU or RAM cap and shares 16 cores/15 GB with other work; hosted tasks declare 4 CPUs and 8/16 GB."
+ ],
+ "limits": [
+  "one attempt per task and model",
+  "small hidden sets (83 images; 6 registration cases, 4 specialist-passed)",
+  "local bubblewrap sandbox, not the hosted one",
+  "public datasets (HC18, RESECT): contamination possible; no trace showed recognition of the dataset beyond the README text or use of memorised answers",
+  "the specialist outputs for measure_hc18 are stored, not rerun"
+ ]
+}
