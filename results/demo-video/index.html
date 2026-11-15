@@ -28,7 +28,7 @@
     {"id": "pipeline",  "dur": 38},
     {"id": "tasks",     "dur": 149},
     {"id": "results",   "dur": 30},
-    {"id": "models",    "dur": 24, "enabled": false, "note": "Round 4. Enable once data.models4.cells is filled from hosted-models4; preview with ?with=models"},
+    {"id": "models",    "dur": 24, "note": "Round 4, filled from hosted-models4 (snapshot 06:15 EST). Set enabled:false to drop it."},
     {"id": "behaviour", "dur": 26},
     {"id": "trust",     "dur": 14},
     {"id": "close",     "dur": 8}
@@ -85,8 +85,10 @@
       [18.6, "Told to check the clock, they read it correctly, and still stopped below the bar."]
     ],
     "models": [
-      [0.4,  "Round 4: the same task suite, run with six models."],
-      [8.0,  "Each cell is one model on one task, scored against the same specialist."]
+      [0.4,  "Round 4: six models. Codex is a different harness: side by side, not like-for-like."],
+      [7.5,  "Fetal head: a gap in every graded attempt, for every model."],
+      [13.0, "Best registration: Sol, 0.833. Best vessels: Sol, 6 of 8 images."],
+      [18.5, "Fable said it ran out of time at 27 % of its session. Luna also stopped below its bar."]
     ],
     "trust": [
       [0.4,  "Hidden cases never reach the agent, and every reference solution was checked first."],
@@ -154,20 +156,20 @@
     "k2_minutes_left": "8–31"
   },
   "models4": {
-    "source": "docs/research/suite/hosted-models4.md and .json (pending; fill from there only)",
-    "status": "pending",
-    "subtitle": "Reward per task and model, mean of attempts · gap shown in k of n attempts",
+    "source": "docs/research/suite/hosted-models4.md, Comparison with Opus 5.5 and Sonnet 5.5 (snapshot 06:15 EST); Opus/Sonnet from hosted-agents3.json and seg_vessel.md; specialist from README.md",
+    "status": "snapshot 06:15 EST",
+    "subtitle": "Mean reward over graded attempts · gap shown in k of n",
     "models": [
       {"name": "Opus 5.5",    "harness": "Claude Code"},
       {"name": "Sonnet 5.5",  "harness": "Claude Code"},
-      {"name": "Fable 5.2",   "harness": null},
+      {"name": "Fable 5.2",   "harness": "Claude Code"},
       {"name": "gpt-6-astra", "harness": "Codex"},
       {"name": "gpt-6.1-sol", "harness": "Codex"},
       {"name": "gpt-6-luna",  "harness": "Codex"}
     ],
     "tasks": ["Fetal head", "Registration", "Spleen", "Vessels", "ECG", "ICU risk"],
-    "specialist": {},
-    "cells": {},
+    "specialist": {"Fetal head": "1.000 (83/83)", "Registration": "0.667 (4/6)", "Spleen": "0.500 (3/6)", "Vessels": "0.750 (6/8)", "ECG": "all parts met", "ICU risk": "all parts met"},
+    "cells": {"Opus 5.5|Fetal head": {"value": 0.651, "label": "0.651", "gap": "3 of 3"}, "Opus 5.5|Registration": {"value": 0.333, "label": "0.333", "gap": "1 of 3"}, "Opus 5.5|Spleen": {"value": 0.222, "label": "0.222", "gap": "1 of 3"}, "Opus 5.5|Vessels": {"value": 0.625, "label": "0.625", "gap": "0 of 1"}, "Opus 5.5|ECG": {"value": 0.667, "label": "0.667", "gap": "1 of 3"}, "Opus 5.5|ICU risk": {"value": 1, "label": "1.000", "gap": "0 of 3"}, "Sonnet 5.5|Fetal head": {"value": 0.839, "label": "0.839", "gap": "3 of 3"}, "Sonnet 5.5|Registration": {"value": 0.056, "label": "0.056", "gap": "3 of 3"}, "Sonnet 5.5|Spleen": {"value": 0.111, "label": "0.111", "gap": "1 of 3"}, "Sonnet 5.5|Vessels": {"value": 0.5, "label": "0.500", "gap": "0 of 1"}, "Sonnet 5.5|ECG": {"value": 1, "label": "1.000", "gap": "0 of 3"}, "Sonnet 5.5|ICU risk": {"value": 1, "label": "1.000", "gap": "0 of 3"}, "Fable 5.2|Fetal head": {"value": 0.876, "label": "0.876", "gap": "3 of 3"}, "Fable 5.2|Registration": {"value": 0.444, "label": "0.444", "gap": "0 of 3"}, "Fable 5.2|Spleen": {"value": 0.389, "label": "0.389", "gap": "0 of 3"}, "Fable 5.2|Vessels": {"value": 0.625, "label": "0.625", "gap": "0 of 1"}, "Fable 5.2|ECG": {"value": 0.667, "label": "0.667", "gap": "1 of 3"}, "Fable 5.2|ICU risk": {"value": 1, "label": "1.000", "gap": "0 of 3"}, "gpt-6-astra|Fetal head": {"status": "not_graded"}, "gpt-6-astra|Registration": {"status": "not_graded"}, "gpt-6-astra|Spleen": {"value": 0.278, "label": "0.278", "gap": "0 of 3"}, "gpt-6-astra|Vessels": {"status": "not_graded"}, "gpt-6-astra|ECG": {"value": 1, "label": "1.000", "gap": "0 of 3"}, "gpt-6-astra|ICU risk": {"value": 1, "label": "1.000", "gap": "0 of 2"}, "gpt-6.1-sol|Fetal head": {"status": "not_graded"}, "gpt-6.1-sol|Registration": {"value": 0.833, "label": "0.833", "gap": "0 of 1"}, "gpt-6.1-sol|Spleen": {"value": 0.167, "label": "0.167", "gap": "2 of 3"}, "gpt-6.1-sol|Vessels": {"value": 0.75, "label": "0.750", "gap": "0 of 1"}, "gpt-6.1-sol|ECG": {"value": 1, "label": "1.000", "gap": "0 of 2"}, "gpt-6.1-sol|ICU risk": {"value": 1, "label": "1.000", "gap": "0 of 2"}, "gpt-6-luna|Fetal head": {"value": 0.743, "label": "0.743", "gap": "3 of 3"}, "gpt-6-luna|Registration": {"value": 0.111, "label": "0.111", "gap": "3 of 3"}, "gpt-6-luna|Spleen": {"value": 0, "label": "0.000", "gap": "3 of 3"}, "gpt-6-luna|Vessels": {"value": 0.25, "label": "0.250", "gap": "1 of 1"}, "gpt-6-luna|ECG": {"value": 0, "label": "0.000", "gap": "3 of 3"}, "gpt-6-luna|ICU risk": {"value": 1, "label": "1.000", "gap": "0 of 3"}},
     "cell_format": "cells['<model name>|<task>'] = {\"value\": 0..1 for colour, \"label\": \"0.651\", \"gap\": \"3 of 3\" or null}; specialist['<task>'] = \"1.000 (83/83)\""
   },
   "trust": [
@@ -938,31 +940,38 @@ if (SC.models) {
   OFF = SC.models.start;
   const M = D.models4, root = $('#m-grid');
   el('div', 'sub', '', M.subtitle, root);
-  const LX = 96, GX = 470, GW = 1824 - GX, CW = GW / M.tasks.length, TOP = 262, RH = 84;
+  const LX = 96, GX = 470, GW = 1824 - GX, CW = GW / M.tasks.length, TOP = 256, RH = 78, HG = 30;
   M.tasks.forEach((t, j) => {
     const h = el('div', 'a mono b', `left:${GX + j*CW}px;top:${TOP}px;width:${CW - 12}px;text-align:center;font-size:22px`, t, root);
     IN(h, 0.5 + j*0.08, 0.4, 10);
   });
   const rows = [{name: 'Specialist', harness: 'same hidden cases', spec: true}].concat(M.models);
   rows.forEach((m, i) => {
-    const y = TOP + 44 + i*RH + (i > 0 ? 14 : 0);
+    const codex = m.harness === 'Codex', y = TOP + 44 + i*RH + (i > 0 ? 12 : 0) + (codex ? HG : 0);
+    if (codex && rows[i - 1].harness !== 'Codex') {
+      const dv = el('div', 'a', `left:${LX}px;top:${y - HG + 2}px;width:${1824 - LX}px;height:22px;border-top:2px dashed #56657A`, '<span class="mono" style="position:absolute;right:0;top:2px;font-size:17px;color:var(--muted)">below: Codex CLI, a different harness from Claude Code above · side by side, not like-for-like</span>', root);
+      T(dv, {o: [0, 1]}, 1.2 + i*0.35, 0.4);
+    }
     const lab = el('div', 'a', `left:${LX}px;top:${y + 8}px;width:${GX - LX - 24}px`,
       `<div class="mono b" style="font-size:26px;color:${m.spec ? C.amber : '#fff'}">${m.name}</div>` +
       `<div class="muted" style="font-size:18px">${m.harness || ''}</div>`, root);
     IN(lab, 1.2 + i*0.35, 0.4, 10);
     M.tasks.forEach((t, j) => {
-      let bg = C.card2, txt = '–', sub = '', col = 'var(--muted)';
+      let bg = C.card2, txt = '–', sub = '', col = 'var(--muted)', bar = '';
       if (m.spec) { if (M.specialist[t]) { txt = M.specialist[t]; col = C.amber; } }
       else {
         const c = M.cells[m.name + '|' + t];
-        if (c) {
+        if (c && c.status === 'not_graded') {
+          txt = 'not graded'; sub = '<div class="mono" style="font-size:16px;color:var(--muted)">rate limit</div>';
+        } else if (c) {
           const v = Math.max(0, Math.min(1, +c.value || 0));
-          bg = `rgba(64,224,208,${(0.12 + 0.6*v).toFixed(3)})`; txt = c.label; col = '#fff';
-          if (c.gap) sub = `<div class="mono" style="font-size:17px;color:${C.pink}">gap ${c.gap}</div>`;
+          bar = `<div style="position:absolute;left:0;bottom:0;height:6px;width:${(100*v).toFixed(1)}%;background:${C.turq};border-radius:0 0 0 6px"></div>`; txt = c.label; col = '#fff';
+          if (c.gap) sub = `<div class="mono" style="font-size:17px;color:${c.gap.startsWith('0 ') ? 'var(--muted)' : C.pink}">gap ${c.gap}</div>`;
         }
       }
       const cell = el('div', 'a', `left:${GX + j*CW}px;top:${y}px;width:${CW - 12}px;height:${RH - 10}px;border-radius:6px;background:${bg};display:flex;flex-direction:column;align-items:center;justify-content:center`,
-        `<div class="mono b" style="font-size:${m.spec ? 20 : 26}px;color:${col}">${txt}</div>${sub}`, root);
+        `<div class="mono b" style="font-size:${m.spec ? 20 : 26}px;color:${col}">${txt}</div>${sub}${bar}`, root);
+      cell.style.overflow = 'hidden';
       T(cell, {o: [0, 1], s: [0.85, 1]}, 1.4 + i*0.35 + j*0.06, 0.35);
     });
   });

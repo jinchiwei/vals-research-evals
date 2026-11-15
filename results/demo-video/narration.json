@@ -107,7 +107,15 @@
     "models": [
       [
         0.5,
-        "In round four, the same tasks were run with six models."
+        "Round four added Fable and three Codex models, which run in a different harness."
+      ],
+      [
+        7.3,
+        "Fetal head shows a gap in every graded attempt, for every model. Two Codex models lost those runs to rate limits."
+      ],
+      [
+        17.2,
+        "And early stopping is not only a Claude habit."
       ]
     ],
     "behaviour": [

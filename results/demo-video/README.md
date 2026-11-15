@@ -1,6 +1,6 @@
 # Demo video
 
-A 3 min 55 s animated explainer of the suite for the Vals AI hackathon demo (1920×1080, 30 fps), silent and
+A 5 min 33 s animated explainer of the suite for the Vals AI hackathon demo (1920×1080, 30 fps), silent and
 narrated versions.
 
 | File | What it is |
@@ -24,12 +24,14 @@ narrated versions.
 | 1 | Title (Vals logo badge, lower right) | 0 | 8 |
 | 2 | Why existing benchmarks fall short | 8 | 36 |
 | 3 | The pipeline | 44 | 38 |
-| 4 | The tasks: an intro, then one 10 s beat per family with its card highlighted | 82 | 75 |
-| 5 | Results | 157 | 30 |
-| – | Round 4 "More models" (disabled, 24 s, would start at 187) | – | – |
-| 6 | Behaviour | 187 | 26 |
-| 7 | Why it can be trusted | 213 | 14 |
-| 8 | Close (Vals logo badge, lower right) | 227 | 8 |
+| 4 | The tasks: one beat per family, card highlighted | 82 | 149 |
+| 5 | Results | 231 | 30 |
+| 6 | Round 4: six models (snapshot 06:15 EST) | 261 | 24 |
+| 7 | Behaviour | 285 | 26 |
+| 8 | Why it can be trusted | 311 | 14 |
+| 9 | Close (Vals logo badge, lower right) | 325 | 8 |
+
+Total 5 min 33 s.
 
 ## Voice
 
@@ -85,22 +87,19 @@ Chromium under WSL can take up to a minute; `render.py` takes one throwaway shot
 - A new scene: add a `<section class="scene" id="s-NAME">`, an entry in `scenes`, its tweens after
   `OFF = SC.NAME.start;` in the script, and optionally `captions.NAME` and `narration.json` entries.
 
-## Round 4 "More models" scene (prepared, not in the render)
+## Round 4 "More models" scene
 
-The scene is in the source as `{"id": "models", "dur": 24, "enabled": false}`, placed after Results. It draws a
-model × task grid from `models4` in the JSON block: six models (Opus 5.5, Sonnet 5.5, Fable 5.2, gpt-6-astra,
-gpt-6.1-sol, gpt-6-luna), six tasks, a specialist row and one cell per model and task. Empty cells show "–".
-To enable it once `docs/research/suite/hosted-models4.md` and `.json` exist:
-
-1. Fill `models4.cells["<model>|<task>"] = {"value": 0..1, "label": "0.651", "gap": "3 of 3" or null}` and
-   `models4.specialist["<task>"]` from those documents only. Set Fable 5.2's harness.
-2. Write the round-4 captions (`captions.models`) and narration (`narration.json`, `models`) from the findings.
-3. Set `"enabled": true` (or keep it disabled and pass `--with models` to both `render.py` and `narrate.py`).
-4. `build.py`, `render.py --workers 6`, `narrate.py`. The video grows by 24 s.
+Enabled. The model × task grid is drawn from `models4` in the JSON block, filled from the "Comparison with Opus
+5.5 and Sonnet 5.5" table of `docs/research/suite/hosted-models4.md` (snapshot 06:15 EST). Each cell is
+`{"value", "label", "gap"}` (mean reward over graded attempts, and gap shown in k of n), or
+`{"status": "not_graded"}`, shown as "not graded · rate limit" for slots lost to the OpenAI rate limit or quota
+(never as 0). A dashed divider separates the Codex CLI rows from the Claude Code rows: a different harness, so side
+by side, not like-for-like. To drop the scene, set `"enabled": false` on it; to preview a disabled scene, add
+`?with=models` (and pass `--with models` to `render.py` and `narrate.py`).
 
 ## Sources for on-screen numbers
 
-README.md (Results, Task families, Failure modes, Instruction tests, Cost), the family documents in
+README.md (Results, Task families, Failure modes, Instruction tests, Cost), `hosted-models4.md` (round 4), the family documents in
 `docs/research/suite/` (`reg_resect.md`, `seg_spleen.md`, `measure_hc18.md`, `seg_vessel.md`, `ecg_ptbxl.md`,
 `risk_icu.md`, `causal_ate.md`), `hosted-agents3.md`, `hosted-keepworking1.md`, `hosted-clockcheck1.md`,
 `landscape.md` (MedQA figures) and `hosted-agents2.json` (the 83 per-image errors of Sonnet 5.5's run-2 fetal head
