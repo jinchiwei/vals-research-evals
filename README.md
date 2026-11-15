@@ -1,9 +1,9 @@
-# Clinical deliverables: coding agents against specialist systems on real medical data
+# Clinically Translatable AI Benchmarks
 
 <!-- HUMAN-WRITTEN OVERVIEW: written by Jin, placed verbatim. Do not generate or edit. -->
 Best-known benchmarks for clinical AI, such as MedQA and MedAgentsBench, are multiple-choice questions where latest frontier models already score high, such as above 95% MedQA, and even Vals itself has archived this leaderboard as saturated. However, high benchmark scores don't translate to actual clinical benefit. Tasks like being able to measure a fetal head circumference to aid diagnosis, or lining up a preoperative MRI with an intraoperative surgical ultrasound to resolve anatomical movement, are deliverables that are practically useful for real patients. Additionally, time of operation, crucial for not breaking clinical workflows, is an important constraint for real hospital settings that current medical benchmarks ignore. To solve this, we establish tasks that output clinically relevant units and operational time limits, and compare to baseline specialist software that hospitals would use in place of these frontier models. Tests are scored only against patient data never seen before. While some tasks, such as predicting ICU mortality, are accessible enough that all attempts match specialists, others such as measuring fetal head dimensions on ultrasound, show that frontier models lag far behind even compared to a pretrained U-Net. Several agents, when allowed 45 minutes, thought they ran out of time after only 8-15 minutes before meeting performance thresholds. Frontier model agents also tend to overestimate and submit working prototypes instead of "risking" time for improvements, with some describing next steps without following through.
 
-Submission to the Vals AI hackathon track "Build Your Own Eval" (14 to 15 November 2026), run on
+**Clinical deliverables: coding agents against specialist systems on real medical data.** Submission to the Vals AI hackathon track "Build Your Own Eval" (14 to 15 November 2026), run on
 Valkyrie in the organisation `hackathon-neuronetwork-b91c517178`. The exact track text is in
 [docs/research/hackathon-prompt.md](docs/research/hackathon-prompt.md).
 
@@ -713,7 +713,19 @@ $V agent push agents/claude_code_noweb
 $V run start --agent claude_code_noweb-v1.0.0 --dataset suite/clinical-v1@instr2 \
   --model anthropic/claude-opus-5-5 --provider modal \
   -s ANTHROPIC_API_KEY anthropic-api-key --concurrency 3 -l <label>
+
+# Codex models (round 4): Codex agent without web search, on the OpenAI-network twin datasets
+$V agent push agents/codex_noweb
+$V run start --agent codex_noweb-v1.0.0 --dataset suite/clinical-openai-v1@v1 \
+  --model gpt-6.1-sol --provider modal \
+  -s OPENAI_API_KEY openai-api-key --concurrency 1 -l <label>
 ```
+
+The task definitions pushed above are in [`tasks/`](tasks/README.md) without their data; the
+`dist/` folders are the same tasks with data, rebuilt from the public datasets as described under
+[Data](#data) and [Exporting tasks](#exporting-tasks). Keep Codex concurrency low: OpenAI's
+per-model token-per-minute limit killed most of the round-4 Astra and Sol tasks when 12 runs started
+at once ([hosted-models4.md](docs/research/suite/hosted-models4.md)).
 
 The no-web agent is the registry `claude_code-v1.0.0` bundle with WebFetch and WebSearch removed,
 Claude Code pinned to 2.1.325 and a per-task cap of `--max-budget-usd 8`. We chose Claude Code
@@ -721,6 +733,14 @@ because it is one of the harnesses Valkyrie provides, it is the general coding a
 this kind of analysis, and our local pilot runner already used it. We removed the web tools because
 the stock bundle reaches them through the allowed model API host
 ([hosted-smoke.md](docs/research/suite/hosted-smoke.md), finding 2).
+
+**Why these harnesses.** Each model runs in its own vendor's coding agent, the tool people actually
+use it through: Claude models in Claude Code, OpenAI models in Codex CLI. Both are Valkyrie's
+built-in harnesses, both get the same treatment (web tools off, network limited to their own model
+API, same tasks, limits and grader), and their results are shown side by side, never pooled.
+mini-SWE-agent, the third built-in harness, was not run, for time and budget: it is a minimal
+bash-only agent designed for SWE-bench-style repository fixes, and a third harness would have added
+a harness effect to the model comparison. It is a natural next arm.
 
 ### Figures
 
