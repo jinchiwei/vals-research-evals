@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clinical Deliverables Demo</title>
+
+<!-- ===================================================================
+  DATA: every number on screen comes from this block. Sources are listed
+  per field. Scene order and length come from "scenes" (seconds); scene
+  start times are cumulative, so a scene can be added, removed or resized
+  here. Captions are per scene, as [local_seconds, text].
+==================================================================== -->
+<script type="application/json" id="data">
+{
+  "meta": {
+    "title": "Clinical deliverables: coding agents against specialist systems",
+    "eyebrow": "Vals AI hackathon · Build Your Own Eval",
+    "subtitle": "Real medical tasks, clinical metrics, clinical time limits, a specialist on the same hidden cases",
+    "name": "Jinchi Wei",
+    "org": "Vals AI hackathon · Build Your Own Eval",
+    "repo": "github.com/jinchiwei/vals-research-evals",
+    "fps": 30, "width": 1920, "height": 1080
+  },
+  "scenes": [
+    {"id": "title",     "dur": 8},
+    {"id": "why",       "dur": 36},
+    {"id": "pipeline",  "dur": 38},
+    {"id": "tasks",     "dur": 18},
+    {"id": "results",   "dur": 30},
+    {"id": "behaviour", "dur": 26},
+    {"id": "trust",     "dur": 14},
+    {"id": "close",     "dur": 8}
+  ],
+  "captions": {
+    "why": [
+      [0.4,  "MedQA: frontier models score above 95 %. Vals AI archived its leaderboard as saturated."],
+      [8.2,  "These benchmarks grade answers and text, not the deliverable a clinic would use."],
+      [14.2, "No units, no time limit, no specialist system to compare against."],
+      [19.3, "Metrics mislead too. Accuracy hides which errors happen."],
+      [23.3, "AUROC ranks patients, but says nothing about whether the risks are calibrated."],
+      [27.3, "Dice alone misses volume error and broken thin vessels."],
+      [31.3, "Averages hide catastrophic misses: a 3.3 mm median, with misses of 22–27 cm."]
+    ],
+    "pipeline": [
+      [0.4,  "1 · The agent gets a clinical README, development cases with answers, and a clock."],
+      [6.2,  "2 · Its network reaches only the model API, with no web. It builds run.sh."],
+      [12.6, "3 · Only the program moves on, into a separate verifier sandbox."],
+      [17.0, "4 · It runs there on hidden cases, with no network and a timer per case."],
+      [23.6, "5 · Outputs are scored in clinical units, against a specialist's outputs on the same cases."],
+      [29.8, "6 · Out comes a seven-key reward. It counts only if every case ran, was valid and on time."]
+    ],
+    "tasks": [
+      [0.4,  "Four scored families: a specialist sets the bar on the same hidden cases."],
+      [6.4,  "Three controls: agents should pass these, so the harness is not simply too hard."],
+      [12.2, "Two more families were built, then excluded: no comparator met their gate."]
+    ],
+    "results": [
+      [0.4,  "Fetal head: the specialist measures 83 of 83 hidden images within tolerance."],
+      [5.0,  "Agents reach 35 to 74 of 83. Gap shown in 3 of 3 attempts, for both models."],
+      [9.2,  "No agent attempt reached the 90 % bar."],
+      [13.3, "Registration and spleen depend on the attempt."],
+      [17.0, "Opus 5.5 registration went 0.667, then 0.333, then 0.000. One run would mislead."],
+      [21.3, "Retinal vessels: near-parity with the specialist, no gap shown."],
+      [25.3, "Controls pass: ICU 6 of 6 attempts, ECG 5 of 6, treatment effect 6 of 6."]
+    ],
+    "behaviour": [
+      [0.4,  "Several agents said they had run out of time at 8 to 15 of 45 minutes."],
+      [5.6,  "They had not checked the clock. Over 30 minutes were still left."],
+      [10.4, "Fetal head, every attempt: no session used the full 45 minutes."],
+      [14.4, "Told to keep working while below the bar, they still stopped early."],
+      [18.6, "Told to check the clock, they read it correctly, and still stopped below the bar."]
+    ],
+    "trust": [
+      [0.4,  "Hidden cases never reach the agent, and every reference solution was checked first."],
+      [7.0,  "No web access, a preregistered plan, and every attempt reported."]
+    ]
+  },
+  "why": {
+    "medqa": {
+      "source": "docs/research/suite/landscape.md (Vals AI archived MedQA leaderboard)",
+      "rows": [["o1", 96.52], ["GPT 5.1", 96.38], ["Gemini 3.1 Pro Preview", 96.37]],
+      "saturated_at": 95
+    },
+    "hc18_sonnet_run2": {
+      "source": "docs/research/suite/hosted-agents2.json, Sonnet 5.5 measure_hc18 (run 5110a198), abs(raw) per hidden image, mm; median 3.3 mm per hosted-agents2.md",
+      "median_mm": 3.3,
+      "abs_error_mm": [0.3, 5.0, 0.5, 3.8, 4.9, 1.3, 41.4, 5.1, 6.1, 0.2, 275.0, 3.1, 1.7, 9.6, 9.2, 1.9, 7.8, 0.6, 1.6, 4.8, 1.1, 0.8, 0.8, 7.9, 0.0, 5.3, 16.8, 5.4, 1.7, 0.2, 0.7, 2.4, 6.7, 6.4, 2.4, 4.9, 0.8, 3.7, 274.1, 2.0, 4.1, 1.4, 2.9, 3.2, 4.3, 2.7, 242.7, 107.4, 7.7, 3.3, 2.6, 22.9, 3.4, 5.8, 4.7, 3.7, 2.0, 4.8, 4.3, 0.4, 1.1, 5.1, 8.9, 1.5, 3.3, 2.1, 3.1, 11.6, 221.5, 14.5, 2.2, 4.1, 3.6, 0.9, 1.3, 0.3, 0.9, 0.6, 3.1, 1.4, 35.0, 2.0, 0.4]
+    }
+  },
+  "tasks": {
+    "source": "README.md, Task families table",
+    "scored": [
+      {"name": "Registration", "what": "MRI landmarks into intra-op ultrasound", "bar": "mean error < 2.0 mm", "time": "120 s per case", "spec": "specialist 4 of 6 cases"},
+      {"name": "Spleen", "what": "CT mask + volume in mL", "bar": "Dice ≥ 0.94, volume within 10 %", "time": "300 s per case", "spec": "specialist 3 of 6 cases"},
+      {"name": "Fetal head", "what": "head circumference in mm", "bar": "within 4.9 % of reference", "time": "10 s per image", "spec": "specialist 83 of 83 images"},
+      {"name": "Retinal vessels", "what": "vessel mask", "bar": "Dice + clDice ≥ 2nd observer", "time": "60 s per image", "spec": "specialist 6 of 8 images"}
+    ],
+    "controls": [
+      {"name": "ECG", "what": "calibrated probabilities, 5 classes", "bar": "MI sensitivity, calibration, subgroups", "time": "560 s per cohort", "spec": "specialist meets all 3 parts"},
+      {"name": "ICU risk", "what": "calibrated mortality risk", "bar": "score, calibration, net benefit, subgroups", "time": "300 s per cohort", "spec": "specialist meets all 4 parts"},
+      {"name": "Treatment effect", "what": "effect with a 95 % interval", "bar": "coverage, RMSE, bias, interval length", "time": "960 s for 48 datasets", "spec": "specialist meets all 4 parts"}
+    ],
+    "excluded": ["Report labelling (PTB-XL text)", "Pharyngitis triage"]
+  },
+  "results": {
+    "source": "README.md Results; docs/research/suite/hosted-agents3.md Pooled view; seg_vessel.md",
+    "hc18": {"of": 83, "family_bar_frac": 0.9, "specialist": 83, "opus": [35, 71, 56], "sonnet": [64, 71, 74], "gap_opus": "3 of 3", "gap_sonnet": "3 of 3"},
+    "attempt_rows": [
+      {"label": "Registration", "model": "opus",   "rewards": [0.667, 0.333, 0.000], "spec": 0.667, "gap": "1 of 3"},
+      {"label": "Registration", "model": "sonnet", "rewards": [0.000, 0.167, 0.000], "spec": 0.667, "gap": "3 of 3"},
+      {"label": "Spleen",       "model": "opus",   "rewards": [0.500, 0.000, 0.167], "spec": 0.500, "gap": "1 of 3"},
+      {"label": "Spleen",       "model": "sonnet", "rewards": [0.167, 0.000, 0.167], "spec": 0.500, "gap": "1 of 3"}
+    ],
+    "vessel": {"of": 8, "specialist": 6, "opus": 5, "sonnet": 4},
+    "controls": [
+      {"label": "ICU risk", "pass": 6, "of": 6, "note": "specialist meets all 4 parts"},
+      {"label": "ECG", "pass": 5, "of": 6, "note": "one miss: MI sensitivity 0.693, bar 0.70"},
+      {"label": "Treatment effect", "pass": 6, "of": 6, "note": "specialist meets all 4 parts"}
+    ]
+  },
+  "behaviour": {
+    "source": "README.md Failure modes (quotes, minutes) and Instruction tests table (session used)",
+    "session_min": 45,
+    "quotes": [
+      {"min": 8.0,  "who": "Opus 5.5 · fetal head", "text": "I didn't have time to try it."},
+      {"min": 8.1,  "who": "Opus 5.5 · fetal head", "text": "I stopped there because of the session limit."},
+      {"min": 11.0, "who": "Sonnet 5.5 · fetal head", "text": "… which I ran out of session time for."},
+      {"min": 14.5, "who": "Opus 5.5 · registration", "text": "I ran out of session time before closing it."}
+    ],
+    "session_used_pct": {
+      "R":  {"opus": [44, 18, 18], "sonnet": [24, 16, 72]},
+      "K":  {"opus": [33, 49, 35], "sonnet": [44, 22, 24]},
+      "K2": {"opus": [82, 63, 60], "sonnet": [76, 32, 67]}
+    },
+    "k2_minutes_left": "8–31"
+  },
+  "trust": [
+    ["Hidden cases stay hidden", "They exist only in the verifier sandbox. The agent never sees one."],
+    ["Oracle checks", "Before any agent ran, each task version's reference solution reproduced its reward on Valkyrie."],
+    ["No web", "Network limited to the model API; no web search or fetch in any trace."],
+    ["Preregistered", "Round 3 was registered before any run; every deviation is listed."],
+    ["Every attempt reported", "Nothing rerun for a better number: 63 hosted attempts in all."]
+  ]
+}
+</script>
+
+<style>
+/*@@FONTS@@*/
+:root{
+  --bg:#1E293B; --bg2:#172133; --card:#343E4E; --card2:#2B3546; --rule:#33415C;
+  --text:#FFFFFF; --muted:#9FB3C8; --dim:#6B7F96;
+  --turq:#40E0D0; --pink:#FF1493; --amber:#F0C840; --sky:#38BDF8;
+}
+html,body{margin:0;padding:0;background:#0B1220;overflow:hidden}
+body{display:flex;align-items:center;justify-content:center;width:100vw;height:100vh}
+#stage{position:relative;width:1920px;height:1080px;overflow:hidden;background:var(--bg);
+  font-family:'Geist',system-ui,sans-serif;color:var(--text);transform-origin:center center;flex:none}
+#stage *{box-sizing:border-box}
+.scene{position:absolute;left:0;top:0;width:1920px;height:1080px;display:none}
+.a{position:absolute}
+.mono{font-family:'Geist Mono',ui-monospace,monospace}
+.b{font-weight:700}
+.accent{position:absolute;left:0;top:0;width:28px;height:1080px;background:var(--turq)}
+.eyebrow{position:absolute;left:96px;top:58px;font-family:'Geist Mono';font-weight:700;font-size:22px;letter-spacing:3px;color:var(--turq);text-transform:uppercase}
+.h1{position:absolute;left:96px;top:92px;font-family:'Geist Mono';font-weight:700;font-size:54px;letter-spacing:-0.5px;white-space:nowrap}
+.hr{position:absolute;left:96px;top:172px;width:1728px;height:1px;background:var(--rule)}
+.card{background:var(--card);border-radius:8px}
+.lbl{font-family:'Geist Mono';font-weight:700;font-size:20px;letter-spacing:2.5px;text-transform:uppercase}
+.muted{color:var(--muted)}
+.turq{color:var(--turq)} .pink{color:var(--pink)} .amber{color:var(--amber)}
+.chip{display:inline-block;padding:8px 16px;border-radius:999px;font-family:'Geist Mono';font-size:22px;border:2px solid var(--rule);background:var(--card2);white-space:nowrap}
+/* caption band */
+#cap{position:absolute;left:50%;bottom:44px;transform:translateX(-50%);max-width:1720px;
+  padding:16px 34px 18px 34px;background:rgba(14,22,38,0.92);border-left:6px solid var(--turq);
+  border-radius:6px;font-size:38px;line-height:1.28;font-weight:400;text-align:center;opacity:0;width:max-content}
+#w-a,#w-b,#w-c,#w-d,#r-a,#r-b,#r-c,#b-a,#b-b{left:0;top:0;width:1920px;height:1080px}
+.sub{position:absolute;left:96px;top:196px;font-size:30px;color:var(--muted)}
+svg text{font-family:'Geist',sans-serif}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- ============================ 1 TITLE ============================ -->
+<section class="scene" id="s-title">
+  <div class="a" id="t-band1" style="left:0;top:0;width:96px;height:1080px;background:var(--turq)"></div>
+  <div class="a" id="t-band2" style="left:96px;top:0;width:30px;height:1080px;background:var(--pink)"></div>
+  <div class="a mono b turq" id="t-eyebrow" style="left:200px;top:236px;font-size:30px;letter-spacing:3px;text-transform:uppercase"></div>
+  <div class="a mono b" id="t-title" style="left:200px;top:290px;width:1700px;font-size:82px;line-height:1.14;letter-spacing:-1px"></div>
+  <div class="a" id="t-sub" style="left:200px;top:530px;font-size:38px;color:#E2E8F0"></div>
+  <div class="a mono b turq" id="t-name" style="left:200px;top:680px;font-size:52px"></div>
+  <div class="a mono b pink" id="t-org" style="left:200px;top:756px;font-size:34px"></div>
+  <div class="a" id="t-rule" style="left:200px;top:822px;width:600px;height:3px;background:#E2E8F0"></div>
+</section>
+
+<!-- ============================ 2 WHY ============================ -->
+<section class="scene" id="s-why">
+  <div class="accent"></div>
+  <div class="eyebrow">01 · The gap</div>
+  <div class="h1">Why existing benchmarks fall short</div>
+  <div class="hr"></div>
+
+  <!-- beat a: MedQA -->
+  <div class="a" id="w-a">
+    <div class="a card" id="w-mcq" style="left:96px;top:240px;width:700px;height:560px;padding:40px">
+      <div class="lbl muted">Exam-style multiple choice</div>
+      <div class="a" style="left:40px;top:100px;width:600px;height:18px;border-radius:9px;background:#4A5568"></div>
+      <div class="a" style="left:40px;top:134px;width:560px;height:18px;border-radius:9px;background:#4A5568"></div>
+      <div class="a" style="left:40px;top:168px;width:420px;height:18px;border-radius:9px;background:#4A5568"></div>
+      <div id="w-opts"></div>
+    </div>
+    <div class="a" id="w-chart" style="left:880px;top:240px;width:944px;height:560px">
+      <div class="lbl muted" style="position:absolute;left:0;top:0">MedQA accuracy · Vals AI leaderboard</div>
+      <div id="w-bars"></div>
+      <div class="a" id="w-sat" style="top:60px;height:300px;width:0;border-left:3px dashed var(--pink)"></div>
+      <div class="a mono pink" id="w-satlbl" style="top:366px;font-size:24px"></div>
+      <div class="a mono b" id="w-stamp" style="left:300px;top:430px;padding:14px 26px;border:4px solid var(--pink);color:var(--pink);font-size:34px;letter-spacing:2px;border-radius:6px">SATURATED · ARCHIVED</div>
+    </div>
+  </div>
+
+  <!-- beat b: answers, not deliverables -->
+  <div class="a" id="w-b" style="left:0;top:0">
+    <div class="a mono b" style="left:96px;top:236px;font-size:40px">Answers and text, not deliverables</div>
+    <div class="a card mono b" id="w-ans" style="left:150px;top:420px;width:420px;height:200px;font-size:64px;display:flex;align-items:center;justify-content:center">Answer: C</div>
+    <div class="a" id="w-anscross" style="left:130px;top:518px;width:460px;height:6px;background:var(--pink);border-radius:3px"></div>
+    <div class="a" id="w-barrow" style="left:640px;top:508px;width:220px;height:6px;background:var(--muted)"></div>
+    <div class="a" id="w-barrowh" style="left:850px;top:494px;width:0;height:0;border-left:30px solid var(--muted);border-top:17px solid transparent;border-bottom:17px solid transparent"></div>
+    <div class="a lbl turq" id="w-dlbl" style="left:940px;top:330px">A clinical deliverable</div>
+    <div id="w-dels"></div>
+  </div>
+
+  <!-- beat c: three missing pieces -->
+  <div class="a" id="w-c" style="left:0;top:0"></div>
+
+  <!-- beat d: misleading metrics -->
+  <div class="a" id="w-d" style="left:0;top:0">
+    <div class="a mono b" id="w-dtitle" style="left:96px;top:222px;font-size:40px">Metrics that mislead</div>
+    <div id="w-panels"></div>
+  </div>
+</section>
+
+<!-- ============================ 3 PIPELINE ============================ -->
+<section class="scene" id="s-pipeline">
+  <div class="accent"></div>
+  <div class="eyebrow">02 · The pipeline</div>
+  <div class="h1">How one attempt is run and scored</div>
+  <div class="hr"></div>
+
+  <!-- agent sandbox -->
+  <div class="a" id="p-agent" style="left:96px;top:200px;width:740px;height:450px;border:3px solid var(--turq);border-radius:12px;background:rgba(64,224,208,0.04)">
+    <div class="a lbl turq" style="left:24px;top:-14px;background:var(--bg);padding:0 10px">Agent sandbox</div>
+  </div>
+  <div class="a card" id="p-readme" style="left:126px;top:236px;width:220px;height:146px;padding:18px">
+    <div class="mono b" style="font-size:24px">README.md</div>
+    <div class="muted" style="font-size:19px;margin-top:8px;line-height:1.3">clinical task, output format, units, limits</div>
+  </div>
+  <div class="a card" id="p-dev" style="left:362px;top:236px;width:220px;height:146px;padding:18px">
+    <div class="mono b" style="font-size:24px">dev cases</div>
+    <div style="display:flex;gap:8px;margin-top:12px" id="p-devtiles"></div>
+    <div class="muted" style="font-size:20px;margin-top:10px">with answers</div>
+  </div>
+  <div class="a card" id="p-net" style="left:598px;top:236px;width:220px;height:146px;padding:18px">
+    <div class="mono b" style="font-size:24px">network</div>
+    <div style="font-size:20px;margin-top:10px"><span style="display:inline-block;width:12px;height:12px;border-radius:6px;background:var(--turq);margin-right:8px"></span>model API only</div>
+    <div style="font-size:20px;margin-top:8px" id="p-noweb"><span class="pink b mono" style="margin-right:8px">✕</span>no web</div>
+  </div>
+  <div class="a card" id="p-term" style="left:126px;top:400px;width:470px;height:226px;background:#0F172A;border:2px solid var(--rule);padding:0">
+    <div class="mono muted" style="font-size:18px;padding:10px 16px;border-bottom:1px solid var(--rule)">claude code · no web tools</div>
+    <div class="mono" id="p-code" style="font-size:20px;line-height:1.4;padding:10px 16px;white-space:pre;color:#CBD5E1"></div>
+  </div>
+  <div class="a card" id="p-clock" style="left:614px;top:400px;width:204px;height:226px;display:flex;flex-direction:column;align-items:center;padding-top:14px">
+    <svg width="120" height="120" viewBox="0 0 120 120">
+      <circle cx="60" cy="60" r="48" fill="none" stroke="#4A5568" stroke-width="12"/>
+      <circle id="p-ring" cx="60" cy="60" r="48" fill="none" stroke="var(--turq)" stroke-width="12" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" transform="rotate(-90 60 60)"/>
+    </svg>
+    <div class="mono b" style="font-size:24px;margin-top:8px">30–60 min</div>
+    <div class="muted" style="font-size:18px">session clock</div>
+  </div>
+  <div class="a mono b" id="p-runsh" style="left:420px;top:566px;width:160px;height:52px;border-radius:10px;background:var(--pink);color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;z-index:5">run.sh</div>
+
+  <!-- arrow -->
+  <svg class="a" id="p-arrow" style="left:836px;top:380px" width="248" height="80" viewBox="0 0 248 80">
+    <path id="p-arrowpath" d="M 10 40 L 222 40" stroke="var(--muted)" stroke-width="5" fill="none" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <path id="p-arrowhead" d="M 214 24 L 240 40 L 214 56 Z" fill="var(--muted)"/>
+  </svg>
+  <div class="a mono muted" id="p-arrowlbl" style="left:846px;top:460px;width:230px;text-align:center;font-size:20px;line-height:1.3">only the program crosses</div>
+
+  <!-- verifier sandbox -->
+  <div class="a" id="p-ver" style="left:1084px;top:200px;width:740px;height:450px;border:3px solid var(--muted);border-radius:12px;background:rgba(159,179,200,0.04)">
+    <div class="a lbl" style="left:24px;top:-14px;background:var(--bg);padding:0 10px;color:var(--muted)">Verifier sandbox</div>
+  </div>
+  <div class="a card" id="p-hidden" style="left:1114px;top:236px;width:220px;height:146px;padding:18px">
+    <div class="mono b" style="font-size:24px">hidden cases</div>
+    <svg width="44" height="44" viewBox="0 0 44 44" style="margin-top:10px"><path d="M12 20 V14 a10 10 0 0 1 20 0 V20" fill="none" stroke="var(--amber)" stroke-width="4"/><rect x="7" y="20" width="30" height="22" rx="3" fill="var(--amber)"/></svg>
+    <div class="muted" style="font-size:20px;margin-top:2px">hidden from agent</div>
+  </div>
+  <div class="a card" id="p-nonet" style="left:1350px;top:236px;width:220px;height:146px;padding:18px">
+    <div class="mono b" style="font-size:24px">network</div>
+    <div style="font-size:20px;margin-top:12px"><span class="pink b mono" style="margin-right:8px">✕</span>none</div>
+    <div class="muted" style="font-size:20px;margin-top:8px">runs offline</div>
+  </div>
+  <div class="a card" id="p-timer" style="left:1586px;top:236px;width:220px;height:146px;padding:18px">
+    <div class="mono b" style="font-size:24px">timer</div>
+    <svg width="44" height="44" viewBox="0 0 44 44" style="margin-top:8px"><circle cx="22" cy="25" r="16" fill="none" stroke="var(--sky)" stroke-width="4"/><path d="M22 25 L22 15" stroke="var(--sky)" stroke-width="4"/><rect x="17" y="3" width="10" height="5" fill="var(--sky)"/></svg>
+    <div class="muted" style="font-size:20px">limit per case</div>
+  </div>
+  <div class="a" id="p-lane" style="left:1114px;top:400px;width:692px;height:226px;border-radius:8px;background:#0F172A;border:2px solid var(--rule)">
+    <div class="a mono muted" style="left:16px;top:10px;font-size:18px">hidden case → run.sh → output</div>
+    <div class="a" style="left:16px;top:120px;width:660px;height:2px;background:var(--rule)"></div>
+    <div class="a" id="p-slot" style="left:246px;top:90px;width:200px;height:60px;border-radius:10px;border:2px dashed var(--pink)"></div>
+    <div class="a mono" id="p-outn" style="left:486px;top:176px;font-size:20px;white-space:nowrap;color:var(--muted)"></div>
+  </div>
+  <div id="p-tokens"></div>
+
+  <!-- scoring -->
+  <div class="a card" id="p-score" style="left:96px;top:676px;width:1170px;height:220px;padding:20px 26px">
+    <div class="lbl muted">Scoring, per hidden case</div>
+  </div>
+  <div class="a" id="p-sAgent" style="left:126px;top:730px">
+    <div class="mono turq b" style="font-size:22px;margin-bottom:8px">agent output</div>
+    <div id="p-sAchips" style="display:flex;gap:8px"></div>
+  </div>
+  <div class="a" id="p-sSpec" style="left:126px;top:810px">
+    <div class="mono amber b" style="font-size:22px;margin-bottom:8px">specialist output, same cases</div>
+    <div id="p-sSchips" style="display:flex;gap:8px"></div>
+  </div>
+  <div class="a mono muted" id="p-sArrow" style="left:530px;top:770px;font-size:44px">→</div>
+  <div class="a" id="p-sUnits" style="left:600px;top:735px;width:300px">
+    <div style="font-size:22px;color:var(--muted)">clinical units</div>
+    <div class="mono b" style="font-size:28px;line-height:1.45">mm · mL<br>calibrated risk</div>
+  </div>
+  <div class="a mono muted" id="p-sArrow2" style="left:880px;top:770px;font-size:44px">→</div>
+  <div class="a" id="p-sVerdict" style="left:950px;top:735px;width:300px;font-size:24px;line-height:1.5">
+    <div>meets the <b>clinical bar</b>?</div>
+    <div>matches the <b class="amber">specialist</b>?</div>
+    <div class="muted" style="font-size:20px">paired, case by case</div>
+  </div>
+
+  <!-- reward -->
+  <div class="a card" id="p-reward" style="left:1296px;top:676px;width:528px;height:220px;padding:18px 24px;border:2px solid var(--pink)">
+    <div class="mono b" style="font-size:24px">reward.json <span class="muted" style="font-weight:400;font-size:20px">· 7 keys, each in [0, 1]</span></div>
+    <div id="p-keys" style="position:relative;height:150px;margin-top:10px"></div>
+  </div>
+</section>
+
+<!-- ============================ 4 TASKS ============================ -->
+<section class="scene" id="s-tasks">
+  <div class="accent"></div>
+  <div class="eyebrow">03 · The tasks</div>
+  <div class="h1">Seven task families on public medical data</div>
+  <div class="hr"></div>
+  <div id="k-cards"></div>
+</section>
+
+<!-- ============================ 5 RESULTS ============================ -->
+<section class="scene" id="s-results">
+  <div class="accent"></div>
+  <div class="eyebrow">04 · Results</div>
+  <div class="h1">Agents against the specialist</div>
+  <div class="hr"></div>
+  <div class="a" id="r-a" style="left:0;top:0"></div>
+  <div class="a" id="r-b" style="left:0;top:0"></div>
+  <div class="a" id="r-c" style="left:0;top:0"></div>
+</section>
+
+<!-- ============================ 6 BEHAVIOUR ============================ -->
+<section class="scene" id="s-behaviour">
+  <div class="accent"></div>
+  <div class="eyebrow">05 · Behaviour</div>
+  <div class="h1">Agents stop early, below the bar</div>
+  <div class="hr"></div>
+  <div class="a" id="b-a" style="left:0;top:0"></div>
+  <div class="a" id="b-b" style="left:0;top:0"></div>
+</section>
+
+<!-- ============================ 7 TRUST ============================ -->
+<section class="scene" id="s-trust">
+  <div class="accent"></div>
+  <div class="eyebrow">06 · Trust</div>
+  <div class="h1">Why the numbers can be trusted</div>
+  <div class="hr"></div>
+  <div id="u-rows"></div>
+</section>
+
+<!-- ============================ 8 CLOSE ============================ -->
+<section class="scene" id="s-close">
+  <div class="a" id="c-band1" style="left:0;top:0;width:96px;height:1080px;background:var(--turq)"></div>
+  <div class="a" id="c-band2" style="left:96px;top:0;width:30px;height:1080px;background:var(--pink)"></div>
+  <div class="a mono b turq" id="c-eyebrow" style="left:200px;top:300px;font-size:30px;letter-spacing:3px;text-transform:uppercase">Code, tasks and every result</div>
+  <div class="a mono b" id="c-repo" style="left:200px;top:360px;font-size:64px"></div>
+  <div class="a mono b turq" id="c-name" style="left:200px;top:560px;font-size:56px"></div>
+  <div class="a mono b pink" id="c-org" style="left:200px;top:640px;font-size:34px"></div>
+</section>
+
+<div id="cap"></div>
+</div>
+
+<script>
+(function(){
+'use strict';
+const D = JSON.parse(document.getElementById('data').textContent);
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const el = (tag, cls, style, html, parent) => {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (style) e.setAttribute('style', style);
+  if (html != null) e.innerHTML = html;
+  if (parent) (typeof parent === 'string' ? $(parent) : parent).appendChild(e);
+  return e;
+};
+const C = {turq:'#40E0D0', pink:'#FF1493', amber:'#F0C840', muted:'#9FB3C8', rule:'#33415C', card:'#343E4E', card2:'#2B3546', sky:'#38BDF8'};
+
+/* ---------------- scene timing ---------------- */
+let acc = 0;
+const SC = {};
+for (const s of D.scenes) { SC[s.id] = {start: acc, end: acc + s.dur, dur: s.dur, node: $('#s-' + s.id)}; acc += s.dur; }
+const DURATION = acc;
+
+/* ---------------- tween engine ---------------- */
+const EASE = {
+  lin: x => x,
+  out: x => 1 - Math.pow(1 - x, 3),
+  inOut: x => x < .5 ? 4*x*x*x : 1 - Math.pow(-2*x + 2, 3) / 2,
+  back: x => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3*Math.pow(x - 1, 3) + c1*Math.pow(x - 1, 2); }
+};
+const tracks = new Map();
+let OFF = 0;
+function T(target, props, start, dur = 0.6, e = 'out') {
+  const els = typeof target === 'string' ? $$(target) : (target instanceof Element ? [target] : [...target]);
+  if (!els.length) console.warn('no target', target);
+  for (const n of els) {
+    let m = tracks.get(n); if (!m) { m = {}; tracks.set(n, m); }
+    for (const [p, v] of Object.entries(props)) (m[p] = m[p] || []).push({from: v[0], to: v[1], start: OFF + start, dur, e});
+  }
+}
+const IN = (t, s, d = 0.5, dy = 24) => T(t, {o: [0, 1], y: [dy, 0]}, s, d);
+const OUT = (t, s, d = 0.4) => T(t, {o: [1, 0]}, s, d, 'inOut');
+function valAt(list, t) {
+  let cur = null;
+  for (const tw of list) { if (tw.start <= t) cur = tw; else break; }
+  if (!cur) return list[0].from;
+  const p = cur.dur <= 0 ? 1 : Math.min(1, Math.max(0, (t - cur.start) / cur.dur));
+  return cur.from + (cur.to - cur.from) * EASE[cur.e](p);
+}
+function fmt(v, dec) { return dec ? v.toFixed(dec) : String(Math.round(v)); }
+function applyAll(t) {
+  for (const [n, m] of tracks) {
+    let x = 0, y = 0, s = 1, hasT = false;
+    for (const p in m) {
+      const v = valAt(m[p], t);
+      switch (p) {
+        case 'o': n.style.opacity = v; break;
+        case 'x': x = v; hasT = true; break;
+        case 'y': y = v; hasT = true; break;
+        case 's': s = v; hasT = true; break;
+        case 'w': n.style.width = v + 'px'; break;
+        case 'h': n.style.height = v + 'px'; break;
+        case 'dash': n.setAttribute('stroke-dashoffset', v); break;
+        case 'num': n.textContent = (n.dataset.pre || '') + fmt(v, +(n.dataset.dec || 0)) + (n.dataset.suf || ''); break;
+        case 'chars': n.textContent = n.dataset.text.slice(0, Math.round(v)); break;
+        case 'reveal': n.style.clipPath = `inset(-20px ${100 - v}% -20px -20px)`; break;
+      }
+    }
+    if (hasT) n.style.transform = `translate(${x}px, ${y}px) scale(${s})`;
+  }
+}
+
+/* ---------------- captions ---------------- */
+const CAPS = [];
+for (const [id, list] of Object.entries(D.captions)) {
+  const sc = SC[id]; if (!sc) continue;
+  list.forEach(([lt, text], i) => {
+    const start = sc.start + lt;
+    const end = i + 1 < list.length ? sc.start + list[i + 1][0] - 0.15 : sc.end - 0.35;
+    CAPS.push({start, end, text});
+  });
+}
+const cap = $('#cap');
+let capText = null;
+function applyCaption(t) {
+  const c = CAPS.find(c => t >= c.start && t < c.end);
+  if (!c) { cap.style.opacity = 0; return; }
+  if (capText !== c.text) { cap.textContent = c.text; capText = c.text; }
+  const fi = Math.min(1, (t - c.start) / 0.35), fo = Math.min(1, (c.end - t) / 0.25);
+  cap.style.opacity = Math.max(0, Math.min(fi, fo));
+}
+
+/* ================= SCENE 1: TITLE ================= */
+OFF = SC.title.start;
+$('#t-eyebrow').textContent = D.meta.eyebrow;
+$('#t-title').textContent = D.meta.title;
+$('#t-sub').textContent = D.meta.subtitle;
+$('#t-name').textContent = D.meta.name;
+$('#t-org').textContent = D.meta.org;
+T('#t-band1', {y: [-1080, 0]}, 0.0, 0.9, 'inOut');
+T('#t-band2', {y: [1080, 0]}, 0.15, 0.9, 'inOut');
+T('#t-eyebrow', {o: [0, 1], x: [-30, 0]}, 0.7, 0.6);
+T('#t-title', {reveal: [0, 100]}, 1.0, 1.4, 'inOut');
+IN('#t-sub', 2.4);
+IN('#t-name', 3.0);
+IN('#t-org', 3.3);
+T('#t-rule', {w: [0, 600]}, 3.6, 0.8);
+
+/* ================= SCENE 2: WHY ================= */
+OFF = SC.why.start;
+// beat a: MCQ + MedQA bars
+['A', 'B', 'C', 'D'].forEach((L, i) => {
+  const o = el('div', 'a w-opt', `left:40px;top:${236 + i*74}px;width:620px;height:58px;border-radius:8px;background:var(--card2);display:flex;align-items:center;padding-left:18px;font-size:26px`,
+    `<span class="mono b" style="width:46px">${L}</span><span style="width:${[340, 280, 380, 300][i]}px;height:14px;border-radius:7px;background:#4A5568;display:inline-block"></span>`, '#w-opts');
+  if (L === 'C') { o.id = 'w-optC'; el('div', 'a', 'left:0;top:0;width:620px;height:58px;border-radius:8px;border:3px solid var(--turq)', '<span class="a mono b turq" style="right:18px;top:12px;font-size:26px">✓</span>', o).id = 'w-optCsel'; }
+});
+const medqa = D.why.medqa;
+const BX = 330, BW = 560, bar0 = 60; // bars: x of track start (relative to chart), width for 100 %
+medqa.rows.forEach(([name, v], i) => {
+  const top = bar0 + i*104;
+  el('div', 'a', `left:0;top:${top + 26}px;width:${BX - 20}px;text-align:right;font-size:26px`, name, '#w-bars');
+  el('div', 'a', `left:${BX}px;top:${top + 10}px;width:${BW}px;height:64px;background:var(--card2);border-radius:4px`, '', '#w-bars');
+  const b = el('div', 'a w-bar', `left:${BX}px;top:${top + 10}px;height:64px;width:0;background:var(--turq);border-radius:4px`, '', '#w-bars');
+  b.dataset.w = BW * v / 100;
+  const n = el('div', 'a mono b w-barn', `left:${BX + 16}px;top:${top + 24}px;font-size:28px;color:#0F172A`, '', '#w-bars');
+  n.dataset.v = v; n.dataset.dec = 2; n.dataset.suf = ' %';
+});
+$('#w-sat').style.left = (BX + BW * medqa.saturated_at / 100) + 'px';
+$('#w-satlbl').style.left = (BX + BW * medqa.saturated_at / 100 - 40) + 'px';
+$('#w-satlbl').textContent = medqa.saturated_at + ' %';
+IN('#w-mcq', 0.3);
+T('#w-optCsel', {o: [0, 1]}, 1.6, 0.3);
+T('#w-chart', {o: [0, 1]}, 1.0, 0.5);
+$$('.w-bar').forEach((b, i) => T(b, {w: [0, +b.dataset.w]}, 1.4 + i*0.25, 1.2));
+$$('.w-barn').forEach((n, i) => { T(n, {num: [0, +n.dataset.v]}, 1.4 + i*0.25, 1.2); });
+T('#w-sat', {o: [0, 1]}, 3.0, 0.4); T('#w-satlbl', {o: [0, 1]}, 3.0, 0.4);
+T('#w-stamp', {o: [0, 1], s: [1.6, 1]}, 4.2, 0.5, 'back');
+OUT('#w-a', 7.6);
+
+// beat b: answers vs deliverables
+const dels = ['registration error in mm', 'spleen volume in mL', 'head circumference in mm', 'calibrated risk of death'];
+dels.forEach((d, i) => el('div', 'a chip w-del', `left:940px;top:${380 + i*84}px;font-size:28px;padding:12px 24px;border-color:var(--turq)`, d, '#w-b'));
+T('#w-b', {o: [0, 1]}, 8.0, 0.4);
+IN('#w-ans', 8.3);
+T('#w-anscross', {w: [0, 460]}, 9.6, 0.5);
+T('#w-barrow', {w: [0, 210]}, 10.0, 0.4); T('#w-barrowh', {o: [0, 1]}, 10.3, 0.2);
+T('#w-dlbl', {o: [0, 1]}, 10.3, 0.4);
+$$('.w-del').forEach((n, i) => T(n, {o: [0, 1], x: [-30, 0]}, 10.6 + i*0.35, 0.45));
+OUT('#w-b', 13.6);
+
+// beat c: three missing pieces
+['No units', 'No time limit', 'No specialist comparator'].forEach((txt, i) => {
+  const r = el('div', 'a w-miss', `left:300px;top:${300 + i*150}px;display:flex;align-items:center;gap:40px`, '', '#w-c');
+  el('div', '', 'width:96px;height:96px;border-radius:48px;border:5px solid var(--pink);display:flex;align-items:center;justify-content:center;font-size:52px;color:var(--pink);font-weight:700', '✕', r);
+  el('div', 'mono b', 'font-size:64px', txt, r);
+});
+T('#w-c', {o: [0, 1]}, 14.0, 0.3);
+$$('.w-miss').forEach((n, i) => T(n, {o: [0, 1], x: [-40, 0]}, 14.3 + i*0.7, 0.5));
+OUT('#w-c', 18.6);
+
+// beat d: four metric panels
+const PX = [96, 540, 984, 1428], PW = 400;
+const pTitles = ['Accuracy hides which errors happen', 'AUROC alone ignores calibration', 'Dice alone misses volume and broken thin vessels', 'Averages hide catastrophic misses'];
+const panels = PX.map((x, i) => {
+  const p = el('div', 'a card w-panel', `left:${x}px;top:300px;width:${PW}px;height:580px;padding:24px`, '', '#w-panels');
+  el('div', 'mono b', 'font-size:24px;line-height:1.3;height:96px', pTitles[i], p);
+  return p;
+});
+// P1: same accuracy, different errors
+{
+  const p = panels[0];
+  const rows = [{lab: 'model A', err: [3, 8], col: C.amber, note: 'false alarms'}, {lab: 'model B', err: [1, 6], col: C.pink, note: 'missed disease'}];
+  rows.forEach((r, ri) => {
+    const top = 140 + ri*170;
+    el('div', 'a mono muted', `left:24px;top:${top}px;font-size:20px`, r.lab, p);
+    for (let k = 0; k < 10; k++) {
+      const isErr = r.err.includes(k);
+      el('div', 'a', `left:${24 + k*35}px;top:${top + 34}px;width:29px;height:29px;border-radius:5px;background:${isErr ? r.col : 'rgba(64,224,208,0.35)'}`, '', p);
+    }
+    el('div', 'a', `left:24px;top:${top + 78}px;font-size:22px;color:${r.col}`, '■ ' + r.note, p);
+  });
+  el('div', 'a muted', 'left:24px;top:500px;width:352px;font-size:22px;line-height:1.3', 'Same accuracy. Different harm.', p);
+}
+// P2: calibration
+{
+  const p = panels[1];
+  el('div', 'a', 'left:20px;top:126px', `<svg width="360" height="360" viewBox="0 0 360 360">
+    <line x1="50" y1="310" x2="340" y2="310" stroke="${C.muted}" stroke-width="2"/>
+    <line x1="50" y1="310" x2="50" y2="20" stroke="${C.muted}" stroke-width="2"/>
+    <line id="w-diag" x1="50" y1="310" x2="340" y2="20" stroke="${C.muted}" stroke-width="3" stroke-dasharray="8 8"/>
+    <path id="w-cal" d="M 50 310 C 140 300, 230 270, 340 170" fill="none" stroke="${C.pink}" stroke-width="5" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    <text x="195" y="345" fill="${C.muted}" font-size="20" text-anchor="middle">predicted risk</text>
+    <text x="22" y="165" fill="${C.muted}" font-size="20" text-anchor="middle" transform="rotate(-90 22 165)">observed rate</text>
+    <text x="80" y="130" fill="${C.muted}" font-size="20">calibrated</text>
+    <text x="270" y="250" fill="${C.pink}" font-size="20">model</text>
+  </svg>`, p);
+  el('div', 'a muted', 'left:24px;top:500px;width:352px;font-size:22px;line-height:1.3', 'Ranking can be good while the risks are wrong.', p);
+}
+// P3: vessels
+{
+  const p = panels[2];
+  el('div', 'a', 'left:20px;top:136px', `<svg width="360" height="340" viewBox="0 0 360 340">
+    <g stroke="#4A5568" fill="none" stroke-linecap="round">
+      <path d="M 180 320 C 182 250, 172 180, 150 100" stroke-width="18"/>
+      <path d="M 178 220 C 220 190, 262 170, 330 140" stroke-width="10"/>
+      <path d="M 162 150 C 124 120, 92 92, 40 70" stroke-width="8"/>
+      <path d="M 258 172 C 274 132, 290 96, 300 40" stroke-width="4"/>
+      <path d="M 116 118 C 106 80, 112 50, 130 20" stroke-width="4"/>
+    </g>
+    <g id="w-vpred" stroke="${C.turq}" fill="none" stroke-linecap="round" opacity="0">
+      <path d="M 180 320 C 182 250, 172 180, 150 100" stroke-width="14"/>
+      <path d="M 178 220 C 220 190, 262 170, 330 140" stroke-width="7"/>
+      <path d="M 162 150 C 124 120, 92 92, 40 70" stroke-width="6"/>
+      <path d="M 258 172 C 274 132, 290 96, 300 40" stroke-width="3" pathLength="100" stroke-dasharray="38 22 100"/>
+      <path d="M 116 118 C 106 80, 112 50, 130 20" stroke-width="3"/>
+    </g>
+    <circle id="w-vgap" cx="280" cy="112" r="24" fill="none" stroke="${C.pink}" stroke-width="4" opacity="0"/>
+    <text x="210" y="330" fill="${C.muted}" font-size="18">grey: reference</text>
+    <text x="210" y="306" fill="${C.turq}" font-size="18">turquoise: mask</text>
+  </svg>`, p);
+  el('div', 'a muted', 'left:24px;top:500px;width:352px;font-size:22px;line-height:1.3', 'High overlap, yet a thin vessel is cut.', p);
+}
+// P4: Sonnet fetal head errors
+{
+  const p = panels[3];
+  const errs = D.why.hc18_sonnet_run2.abs_error_mm;
+  const X0 = 24, XW = 340, MAXMM = 300;
+  el('div', 'a muted', 'left:24px;top:112px;font-size:20px;line-height:1.3', 'Sonnet 5.5, fetal head,<br>error per hidden image (83)', p);
+  el('div', 'a', `left:${X0}px;top:400px;width:${XW}px;height:2px;background:${C.muted}`, '', p);
+  [0, 100, 200, 300].forEach(v => el('div', 'a mono muted', `left:${X0 + XW*v/MAXMM - 20}px;top:410px;width:40px;text-align:center;font-size:18px`, v, p));
+  el('div', 'a mono muted', `left:${X0 + XW - 40}px;top:436px;font-size:18px`, 'mm', p);
+  errs.forEach((v, i) => {
+    const big = v >= 200;
+    const jit = ((i * 53) % 29) / 29; // deterministic jitter
+    const d = el('div', 'a w-dot', `left:${X0 + XW*v/MAXMM - 6}px;top:${236 + jit*150}px;width:12px;height:12px;border-radius:6px;background:${big ? C.pink : C.turq};opacity:0.85`, '', p);
+    d.dataset.dx = -(XW*v/MAXMM);
+  });
+  const mx = X0 + XW*D.why.hc18_sonnet_run2.median_mm/MAXMM;
+  el('div', 'a w-med', `left:${mx - 1}px;top:218px;width:3px;height:182px;background:#fff`, '', p);
+  el('div', 'a mono w-med', `left:${mx + 10}px;top:190px;font-size:20px`, 'median ' + D.why.hc18_sonnet_run2.median_mm + ' mm', p);
+  el('div', 'a w-big pink b', 'left:236px;top:360px;font-size:20px', '22–27 cm', p);
+  el('div', 'a muted', 'left:24px;top:500px;width:352px;font-size:22px;line-height:1.3', 'A small median, with some heads off by a quarter of a metre.', p);
+}
+T('#w-d', {o: [0, 1]}, 19.0, 0.3);
+IN('#w-dtitle', 19.0);
+panels.forEach((p, i) => IN(p, 19.4 + i*4.0, 0.6));
+T('#w-cal', {dash: [1, 0]}, 24.0, 1.4, 'inOut');
+T('#w-vpred', {o: [0, 1]}, 28.0, 0.6); T('#w-vgap', {o: [0, 1], s: [1.5, 1]}, 29.0, 0.4, 'back');
+$('#w-vgap').style.transformOrigin = '280px 112px'; $('#w-vgap').style.transformBox = 'view-box';
+$$('.w-dot').forEach((d, i) => T(d, {x: [+d.dataset.dx, 0]}, 31.8 + (i % 10)*0.03, 1.3, 'inOut'));
+T('.w-med', {o: [0, 1]}, 31.6, 0.4);
+T('.w-big', {o: [0, 1]}, 33.0, 0.4);
+
+/* ================= SCENE 3: PIPELINE ================= */
+OFF = SC.pipeline.start;
+for (let i = 0; i < 4; i++) el('div', '', 'width:36px;height:36px;border-radius:5px;background:#4A5568;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--turq);font-weight:700', '✓', '#p-devtiles');
+T('#p-agent', {o: [0, 1], s: [0.97, 1]}, 0.2, 0.6);
+IN('#p-readme', 1.0); IN('#p-dev', 2.0); IN('#p-net', 3.0); T('#p-noweb', {o: [0, 1]}, 3.6, 0.4);
+IN('#p-clock', 4.0);
+T('#p-ring', {dash: [1, 0.62]}, 4.5, 8.0, 'lin');
+const code = ['> read README.md', '> train on dev cases', '> check against answers', '> write pipeline/run.sh'];
+const codeEl = $('#p-code');
+code.forEach((line, i) => {
+  const ln = el('div', '', '', '', codeEl); ln.dataset.text = line;
+  T(ln, {chars: [0, line.length]}, 6.4 + i*1.1, 0.9, 'lin');
+});
+IN('#p-term', 5.6);
+T('#p-runsh', {o: [0, 1], s: [0.4, 1]}, 11.0, 0.5, 'back');
+T('#p-arrowpath', {dash: [1, 0]}, 12.4, 0.6, 'inOut'); T('#p-arrowhead', {o: [0, 1]}, 12.9, 0.2);
+T('#p-arrowlbl', {o: [0, 1]}, 12.9, 0.4);
+T('#p-ver', {o: [0, 1], s: [0.97, 1]}, 12.4, 0.6);
+// run.sh: from (330,556) to slot in lane (1114+246+2, 400+90+2) = (1362, 492)
+T('#p-runsh', {x: [0, 964], y: [0, -70]}, 13.2, 1.8, 'inOut');
+T(['#p-readme', '#p-dev', '#p-net', '#p-term', '#p-clock'].map(s => $(s)), {o: [1, 0.35]}, 14.6, 0.6);
+T('#p-agent', {o: [1, 0.45]}, 14.6, 0.6);
+IN('#p-hidden', 15.2); IN('#p-nonet', 15.8); IN('#p-timer', 16.4);
+IN('#p-lane', 13.6);
+// tokens: 6 hidden cases flow left -> right through run.sh
+const units = ['mm', 'mL', 'risk', 'mm', 'mL', 'risk'];
+const tokRoot = $('#p-tokens');
+units.forEach((u, i) => {
+  const tk = el('div', 'a', `left:1140px;top:500px;width:84px;height:44px;border-radius:8px;background:var(--amber);color:#0F172A;font-family:'Geist Mono';font-weight:700;font-size:20px;display:flex;align-items:center;justify-content:center;z-index:4`, 'case', tokRoot);
+  const tb = el('div', 'a', 'left:1380px;top:560px;width:0;height:8px;border-radius:4px;background:var(--sky);z-index:6', '', tokRoot);
+  const out = el('div', 'a', `left:1600px;top:500px;width:84px;height:44px;border-radius:8px;background:var(--turq);color:#0F172A;font-family:'Geist Mono';font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center;z-index:4`, u, tokRoot);
+  const t0 = 17.6 + i*0.95;
+  T(tk, {o: [0, 1]}, t0, 0.2); T(tk, {x: [0, 236]}, t0, 0.5, 'inOut'); T(tk, {o: [1, 0]}, t0 + 0.45, 0.15);
+  T(tb, {w: [0, 160]}, t0 + 0.5, 0.45, 'lin'); T(tb, {o: [1, 0]}, t0 + 1.0, 0.2);
+  T(tb, {o: [0, 1]}, t0 + 0.45, 0.05);
+  T(out, {o: [0, 1], x: [-60, 0]}, t0 + 0.95, 0.3);
+  if (i < units.length - 1) T(out, {o: [1, 0]}, t0 + 1.85, 0.2);
+});
+const outn = $('#p-outn'); outn.dataset.pre = 'outputs: '; outn.dataset.suf = ' of 6';
+T(outn, {num: [0, 6]}, 18.4, 5.7, 'lin'); T(outn, {o: [0, 1]}, 18.4, 0.3);
+// scoring
+['mm', 'mL', 'risk', 'mm', 'mL'].forEach(u => el('div', 'mono b', 'width:58px;height:34px;border-radius:6px;background:var(--turq);color:#0F172A;font-size:18px;display:flex;align-items:center;justify-content:center', u, '#p-sAchips'));
+['mm', 'mL', 'risk', 'mm', 'mL'].forEach(u => el('div', 'mono b', 'width:58px;height:34px;border-radius:6px;background:var(--amber);color:#0F172A;font-size:18px;display:flex;align-items:center;justify-content:center', u, '#p-sSchips'));
+IN('#p-score', 23.4); IN('#p-sAgent', 24.0); IN('#p-sSpec', 24.6);
+T('#p-sArrow', {o: [0, 1], x: [-20, 0]}, 25.3, 0.4); IN('#p-sUnits', 25.6);
+T('#p-sArrow2', {o: [0, 1], x: [-20, 0]}, 26.6, 0.4); IN('#p-sVerdict', 26.9);
+// reward keys
+const keys = ['ran', 'valid', 'within_time', 'clinically_acceptable', 'quality', 'vs_specialist', 'reward'];
+keys.forEach((k, i) => {
+  const col = i < 4 ? 0 : 1, row = i < 4 ? i : i - 4;
+  const n = el('div', 'a mono p-key', `left:${col ? 296 : 0}px;top:${row*38}px;font-size:20px;white-space:nowrap`, `<span class="turq">✓</span> ${k}`, '#p-keys');
+  if (k === 'reward') n.style.color = 'var(--pink)', n.style.fontWeight = '700';
+});
+IN('#p-reward', 29.6);
+$$('.p-key').forEach((n, i) => T(n, {o: [0, 1], x: [-20, 0]}, 30.2 + i*0.45, 0.4));
+
+/* ================= SCENE 4: TASKS ================= */
+OFF = SC.tasks.start;
+function taskCard(t, x, y, w, h, role, col) {
+  const c = el('div', 'a card k-card', `left:${x}px;top:${y}px;width:${w}px;height:${h}px;padding:22px 24px;border-top:6px solid ${col}`, '', '#k-cards');
+  el('div', 'lbl', `color:${col};font-size:18px`, role, c);
+  el('div', 'mono b', 'font-size:32px;margin-top:10px', t.name, c);
+  el('div', '', 'font-size:23px;margin-top:10px;line-height:1.3;color:#E2E8F0', t.what, c);
+  el('div', 'muted', 'font-size:20px;margin-top:12px;line-height:1.3', t.bar, c);
+  el('div', 'mono muted', 'font-size:19px;margin-top:8px', t.time, c);
+  el('div', 'mono amber', 'position:absolute;left:24px;bottom:18px;font-size:19px', t.spec, c);
+  return c;
+}
+const KW = 414, KG = 24, KH = 316;
+const scored = D.tasks.scored.map((t, i) => taskCard(t, 96 + i*(KW + KG), 200, KW, KH, 'scored', C.turq));
+const ctrls = D.tasks.controls.map((t, i) => taskCard(t, 96 + i*(KW + KG), 546, KW, KH, 'control', C.amber));
+const exc = el('div', 'a', `left:${96 + 3*(KW + KG)}px;top:546px;width:${KW}px;height:${KH}px;padding:22px 24px;border:3px dashed var(--dim);border-radius:8px`, '', '#k-cards');
+el('div', 'lbl', 'color:var(--muted);font-size:18px', 'built, then excluded', exc);
+D.tasks.excluded.forEach(n => el('div', 'mono b', 'font-size:24px;margin-top:14px;color:#CBD5E1;line-height:1.3', n, exc));
+el('div', 'muted', 'font-size:21px;margin-top:16px;line-height:1.3', 'No comparator met the gate, so no gap can be shown.', exc);
+scored.forEach((c, i) => IN(c, 0.6 + i*0.35));
+ctrls.forEach((c, i) => IN(c, 6.6 + i*0.35));
+IN(exc, 12.4);
+
+/* ================= SCENE 5: RESULTS ================= */
+OFF = SC.results.start;
+// beat a: fetal head images within tolerance
+{
+  const R = D.results.hc18, root = $('#r-a');
+  el('div', 'sub', '', `Fetal head circumference · hidden images within tolerance, of ${R.of}`, root);
+  const LX = 96, BX0 = 430, BWID = 1000, RY = 270, RH = 72;
+  const rows = [['Specialist U-Net', R.specialist, C.amber]].concat(
+    R.opus.map((v, i) => [`Opus 5.5 · R${i + 1}`, v, C.turq]), R.sonnet.map((v, i) => [`Sonnet 5.5 · R${i + 1}`, v, C.pink]));
+  rows.forEach(([lab, v, col], i) => {
+    const y = RY + i*RH + (i > 0 ? 18 : 0) + (i > 3 ? 12 : 0);
+    el('div', 'a mono', `left:${LX}px;top:${y + 12}px;width:${BX0 - LX - 20}px;font-size:24px;text-align:right`, lab, root);
+    el('div', 'a', `left:${BX0}px;top:${y}px;width:${BWID}px;height:52px;background:var(--card2);border-radius:4px`, '', root);
+    const b = el('div', 'a r-hbar', `left:${BX0}px;top:${y}px;height:52px;width:0;background:${col};border-radius:4px`, '', root);
+    const n = el('div', 'a mono b r-hnum', `left:${BX0 + BWID + 18}px;top:${y + 8}px;font-size:30px;color:${col}`, '', root);
+    n.dataset.suf = ' / ' + R.of;
+    const t0 = i === 0 ? 0.6 : (i <= 3 ? 2.2 + (i - 1)*0.3 : 3.4 + (i - 4)*0.3);
+    T(b, {w: [0, BWID*v/R.of]}, t0, 1.1); T(n, {num: [0, v], o: [0, 1]}, t0, 1.1);
+  });
+  const lx = BX0 + BWID*R.family_bar_frac;
+  const line = el('div', 'a', `left:${lx}px;top:${RY - 14}px;width:0;height:${7*RH + 46}px;border-left:3px dashed #fff`, '', root);
+  const ll = el('div', 'a mono', `left:${lx - 150}px;top:${RY + 7*RH + 36}px;width:300px;text-align:center;font-size:20px;white-space:nowrap`, 'family bar: 90 % of images', root);
+  T([line, ll], {o: [0, 1]}, 9.2, 0.5);
+  const badge = el('div', 'a', 'left:1600px;top:420px;width:224px;padding:20px;border-radius:8px;background:var(--card);border-left:6px solid var(--pink)', '<div class="mono b pink" style="font-size:40px">GAP</div><div style="font-size:22px;line-height:1.35;margin-top:6px">in 3 of 3 attempts, both models</div>', root);
+  T(badge, {o: [0, 1], s: [1.3, 1]}, 6.0, 0.5, 'back');
+  T(root, {o: [0, 1]}, 0.2, 0.3); OUT(root, 12.6);
+}
+// beat b: registration and spleen per attempt
+{
+  const root = $('#r-b');
+  el('div', 'sub', '', 'Registration and spleen · reward per attempt (share of 6 hidden cases acceptable)', root);
+  const AX = 560, AW = 860, RY = 300, RH = 120;
+  // axis
+  [0, 0.25, 0.5, 0.75, 1].forEach(v => {
+    el('div', 'a', `left:${AX + AW*v}px;top:${RY - 30}px;width:1px;height:${4*RH + 10}px;background:var(--rule)`, '', root);
+    el('div', 'a mono muted', `left:${AX + AW*v - 40}px;top:${RY + 4*RH - 10}px;width:80px;text-align:center;font-size:20px`, v.toFixed(2), root);
+  });
+  el('div', 'a lbl muted', `left:1480px;top:${RY - 52}px;font-size:18px`, 'gap shown', root);
+  D.results.attempt_rows.forEach((r, i) => {
+    const y = RY + i*RH, col = r.model === 'opus' ? C.turq : C.pink;
+    el('div', 'a', `left:96px;top:${y + 2}px;width:${AX - 140}px;text-align:right;font-size:26px`, `${r.label} · <span style="color:${col}">${r.model === 'opus' ? 'Opus 5.5' : 'Sonnet 5.5'}</span>`, root);
+    const sp = el('div', 'a r-spec', `left:${AX + AW*r.spec - 12}px;top:${y + 52}px;width:24px;height:24px;background:var(--amber);transform:rotate(45deg)`, '', root);
+    const seen = {};
+    r.rewards.forEach((v, k) => {
+      const key = v.toFixed(3); const dup = seen[key] || 0; seen[key] = dup + 1;
+      const d = el('div', 'a r-dot', `left:${AX + AW*v - 18}px;top:${y - 2 + dup*0}px;width:40px;height:40px;border-radius:20px;background:${col};border:3px solid var(--bg);display:flex;align-items:center;justify-content:center;font-family:'Geist Mono';font-weight:700;font-size:16px;color:#0F172A`, 'R' + (k + 1), root);
+      d.style.left = (AX + AW*v - 20 + dup*30) + 'px';
+      T(d, {o: [0, 1], s: [0.3, 1]}, 13.8 + k*0.9 + i*0.08, 0.4, 'back');
+    });
+    T(sp, {o: [0, 1]}, 13.4, 0.4);
+    const g = el('div', 'a mono b', `left:1480px;top:${y}px;font-size:30px;color:${r.gap === '3 of 3' ? C.pink : '#fff'}`, r.gap, root);
+    T(g, {o: [0, 1]}, 16.6 + i*0.2, 0.4);
+  });
+  const leg = el('div', 'a', `left:${AX}px;top:${RY + 4*RH + 30}px;font-size:22px;color:var(--muted)`, '<span style="display:inline-block;width:20px;height:20px;background:var(--amber);transform:rotate(45deg);margin-right:12px"></span>specialist on the same hidden cases', root);
+  T(root, {o: [0, 1]}, 13.0, 0.3); T(leg, {o: [0, 1]}, 13.4, 0.4); OUT(root, 20.6);
+}
+// beat c: vessels + controls
+{
+  const root = $('#r-c'), V = D.results.vessel;
+  const lp = el('div', 'a card', 'left:96px;top:230px;width:840px;height:640px;padding:30px', '', root);
+  el('div', 'lbl muted', '', `Retinal vessels · images acceptable, of ${V.of}`, lp);
+  [['Specialist U-Net', V.specialist, C.amber], ['Opus 5.5', V.opus, C.turq], ['Sonnet 5.5', V.sonnet, C.pink]].forEach(([lab, n, col], i) => {
+    const y = 90 + i*120;
+    el('div', 'a mono', `left:30px;top:${y + 14}px;font-size:26px`, lab, lp);
+    for (let k = 0; k < V.of; k++) {
+      const pip = el('div', 'a r-pip', `left:${300 + k*58}px;top:${y}px;width:46px;height:56px;border-radius:6px;${k < n ? 'background:' + col : 'border:3px solid #56657A'}`, '', lp);
+      T(pip, {o: [0, 1]}, 21.6 + i*0.5 + k*0.05, 0.25);
+    }
+  });
+  el('div', 'a', 'left:30px;top:470px;width:780px;font-size:26px;line-height:1.35', '<b>Near-parity: no gap shown.</b> <span class="muted">On images the specialist passes, every agent miss is thin-vessel connectivity, by under 0.02 clDice.</span>', lp);
+  const rp = el('div', 'a card', 'left:972px;top:230px;width:852px;height:640px;padding:30px', '', root);
+  el('div', 'lbl muted', '', 'Controls · agent attempts meeting every gate part', rp);
+  D.results.controls.forEach((r, i) => {
+    const y = 90 + i*170;
+    el('div', 'a mono b', `left:30px;top:${y}px;font-size:30px`, r.label, rp);
+    for (let k = 0; k < r.of; k++) {
+      const pip = el('div', 'a', `left:${30 + k*62}px;top:${y + 50}px;width:50px;height:50px;border-radius:25px;${k < r.pass ? 'background:' + C.turq : 'border:4px solid ' + C.pink}`, '', rp);
+      T(pip, {o: [0, 1]}, 25.6 + i*0.6 + k*0.06, 0.25);
+    }
+    el('div', 'a mono b', `left:430px;top:${y + 56}px;font-size:30px`, `${r.pass} of ${r.of}`, rp);
+    el('div', 'a muted', `left:30px;top:${y + 112}px;font-size:21px`, r.note, rp);
+  });
+  T(root, {o: [0, 1]}, 21.0, 0.3); IN(lp, 21.1); T(rp, {o: [0, 1], y: [24, 0]}, 25.1, 0.5);
+}
+
+/* ================= SCENE 6: BEHAVIOUR ================= */
+OFF = SC.behaviour.start;
+{
+  const B = D.behaviour, root = $('#b-a');
+  const TX = 160, TW = 1600, TY = 760, pxm = TW / B.session_min;
+  el('div', 'a', `left:${TX}px;top:${TY}px;width:${TW}px;height:14px;border-radius:7px;background:var(--card)`, '', root).id = 'b-track';
+  const used = el('div', 'a', `left:${TX}px;top:${TY}px;height:14px;border-radius:7px;background:var(--turq);width:0`, '', root);
+  [0, 15, 30, 45].forEach(m => el('div', 'a mono muted', `left:${TX + m*pxm - 40}px;top:${TY + 26}px;width:80px;text-align:center;font-size:22px`, m + ' min', root));
+  const left = el('div', 'a', `left:${TX + 15*pxm}px;top:${TY - 10}px;width:${30*pxm}px;height:34px;border-radius:6px;background:repeating-linear-gradient(45deg, rgba(255,20,147,0.35) 0 10px, rgba(255,20,147,0.1) 10px 20px)`, '', root);
+  const leftLbl = el('div', 'a mono b pink', `left:${TX + 15*pxm}px;top:${TY + 64}px;width:${30*pxm}px;text-align:center;font-size:26px`, 'over 30 minutes still unused', root);
+  B.quotes.forEach((q, i) => {
+    const col = i % 2, row = Math.floor(i / 2);
+    const qx = 96 + col*880, qy = 220 + row*220;
+    const c = el('div', 'a card', `left:${qx}px;top:${qy}px;width:848px;height:196px;padding:22px 26px`, '', root);
+    el('div', 'a mono b turq', 'left:26px;top:20px;font-size:40px', `${q.min.toFixed(1)}<span class="muted" style="font-size:24px;font-weight:400"> / 45 min</span>`, c);
+    el('div', 'a mono muted', 'right:26px;top:30px;font-size:20px', q.who, c);
+    el('div', 'a', 'left:26px;top:92px;width:796px;font-size:32px;line-height:1.3', `“${q.text}”`, c);
+    const mk = el('div', 'a', `left:${TX + q.min*pxm - 3}px;top:${TY - 30}px;width:6px;height:50px;background:#fff;border-radius:3px`, '', root);
+    const t0 = 1.0 + i*1.1;
+    IN(c, t0); T(mk, {o: [0, 1], s: [0.2, 1]}, t0 + 0.2, 0.4, 'back');
+  });
+  T([left, leftLbl], {o: [0, 1]}, 5.6, 0.6);
+  T(root, {o: [0, 1]}, 0.2, 0.3); OUT(root, 9.6);
+}
+{
+  const B = D.behaviour, root = $('#b-b');
+  el('div', 'sub', '', 'Fetal head · share of the 45-minute session used, every attempt', root);
+  const CX = 200, CY0 = 300, CH = 480, BWd = 46, BG = 10, GG = 90;
+  const base = CY0 + CH;
+  [0, 25, 50, 75, 100].forEach(v => {
+    el('div', 'a', `left:${CX}px;top:${base - CH*v/100}px;width:1250px;height:${v === 100 ? 0 : 1}px;${v === 100 ? 'border-top:3px dashed #fff' : 'background:var(--rule)'}`, '', root);
+    el('div', 'a mono muted', `left:${CX - 90}px;top:${base - CH*v/100 - 14}px;width:76px;text-align:right;font-size:20px`, v + ' %', root);
+  });
+  el('div', 'a mono', `left:${CX + 980}px;top:${CY0 - 40}px;font-size:22px`, '45-minute session', root);
+  const arms = [['R', 'standard instruction', 10.6], ['K', '+ keep working below the bar', 14.6], ['K2', '+ check the clock', 18.8]];
+  arms.forEach(([arm, desc, t0], gi) => {
+    const gx = CX + 40 + gi*(6*(BWd + BG) + GG);
+    const vals = B.session_used_pct[arm].opus.map(v => [v, C.turq]).concat(B.session_used_pct[arm].sonnet.map(v => [v, C.pink]));
+    vals.forEach(([v, col], k) => {
+      const x = gx + k*(BWd + BG) + (k >= 3 ? 8 : 0);
+      const bar = el('div', 'a', `left:${x}px;top:${base}px;width:${BWd}px;height:0;background:${col};border-radius:3px 3px 0 0`, '', root);
+      T(bar, {h: [0, CH*v/100], y: [0, -CH*v/100]}, t0 + k*0.12, 0.9);
+      const lab = el('div', 'a mono', `left:${x - 10}px;top:${base - CH*v/100 - 32}px;width:${BWd + 20}px;text-align:center;font-size:19px`, v, root);
+      T(lab, {o: [0, 1]}, t0 + k*0.12 + 0.8, 0.3);
+    });
+    const gl = el('div', 'a', `left:${gx - 20}px;top:${base + 16}px;width:${6*(BWd + BG) + 48}px;text-align:center`, `<div class="mono b" style="font-size:28px">${arm}</div><div class="muted" style="font-size:20px;line-height:1.25">${desc}</div>`, root);
+    T(gl, {o: [0, 1]}, t0 - 0.2, 0.4);
+  });
+  const leg = el('div', 'a', 'left:1500px;top:300px;width:324px;font-size:24px;line-height:1.7', `<div><span style="display:inline-block;width:20px;height:20px;background:var(--turq);margin-right:12px"></span>Opus 5.5</div><div><span style="display:inline-block;width:20px;height:20px;background:var(--pink);margin-right:12px"></span>Sonnet 5.5</div>`, root);
+  const note = el('div', 'a', 'left:1500px;top:440px;width:324px;padding:20px;border-radius:8px;background:var(--card);border-left:6px solid var(--pink);font-size:23px;line-height:1.35', `<b>K2:</b> every agent read the clock correctly, then stopped below its own bar with <b class="pink">${B.k2_minutes_left} min</b> left.`, root);
+  T(root, {o: [0, 1]}, 10.0, 0.3); T(leg, {o: [0, 1]}, 10.4, 0.4); IN(note, 20.4);
+}
+
+/* ================= SCENE 7: TRUST ================= */
+OFF = SC.trust.start;
+D.trust.forEach(([h, d], i) => {
+  const r = el('div', 'a', `left:96px;top:${220 + i*134}px;width:1728px;height:112px;display:flex;align-items:center;gap:36px;background:var(--card);border-radius:8px;padding:0 32px`, '', '#u-rows');
+  el('div', '', 'flex:none;width:60px;height:60px;border-radius:30px;background:var(--turq);color:#0F172A;font-size:34px;font-weight:700;display:flex;align-items:center;justify-content:center', '✓', r);
+  el('div', 'mono b', 'flex:none;width:470px;font-size:30px', h, r);
+  el('div', '', 'font-size:27px;color:#E2E8F0;line-height:1.3', d, r);
+  IN(r, 0.6 + i*1.5);
+});
+
+/* ================= SCENE 8: CLOSE ================= */
+OFF = SC.close.start;
+$('#c-repo').textContent = D.meta.repo; $('#c-name').textContent = D.meta.name; $('#c-org').textContent = D.meta.org;
+T('#c-band1', {y: [-1080, 0]}, 0.0, 0.8, 'inOut'); T('#c-band2', {y: [1080, 0]}, 0.1, 0.8, 'inOut');
+IN('#c-eyebrow', 0.6); T('#c-repo', {reveal: [0, 100]}, 0.9, 1.2, 'inOut'); IN('#c-name', 2.0); IN('#c-org', 2.3);
+
+/* ---------------- finalize ---------------- */
+for (const m of tracks.values()) for (const p in m) m[p].sort((a, b) => a.start - b.start);
+
+function seek(t) {
+  t = Math.max(0, Math.min(DURATION - 1e-6, t));
+  for (const [id, sc] of Object.entries(SC)) {
+    const on = t >= sc.start - 1e-9 && t < sc.end;
+    sc.node.style.display = on ? 'block' : 'none';
+    if (on) {
+      const lt = t - sc.start;
+      const fi = id === D.scenes[0].id ? 1 : Math.min(1, lt / 0.5);
+      const fo = id === D.scenes[D.scenes.length - 1].id ? 1 : Math.min(1, (sc.end - t) / 0.5);
+      sc.node.style.opacity = Math.max(0, Math.min(fi, fo));
+    }
+  }
+  applyAll(t);
+  applyCaption(t);
+  window.__t = t;
+}
+window.seek = seek;
+window.DURATION = DURATION;
+window.SCENES = Object.fromEntries(Object.entries(SC).map(([k, v]) => [k, {start: v.start, end: v.end}]));
+
+/* preview: autoplay and fit to window unless ?capture */
+const capture = /[?&]capture/.test(location.search);
+const stage = $('#stage');
+function fit() { if (capture) return; const s = Math.min(innerWidth / 1920, innerHeight / 1080); stage.style.transform = `scale(${s})`; }
+addEventListener('resize', fit); fit();
+seek(0);
+if (!capture) {
+  const m = location.hash.match(/t=([\d.]+)/);
+  let t0 = performance.now() - (m ? +m[1] : 0) * 1000, paused = false, pt = 0;
+  addEventListener('keydown', e => {
+    if (e.code === 'Space') { paused = !paused; if (!paused) t0 = performance.now() - pt*1000; }
+    if (e.code === 'ArrowRight') t0 -= 5000;
+    if (e.code === 'ArrowLeft') t0 += 5000;
+  });
+  const loop = () => { if (!paused) { pt = ((performance.now() - t0) / 1000) % DURATION; seek(pt); } requestAnimationFrame(loop); };
+  document.fonts.ready.then(() => requestAnimationFrame(loop));
+}
+})();
+</script>
+</body>
+</html>
